@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Snail Password Manager</string>
+
+
+    <string name="account_name">login</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="login_button">Log-In</string>
+    <string name="registration_button">Singеу</string>
+    <string name="todo">TODO</string>
+    <string name="registration_screen_button">Registration</string>
+
+
+    <string name="logo_description">Logo</string>
+    <string name="title_activity_main_list">MainListActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="add_button">Add Element</string>
+
+</resources>
