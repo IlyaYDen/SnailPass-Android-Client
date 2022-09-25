@@ -1,34 +1,59 @@
 package com.example.snailpasswordmanager.presentation.mainscreen
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.snailpasswordmanager.data.PasswordListRepositoryImpl
+import androidx.lifecycle.viewModelScope
 import com.example.snailpasswordmanager.domain.model.PasswordEntity
-import com.example.snailpasswordmanager.domain.usecase.Passwords.AddPasswordUseCase
-import com.example.snailpasswordmanager.domain.usecase.Passwords.GetPasswordListUseCase
-import com.example.snailpasswordmanager.domain.usecase.Passwords.GetPasswordUseCase
-import com.example.snailpasswordmanager.domain.usecase.Passwords.RemovePasswordUseCase
+import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
+import com.example.snailpasswordmanager.domain.util.PasswordOrder
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainListViewModel : ViewModel() {
+class MainListViewModel @Inject constructor(
+    private val passwordUseCases: PasswordUseCases
+    ) : ViewModel() {
 
-    private val repository = PasswordListRepositoryImpl
+    //private val _state = mutableListOf<PasswordsState>(PasswordsState())
+    //val state: State<PasswordsState> = _state
 
-    private val getPasswordListUseCase = GetPasswordListUseCase(repository)
-    private val deletePasswordListUseCase = RemovePasswordUseCase(repository)
-    private val addPasswordUseCase = AddPasswordUseCase(repository)
+    private var recentlyDeletedPassword: PasswordEntity? = null
 
-    val passwordList = MutableLiveData<List<PasswordEntity>>()
+    fun onEvent(event: PasswordsEvent) {
+        when(event){
 
-    fun getPasswordList() {
-        val list = getPasswordListUseCase.execute()
-        passwordList.value = list
+            is PasswordsEvent.Order ->{
+
+            }
+            is PasswordsEvent.AddPassword ->{
+                viewModelScope.launch {
+                    var passwordEntity = PasswordEntity(service = "test", password = "test", login = "test", timestamp = System.nanoTime())
+                    passwordUseCases.insertPassword(passwordEntity)
+                }
+            }
+            is PasswordsEvent.DeletePassword ->{
+                viewModelScope.launch {
+                    passwordUseCases.deletePassword(event.passwordEntity)
+                    recentlyDeletedPassword = event.passwordEntity
+                }
+
+            }
+            is PasswordsEvent.RestorePassword ->{
+                viewModelScope.launch {
+                    passwordUseCases.insertPassword(recentlyDeletedPassword ?: return@launch)
+                    recentlyDeletedPassword = null
+                }
+
+            }
+            is PasswordsEvent.ToggleOrderSection ->{
+
+            }
+        }
     }
-    fun deletePassword(passwordEntity: PasswordEntity){
-        deletePasswordListUseCase.execute(passwordEntity)
-    }
-    fun addPassword(passwordEntity: PasswordEntity){
-        addPasswordUseCase.execute(passwordEntity)
 
-    }
+    //private fun getPassowrds(passwordOrder: PasswordOrder) {
+    //    passwordUseCases.getPasswordList(passwordOrder)
+    //        .onEach { passwords ->
+    //
+    //        }
+    //}
 }

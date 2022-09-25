@@ -16,6 +16,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         vm = ViewModelProvider(this).get(LoginViewModel::class.java)
+
+
+
     }
 
     fun registrationButton(view: View) {
