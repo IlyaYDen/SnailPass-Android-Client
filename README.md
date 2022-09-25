@@ -11,6 +11,7 @@ Here you can see registration prosess in diagram
 ![image](https://user-images.githubusercontent.com/90569114/192116325-c6516aa0-c4ce-41b4-a719-51fd25d65ee6.png)
 
 and Log In diagram
+
 ![image](https://user-images.githubusercontent.com/90569114/192116336-02526e3d-6a13-445b-8ea8-5ba136aad78a.png)
 so these diagrams show the full operation of the application with the server. In offline mode, client stores the password sashed 1000 times and checks it against the entered one. And keep passwords on local LiteSQL.
 
