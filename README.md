@@ -17,5 +17,7 @@ We recently started doing a project, and for a long time we understood the theor
 
 # Android Screenshots
 ![image](https://user-images.githubusercontent.com/90569114/192387721-c53e50b8-1c83-43aa-a37e-35c331767812.png)
+
 ![image](https://user-images.githubusercontent.com/90569114/192387795-95bda620-a0fa-4bf7-93fd-e1093ccdac68.png)
+
 ![image](https://user-images.githubusercontent.com/90569114/192387867-bdea0a9c-5d48-454a-8a20-1cf4c65d4890.png)
