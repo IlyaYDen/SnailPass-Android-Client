@@ -1,4 +1,5 @@
 # Snail Password Manager
+Switch branch to Development to see code. 
 Snail Password Manager - is easy file manager client-server program. You can keep your passwords in it and get your passwords anywhere, you need just log in on your device. So if you dont have internet connection password will save ofline and you can get it too.
 Application will be on PC(C#), Android(Kotlin) and IOS(Swift). 
 Server we will make on Python.
