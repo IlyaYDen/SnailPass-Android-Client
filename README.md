@@ -9,9 +9,11 @@ This is a mobile android application for Snail Password Manager. With it you can
 We try to put a lot of emphasis on safety, we use Pbkdf2(sha-512) hash algorithm to hash master password and AES-256-CBC to encrypt and decrypt user information(passwords). More easy to understand all of it in diograms.
 Here you can see registration prosess in diagram
 ![image](https://user-images.githubusercontent.com/90569114/192116325-c6516aa0-c4ce-41b4-a719-51fd25d65ee6.png)
+
 and Log In diagram
 
 ![image](https://user-images.githubusercontent.com/90569114/192116336-02526e3d-6a13-445b-8ea8-5ba136aad78a.png)
+
 In offline mode, client stores the master password sashed 1000 times and checks it against the entered one. And get passwords from local LiteSQL.
 
 
