@@ -4,7 +4,7 @@ data class UserEntity(
     var login: String,
     var password: String,
 
-    var id:Int = UNDEFINED_ID
+    var id: Int = UNDEFINED_ID
 ) {
     companion object {
         const val UNDEFINED_ID = -1

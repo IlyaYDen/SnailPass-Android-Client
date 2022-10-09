@@ -1,0 +1,130 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.snailpasswordmanager"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:6:5-67
+11-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:7:5-79
+12-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:7:22-76
+13
+14    <application
+14-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:9:5-44:19
+15        android:name="com.example.snailpasswordmanager.PasswordApp"
+15-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:10:9-36
+16        android:allowBackup="true"
+16-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:11:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/319818de8066db9dee1015fa48896948/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+18        android:dataExtractionRules="@xml/data_extraction_rules"
+18-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:12:9-65
+19        android:debuggable="true"
+20        android:fullBackupContent="@xml/backup_rules"
+20-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:13:9-54
+21        android:icon="@drawable/logo"
+21-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:14:9-38
+22        android:label="@string/app_name"
+22-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:15:9-41
+23        android:roundIcon="@drawable/logo"
+23-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:16:9-43
+24        android:supportsRtl="true"
+24-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:17:9-35
+25        android:theme="@style/Theme.SnailPasswordManager" >
+25-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:18:9-58
+26        <activity
+26-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:21:9-25:57
+27            android:name="com.example.snailpasswordmanager.presentation.passworditem.PasswordItemActivity"
+27-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:22:13-75
+28            android:exported="false"
+28-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:23:13-37
+29            android:windowSoftInputMode="adjustResize" />
+29-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:25:13-55
+30        <activity
+30-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:26:9-29:49
+31            android:name="com.example.snailpasswordmanager.presentation.mainscreen.MainListActivity"
+31-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:27:13-69
+32            android:exported="false"
+32-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:28:13-37
+33            android:label="Main Content List" />
+33-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:29:13-46
+34        <activity
+34-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:30:9-32:58
+35            android:name="com.example.snailpasswordmanager.presentation.registration.RegistrationActivity"
+35-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:31:13-75
+36            android:windowSoftInputMode="adjustResize" />
+36-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:32:13-55
+37        <activity
+37-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:33:9-42:20
+38            android:name="com.example.snailpasswordmanager.presentation.login.LoginActivity"
+38-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:34:13-61
+39            android:exported="true"
+39-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:35:13-36
+40            android:windowSoftInputMode="adjustResize" >
+40-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:36:13-55
+41            <intent-filter>
+41-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:37:13-41:29
+42                <action android:name="android.intent.action.MAIN" />
+42-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:38:17-69
+42-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:38:25-66
+43
+44                <category android:name="android.intent.category.LAUNCHER" />
+44-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:40:17-77
+44-->/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:40:27-74
+45            </intent-filter>
+46        </activity>
+47
+48        <uses-library
+48-->[androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+49            android:name="androidx.window.extensions"
+49-->[androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+50            android:required="false" />
+50-->[androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+51        <uses-library
+51-->[androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+52            android:name="androidx.window.sidecar"
+52-->[androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+53            android:required="false" />
+53-->[androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+54
+55        <service
+55-->[androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:25:9-28:40
+56            android:name="androidx.room.MultiInstanceInvalidationService"
+56-->[androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:26:13-74
+57            android:directBootAware="true"
+57-->[androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:27:13-43
+58            android:exported="false" />
+58-->[androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:28:13-37
+59
+60        <provider
+60-->[androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+61            android:name="androidx.startup.InitializationProvider"
+61-->[androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+62            android:authorities="com.example.snailpasswordmanager.androidx-startup"
+62-->[androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+63            android:exported="false" >
+63-->[androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+64            <meta-data
+64-->[androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+65                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+65-->[androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+66                android:value="androidx.startup" />
+66-->[androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+67            <meta-data
+67-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+68                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+68-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+69                android:value="androidx.startup" />
+69-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+70        </provider>
+71    </application>
+72
+73</manifest>

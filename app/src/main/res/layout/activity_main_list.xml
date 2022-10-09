@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_background"
     tools:context=".presentation.mainscreen.MainListActivity">
 
 
@@ -28,9 +29,10 @@
         android:clickable="true"
         android:contentDescription="@string/add_button"
         android:focusable="true"
+        android:onClick="passwordAddButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"
-        android:onClick="passwordAddButton"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,OnClick" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

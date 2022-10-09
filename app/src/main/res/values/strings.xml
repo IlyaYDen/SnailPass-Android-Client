@@ -6,7 +6,7 @@
     <string name="password">Password</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="login_button">Log-In</string>
-    <string name="registration_button">Singеу</string>
+    <string name="registration_button">Sign Up</string>
     <string name="todo">TODO</string>
     <string name="registration_screen_button">Registration</string>
 

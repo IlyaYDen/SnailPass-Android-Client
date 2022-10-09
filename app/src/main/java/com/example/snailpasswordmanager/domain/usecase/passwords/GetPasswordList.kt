@@ -6,12 +6,13 @@ import com.example.snailpasswordmanager.domain.util.OrderType
 import com.example.snailpasswordmanager.domain.util.PasswordOrder
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-class GetPasswordList(
+class GetPasswordList @Inject constructor(
     private val passwordListRepository: PasswordListRepository
     ) {
 
-    operator fun invoke(
+    operator fun invoke (
         passwordOrder: PasswordOrder = PasswordOrder.Service(OrderType.Ascending)
     ) : Flow<List<PasswordEntity>> {
         return passwordListRepository.getPasswordList().map { passwords ->

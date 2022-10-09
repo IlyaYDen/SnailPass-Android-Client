@@ -1,9 +1,14 @@
 package com.example.snailpasswordmanager.data.repository
 
+import com.example.snailpasswordmanager.data.database.password.PassowrdDao
+import com.example.snailpasswordmanager.data.database.user.UserDao
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.UserRepository
+import javax.inject.Inject
 
-object UserRepositoryImpl : UserRepository {
+class UserRepositoryImpl @Inject constructor(
+    private val dao: UserDao
+) : UserRepository {
 
     private val UserList = mutableListOf<UserEntity>()
 
@@ -28,8 +33,12 @@ object UserRepositoryImpl : UserRepository {
 
     override fun getUser(userId: Int): UserEntity? {
         return UserList.get(userId)
-    //TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
+    //override fun getUserByName(userId: Int): UserEntity? {
+    //    return UserList.get(userId)
+    //    //TODO("Not yet implemented")
+    //}
 
 
 }

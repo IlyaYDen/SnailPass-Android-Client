@@ -1,49 +1,42 @@
 package com.example.snailpasswordmanager.di
 
 import android.app.Application
-import androidx.room.Room
-import com.example.snailpasswordmanager.data.database.PasswordsDb
-import com.example.snailpasswordmanager.data.repository.PasswordListRepositoryImpl
-import com.example.snailpasswordmanager.domain.repository.PasswordListRepository
-import com.example.snailpasswordmanager.domain.usecase.passwords.DeletePassword
-import com.example.snailpasswordmanager.domain.usecase.passwords.GetPasswordList
-import com.example.snailpasswordmanager.domain.usecase.passwords.InsertPassword
+import android.content.Context
 import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
+import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
+import com.example.snailpasswordmanager.presentation.login.LoginViewModel
+import com.example.snailpasswordmanager.presentation.mainscreen.MainListViewModel
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
 @Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
-    @Provides
-    @Singleton
-    fun provideNote(app: Application): PasswordsDb {
-        return synchronized(this) {
-            Room.databaseBuilder(
-                app,
-                PasswordsDb::class.java,
-                PasswordsDb.DATABASE_NAME
-            ).build()
-        }
-    }
+//@InstallIn(SingletonComponent::class)
+class AppModule(val context: Context) {
+
+    lateinit var mApplication: Application
 
     @Provides
-    @Singleton
-    fun provideNoteRepository(db: PasswordsDb): PasswordListRepository{
-        return PasswordListRepositoryImpl(db.dao)
+    fun provideContext() : Context {
+        return context;
     }
 
 
+    //@Provides
+    //@Singleton
+    //fun providesApplication(): Application {
+    //    return mApplication
+    //}
+
     @Provides
     @Singleton
-    fun providerPasswordUseCases(repository: PasswordListRepository) : PasswordUseCases {
-        return PasswordUseCases(
-            getPasswordList = GetPasswordList(repository),
-            deletePassword = DeletePassword(repository),
-            insertPassword = InsertPassword(repository)
-        )
+    fun provideMainListViewModel(passwordUseCases: PasswordUseCases): MainListViewModel {
+        return MainListViewModel(passwordUseCases)
+    }
+    @Provides
+    @Singleton
+    fun provideLoginViewModel(useCases: UserUseCases): LoginViewModel {
+        return LoginViewModel(useCases)
     }
 }

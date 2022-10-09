@@ -1,0 +1,118 @@
+[
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/xml_data_extraction_rules.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/drawable_ic_baseline_refresh_24.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/drawable/ic_baseline_refresh_24.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/drawable_key_icon.png.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/drawable/key_icon.png"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/drawable_logo.png.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/drawable/logo.png"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/layout_activity_login.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/layout/activity_login.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-pngs-46:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/drawable_account_icon.png.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/drawable/account_icon.png"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.snailpasswordmanager.app-merged_res-51:/layout_activity_login.xml.flat",
+        "source": "com.example.snailpasswordmanager.app-main-53:/layout/activity_login.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/xml_backup_rules.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/navigation_nav_graph.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/layout_password_item.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/layout/password_item.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/layout_activity_login2.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/layout/activity_login2.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/layout_activity_register.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/layout/activity_register.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/layout_activity_main_list.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/layout/activity_main_list.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/layout_activity_password_item.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/layout/activity_password_item.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/drawable_ic_add.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/drawable/ic_add.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/drawable_ic_launcher_background.xml.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-merged_res-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/ilyaden/.gradle/daemon/7.3.3/com.example.snailpasswordmanager.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
+    }
+]

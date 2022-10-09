@@ -1,4 +1,6 @@
 package com.example.snailpasswordmanager.domain.crypto.AES;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.UnsupportedEncodingException;
 import java.security.Key;
 import java.security.MessageDigest;
@@ -59,5 +61,13 @@ public enum AESUtil {
         }
 
         return null;
+    }
+
+    public static String encryptTimes(@NotNull String password,int b) {
+        String pas = password;
+        for(int a=0; a <b;a++) {
+            pas = encrypt(pas);
+        }
+        return pas;
     }
 }
