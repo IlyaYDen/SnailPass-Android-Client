@@ -1,7 +1,5 @@
 package com.example.snailpasswordmanager.data.model
 
-import com.example.snailpasswordmanager.domain.model.PasswordEntity
-
 interface Mapper {
     fun <T,R> mapEntityToDbModel(passwordEntity: T) : R
 

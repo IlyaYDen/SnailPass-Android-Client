@@ -1,15 +1,12 @@
 package com.example.snailpasswordmanager.presentation.passworditem
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isInvisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.databinding.ActivityPasswordItemBinding
-import com.example.snailpasswordmanager.domain.model.PasswordEntity
-import com.example.snailpasswordmanager.presentation.mainscreen.MainListViewModelFactory
+import com.example.snailpasswordmanager.domain.model.RecordEntity
 import javax.inject.Inject
 
 
@@ -43,7 +40,7 @@ class PasswordItemActivity : AppCompatActivity() {
             bindingClass.editTextService.setText(service)
             bindingClass.editTextLogin.setText(login)
             bindingClass.deleteButton.setOnClickListener {
-                viewModel.deletePassword(passwordEntity = PasswordEntity(
+                viewModel.deletePassword(recordEntity = RecordEntity(
                     service = bindingClass.editTextService.text.toString(),
                     login = bindingClass.editTextLogin.text.toString(),
                     password = bindingClass.editTextPassword.text.toString(),
@@ -56,7 +53,7 @@ class PasswordItemActivity : AppCompatActivity() {
 
             bindingClass.buttonSave.setOnClickListener {
                 viewModel.addPassword(
-                    passwordEntity = PasswordEntity(
+                    passwordEntity = RecordEntity(
                         service = bindingClass.editTextService.text.toString(),
                         login = bindingClass.editTextLogin.text.toString(),
                         password = bindingClass.editTextPassword.text.toString(),
@@ -74,7 +71,7 @@ class PasswordItemActivity : AppCompatActivity() {
 
             bindingClass.buttonSave.setOnClickListener {
                 viewModel.addPassword(
-                    passwordEntity = PasswordEntity(
+                    passwordEntity = RecordEntity(
                         service = bindingClass.editTextService.text.toString(),
                         login = bindingClass.editTextLogin.text.toString(),
                         password = bindingClass.editTextPassword.text.toString(),

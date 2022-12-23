@@ -22,7 +22,9 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SnailPasswordManager" >
+        android:testOnly="true"
+        android:theme="@style/Theme.SnailPasswordManager"
+        android:usesCleartextTraffic="true" >
         <activity
             android:name="com.example.snailpasswordmanager.presentation.passworditem.PasswordItemActivity"
             android:exported="false"
@@ -51,6 +53,11 @@
         <uses-library
             android:name="androidx.window.sidecar"
             android:required="false" />
+
+        <provider
+            android:name="com.squareup.picasso.PicassoProvider"
+            android:authorities="com.example.snailpasswordmanager.com.squareup.picasso"
+            android:exported="false" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"

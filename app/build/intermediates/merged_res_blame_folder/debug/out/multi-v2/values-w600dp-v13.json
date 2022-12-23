@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.snailpasswordmanager.app-mergeDebugResources-49:/values-w600dp-v13/values-w600dp-v13.xml",
+            "outputFile": "com.example.snailpasswordmanager.app-mergeDebugResources-47:/values-w600dp-v13/values-w600dp-v13.xml",
             "map": [
                 {
-                    "source": "/media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/res/values-w600dp/dimens.xml",
+                    "source": "/home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/res/values-w600dp/dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "6",

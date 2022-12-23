@@ -1,24 +1,24 @@
 package com.example.snailpasswordmanager.domain.usecase.passwords
 
 import android.util.Log
-import com.example.snailpasswordmanager.domain.model.InvalidPasswordException
-import com.example.snailpasswordmanager.domain.model.PasswordEntity
-import com.example.snailpasswordmanager.domain.repository.PasswordListRepository
+import com.example.snailpasswordmanager.domain.model.InvalidRecordException
+import com.example.snailpasswordmanager.domain.model.RecordEntity
+import com.example.snailpasswordmanager.domain.repository.RecordListRepository
 import javax.inject.Inject
 
 class InsertPassword @Inject constructor(
-    private val passwordListRepository: PasswordListRepository
-    ) {
+    private val recordListRepository: RecordListRepository
+) {
 
-    @Throws(InvalidPasswordException::class)
-    suspend operator fun invoke(passwordEntity: PasswordEntity){
+    @Throws(InvalidRecordException::class)
+    suspend operator fun invoke(passwordEntity: RecordEntity){
         Log.d("testb","2")
         if(passwordEntity.service.isBlank())
-            throw InvalidPasswordException("The service can't be empty.")
+            throw InvalidRecordException("The service can't be empty.")
         if(passwordEntity.login.isBlank())
-            throw InvalidPasswordException("The login can't be empty.")
+            throw InvalidRecordException("The login can't be empty.")
         if(passwordEntity.password.isBlank())
-            throw InvalidPasswordException("The password can't be empty.")
-        passwordListRepository.insertPassword(passwordEntity)
+            throw InvalidRecordException("The password can't be empty.")
+        recordListRepository.insertRecord(passwordEntity)
     }
 }

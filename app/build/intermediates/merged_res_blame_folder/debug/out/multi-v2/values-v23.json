@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.snailpasswordmanager.app-mergeDebugResources-49:/values-v23/values-v23.xml",
+            "outputFile": "com.example.snailpasswordmanager.app-mergeDebugResources-47:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/home/ilyaden/.gradle/caches/transforms-3/9d6778b007a14e0c6659deb3da7018f2/transformed/material-1.6.1/res/values-v23/values-v23.xml",
+                    "source": "/home/ilya/.gradle/caches/transforms-3/4a53207dcabe7f0975fb5d95a8744ca1/transformed/material-1.6.1/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,5,8,13,17,20,23,26,31,34,38",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/ilyaden/.gradle/caches/transforms-3/b61d68b331896ea26f23fd544338c1eb/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
+                    "source": "/home/ilya/.gradle/caches/transforms-3/6a7043a1ea02e267aacd751d3a4a761c/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -42,7 +42,7 @@
                     }
                 },
                 {
-                    "source": "/home/ilyaden/.gradle/caches/transforms-3/fc1f82018352b0cb2503b51beb61b53f/transformed/appcompat-1.5.1/res/values-v23/values-v23.xml",
+                    "source": "/home/ilya/.gradle/caches/transforms-3/68ee75195f0df5ad8d472ec660be41c8/transformed/appcompat-1.5.1/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

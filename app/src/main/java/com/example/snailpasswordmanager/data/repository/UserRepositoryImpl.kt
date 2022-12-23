@@ -1,6 +1,5 @@
 package com.example.snailpasswordmanager.data.repository
 
-import com.example.snailpasswordmanager.data.database.password.PassowrdDao
 import com.example.snailpasswordmanager.data.database.user.UserDao
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.UserRepository

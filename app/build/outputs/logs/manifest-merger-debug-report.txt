@@ -1,370 +1,382 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:1-48:12
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:1-48:12
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:1-48:12
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:1-48:12
-MERGED from [androidx.databinding:viewbinding:7.2.2] /home/ilyaden/.gradle/caches/transforms-3/99356657452459972d5394fc9fd6ead2/transformed/viewbinding-7.2.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/8d38a6cfc7e4ddf1c2b12af413796f6a/transformed/lifecycle-livedata-ktx-2.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.room:room-ktx:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/329ee5de2bc8d111ca128158efa41e21/transformed/room-ktx-2.4.3/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.dagger:hilt-android:2.44] /home/ilyaden/.gradle/caches/transforms-3/a75d62b913fb8d545ce19729c05e404e/transformed/hilt-android-2.44/AndroidManifest.xml:16:1-19:12
-MERGED from [androidx.navigation:navigation-ui-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/99e1e928410f56c88f404cd5b8c14b94/transformed/navigation-ui-ktx-2.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-ui:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/c17bc79a942fea30ac29737c7fc58141/transformed/navigation-ui-2.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.material:material:1.6.1] /home/ilyaden/.gradle/caches/transforms-3/9d6778b007a14e0c6659deb3da7018f2/transformed/material-1.6.1/AndroidManifest.xml:17:1-26:12
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilyaden/.gradle/caches/transforms-3/0d84a4d4da2abb3fb58227fdd5309bb8/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.appcompat:appcompat-resources:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/ad4e16bcc8482e73473c57e8646d79f2/transformed/appcompat-resources-1.5.1/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.appcompat:appcompat:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/fc1f82018352b0cb2503b51beb61b53f/transformed/appcompat-1.5.1/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/39d86499b2df5710efb41e798446d941/transformed/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-fragment-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/e21d7d1191f9f3cdcca00de27e015375/transformed/navigation-fragment-ktx-2.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-fragment:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/1e0ef180ec339fd2bbcf9750a868d02b/transformed/navigation-fragment-2.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.fragment:fragment-ktx:1.5.2] /home/ilyaden/.gradle/caches/transforms-3/5e854c9d35d3be6afa849ba7ed08632a/transformed/fragment-ktx-1.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.fragment:fragment:1.5.2] /home/ilyaden/.gradle/caches/transforms-3/e00b5c7677961b9b0fee89a6f7214ea1/transformed/fragment-1.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-runtime-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/87217c5dbfe0bcbd076ed417e1b6e816/transformed/navigation-runtime-ktx-2.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-runtime:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/5da427be67ed102939678d874bd0dbe2/transformed/navigation-runtime-2.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.activity:activity-ktx:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/019444a2376d64e94d6bc13f694b3f42/transformed/activity-ktx-1.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.activity:activity:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/ad991c19b1f0c8821261355d9e6e0140/transformed/activity-1.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/97606c10bfcb34d8238bd3c5f3c5ee66/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/864d17286c0648734282e20b1f767e3c/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.loader:loader:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/4e687c133cd9045696daa19214a6535c/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.navigation:navigation-common-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/5d32a9e55c488f58553bccd0efa88fd7/transformed/navigation-common-ktx-2.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.navigation:navigation-common:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/4a85558a8dec2c747a3a1e66119e7a91/transformed/navigation-common-2.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/5f3d9d5e91a27fcc34a18eb6121b3885/transformed/lifecycle-viewmodel-ktx-2.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/6740173314278d5dc47a04980597f4e3/transformed/lifecycle-viewmodel-2.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/42f0322a0a41c82835fa1bb5d83460d3/transformed/lifecycle-viewmodel-savedstate-2.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/0cce547ebc55718f5e87caa98490c42f/transformed/lifecycle-runtime-ktx-2.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/80402e62f4d1fa8aec98af537a6305c2/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:17:1-33:12
-MERGED from [com.android.volley:volley:1.2.1] /home/ilyaden/.gradle/caches/transforms-3/7b7cdfe5b418cd3b3524a83e22d29f60/transformed/volley-1.2.1/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.core:core-ktx:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/f48f900f03316f7f3735d59aacb15ff3/transformed/core-ktx-1.8.0/AndroidManifest.xml:2:1-9:12
-MERGED from [androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:17:1-31:12
-MERGED from [androidx.savedstate:savedstate-ktx:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/9e4c4bd11d5a082c618ec489473f1a01/transformed/savedstate-ktx-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.savedstate:savedstate:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/af620fabec4e0fed4d0ffd6040cf4262/transformed/savedstate-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/6355f7f15047d6047dff53a3d4986848/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:17:1-35:12
-MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/e33a5a07e0e96c48df04ee4e4b5363cc/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/ad6dc95340b171e84c4ad5205ef31393/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/1cbd011c3c79b09f73786a9394ff1d25/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/a6c2f42b601cff490190ba27a74071ea/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/025ae0e8e070532a925b968a91c2dcd3/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/22e43e53ae6f241a8207f0c4c1d3eca2/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.customview:customview:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/8debbcd95ff098488411a32e7760da11/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.transition:transition:1.4.1] /home/ilyaden/.gradle/caches/transforms-3/37a6cc10f0a0228bfb27167ce68f5e45/transformed/transition-1.4.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.core:core:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/319818de8066db9dee1015fa48896948/transformed/core-1.8.0/AndroidManifest.xml:17:1-26:12
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:17:1-37:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/91e8016f0a249a956def1658dacf6ac4/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/1bf269c984736ea7e8d09430a069b66d/transformed/lifecycle-livedata-2.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/cf1f9f4f075c10c6b0f2b4a94dd48de3/transformed/lifecycle-livedata-core-ktx-2.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/08c3f0df28b319d7f143e20e39976470/transformed/lifecycle-livedata-core-2.5.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/944f278a1c6f1b0e45f50820d68c4b1e/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cardview:cardview:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/b61d68b331896ea26f23fd544338c1eb/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /home/ilyaden/.gradle/caches/transforms-3/736f285d2efd5873193396107e8282ee/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.sqlite:sqlite:2.2.0] /home/ilyaden/.gradle/caches/transforms-3/917089b0309d947b1955c8595517c63f/transformed/sqlite-2.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/ilyaden/.gradle/caches/transforms-3/8c44cfbdeee2a652a2edc2eb95479194/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3145d3d71294ba1b743e8b2199ddf2ae/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
-MERGED from [androidx.tracing:tracing:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/5b87d3a5c23a3888cf91c6e6e1911d15/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3367f2aef9957f33c0ae437b02a9c6b3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/3796dee342b241c42166492d7a84105a/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.documentfile:documentfile:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/21d999d2482d5176fe1e8f8335d649f6/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/cf75896d21978a6e2d6dcd44588d889b/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.print:print:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/6f784ec98e20dba0ba6566870c016b4c/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.dagger:dagger-lint-aar:2.44] /home/ilyaden/.gradle/caches/transforms-3/42bd698769793876d95153c93f5fb4b8/transformed/dagger-lint-aar-2.44/AndroidManifest.xml:16:1-19:12
-MERGED from [androidx.annotation:annotation-experimental:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/e273be70d1f54d1dd07f759b7827c3b3/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:1-48:12
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:1-48:12
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:1-48:12
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
+MERGED from [androidx.databinding:viewbinding:7.3.1] /home/ilya/.gradle/caches/transforms-3/670a454c3e71eac4619ad05e4ba0b12f/transformed/viewbinding-7.3.1/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.room:room-ktx:2.4.3] /home/ilya/.gradle/caches/transforms-3/5d3f76fcc5f5ea4a33fe925df1230b2b/transformed/room-ktx-2.4.3/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.dagger:hilt-android:2.44] /home/ilya/.gradle/caches/transforms-3/c917e411f9ee2db7032d732aaa99dcf1/transformed/hilt-android-2.44/AndroidManifest.xml:16:1-19:12
+MERGED from [androidx.navigation:navigation-ui-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/05f0c5397d0e2e3f642e2c568bcf1e1a/transformed/navigation-ui-ktx-2.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-ui:2.5.2] /home/ilya/.gradle/caches/transforms-3/6d9bd04618bb8036635e27b6a491aa16/transformed/navigation-ui-2.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.6.1] /home/ilya/.gradle/caches/transforms-3/4a53207dcabe7f0975fb5d95a8744ca1/transformed/material-1.6.1/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilya/.gradle/caches/transforms-3/b767dad15c535e9fb21b84fb10b8766f/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.5.1] /home/ilya/.gradle/caches/transforms-3/99d53bfdd748ee40b332d3bdd10f2416/transformed/appcompat-resources-1.5.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.5.1] /home/ilya/.gradle/caches/transforms-3/68ee75195f0df5ad8d472ec660be41c8/transformed/appcompat-1.5.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/ilya/.gradle/caches/transforms-3/2c123ef870a0ced663f0b95801c263d3/transformed/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/38ff9f94bf9538b1f89b302314601960/transformed/navigation-fragment-ktx-2.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-fragment:2.5.2] /home/ilya/.gradle/caches/transforms-3/56ed15d68d6e48999895d60b73bcb79f/transformed/navigation-fragment-2.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment-ktx:1.5.2] /home/ilya/.gradle/caches/transforms-3/4ae59eeb4b34226ab66f88a375eead23/transformed/fragment-ktx-1.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.5.2] /home/ilya/.gradle/caches/transforms-3/064dad190af168ec3f9878ae7c0b1541/transformed/fragment-1.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/f48f88a924ab39141356d9ff608e9a12/transformed/navigation-runtime-ktx-2.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-runtime:2.5.2] /home/ilya/.gradle/caches/transforms-3/64fadfe9e1d14b393bee2079b0a7cd95/transformed/navigation-runtime-2.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity-ktx:1.5.1] /home/ilya/.gradle/caches/transforms-3/28b16beaab292723180f217c3c746d8b/transformed/activity-ktx-1.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.5.1] /home/ilya/.gradle/caches/transforms-3/42112c72d96be0aeed6e3fef772ab45e/transformed/activity-1.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/ilya/.gradle/caches/transforms-3/06b49f9f9752c4beb60d773aeaffe0b1/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/ilya/.gradle/caches/transforms-3/c963c39ea72f4144fb8fbbc70b7d1639/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/ilya/.gradle/caches/transforms-3/d688a183926187d51ffee0efec250673/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/2dc68a57f2c251327c722e61e8b66fe0/transformed/navigation-common-ktx-2.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-common:2.5.2] /home/ilya/.gradle/caches/transforms-3/73ad461c89b8e9eb5578f92fa804d340/transformed/navigation-common-2.5.2/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1] /home/ilya/.gradle/caches/transforms-3/f843a47168a2bc78554a72f72e12dcdb/transformed/lifecycle-viewmodel-ktx-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] /home/ilya/.gradle/caches/transforms-3/98fb570efc1e9666989c4adb95f1378f/transformed/lifecycle-viewmodel-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] /home/ilya/.gradle/caches/transforms-3/76699be663f9437bd73c3f1768b3ae50/transformed/lifecycle-viewmodel-savedstate-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.5.1] /home/ilya/.gradle/caches/transforms-3/c80ae40e8d3e42b6093f11131f897ece/transformed/lifecycle-runtime-ktx-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/ilya/.gradle/caches/transforms-3/407231fb532c304f4f6d2fa492fbe1b7/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:17:1-33:12
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/ilya/.gradle/caches/transforms-3/3a13c93c7e0dcb7f5e5f1189b2044248/transformed/picasso-2.71828/AndroidManifest.xml:2:1-14:12
+MERGED from [androidx.core:core-ktx:1.8.0] /home/ilya/.gradle/caches/transforms-3/5c867406f798347ccb3144eeaa9afbed/transformed/core-ktx-1.8.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.room:room-runtime:2.4.3] /home/ilya/.gradle/caches/transforms-3/450ae2017a3b4b5cbaf975c35a1ab227/transformed/room-runtime-2.4.3/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.0] /home/ilya/.gradle/caches/transforms-3/4cc8a968e1b067cfd89f91a49bdbc86f/transformed/savedstate-ktx-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.2.0] /home/ilya/.gradle/caches/transforms-3/180614d0086dcc563b9fa688954c856d/transformed/savedstate-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/ilya/.gradle/caches/transforms-3/a339bdd1903282d1ab129359d72132f2/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/ilya/.gradle/caches/transforms-3/f083a5d53a900dcb74baf2ee58992d4e/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/ilya/.gradle/caches/transforms-3/2ad2e06be410b93b5de59e9dd91192bf/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/ilya/.gradle/caches/transforms-3/1eee95547d0946e2545cec4b154984d4/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/ilya/.gradle/caches/transforms-3/1030a5e4b2b5c7f9fe1d178b36966d52/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/ilya/.gradle/caches/transforms-3/ddc86d7c48d1bc05e349fc3b673f45f7/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/ilya/.gradle/caches/transforms-3/944995409d28d7677e5fba3b458eddfd/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.1.0] /home/ilya/.gradle/caches/transforms-3/f0a18411ba0e9a6fe0a55804a46da352/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.4.1] /home/ilya/.gradle/caches/transforms-3/4bd312f9a3699a60b5604216cf6d2135/transformed/transition-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.8.0] /home/ilya/.gradle/caches/transforms-3/cbd2cea7a41c8b4414f86c37a63fa3c1/transformed/core-1.8.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /home/ilya/.gradle/caches/transforms-3/ba2e87376409d0531d392b8b54ab865f/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/ilya/.gradle/caches/transforms-3/5eacb4ac1b0762c739257c6bf86715b3/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1] /home/ilya/.gradle/caches/transforms-3/9ac29197f1e1deba79a43f1d880f8621/transformed/lifecycle-livedata-core-ktx-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /home/ilya/.gradle/caches/transforms-3/e33621055c2432316c54104744d4838c/transformed/lifecycle-livedata-core-2.5.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/ilya/.gradle/caches/transforms-3/24069243f2fd10cda5b7ae52f4a0ee34/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /home/ilya/.gradle/caches/transforms-3/6a7043a1ea02e267aacd751d3a4a761c/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /home/ilya/.gradle/caches/transforms-3/f6c13d60d028c3c8407c12442bfcdd01/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.sqlite:sqlite:2.2.0] /home/ilya/.gradle/caches/transforms-3/981a9769436eee85603c07165927873e/transformed/sqlite-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilya/.gradle/caches/transforms-3/c1b6e674c901a86b1b75ef9d7430c863/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /home/ilya/.gradle/caches/transforms-3/408356092f4a4d1a4e27173b1b9b3ab1/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilya/.gradle/caches/transforms-3/637254c3d2a156e838808a54cebac2f0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/ilya/.gradle/caches/transforms-3/c46cac030d395e30df431e732af1a403/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/ilya/.gradle/caches/transforms-3/74d7648517b024aeaf117aaaaaab4d8a/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/ilya/.gradle/caches/transforms-3/f1026cf8a43b5ac7090d32c66913128e/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/ilya/.gradle/caches/transforms-3/7d21f26541ec7699f8fc0ef6bf311b87/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/ilya/.gradle/caches/transforms-3/5bf6ecdd05e88e24e35708386f629fa5/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.dagger:dagger-lint-aar:2.44] /home/ilya/.gradle/caches/transforms-3/29b25ec3615ddcfa522044e211272ef6/transformed/dagger-lint-aar-2.44/AndroidManifest.xml:16:1-19:12
+MERGED from [com.android.support:exifinterface:27.1.0] /home/ilya/.gradle/caches/transforms-3/ea2dcc3bd9b65658ecf7fb9cb703587f/transformed/exifinterface-27.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /home/ilya/.gradle/caches/transforms-3/52dc8a3342dcf1a1dff1d6981a48cf32/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
 	package
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:4:5-47
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:1-48:12
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
 	xmlns:tools
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:3:5-51
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:1-48:12
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:1-49:12
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:6:5-67
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:5:5-67
 	android:name
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:6:22-64
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:7:5-79
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:6:5-79
 	android:name
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:7:22-76
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:9:5-44:19
-MERGED from [com.google.android.material:material:1.6.1] /home/ilyaden/.gradle/caches/transforms-3/9d6778b007a14e0c6659deb3da7018f2/transformed/material-1.6.1/AndroidManifest.xml:24:5-20
-MERGED from [com.google.android.material:material:1.6.1] /home/ilyaden/.gradle/caches/transforms-3/9d6778b007a14e0c6659deb3da7018f2/transformed/material-1.6.1/AndroidManifest.xml:24:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilyaden/.gradle/caches/transforms-3/0d84a4d4da2abb3fb58227fdd5309bb8/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilyaden/.gradle/caches/transforms-3/0d84a4d4da2abb3fb58227fdd5309bb8/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
-MERGED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
-MERGED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
-MERGED from [androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:24:5-29:19
-MERGED from [androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:24:5-29:19
-MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
-MERGED from [androidx.core:core:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/319818de8066db9dee1015fa48896948/transformed/core-1.8.0/AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/319818de8066db9dee1015fa48896948/transformed/core-1.8.0/AndroidManifest.xml:24:5-89
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:25:5-35:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:25:5-35:19
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3145d3d71294ba1b743e8b2199ddf2ae/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3145d3d71294ba1b743e8b2199ddf2ae/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3367f2aef9957f33c0ae437b02a9c6b3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3367f2aef9957f33c0ae437b02a9c6b3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:8:5-45:19
+MERGED from [com.google.android.material:material:1.6.1] /home/ilya/.gradle/caches/transforms-3/4a53207dcabe7f0975fb5d95a8744ca1/transformed/material-1.6.1/AndroidManifest.xml:24:5-20
+MERGED from [com.google.android.material:material:1.6.1] /home/ilya/.gradle/caches/transforms-3/4a53207dcabe7f0975fb5d95a8744ca1/transformed/material-1.6.1/AndroidManifest.xml:24:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilya/.gradle/caches/transforms-3/b767dad15c535e9fb21b84fb10b8766f/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilya/.gradle/caches/transforms-3/b767dad15c535e9fb21b84fb10b8766f/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:24:5-31:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/ilya/.gradle/caches/transforms-3/3a13c93c7e0dcb7f5e5f1189b2044248/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/ilya/.gradle/caches/transforms-3/3a13c93c7e0dcb7f5e5f1189b2044248/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [androidx.room:room-runtime:2.4.3] /home/ilya/.gradle/caches/transforms-3/450ae2017a3b4b5cbaf975c35a1ab227/transformed/room-runtime-2.4.3/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.room:room-runtime:2.4.3] /home/ilya/.gradle/caches/transforms-3/450ae2017a3b4b5cbaf975c35a1ab227/transformed/room-runtime-2.4.3/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.8.0] /home/ilya/.gradle/caches/transforms-3/cbd2cea7a41c8b4414f86c37a63fa3c1/transformed/core-1.8.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.8.0] /home/ilya/.gradle/caches/transforms-3/cbd2cea7a41c8b4414f86c37a63fa3c1/transformed/core-1.8.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilya/.gradle/caches/transforms-3/c1b6e674c901a86b1b75ef9d7430c863/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilya/.gradle/caches/transforms-3/c1b6e674c901a86b1b75ef9d7430c863/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilya/.gradle/caches/transforms-3/637254c3d2a156e838808a54cebac2f0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilya/.gradle/caches/transforms-3/637254c3d2a156e838808a54cebac2f0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/319818de8066db9dee1015fa48896948/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.8.0] /home/ilya/.gradle/caches/transforms-3/cbd2cea7a41c8b4414f86c37a63fa3c1/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:17:9-35
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:18:9-35
 	android:label
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:15:9-41
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:16:9-41
 	android:fullBackupContent
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:13:9-54
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:14:9-54
 	android:roundIcon
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:16:9-43
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:17:9-43
 	tools:targetApi
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:20:9-29
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:21:9-29
 	android:icon
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:14:9-38
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:15:9-38
 	android:allowBackup
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:12:9-35
 	android:theme
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:18:9-58
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:19:9-58
 	android:dataExtractionRules
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:12:9-65
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:13:9-65
+	android:usesCleartextTraffic
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:9:9-44
 	android:name
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:10:9-36
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:11:9-36
 activity#com.example.snailpasswordmanager.presentation.passworditem.PasswordItemActivity
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:21:9-25:57
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:22:9-26:57
 	android:windowSoftInputMode
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:25:13-55
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:26:13-55
 	android:exported
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:23:13-37
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:24:13-37
 	android:name
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:22:13-75
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:23:13-75
 activity#com.example.snailpasswordmanager.presentation.mainscreen.MainListActivity
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:26:9-29:49
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:27:9-30:49
 	android:label
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:29:13-46
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:30:13-46
 	android:exported
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:28:13-37
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:29:13-37
 	android:name
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:27:13-69
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:28:13-69
 activity#com.example.snailpasswordmanager.presentation.registration.RegistrationActivity
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:30:9-32:58
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:31:9-33:58
 	android:windowSoftInputMode
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:32:13-55
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:33:13-55
 	android:name
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:31:13-75
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:32:13-75
 activity#com.example.snailpasswordmanager.presentation.login.LoginActivity
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:33:9-42:20
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:34:9-43:20
 	android:windowSoftInputMode
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:36:13-55
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:37:13-55
 	android:exported
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:35:13-36
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:36:13-36
 	android:name
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:34:13-61
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:35:13-61
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:37:13-41:29
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:38:13-42:29
 action#android.intent.action.MAIN
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:38:17-69
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:39:17-69
 	android:name
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:38:25-66
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:39:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:40:17-77
+ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:41:17-77
 	android:name
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml:40:27-74
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:41:27-74
 uses-sdk
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-MERGED from [androidx.databinding:viewbinding:7.2.2] /home/ilyaden/.gradle/caches/transforms-3/99356657452459972d5394fc9fd6ead2/transformed/viewbinding-7.2.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.databinding:viewbinding:7.2.2] /home/ilyaden/.gradle/caches/transforms-3/99356657452459972d5394fc9fd6ead2/transformed/viewbinding-7.2.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/8d38a6cfc7e4ddf1c2b12af413796f6a/transformed/lifecycle-livedata-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/8d38a6cfc7e4ddf1c2b12af413796f6a/transformed/lifecycle-livedata-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.room:room-ktx:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/329ee5de2bc8d111ca128158efa41e21/transformed/room-ktx-2.4.3/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.room:room-ktx:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/329ee5de2bc8d111ca128158efa41e21/transformed/room-ktx-2.4.3/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.dagger:hilt-android:2.44] /home/ilyaden/.gradle/caches/transforms-3/a75d62b913fb8d545ce19729c05e404e/transformed/hilt-android-2.44/AndroidManifest.xml:18:3-42
-MERGED from [com.google.dagger:hilt-android:2.44] /home/ilyaden/.gradle/caches/transforms-3/a75d62b913fb8d545ce19729c05e404e/transformed/hilt-android-2.44/AndroidManifest.xml:18:3-42
-MERGED from [androidx.navigation:navigation-ui-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/99e1e928410f56c88f404cd5b8c14b94/transformed/navigation-ui-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-ui-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/99e1e928410f56c88f404cd5b8c14b94/transformed/navigation-ui-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-ui:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/c17bc79a942fea30ac29737c7fc58141/transformed/navigation-ui-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-ui:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/c17bc79a942fea30ac29737c7fc58141/transformed/navigation-ui-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.android.material:material:1.6.1] /home/ilyaden/.gradle/caches/transforms-3/9d6778b007a14e0c6659deb3da7018f2/transformed/material-1.6.1/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.android.material:material:1.6.1] /home/ilyaden/.gradle/caches/transforms-3/9d6778b007a14e0c6659deb3da7018f2/transformed/material-1.6.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilyaden/.gradle/caches/transforms-3/0d84a4d4da2abb3fb58227fdd5309bb8/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilyaden/.gradle/caches/transforms-3/0d84a4d4da2abb3fb58227fdd5309bb8/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.appcompat:appcompat-resources:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/ad4e16bcc8482e73473c57e8646d79f2/transformed/appcompat-resources-1.5.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat-resources:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/ad4e16bcc8482e73473c57e8646d79f2/transformed/appcompat-resources-1.5.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/fc1f82018352b0cb2503b51beb61b53f/transformed/appcompat-1.5.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/fc1f82018352b0cb2503b51beb61b53f/transformed/appcompat-1.5.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/39d86499b2df5710efb41e798446d941/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/39d86499b2df5710efb41e798446d941/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-fragment-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/e21d7d1191f9f3cdcca00de27e015375/transformed/navigation-fragment-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-fragment-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/e21d7d1191f9f3cdcca00de27e015375/transformed/navigation-fragment-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-fragment:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/1e0ef180ec339fd2bbcf9750a868d02b/transformed/navigation-fragment-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-fragment:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/1e0ef180ec339fd2bbcf9750a868d02b/transformed/navigation-fragment-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment-ktx:1.5.2] /home/ilyaden/.gradle/caches/transforms-3/5e854c9d35d3be6afa849ba7ed08632a/transformed/fragment-ktx-1.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment-ktx:1.5.2] /home/ilyaden/.gradle/caches/transforms-3/5e854c9d35d3be6afa849ba7ed08632a/transformed/fragment-ktx-1.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.5.2] /home/ilyaden/.gradle/caches/transforms-3/e00b5c7677961b9b0fee89a6f7214ea1/transformed/fragment-1.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.5.2] /home/ilyaden/.gradle/caches/transforms-3/e00b5c7677961b9b0fee89a6f7214ea1/transformed/fragment-1.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-runtime-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/87217c5dbfe0bcbd076ed417e1b6e816/transformed/navigation-runtime-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-runtime-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/87217c5dbfe0bcbd076ed417e1b6e816/transformed/navigation-runtime-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-runtime:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/5da427be67ed102939678d874bd0dbe2/transformed/navigation-runtime-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-runtime:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/5da427be67ed102939678d874bd0dbe2/transformed/navigation-runtime-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity-ktx:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/019444a2376d64e94d6bc13f694b3f42/transformed/activity-ktx-1.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity-ktx:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/019444a2376d64e94d6bc13f694b3f42/transformed/activity-ktx-1.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/ad991c19b1f0c8821261355d9e6e0140/transformed/activity-1.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.5.1] /home/ilyaden/.gradle/caches/transforms-3/ad991c19b1f0c8821261355d9e6e0140/transformed/activity-1.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/97606c10bfcb34d8238bd3c5f3c5ee66/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/97606c10bfcb34d8238bd3c5f3c5ee66/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/864d17286c0648734282e20b1f767e3c/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/864d17286c0648734282e20b1f767e3c/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/4e687c133cd9045696daa19214a6535c/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/4e687c133cd9045696daa19214a6535c/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.navigation:navigation-common-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/5d32a9e55c488f58553bccd0efa88fd7/transformed/navigation-common-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-common-ktx:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/5d32a9e55c488f58553bccd0efa88fd7/transformed/navigation-common-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-common:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/4a85558a8dec2c747a3a1e66119e7a91/transformed/navigation-common-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.navigation:navigation-common:2.5.2] /home/ilyaden/.gradle/caches/transforms-3/4a85558a8dec2c747a3a1e66119e7a91/transformed/navigation-common-2.5.2/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/5f3d9d5e91a27fcc34a18eb6121b3885/transformed/lifecycle-viewmodel-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/5f3d9d5e91a27fcc34a18eb6121b3885/transformed/lifecycle-viewmodel-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/6740173314278d5dc47a04980597f4e3/transformed/lifecycle-viewmodel-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/6740173314278d5dc47a04980597f4e3/transformed/lifecycle-viewmodel-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/42f0322a0a41c82835fa1bb5d83460d3/transformed/lifecycle-viewmodel-savedstate-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/42f0322a0a41c82835fa1bb5d83460d3/transformed/lifecycle-viewmodel-savedstate-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/0cce547ebc55718f5e87caa98490c42f/transformed/lifecycle-runtime-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/0cce547ebc55718f5e87caa98490c42f/transformed/lifecycle-runtime-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/80402e62f4d1fa8aec98af537a6305c2/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/80402e62f4d1fa8aec98af537a6305c2/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.android.volley:volley:1.2.1] /home/ilyaden/.gradle/caches/transforms-3/7b7cdfe5b418cd3b3524a83e22d29f60/transformed/volley-1.2.1/AndroidManifest.xml:5:5-43
-MERGED from [com.android.volley:volley:1.2.1] /home/ilyaden/.gradle/caches/transforms-3/7b7cdfe5b418cd3b3524a83e22d29f60/transformed/volley-1.2.1/AndroidManifest.xml:5:5-43
-MERGED from [androidx.core:core-ktx:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/f48f900f03316f7f3735d59aacb15ff3/transformed/core-ktx-1.8.0/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.core:core-ktx:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/f48f900f03316f7f3735d59aacb15ff3/transformed/core-ktx-1.8.0/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate-ktx:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/9e4c4bd11d5a082c618ec489473f1a01/transformed/savedstate-ktx-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate-ktx:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/9e4c4bd11d5a082c618ec489473f1a01/transformed/savedstate-ktx-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/af620fabec4e0fed4d0ffd6040cf4262/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/af620fabec4e0fed4d0ffd6040cf4262/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/6355f7f15047d6047dff53a3d4986848/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/6355f7f15047d6047dff53a3d4986848/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
-MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:21:5-44
-MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:21:5-44
-MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/e33a5a07e0e96c48df04ee4e4b5363cc/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/e33a5a07e0e96c48df04ee4e4b5363cc/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/ad6dc95340b171e84c4ad5205ef31393/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/ad6dc95340b171e84c4ad5205ef31393/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/1cbd011c3c79b09f73786a9394ff1d25/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/1cbd011c3c79b09f73786a9394ff1d25/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/a6c2f42b601cff490190ba27a74071ea/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/a6c2f42b601cff490190ba27a74071ea/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/025ae0e8e070532a925b968a91c2dcd3/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/025ae0e8e070532a925b968a91c2dcd3/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager:viewpager:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/22e43e53ae6f241a8207f0c4c1d3eca2/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/22e43e53ae6f241a8207f0c4c1d3eca2/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/8debbcd95ff098488411a32e7760da11/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.customview:customview:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/8debbcd95ff098488411a32e7760da11/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.transition:transition:1.4.1] /home/ilyaden/.gradle/caches/transforms-3/37a6cc10f0a0228bfb27167ce68f5e45/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.transition:transition:1.4.1] /home/ilyaden/.gradle/caches/transforms-3/37a6cc10f0a0228bfb27167ce68f5e45/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/319818de8066db9dee1015fa48896948/transformed/core-1.8.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.8.0] /home/ilyaden/.gradle/caches/transforms-3/319818de8066db9dee1015fa48896948/transformed/core-1.8.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/91e8016f0a249a956def1658dacf6ac4/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/91e8016f0a249a956def1658dacf6ac4/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/1bf269c984736ea7e8d09430a069b66d/transformed/lifecycle-livedata-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/1bf269c984736ea7e8d09430a069b66d/transformed/lifecycle-livedata-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/cf1f9f4f075c10c6b0f2b4a94dd48de3/transformed/lifecycle-livedata-core-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/cf1f9f4f075c10c6b0f2b4a94dd48de3/transformed/lifecycle-livedata-core-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/08c3f0df28b319d7f143e20e39976470/transformed/lifecycle-livedata-core-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /home/ilyaden/.gradle/caches/transforms-3/08c3f0df28b319d7f143e20e39976470/transformed/lifecycle-livedata-core-2.5.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/944f278a1c6f1b0e45f50820d68c4b1e/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/944f278a1c6f1b0e45f50820d68c4b1e/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/b61d68b331896ea26f23fd544338c1eb/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/b61d68b331896ea26f23fd544338c1eb/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /home/ilyaden/.gradle/caches/transforms-3/736f285d2efd5873193396107e8282ee/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /home/ilyaden/.gradle/caches/transforms-3/736f285d2efd5873193396107e8282ee/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite:2.2.0] /home/ilyaden/.gradle/caches/transforms-3/917089b0309d947b1955c8595517c63f/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.sqlite:sqlite:2.2.0] /home/ilyaden/.gradle/caches/transforms-3/917089b0309d947b1955c8595517c63f/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/ilyaden/.gradle/caches/transforms-3/8c44cfbdeee2a652a2edc2eb95479194/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/ilyaden/.gradle/caches/transforms-3/8c44cfbdeee2a652a2edc2eb95479194/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3145d3d71294ba1b743e8b2199ddf2ae/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3145d3d71294ba1b743e8b2199ddf2ae/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.tracing:tracing:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/5b87d3a5c23a3888cf91c6e6e1911d15/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.tracing:tracing:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/5b87d3a5c23a3888cf91c6e6e1911d15/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3367f2aef9957f33c0ae437b02a9c6b3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3367f2aef9957f33c0ae437b02a9c6b3/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.interpolator:interpolator:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/3796dee342b241c42166492d7a84105a/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/3796dee342b241c42166492d7a84105a/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.documentfile:documentfile:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/21d999d2482d5176fe1e8f8335d649f6/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.documentfile:documentfile:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/21d999d2482d5176fe1e8f8335d649f6/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/cf75896d21978a6e2d6dcd44588d889b/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/cf75896d21978a6e2d6dcd44588d889b/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.print:print:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/6f784ec98e20dba0ba6566870c016b4c/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.print:print:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/6f784ec98e20dba0ba6566870c016b4c/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.dagger:dagger-lint-aar:2.44] /home/ilyaden/.gradle/caches/transforms-3/42bd698769793876d95153c93f5fb4b8/transformed/dagger-lint-aar-2.44/AndroidManifest.xml:18:3-42
-MERGED from [com.google.dagger:dagger-lint-aar:2.44] /home/ilyaden/.gradle/caches/transforms-3/42bd698769793876d95153c93f5fb4b8/transformed/dagger-lint-aar-2.44/AndroidManifest.xml:18:3-42
-MERGED from [androidx.annotation:annotation-experimental:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/e273be70d1f54d1dd07f759b7827c3b3/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.annotation:annotation-experimental:1.1.0] /home/ilyaden/.gradle/caches/transforms-3/e273be70d1f54d1dd07f759b7827c3b3/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:7.3.1] /home/ilya/.gradle/caches/transforms-3/670a454c3e71eac4619ad05e4ba0b12f/transformed/viewbinding-7.3.1/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.databinding:viewbinding:7.3.1] /home/ilya/.gradle/caches/transforms-3/670a454c3e71eac4619ad05e4ba0b12f/transformed/viewbinding-7.3.1/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.room:room-ktx:2.4.3] /home/ilya/.gradle/caches/transforms-3/5d3f76fcc5f5ea4a33fe925df1230b2b/transformed/room-ktx-2.4.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-ktx:2.4.3] /home/ilya/.gradle/caches/transforms-3/5d3f76fcc5f5ea4a33fe925df1230b2b/transformed/room-ktx-2.4.3/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.dagger:hilt-android:2.44] /home/ilya/.gradle/caches/transforms-3/c917e411f9ee2db7032d732aaa99dcf1/transformed/hilt-android-2.44/AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:hilt-android:2.44] /home/ilya/.gradle/caches/transforms-3/c917e411f9ee2db7032d732aaa99dcf1/transformed/hilt-android-2.44/AndroidManifest.xml:18:3-42
+MERGED from [androidx.navigation:navigation-ui-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/05f0c5397d0e2e3f642e2c568bcf1e1a/transformed/navigation-ui-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/05f0c5397d0e2e3f642e2c568bcf1e1a/transformed/navigation-ui-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui:2.5.2] /home/ilya/.gradle/caches/transforms-3/6d9bd04618bb8036635e27b6a491aa16/transformed/navigation-ui-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui:2.5.2] /home/ilya/.gradle/caches/transforms-3/6d9bd04618bb8036635e27b6a491aa16/transformed/navigation-ui-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.material:material:1.6.1] /home/ilya/.gradle/caches/transforms-3/4a53207dcabe7f0975fb5d95a8744ca1/transformed/material-1.6.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.material:material:1.6.1] /home/ilya/.gradle/caches/transforms-3/4a53207dcabe7f0975fb5d95a8744ca1/transformed/material-1.6.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilya/.gradle/caches/transforms-3/b767dad15c535e9fb21b84fb10b8766f/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/ilya/.gradle/caches/transforms-3/b767dad15c535e9fb21b84fb10b8766f/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.5.1] /home/ilya/.gradle/caches/transforms-3/99d53bfdd748ee40b332d3bdd10f2416/transformed/appcompat-resources-1.5.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.5.1] /home/ilya/.gradle/caches/transforms-3/99d53bfdd748ee40b332d3bdd10f2416/transformed/appcompat-resources-1.5.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.5.1] /home/ilya/.gradle/caches/transforms-3/68ee75195f0df5ad8d472ec660be41c8/transformed/appcompat-1.5.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.5.1] /home/ilya/.gradle/caches/transforms-3/68ee75195f0df5ad8d472ec660be41c8/transformed/appcompat-1.5.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/ilya/.gradle/caches/transforms-3/2c123ef870a0ced663f0b95801c263d3/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/ilya/.gradle/caches/transforms-3/2c123ef870a0ced663f0b95801c263d3/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/38ff9f94bf9538b1f89b302314601960/transformed/navigation-fragment-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/38ff9f94bf9538b1f89b302314601960/transformed/navigation-fragment-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.5.2] /home/ilya/.gradle/caches/transforms-3/56ed15d68d6e48999895d60b73bcb79f/transformed/navigation-fragment-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.5.2] /home/ilya/.gradle/caches/transforms-3/56ed15d68d6e48999895d60b73bcb79f/transformed/navigation-fragment-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.5.2] /home/ilya/.gradle/caches/transforms-3/4ae59eeb4b34226ab66f88a375eead23/transformed/fragment-ktx-1.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.5.2] /home/ilya/.gradle/caches/transforms-3/4ae59eeb4b34226ab66f88a375eead23/transformed/fragment-ktx-1.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.2] /home/ilya/.gradle/caches/transforms-3/064dad190af168ec3f9878ae7c0b1541/transformed/fragment-1.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.2] /home/ilya/.gradle/caches/transforms-3/064dad190af168ec3f9878ae7c0b1541/transformed/fragment-1.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/f48f88a924ab39141356d9ff608e9a12/transformed/navigation-runtime-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/f48f88a924ab39141356d9ff608e9a12/transformed/navigation-runtime-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime:2.5.2] /home/ilya/.gradle/caches/transforms-3/64fadfe9e1d14b393bee2079b0a7cd95/transformed/navigation-runtime-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime:2.5.2] /home/ilya/.gradle/caches/transforms-3/64fadfe9e1d14b393bee2079b0a7cd95/transformed/navigation-runtime-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.5.1] /home/ilya/.gradle/caches/transforms-3/28b16beaab292723180f217c3c746d8b/transformed/activity-ktx-1.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.5.1] /home/ilya/.gradle/caches/transforms-3/28b16beaab292723180f217c3c746d8b/transformed/activity-ktx-1.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.5.1] /home/ilya/.gradle/caches/transforms-3/42112c72d96be0aeed6e3fef772ab45e/transformed/activity-1.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.5.1] /home/ilya/.gradle/caches/transforms-3/42112c72d96be0aeed6e3fef772ab45e/transformed/activity-1.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/ilya/.gradle/caches/transforms-3/06b49f9f9752c4beb60d773aeaffe0b1/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/ilya/.gradle/caches/transforms-3/06b49f9f9752c4beb60d773aeaffe0b1/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/ilya/.gradle/caches/transforms-3/c963c39ea72f4144fb8fbbc70b7d1639/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/ilya/.gradle/caches/transforms-3/c963c39ea72f4144fb8fbbc70b7d1639/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/ilya/.gradle/caches/transforms-3/d688a183926187d51ffee0efec250673/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/ilya/.gradle/caches/transforms-3/d688a183926187d51ffee0efec250673/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/2dc68a57f2c251327c722e61e8b66fe0/transformed/navigation-common-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common-ktx:2.5.2] /home/ilya/.gradle/caches/transforms-3/2dc68a57f2c251327c722e61e8b66fe0/transformed/navigation-common-ktx-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common:2.5.2] /home/ilya/.gradle/caches/transforms-3/73ad461c89b8e9eb5578f92fa804d340/transformed/navigation-common-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common:2.5.2] /home/ilya/.gradle/caches/transforms-3/73ad461c89b8e9eb5578f92fa804d340/transformed/navigation-common-2.5.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1] /home/ilya/.gradle/caches/transforms-3/f843a47168a2bc78554a72f72e12dcdb/transformed/lifecycle-viewmodel-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1] /home/ilya/.gradle/caches/transforms-3/f843a47168a2bc78554a72f72e12dcdb/transformed/lifecycle-viewmodel-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] /home/ilya/.gradle/caches/transforms-3/98fb570efc1e9666989c4adb95f1378f/transformed/lifecycle-viewmodel-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.5.1] /home/ilya/.gradle/caches/transforms-3/98fb570efc1e9666989c4adb95f1378f/transformed/lifecycle-viewmodel-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] /home/ilya/.gradle/caches/transforms-3/76699be663f9437bd73c3f1768b3ae50/transformed/lifecycle-viewmodel-savedstate-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1] /home/ilya/.gradle/caches/transforms-3/76699be663f9437bd73c3f1768b3ae50/transformed/lifecycle-viewmodel-savedstate-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.5.1] /home/ilya/.gradle/caches/transforms-3/c80ae40e8d3e42b6093f11131f897ece/transformed/lifecycle-runtime-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.5.1] /home/ilya/.gradle/caches/transforms-3/c80ae40e8d3e42b6093f11131f897ece/transformed/lifecycle-runtime-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/ilya/.gradle/caches/transforms-3/407231fb532c304f4f6d2fa492fbe1b7/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] /home/ilya/.gradle/caches/transforms-3/407231fb532c304f4f6d2fa492fbe1b7/transformed/slidingpanelayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/ilya/.gradle/caches/transforms-3/3a13c93c7e0dcb7f5e5f1189b2044248/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/ilya/.gradle/caches/transforms-3/3a13c93c7e0dcb7f5e5f1189b2044248/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.8.0] /home/ilya/.gradle/caches/transforms-3/5c867406f798347ccb3144eeaa9afbed/transformed/core-ktx-1.8.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.8.0] /home/ilya/.gradle/caches/transforms-3/5c867406f798347ccb3144eeaa9afbed/transformed/core-ktx-1.8.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.room:room-runtime:2.4.3] /home/ilya/.gradle/caches/transforms-3/450ae2017a3b4b5cbaf975c35a1ab227/transformed/room-runtime-2.4.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.4.3] /home/ilya/.gradle/caches/transforms-3/450ae2017a3b4b5cbaf975c35a1ab227/transformed/room-runtime-2.4.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.0] /home/ilya/.gradle/caches/transforms-3/4cc8a968e1b067cfd89f91a49bdbc86f/transformed/savedstate-ktx-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.0] /home/ilya/.gradle/caches/transforms-3/4cc8a968e1b067cfd89f91a49bdbc86f/transformed/savedstate-ktx-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.2.0] /home/ilya/.gradle/caches/transforms-3/180614d0086dcc563b9fa688954c856d/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.2.0] /home/ilya/.gradle/caches/transforms-3/180614d0086dcc563b9fa688954c856d/transformed/savedstate-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/ilya/.gradle/caches/transforms-3/a339bdd1903282d1ab129359d72132f2/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /home/ilya/.gradle/caches/transforms-3/a339bdd1903282d1ab129359d72132f2/transformed/emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/ilya/.gradle/caches/transforms-3/f083a5d53a900dcb74baf2ee58992d4e/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /home/ilya/.gradle/caches/transforms-3/f083a5d53a900dcb74baf2ee58992d4e/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/ilya/.gradle/caches/transforms-3/2ad2e06be410b93b5de59e9dd91192bf/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/ilya/.gradle/caches/transforms-3/2ad2e06be410b93b5de59e9dd91192bf/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/ilya/.gradle/caches/transforms-3/1eee95547d0946e2545cec4b154984d4/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/ilya/.gradle/caches/transforms-3/1eee95547d0946e2545cec4b154984d4/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/ilya/.gradle/caches/transforms-3/1030a5e4b2b5c7f9fe1d178b36966d52/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/ilya/.gradle/caches/transforms-3/1030a5e4b2b5c7f9fe1d178b36966d52/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/ilya/.gradle/caches/transforms-3/ddc86d7c48d1bc05e349fc3b673f45f7/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/ilya/.gradle/caches/transforms-3/ddc86d7c48d1bc05e349fc3b673f45f7/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/ilya/.gradle/caches/transforms-3/944995409d28d7677e5fba3b458eddfd/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/ilya/.gradle/caches/transforms-3/944995409d28d7677e5fba3b458eddfd/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.1.0] /home/ilya/.gradle/caches/transforms-3/f0a18411ba0e9a6fe0a55804a46da352/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /home/ilya/.gradle/caches/transforms-3/f0a18411ba0e9a6fe0a55804a46da352/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.4.1] /home/ilya/.gradle/caches/transforms-3/4bd312f9a3699a60b5604216cf6d2135/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.4.1] /home/ilya/.gradle/caches/transforms-3/4bd312f9a3699a60b5604216cf6d2135/transformed/transition-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.8.0] /home/ilya/.gradle/caches/transforms-3/cbd2cea7a41c8b4414f86c37a63fa3c1/transformed/core-1.8.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.8.0] /home/ilya/.gradle/caches/transforms-3/cbd2cea7a41c8b4414f86c37a63fa3c1/transformed/core-1.8.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /home/ilya/.gradle/caches/transforms-3/ba2e87376409d0531d392b8b54ab865f/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.5.1] /home/ilya/.gradle/caches/transforms-3/ba2e87376409d0531d392b8b54ab865f/transformed/lifecycle-runtime-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/ilya/.gradle/caches/transforms-3/5eacb4ac1b0762c739257c6bf86715b3/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/ilya/.gradle/caches/transforms-3/5eacb4ac1b0762c739257c6bf86715b3/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1] /home/ilya/.gradle/caches/transforms-3/9ac29197f1e1deba79a43f1d880f8621/transformed/lifecycle-livedata-core-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1] /home/ilya/.gradle/caches/transforms-3/9ac29197f1e1deba79a43f1d880f8621/transformed/lifecycle-livedata-core-ktx-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /home/ilya/.gradle/caches/transforms-3/e33621055c2432316c54104744d4838c/transformed/lifecycle-livedata-core-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /home/ilya/.gradle/caches/transforms-3/e33621055c2432316c54104744d4838c/transformed/lifecycle-livedata-core-2.5.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/ilya/.gradle/caches/transforms-3/24069243f2fd10cda5b7ae52f4a0ee34/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/ilya/.gradle/caches/transforms-3/24069243f2fd10cda5b7ae52f4a0ee34/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/ilya/.gradle/caches/transforms-3/6a7043a1ea02e267aacd751d3a4a761c/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/ilya/.gradle/caches/transforms-3/6a7043a1ea02e267aacd751d3a4a761c/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /home/ilya/.gradle/caches/transforms-3/f6c13d60d028c3c8407c12442bfcdd01/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.2.0] /home/ilya/.gradle/caches/transforms-3/f6c13d60d028c3c8407c12442bfcdd01/transformed/sqlite-framework-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.2.0] /home/ilya/.gradle/caches/transforms-3/981a9769436eee85603c07165927873e/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.2.0] /home/ilya/.gradle/caches/transforms-3/981a9769436eee85603c07165927873e/transformed/sqlite-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilya/.gradle/caches/transforms-3/c1b6e674c901a86b1b75ef9d7430c863/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilya/.gradle/caches/transforms-3/c1b6e674c901a86b1b75ef9d7430c863/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/ilya/.gradle/caches/transforms-3/408356092f4a4d1a4e27173b1b9b3ab1/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/ilya/.gradle/caches/transforms-3/408356092f4a4d1a4e27173b1b9b3ab1/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilya/.gradle/caches/transforms-3/637254c3d2a156e838808a54cebac2f0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ilya/.gradle/caches/transforms-3/637254c3d2a156e838808a54cebac2f0/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/ilya/.gradle/caches/transforms-3/c46cac030d395e30df431e732af1a403/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/ilya/.gradle/caches/transforms-3/c46cac030d395e30df431e732af1a403/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/ilya/.gradle/caches/transforms-3/74d7648517b024aeaf117aaaaaab4d8a/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/ilya/.gradle/caches/transforms-3/74d7648517b024aeaf117aaaaaab4d8a/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/ilya/.gradle/caches/transforms-3/f1026cf8a43b5ac7090d32c66913128e/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/ilya/.gradle/caches/transforms-3/f1026cf8a43b5ac7090d32c66913128e/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/ilya/.gradle/caches/transforms-3/7d21f26541ec7699f8fc0ef6bf311b87/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/ilya/.gradle/caches/transforms-3/7d21f26541ec7699f8fc0ef6bf311b87/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/ilya/.gradle/caches/transforms-3/5bf6ecdd05e88e24e35708386f629fa5/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/ilya/.gradle/caches/transforms-3/5bf6ecdd05e88e24e35708386f629fa5/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.dagger:dagger-lint-aar:2.44] /home/ilya/.gradle/caches/transforms-3/29b25ec3615ddcfa522044e211272ef6/transformed/dagger-lint-aar-2.44/AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:dagger-lint-aar:2.44] /home/ilya/.gradle/caches/transforms-3/29b25ec3615ddcfa522044e211272ef6/transformed/dagger-lint-aar-2.44/AndroidManifest.xml:18:3-42
+MERGED from [com.android.support:exifinterface:27.1.0] /home/ilya/.gradle/caches/transforms-3/ea2dcc3bd9b65658ecf7fb9cb703587f/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] /home/ilya/.gradle/caches/transforms-3/ea2dcc3bd9b65658ecf7fb9cb703587f/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /home/ilya/.gradle/caches/transforms-3/52dc8a3342dcf1a1dff1d6981a48cf32/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /home/ilya/.gradle/caches/transforms-3/52dc8a3342dcf1a1dff1d6981a48cf32/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-		ADDED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
-		INJECTED from /media/ilyaden/047A1D017A1CF0E2/JAVA/re/SnailPasswordManager-development/app/src/main/AndroidManifest.xml
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+		ADDED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
+		INJECTED from /home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml
 uses-library#androidx.window.extensions
-ADDED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+ADDED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
 	android:required
-		ADDED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+		ADDED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
 	android:name
-		ADDED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+		ADDED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
 uses-library#androidx.window.sidecar
-ADDED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+ADDED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
 	android:required
-		ADDED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+		ADDED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
 	android:name
-		ADDED from [androidx.window:window:1.0.0] /home/ilyaden/.gradle/caches/transforms-3/65e9cc4f1cd394591422496676b2102c/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
-service#androidx.room.MultiInstanceInvalidationService
-ADDED from [androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:25:9-28:40
-	android:exported
-		ADDED from [androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:28:13-37
-	android:directBootAware
-		ADDED from [androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:27:13-43
-	android:name
-		ADDED from [androidx.room:room-runtime:2.4.3] /home/ilyaden/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:26:13-74
-provider#androidx.startup.InitializationProvider
-ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:26:9-34:20
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:26:9-34:20
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3145d3d71294ba1b743e8b2199ddf2ae/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
-MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilyaden/.gradle/caches/transforms-3/3145d3d71294ba1b743e8b2199ddf2ae/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
-	tools:node
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:28:13-31
+		ADDED from [androidx.window:window:1.0.0] /home/ilya/.gradle/caches/transforms-3/3c65846e402a3018f0157401bd77d39f/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] /home/ilya/.gradle/caches/transforms-3/3a13c93c7e0dcb7f5e5f1189b2044248/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
 	android:authorities
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/ilya/.gradle/caches/transforms-3/3a13c93c7e0dcb7f5e5f1189b2044248/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
 	android:exported
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/ilya/.gradle/caches/transforms-3/3a13c93c7e0dcb7f5e5f1189b2044248/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
 	android:name
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/ilya/.gradle/caches/transforms-3/3a13c93c7e0dcb7f5e5f1189b2044248/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.4.3] /home/ilya/.gradle/caches/transforms-3/450ae2017a3b4b5cbaf975c35a1ab227/transformed/room-runtime-2.4.3/AndroidManifest.xml:25:9-28:40
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.4.3] /home/ilya/.gradle/caches/transforms-3/450ae2017a3b4b5cbaf975c35a1ab227/transformed/room-runtime-2.4.3/AndroidManifest.xml:28:13-37
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.4.3] /home/ilya/.gradle/caches/transforms-3/450ae2017a3b4b5cbaf975c35a1ab227/transformed/room-runtime-2.4.3/AndroidManifest.xml:27:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.4.3] /home/ilya/.gradle/caches/transforms-3/450ae2017a3b4b5cbaf975c35a1ab227/transformed/room-runtime-2.4.3/AndroidManifest.xml:26:13-74
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilya/.gradle/caches/transforms-3/c1b6e674c901a86b1b75ef9d7430c863/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/ilya/.gradle/caches/transforms-3/c1b6e674c901a86b1b75ef9d7430c863/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
 meta-data#androidx.emoji2.text.EmojiCompatInitializer
-ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
 	android:value
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
 	android:name
-		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilyaden/.gradle/caches/transforms-3/8646fc24a05f0f3fb603801ddeb6af39/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /home/ilya/.gradle/caches/transforms-3/b1c61a6361eb3f20cddda173d67f4de2/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
 meta-data#androidx.lifecycle.ProcessLifecycleInitializer
-ADDED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+ADDED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
 	android:value
-		ADDED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
 	android:name
-		ADDED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilyaden/.gradle/caches/transforms-3/a12ed9220754cce2dddf3ed6d58bf3a3/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.1] /home/ilya/.gradle/caches/transforms-3/025ed7849c6f43c10d9a6c1cd4d240b1/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78

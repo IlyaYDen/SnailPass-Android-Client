@@ -2,23 +2,16 @@ package com.example.snailpasswordmanager.presentation.mainscreen
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.databinding.ActivityMainListBinding
-import com.example.snailpasswordmanager.domain.model.PasswordEntity
 import com.example.snailpasswordmanager.presentation.passworditem.PasswordItemActivity
-import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import org.json.JSONObject
 import javax.inject.Inject
 
 
@@ -32,12 +25,14 @@ class MainListActivity @Inject constructor(
     @Inject
     lateinit var vmFactory: MainListViewModelFactory
 
+    lateinit var masterHash : String
+
     private lateinit var viewModel : MainListViewModel
     private val adapter :PasswordListAdapter = PasswordListAdapter()
 
     override fun onResume() {
         super.onResume()
-
+        viewModel.onEvent(event = PasswordsEvent.GetPasswordsList)
         lifecycleScope.launch() {
             viewModel.getPasswords().collect() {
                 adapter.setPasswords(it)
@@ -47,7 +42,6 @@ class MainListActivity @Inject constructor(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         bindingClass = ActivityMainListBinding.inflate(layoutInflater)
 
         (applicationContext as PasswordApp).appComponent.inject(this)
@@ -59,6 +53,8 @@ class MainListActivity @Inject constructor(
             .get(MainListViewModel::class.java)
 
         init()
+        masterHash =
+            intent.getStringExtra("MASTER_HASH").toString() // TODO
 
         lifecycleScope.launch() {
             viewModel.getPasswords().collect() {
@@ -69,7 +65,7 @@ class MainListActivity @Inject constructor(
 
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                result: ActivityResult ->
+                //result: ActivityResult ->
 
         }
 
@@ -86,6 +82,11 @@ class MainListActivity @Inject constructor(
 
         }
     }
+
+    private suspend fun masterHashInit() {
+        TODO("Not yet implemented")
+    }
+
     private fun init() {
         bindingClass.apply {
             rcView.layoutManager = LinearLayoutManager(this@MainListActivity)

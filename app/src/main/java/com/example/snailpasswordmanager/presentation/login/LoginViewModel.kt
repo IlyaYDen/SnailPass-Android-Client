@@ -1,5 +1,7 @@
 package com.example.snailpasswordmanager.presentation.login
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -7,6 +9,7 @@ import com.example.snailpasswordmanager.domain.usecase.passwords.InsertPassword
 import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
 import com.example.snailpasswordmanager.presentation.mainscreen.MainListViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,15 +18,19 @@ class LoginViewModel @Inject constructor(
         ) : ViewModel() {
 
 
-        fun onEvent(loginEvent: LoginEvent) : Boolean {
-                when (loginEvent){
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun onEvent(loginEvent: LoginEvent) : String? {
+                return when (loginEvent){
                         is LoginEvent.Login -> {
-                                viewModelScope.launch {
-                                        logInUseCases.userLoginUseCase(loginEvent.userEntity)
+                                var g : String? = null
+                                var f = viewModelScope.launch {
+                                        g = logInUseCases.userLoginUseCase.invoke(
+                                                loginEvent.userEntity
+                                        )
                                 }
+                                g
                         }
                 }
-                return false
         }
 
         fun passwordHash(password: String) : String {

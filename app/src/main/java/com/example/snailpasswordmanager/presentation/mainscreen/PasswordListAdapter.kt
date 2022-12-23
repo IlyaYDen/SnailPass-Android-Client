@@ -1,33 +1,31 @@
 package com.example.snailpasswordmanager.presentation.mainscreen
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.databinding.PasswordItemBinding
-import com.example.snailpasswordmanager.domain.model.PasswordEntity
+import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.presentation.passworditem.PasswordItemActivity
 
 class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItemViewHolder>() {
 
-    var list = ArrayList<PasswordEntity>()
+    var list = ArrayList<RecordEntity>()
     set(value) {
         field.clear()
         field.addAll(value)
         notifyDataSetChanged()
     }
 
-    fun setPasswords(li: List<PasswordEntity>) {
+    fun setPasswords(li: List<RecordEntity>) {
         list.clear()
         list.addAll(li)
         notifyDataSetChanged()
     }
 
-    fun addPassword(passwordEntity : PasswordEntity){
+    fun addPassword(passwordEntity : RecordEntity){
         list.add(passwordEntity)
         notifyDataSetChanged()
     }
@@ -73,7 +71,7 @@ class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItem
 
     class PasswordItemViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = PasswordItemBinding.bind(view)
-        fun bind(passwordEntity: PasswordEntity) = with(binding){
+        fun bind(passwordEntity: RecordEntity) = with(binding){
             serviceName.text = passwordEntity.service
         }
     }

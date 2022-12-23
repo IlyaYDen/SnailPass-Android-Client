@@ -3,13 +3,13 @@ package com.example.snailpasswordmanager.di
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
-import com.example.snailpasswordmanager.data.database.password.PassowrdDao
-import com.example.snailpasswordmanager.data.database.password.PasswordDb
+import com.example.snailpasswordmanager.data.database.record.RecordDao
+import com.example.snailpasswordmanager.data.database.record.RecordDb
 import com.example.snailpasswordmanager.data.database.user.UserDao
 import com.example.snailpasswordmanager.data.database.user.UserDb
-import com.example.snailpasswordmanager.data.repository.PasswordListRepositoryImpl
+import com.example.snailpasswordmanager.data.repository.RecordListRepositoryImpl
 import com.example.snailpasswordmanager.data.repository.UserRepositoryImpl
-import com.example.snailpasswordmanager.domain.repository.PasswordListRepository
+import com.example.snailpasswordmanager.domain.repository.RecordListRepository
 import com.example.snailpasswordmanager.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
@@ -20,12 +20,12 @@ class DataModule {
 
     @Provides
     //@Singleton
-    fun providePasswordDb(context: Context): PasswordDb {
+    fun providePasswordDb(context: Context): RecordDb {
         return synchronized(this) {
             Room.databaseBuilder(
                 context,
-                PasswordDb::class.java,
-                PasswordDb.DATABASE_NAME
+                RecordDb::class.java,
+                RecordDb.DATABASE_NAME
             ).build()
         }
     }
@@ -36,7 +36,7 @@ class DataModule {
             Room.databaseBuilder(
                 context,
                 UserDb::class.java,
-                PasswordDb.DATABASE_NAME
+                RecordDb.DATABASE_NAME
             ).build()
         }
     }
@@ -49,13 +49,13 @@ class DataModule {
 
     @Provides
     //@Singleton
-    fun providePasswordListRepository(db: PasswordDb): PasswordListRepository {
-        return PasswordListRepositoryImpl(db.dao)
+    fun providePasswordListRepository(db: RecordDb): RecordListRepository {
+        return RecordListRepositoryImpl(db.dao)
     }
 
     @Provides
     @Singleton
-    fun providePasswordDao(db: PasswordDb): PassowrdDao {
+    fun providePasswordDao(db: RecordDb): RecordDao {
         return db.dao
     }
 

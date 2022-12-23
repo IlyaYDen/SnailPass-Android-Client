@@ -5,5 +5,6 @@ import javax.inject.Inject
 data class PasswordUseCases @Inject constructor(
     val getPasswordList: GetPasswordList,
     val deletePassword: DeletePassword,
-    val insertPassword: InsertPassword
+    val insertPassword: InsertPassword,
+    val updatePasswords: UpdatePasswords
 )

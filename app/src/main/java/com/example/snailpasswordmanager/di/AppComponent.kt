@@ -6,7 +6,7 @@ import com.example.snailpasswordmanager.presentation.passworditem.PasswordItemAc
 import dagger.Component
 import dagger.Module
 
-@Component(modules = [AppModule::class, DomainModule::class, DataModule::class])
+@Component(modules = [AppModule::class, DomainModule::class, DataModule::class, RetrofitModule::class])
 interface AppComponent {
     fun inject(mainListActivity: MainListActivity)
     fun inject(passwordItemActivity: PasswordItemActivity)

@@ -1,9 +1,9 @@
 package com.example.snailpasswordmanager.domain.usecase.passwords
 
-import com.example.snailpasswordmanager.domain.repository.PasswordListRepository
+import com.example.snailpasswordmanager.domain.repository.RecordListRepository
 
 class PasswordHashUseCase(
-    private val passwordListRepository: PasswordListRepository
+    private val passwordListRepository: RecordListRepository
 ) {
 
     fun invoke(s:String) : String {

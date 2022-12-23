@@ -1,11 +1,11 @@
 package com.example.snailpasswordmanager.domain.usecase.passwords
 
-import com.example.snailpasswordmanager.domain.model.PasswordEntity
-import com.example.snailpasswordmanager.domain.repository.PasswordListRepository
+import com.example.snailpasswordmanager.domain.model.RecordEntity
+import com.example.snailpasswordmanager.domain.repository.RecordListRepository
 
-class GetPasswordByIdUseCase(private val passwordListRepository: PasswordListRepository) {
+class GetPasswordByIdUseCase(private val passwordListRepository: RecordListRepository) {
 
-    suspend fun invoke(passwordId: Int) : PasswordEntity? {
-        return passwordListRepository.getPasswordById(passwordId)
+    suspend fun invoke(passwordId: Int) : RecordEntity? {
+        return passwordListRepository.getRecordById(passwordId)
     }
 }

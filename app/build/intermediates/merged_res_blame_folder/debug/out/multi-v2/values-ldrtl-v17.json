@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.snailpasswordmanager.app-mergeDebugResources-49:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.example.snailpasswordmanager.app-mergeDebugResources-47:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "/home/ilyaden/.gradle/caches/transforms-3/9d6778b007a14e0c6659deb3da7018f2/transformed/material-1.6.1/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+                    "source": "/home/ilya/.gradle/caches/transforms-3/4a53207dcabe7f0975fb5d95a8744ca1/transformed/material-1.6.1/res/values-ldrtl-v17/values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

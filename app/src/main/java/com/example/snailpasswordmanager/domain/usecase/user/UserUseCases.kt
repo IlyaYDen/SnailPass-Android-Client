@@ -1,10 +1,10 @@
 package com.example.snailpasswordmanager.domain.usecase.user
 
-import com.example.snailpasswordmanager.domain.model.PasswordEntity
 import javax.inject.Inject
 
 data class UserUseCases @Inject constructor(
-    val userLoginUseCase: UserLoginUseCase
+    val userLoginUseCase: UserLoginUseCase,
+    val userRegisterUseCase: UserRegisterUseCase
 )
 
     //fun execute(passwordEntity: PasswordEntity){
