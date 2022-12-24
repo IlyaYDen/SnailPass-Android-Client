@@ -22,6 +22,9 @@ public final class ActivityRegisterBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final EditText hintText;
+
+  @NonNull
   public final EditText loginText;
 
   @NonNull
@@ -39,10 +42,12 @@ public final class ActivityRegisterBinding implements ViewBinding {
   @NonNull
   public final EditText repeatPasswordText;
 
-  private ActivityRegisterBinding(@NonNull LinearLayout rootView, @NonNull EditText loginText,
-      @NonNull ImageView logo, @NonNull EditText passwordText, @NonNull Button rLoginButton,
-      @NonNull Button rRegistrationButton, @NonNull EditText repeatPasswordText) {
+  private ActivityRegisterBinding(@NonNull LinearLayout rootView, @NonNull EditText hintText,
+      @NonNull EditText loginText, @NonNull ImageView logo, @NonNull EditText passwordText,
+      @NonNull Button rLoginButton, @NonNull Button rRegistrationButton,
+      @NonNull EditText repeatPasswordText) {
     this.rootView = rootView;
+    this.hintText = hintText;
     this.loginText = loginText;
     this.logo = logo;
     this.passwordText = passwordText;
@@ -78,6 +83,12 @@ public final class ActivityRegisterBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.hint_text;
+      EditText hintText = ViewBindings.findChildViewById(rootView, id);
+      if (hintText == null) {
+        break missingId;
+      }
+
       id = R.id.login_text;
       EditText loginText = ViewBindings.findChildViewById(rootView, id);
       if (loginText == null) {
@@ -114,8 +125,8 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityRegisterBinding((LinearLayout) rootView, loginText, logo, passwordText,
-          rLoginButton, rRegistrationButton, repeatPasswordText);
+      return new ActivityRegisterBinding((LinearLayout) rootView, hintText, loginText, logo,
+          passwordText, rLoginButton, rRegistrationButton, repeatPasswordText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

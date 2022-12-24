@@ -2801,6 +2801,7 @@ id groups
 id guideline
 id header_title
 id hideable
+id hint_text
 id home
 id homeAsUp
 id honorRequest
@@ -3334,6 +3335,7 @@ string first_fragment_label
 string hello_first_fragment
 string hello_second_fragment
 string hide_bottom_view_on_scroll_behavior
+string hint
 string icon_content_description
 string item_view_role_description
 string label

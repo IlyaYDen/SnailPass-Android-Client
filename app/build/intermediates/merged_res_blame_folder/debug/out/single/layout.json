@@ -1,22 +1,26 @@
 [
     {
-        "merged": "com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/activity_main_list.xml",
-        "source": "com.example.snailpasswordmanager.app-main-51:/layout/activity_main_list.xml"
+        "merged": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/activity_password_item.xml",
+        "source": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-main-51:/layout/activity_password_item.xml"
+    },
+    {
+        "merged": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/password_item.xml",
+        "source": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-main-51:/layout/password_item.xml"
+    },
+    {
+        "merged": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/activity_register.xml",
+        "source": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-main-51:/layout/activity_register.xml"
+    },
+    {
+        "merged": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/activity_login.xml",
+        "source": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-main-51:/layout/activity_login.xml"
     },
     {
         "merged": "com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/activity_register.xml",
         "source": "com.example.snailpasswordmanager.app-main-51:/layout/activity_register.xml"
     },
     {
-        "merged": "com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/activity_login.xml",
-        "source": "com.example.snailpasswordmanager.app-main-51:/layout/activity_login.xml"
-    },
-    {
-        "merged": "com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/password_item.xml",
-        "source": "com.example.snailpasswordmanager.app-main-51:/layout/password_item.xml"
-    },
-    {
-        "merged": "com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/activity_password_item.xml",
-        "source": "com.example.snailpasswordmanager.app-main-51:/layout/activity_password_item.xml"
+        "merged": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-mergeDebugResources-48:/layout/activity_main_list.xml",
+        "source": "/home/ilya/.gradle/daemon/7.4/com.example.snailpasswordmanager.app-main-51:/layout/activity_main_list.xml"
     }
 ]

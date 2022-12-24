@@ -2800,6 +2800,7 @@ int id groups 0x7f0800df
 int id guideline 0x7f0800e0
 int id header_title 0x7f0800e1
 int id hideable 0x7f0800e2
+int id hint_text 0x7f080209
 int id home 0x7f0800e3
 int id homeAsUp 0x7f0800e4
 int id honorRequest 0x7f0800e5
@@ -3333,6 +3334,7 @@ int string first_fragment_label 0x7f0f002b
 int string hello_first_fragment 0x7f0f002c
 int string hello_second_fragment 0x7f0f002d
 int string hide_bottom_view_on_scroll_behavior 0x7f0f002e
+int string hint 0x7f0f008d
 int string icon_content_description 0x7f0f002f
 int string item_view_role_description 0x7f0f0030
 int string label 0x7f0f0031

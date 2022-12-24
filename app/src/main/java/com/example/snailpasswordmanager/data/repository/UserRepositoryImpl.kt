@@ -14,8 +14,8 @@ class UserRepositoryImpl @Inject constructor(
     private var autoIncrementid = 0;
 
     override fun addUser(userEntity: UserEntity) {
-        if(userEntity.id == UserEntity.UNDEFINED_ID)
-            userEntity.id = autoIncrementid++
+        //if(userEntity.id == UserEntity.UNDEFINED_ID)
+        //    userEntity.id = autoIncrementid++
         UserList.add(userEntity)
         //TODO("Not yet implemented")
     }

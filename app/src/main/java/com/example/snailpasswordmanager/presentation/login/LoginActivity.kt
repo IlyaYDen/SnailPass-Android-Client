@@ -15,7 +15,9 @@ import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.presentation.mainscreen.MainListActivity
 import com.example.snailpasswordmanager.presentation.registration.RegistrationActivity
-import com.example.snailpasswordmanager.retrofit2.ServerApi
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import java.util.*
 import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity() {
@@ -34,47 +36,53 @@ class LoginActivity : AppCompatActivity() {
         (applicationContext as PasswordApp).appComponent.inject(this)
 
 
-        vm = ViewModelProvider(this,vmFactory)
-            .get(LoginViewModel::class.java)
+        vm = ViewModelProvider(this,vmFactory)[LoginViewModel::class.java]
 
-        var buttonLogion: Button = findViewById(R.id.l_login_button)
-        var buttonRegistration: Button = findViewById(R.id.l_registration_button)
+        val buttonLogion: Button = findViewById(R.id.l_login_button)
+        val buttonRegistration: Button = findViewById(R.id.l_registration_button)
 
 
-        var loginText: EditText = findViewById(R.id.login_text)
-        var passwordText: EditText = findViewById(R.id.password_text)
-
-        //vm.onEvent()
-
-        Log.d("test", "fffff")
-        /*lifecycleScope.launchWhenCreated {
-            val resp = try{
-                serverApi.getapi()
-            }catch (e: Exception){
-                return@launchWhenCreated
-            }
-            if(resp.isSuccessful && resp.body() !=null){
-                Log.d("test", "test  " + resp.body())
-            }
-        }*/
+        val loginText: EditText = findViewById(R.id.login_text)
+        val passwordText: EditText = findViewById(R.id.password_text)
 
 
         buttonLogion.setOnClickListener {
             val hashpass = vm.passwordHash(passwordText.text.toString())
-
-            val b = vm.onEvent(LoginEvent.Login(UserEntity(
-                login = loginText.text.toString(),
-                password = hashpass
-            )))
-            if(b !=null) {
-                val intent = Intent(this, MainListActivity::class.java).apply {
-                    putExtra("MASTER_HASH", true)
-                }
-                startActivity(intent)
-                finish()
-            }
-
+            vm.logInEvent(
+                UserEntity(
+                    email = loginText.text.toString(),
+                    password = hashpass,
+                    hint = ""
+                )
+            );
         }
+        vm.token
+            .onEach {
+                Log.d("test", "get token " + it.token)
+
+                if(it.token != "-"){
+                    val intent = Intent(this, MainListActivity::class.java)
+                    finish()
+                    startActivity(intent)
+                }
+            }
+            .launchIn(lifecycleScope)
+            /*
+            CoroutineScope(Dispatchers.Main).launch {
+                val bool = vm.logInEvent(
+                        UserEntity(
+                            email = loginText.text.toString(),
+                            password = hashpass,
+                            hint = null
+                        )
+                )
+                if (bool) {
+                    startActivity(intent)
+                    finish()
+                }
+            }*/
+        //}
+
         buttonRegistration.setOnClickListener {
             val intent = Intent(this, RegistrationActivity::class.java).apply {}
             startActivity(intent)

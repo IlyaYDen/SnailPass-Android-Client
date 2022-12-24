@@ -60,11 +60,11 @@
 35            android:label="Main Content List" />
 35-->/home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:30:13-46
 36        <activity
-36-->/home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:31:9-33:58
+36-->/home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:31:9-33:70
 37            android:name="com.example.snailpasswordmanager.presentation.registration.RegistrationActivity"
 37-->/home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:32:13-75
-38            android:windowSoftInputMode="adjustResize" />
-38-->/home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:33:13-55
+38            android:windowSoftInputMode="stateHidden|adjustResize" />
+38-->/home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:33:13-67
 39        <activity
 39-->/home/ilya/programming/kotlin/SnailPasswordManagerGit/app/src/main/AndroidManifest.xml:34:9-43:20
 40            android:name="com.example.snailpasswordmanager.presentation.login.LoginActivity"

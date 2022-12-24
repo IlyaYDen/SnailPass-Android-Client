@@ -5,11 +5,10 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.snailpasswordmanager.domain.usecase.passwords.InsertPassword
-import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
+import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
-import com.example.snailpasswordmanager.presentation.mainscreen.MainListViewModel
-import kotlinx.coroutines.CoroutineScope
+import com.example.snailpasswordmanager.retrofit2.Token
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,25 +16,18 @@ class LoginViewModel @Inject constructor(
         val logInUseCases: UserUseCases
         ) : ViewModel() {
 
+        val token = MutableStateFlow(Token("-"))
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun onEvent(loginEvent: LoginEvent) : String? {
-                return when (loginEvent){
-                        is LoginEvent.Login -> {
-                                var g : String? = null
-                                var f = viewModelScope.launch {
-                                        g = logInUseCases.userLoginUseCase.invoke(
-                                                loginEvent.userEntity
-                                        )
-                                }
-                                g
-                        }
+        fun logInEvent(entity: UserEntity) {
+                viewModelScope.launch {
+                        token.value = logInUseCases.userLoginUseCase.invoke(entity)
                 }
         }
-
         fun passwordHash(password: String) : String {
                 return password
         }
+
 
 
 }

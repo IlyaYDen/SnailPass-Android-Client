@@ -35,7 +35,7 @@
             android:label="Main Content List" />
         <activity
             android:name="com.example.snailpasswordmanager.presentation.registration.RegistrationActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.example.snailpasswordmanager.presentation.login.LoginActivity"
             android:exported="true"

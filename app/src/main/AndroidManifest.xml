@@ -30,7 +30,7 @@
             android:label="Main Content List" />
         <activity
             android:name=".presentation.registration.RegistrationActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="true"

@@ -67,6 +67,21 @@
         android:textColorHint="@color/dark_gray_text"
         tools:ignore="LabelFor" />
 
+
+    <EditText
+        android:id="@+id/hint_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="80dp"
+        android:autofillHints=""
+        android:hint="@string/hint"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="@color/dark_gray_text"
+        tools:ignore="LabelFor" />
+
     <Button
         android:id="@+id/r_registration_button"
         android:layout_width="match_parent"
@@ -83,6 +98,5 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="80dp"
-        android:onClick="gotoLogin"
         android:text="@string/login_button" />
 </LinearLayout>

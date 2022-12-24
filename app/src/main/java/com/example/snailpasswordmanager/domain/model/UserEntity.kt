@@ -1,12 +1,13 @@
 package com.example.snailpasswordmanager.domain.model
 
-data class UserEntity(
-    var login: String,
-    var password: String,
+import java.util.UUID
 
-    var id: Int = UNDEFINED_ID
-) {
-    companion object {
-        const val UNDEFINED_ID = -1
-    }
-}
+data class UserEntity(
+    var id: UUID = UUID.fromString("0-0-0-0-0"),
+    var email: String,
+    var password: String,
+    var hint : String
+
+
+
+    )

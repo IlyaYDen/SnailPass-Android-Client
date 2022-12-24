@@ -24,6 +24,7 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hint">hint</string>
     <string name="login_button">Log-In</string>
     <string name="logo_description">Logo</string>
     <string name="next">Next</string>

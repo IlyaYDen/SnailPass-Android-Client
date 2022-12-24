@@ -15,6 +15,21 @@ class RetrofitUnitTesting {
 
     @Test
     fun login_isCorrect() = runTest{
+        val credentials: String = Credentials.basic("dTEST@mail.ru","[string]")
+
+        val t = Retrofit.Builder()
+            .baseUrl("http://localhost:5000")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ServerApi::class.java)
+        val a = t.getLogin(credentials)
+        tkn = a.token
+        println(a.token)
+        Assert.assertNotEquals(a.token, "")
+    }
+
+    @Test
+    fun register_test() = runTest{
         val credentials: String = Credentials.basic("rebmanop@email.com","ef78adbfaa17db00ff9125f0fa3476601489a1630d17c4d37d712d694a79d7dd3c60731ffe32251ff56d5c30747f1069c1fc26f52884c349986cb5eef7de7503")
 
         val t = Retrofit.Builder()
@@ -27,6 +42,7 @@ class RetrofitUnitTesting {
         println(a.token)
         Assert.assertNotEquals(a.token, "")
     }
+
     @Test
     fun add_new_rec() = runTest{
 
