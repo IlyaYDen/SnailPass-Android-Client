@@ -29,6 +29,7 @@ import java.io.ObjectStreamException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.security.KeyRep;
 import java.security.GeneralSecurityException;
@@ -54,14 +55,14 @@ final class PBKDF2KeyImpl implements javax.crypto.interfaces.PBEKey {
     static final long serialVersionUID = -2234868909660948157L;
 
     private char[] passwd;
-    private byte[] salt;
-    private int iterCount;
+    private final byte[] salt;
+    private final int iterCount;
     private byte[] key;
 
-    private Mac prf;
+    private final Mac prf;
 
     private static byte[] getPasswordBytes(char[] passwd) {
-        Charset utf8 = Charset.forName("UTF-8");
+        Charset utf8 = StandardCharsets.UTF_8;
         CharBuffer cb = CharBuffer.wrap(passwd);
         ByteBuffer bb = utf8.encode(cb);
 
@@ -109,13 +110,11 @@ final class PBKDF2KeyImpl implements javax.crypto.interfaces.PBEKey {
             this.prf = Mac.getInstance(prfAlgo, "SunJCE");
         } catch (NoSuchAlgorithmException nsae) {
             // not gonna happen; re-throw just in case
-            InvalidKeySpecException ike = new InvalidKeySpecException();
-            ike.initCause(nsae);
+            InvalidKeySpecException ike = new InvalidKeySpecException(nsae);
             throw ike;
         } catch (NoSuchProviderException nspe) {
             // Again, not gonna happen; re-throw just in case
-            InvalidKeySpecException ike = new InvalidKeySpecException();
-            ike.initCause(nspe);
+            InvalidKeySpecException ike = new InvalidKeySpecException(nspe);
             throw ike;
         }
         this.key = deriveKey(prf, passwdBytes, salt, iterCount, keyLength);
@@ -194,7 +193,7 @@ final class PBKDF2KeyImpl implements javax.crypto.interfaces.PBEKey {
     }
 
     public byte[] getEncoded() {
-        return (byte[]) key.clone();
+        return key.clone();
     }
 
     public String getAlgorithm() {
@@ -206,7 +205,7 @@ final class PBKDF2KeyImpl implements javax.crypto.interfaces.PBEKey {
     }
 
     public char[] getPassword() {
-        return (char[]) passwd.clone();
+        return passwd.clone();
     }
 
     public byte[] getSalt() {
@@ -268,7 +267,7 @@ final class PBKDF2KeyImpl implements javax.crypto.interfaces.PBEKey {
     protected void finalize() throws Throwable {
         try {
             if (this.passwd != null) {
-                java.util.Arrays.fill(this.passwd, (char) '0');
+                java.util.Arrays.fill(this.passwd, '0');
                 this.passwd = null;
             }
             if (this.key != null) {

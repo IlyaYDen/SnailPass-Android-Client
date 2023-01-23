@@ -31,7 +31,6 @@
         android:clickable="true"
         android:contentDescription="@string/add_button"
         android:focusable="true"
-        android:onClick="passwordAddButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"

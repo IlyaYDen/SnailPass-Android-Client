@@ -9,7 +9,8 @@ import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.usecase.user.UserRegisterUseCase
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
 import com.example.snailpasswordmanager.presentation.login.LoginViewModel
-import com.example.snailpasswordmanager.retrofit2.Token
+import com.example.snailpasswordmanager.data.retrofit2.Token
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import okhttp3.Response
@@ -18,13 +19,16 @@ class RegistrationViewModel @Inject constructor(
     val userUseCases: UserUseCases
 ) : ViewModel() {
 
-    val token = MutableStateFlow(Token("-"))
+    val boolean = MutableStateFlow(false)
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun registrationEvent(userEntity: UserEntity) {
-        viewModelScope.launch {
-            userUseCases.userRegisterUseCase(userEntity)
-            token.value = userUseCases.userLoginUseCase(userEntity)
+        viewModelScope.launch(Dispatchers.IO) {
+
+            val a = userUseCases.userRegisterUseCase(userEntity)
+            if(a)
+                boolean.value = userUseCases.userLoginUseCase(userEntity)
+            //else todo
         }
     }
 }

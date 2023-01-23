@@ -5,10 +5,12 @@ import android.content.Context
 import androidx.room.Room
 import com.example.snailpasswordmanager.data.database.record.RecordDao
 import com.example.snailpasswordmanager.data.database.record.RecordDb
-import com.example.snailpasswordmanager.data.database.user.UserDao
-import com.example.snailpasswordmanager.data.database.user.UserDb
+import com.example.snailpasswordmanager.data.database.record.UserDao
 import com.example.snailpasswordmanager.data.repository.RecordListRepositoryImpl
 import com.example.snailpasswordmanager.data.repository.UserRepositoryImpl
+import com.example.snailpasswordmanager.data.retrofit2.ServerApi
+import com.example.snailpasswordmanager.data.retrofit2.Token
+import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.RecordListRepository
 import com.example.snailpasswordmanager.domain.repository.UserRepository
 import dagger.Module
@@ -18,57 +20,58 @@ import javax.inject.Singleton
 @Module
 class DataModule {
 
-    @Provides
-    //@Singleton
-    fun providePasswordDb(context: Context): RecordDb {
-        return synchronized(this) {
-            Room.databaseBuilder(
-                context,
-                RecordDb::class.java,
-                RecordDb.DATABASE_NAME
-            ).build()
-        }
-    }
-    @Provides
-    //@Singleton
-    fun provideUserDb(context: Context): UserDb {
-        return synchronized(this) {
-            Room.databaseBuilder(
-                context,
-                UserDb::class.java,
-                RecordDb.DATABASE_NAME
-            ).build()
-        }
-    }
 
     @Provides
     //@Singleton
     fun provideApplication(): Application {
         return Application()
     }
+    @Provides
+    @Singleton
+    fun provideToken(): Token {
+        return Token("-")
+    }
+
+
+
+    @Provides
+    @Singleton
+    fun providePasswordDb(context: Context): RecordDb {
+        return synchronized(this) {
+
+            var dbBuilder = Room.databaseBuilder(
+                context,
+                RecordDb::class.java,
+                RecordDb.DATABASE_NAME
+            ).build()
+            dbBuilder
+        }
+    }
+
 
     @Provides
     //@Singleton
-    fun providePasswordListRepository(db: RecordDb): RecordListRepository {
-        return RecordListRepositoryImpl(db.dao)
+    fun providePasswordListRepository(db: RecordDb,serverApi: ServerApi): RecordListRepository {
+        return RecordListRepositoryImpl(db.recordDao,serverApi)
     }
 
     @Provides
     @Singleton
     fun providePasswordDao(db: RecordDb): RecordDao {
-        return db.dao
+        return db.recordDao
     }
 
 
     @Provides
     //@Singleton
-    fun provideUserRepository(db: UserDb): UserRepository {
-        return UserRepositoryImpl(db.dao)
+    fun provideUserRepository(db: RecordDb, serverApi: ServerApi, token: Token, userEntityAuth: UserEntity): UserRepository {
+        return UserRepositoryImpl(db.userDao, serverApi, userEntityAuth,token)
     }
 
     @Provides
     @Singleton
-    fun provideUserDao(db: UserDb): UserDao {
-        return db.dao
+    fun provideUserDao(db: RecordDb): UserDao {
+        return db.userDao
     }
+
 }

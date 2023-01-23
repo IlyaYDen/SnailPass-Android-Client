@@ -28,7 +28,7 @@
         android:layout_marginRight="80dp"
         android:autofillHints=""
         android:hint="@string/account_name"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColorHint="@color/dark_gray_text"
         tools:ignore="LabelFor" />
@@ -43,9 +43,8 @@
         android:layout_marginRight="80dp"
         android:autofillHints=""
         android:hint="@string/password"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:password="true"
         android:textColorHint="@color/dark_gray_text"
         tools:ignore="LabelFor" />
 

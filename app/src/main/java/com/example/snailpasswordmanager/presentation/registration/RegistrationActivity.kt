@@ -1,12 +1,11 @@
 package com.example.snailpasswordmanager.presentation.registration
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -15,11 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.domain.model.UserEntity
-import com.example.snailpasswordmanager.presentation.login.LoginEvent
-import com.example.snailpasswordmanager.presentation.login.LoginModelFactory
-import com.example.snailpasswordmanager.presentation.login.LoginViewModel
 import com.example.snailpasswordmanager.presentation.mainscreen.MainListActivity
-import com.example.snailpasswordmanager.retrofit2.ServerApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.util.*
@@ -52,14 +47,13 @@ class RegistrationActivity : AppCompatActivity() {
 
 
 
-        vm.token
+        vm.boolean
             .onEach {
-                Log.d("test", "get token " + it.token)
 
-                if(it.token != "-"){
-                    val intent = Intent(this, MainListActivity::class.java)
+                if(it){
+                    //val intent = Intent(this, MainListActivity::class.java)
                     finish()
-                    startActivity(intent)
+                    //startActivity(intent)
                 }
             }
             .launchIn(lifecycleScope)
@@ -70,6 +64,7 @@ class RegistrationActivity : AppCompatActivity() {
                 tvLogin.text.isNotEmpty() && tvPassword_text.text.isNotEmpty()
                 && tvRepeat_password_text.text.isNotEmpty() && tvHint_text.text.isNotEmpty()
                 && tvRepeat_password_text.text.toString().equals(tvPassword_text.text.toString())
+                && tvRepeat_password_text.text.length>5 && tvLogin.text.length>8
             ) {
                 vm.registrationEvent(
                     UserEntity(
@@ -78,7 +73,7 @@ class RegistrationActivity : AppCompatActivity() {
                         email = tvLogin.text.toString(),
                         password = tvPassword_text.text.toString()
                     )
-                );
+                )
             }
         }
         buttonLogin.setOnClickListener { finish() }

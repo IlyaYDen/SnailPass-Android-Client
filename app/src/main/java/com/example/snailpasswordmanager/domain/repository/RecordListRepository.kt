@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface RecordListRepository {
 
-    fun getRecordList(): Flow<List<RecordEntity>>
+    suspend fun getRecordList(): Flow<List<RecordEntity>?>
 
     suspend fun getRecordById(id: Int): RecordEntity?
 

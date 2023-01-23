@@ -17,20 +17,9 @@ import java.util.Base64;
 public class AESUtil {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static void main(String args[]) throws Exception {
-        byte[] cipherText =
-                encrypt(
-                        "Hello,CryptWorld".getBytes(),
-                        "4e5Wa71fYoT7MFEX".getBytes()); // 32 length Key
-        System.out.println(new String(cipherText));
-        byte[] origText = decrypt(new String(cipherText).getBytes(), "4e5Wa71fYoT7MFEX".getBytes());
-        System.out.println(new String(origText));
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public static byte[] encrypt(byte[] plainTextData, byte[] secretKey) throws Exception {
+    public static byte[] encrypt(byte[] plainTextData, byte[] secretKey,byte[] iv2) throws Exception {
         try {
-            String iv = new String(secretKey).substring(0, 16);
+            String iv = new String(iv2).substring(0, 16);
 
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
 
@@ -54,9 +43,9 @@ public class AESUtil {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static byte[] decrypt(byte[] cipherTextData, byte[] secretKey) throws Exception {
+    public static byte[] decrypt(byte[] cipherTextData, byte[] secretKey,byte[] iv2) throws Exception {
         try {
-            String iv = new String(secretKey).substring(0, 16);
+            String iv = new String(iv2).substring(0, 16);
 
             byte[] encrypted = Base64.getDecoder().decode(cipherTextData);
 

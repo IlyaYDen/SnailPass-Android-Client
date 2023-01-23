@@ -1,17 +1,23 @@
 package com.example.snailpasswordmanager.presentation.mainscreen
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.databinding.ActivityMainListBinding
+import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
 import com.example.snailpasswordmanager.presentation.passworditem.PasswordItemActivity
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 
@@ -20,7 +26,6 @@ class MainListActivity @Inject constructor(
         ) : AppCompatActivity() {
 
     lateinit var bindingClass : ActivityMainListBinding
-
     private var launcher: ActivityResultLauncher<Intent>? = null
     @Inject
     lateinit var vmFactory: MainListViewModelFactory
@@ -30,14 +35,17 @@ class MainListActivity @Inject constructor(
     private lateinit var viewModel : MainListViewModel
     private val adapter :PasswordListAdapter = PasswordListAdapter()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
-        viewModel.onEvent(event = PasswordsEvent.GetPasswordsList)
-        lifecycleScope.launch() {
-            viewModel.getPasswords().collect() {
-                adapter.setPasswords(it)
-            }
-        }
+        //viewModel.onEvent(event = PasswordsEvent.GetPasswordsList)
+        //lifecycleScope.launch {
+        //    viewModel.getPasswords().collect {
+        //        adapter.setPasswords(it)
+        //    }
+        //}
+        viewModel.getPasswords()
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,14 +61,13 @@ class MainListActivity @Inject constructor(
             .get(MainListViewModel::class.java)
 
         init()
-        masterHash =
-            intent.getStringExtra("MASTER_HASH").toString() // TODO
+        //masterHash =
+        //    intent.getStringExtra("MASTER_HASH").toString() // TODO
 
-        lifecycleScope.launch() {
-            viewModel.getPasswords().collect() {
-                adapter.setPasswords(it)
-            }
-        }
+        viewModel.passwordListEdited.onEach {
+            Log.d("MYLOG_test","test adapter " + viewModel.passwordListEdited.value.size)
+            adapter.setPasswords(viewModel.passwordListEdited.value)
+        }.launchIn(lifecycleScope)
 
 
 
@@ -82,11 +89,6 @@ class MainListActivity @Inject constructor(
 
         }
     }
-
-    private suspend fun masterHashInit() {
-        TODO("Not yet implemented")
-    }
-
     private fun init() {
         bindingClass.apply {
             rcView.layoutManager = LinearLayoutManager(this@MainListActivity)
@@ -95,13 +97,16 @@ class MainListActivity @Inject constructor(
         }
     }
 
+}
+@Suppress("UNCHECKED_CAST")
+class  MainListViewModelFactory @Inject constructor(
 
-    /*fun passwordAddButton(view: View) {
+    var passwordUseCases: PasswordUseCases
+) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return MainListViewModel(
+            passwordUseCases = passwordUseCases
+        ) as T
 
-        val intent = Intent(this, RegistrationActivity::class.java).apply {
-            //putExtra("EXTRA_MESSAGE", "")
-        }
-        startActivity(intent)
-
-    }*/
+    }
 }

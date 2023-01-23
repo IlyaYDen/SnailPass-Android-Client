@@ -47,9 +47,9 @@ class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItem
 
             val intent = Intent(holder.itemView.context, PasswordItemActivity::class.java).apply {
                 putExtra("MODE", true)
-                putExtra("SERVICE", list.get(position).service)
+                putExtra("SERVICE", list.get(position).name)
                 putExtra("LOGIN", list.get(position).login)
-                putExtra("PASSWORD", list.get(position).password)
+                putExtra("PASSWORD", list.get(position).encrypted_password)
                 putExtra("ID", list.get(position).id)
             }
 
@@ -72,7 +72,7 @@ class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItem
     class PasswordItemViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = PasswordItemBinding.bind(view)
         fun bind(passwordEntity: RecordEntity) = with(binding){
-            serviceName.text = passwordEntity.service
+            serviceName.text = passwordEntity.name
         }
     }
 }

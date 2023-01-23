@@ -1,12 +1,18 @@
 package com.example.snailpasswordmanager.presentation.passworditem
 
+import android.os.Build
 import android.os.Bundle
+import android.text.InputType
+import android.text.InputType.*
+import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.databinding.ActivityPasswordItemBinding
 import com.example.snailpasswordmanager.domain.model.RecordEntity
+import java.util.*
 import javax.inject.Inject
 
 
@@ -19,6 +25,7 @@ class PasswordItemActivity : AppCompatActivity() {
 
     private lateinit var viewModel : PasswordViewModel
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingClass = ActivityPasswordItemBinding.inflate(layoutInflater)
@@ -30,10 +37,11 @@ class PasswordItemActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this,vmFactory)
             .get(PasswordViewModel::class.java)
         if( intent.getBooleanExtra("MODE",false)) {
+
+            val id = intent.getSerializableExtra("ID") as UUID
             val service = intent.getStringExtra("SERVICE")
-            val password = intent.getStringExtra("PASSWORD")
             val login = intent.getStringExtra("LOGIN")
-            val id = intent.getIntExtra("ID",0)
+            val password = intent.getStringExtra("PASSWORD")
             bindingClass.deleteButton.visibility = View.VISIBLE
 
             bindingClass.editTextPassword.setText(password)
@@ -41,11 +49,15 @@ class PasswordItemActivity : AppCompatActivity() {
             bindingClass.editTextLogin.setText(login)
             bindingClass.deleteButton.setOnClickListener {
                 viewModel.deletePassword(recordEntity = RecordEntity(
-                    service = bindingClass.editTextService.text.toString(),
+                    name = bindingClass.editTextService.text.toString(),
                     login = bindingClass.editTextLogin.text.toString(),
-                    password = bindingClass.editTextPassword.text.toString(),
-                    timestamp = System.currentTimeMillis(),
-                    id = id
+                    encrypted_password = bindingClass.editTextPassword.text.toString(),
+                    editedTime = System.currentTimeMillis().toString(),//todo
+                    id = id,
+                    creationTime = "",
+                    nonce = "",
+                    userId = "",
+                    isfavorite = false
                 ))
                 finish()
             }
@@ -54,17 +66,18 @@ class PasswordItemActivity : AppCompatActivity() {
             bindingClass.buttonSave.setOnClickListener {
                 viewModel.addPassword(
                     passwordEntity = RecordEntity(
-                        service = bindingClass.editTextService.text.toString(),
+                        name = bindingClass.editTextService.text.toString(),
                         login = bindingClass.editTextLogin.text.toString(),
-                        password = bindingClass.editTextPassword.text.toString(),
-                        timestamp = System.currentTimeMillis(),
-                        id = id
+                        encrypted_password = bindingClass.editTextPassword.text.toString(),
+                        editedTime = System.currentTimeMillis().toString(),//todo
+                        id = id,
+                        creationTime = "",
+                        nonce = "",
+                        userId = "",
+                        isfavorite = false
                     )
                 )
                 finish()
-            }
-            bindingClass.checkBoxShowPassword.setOnClickListener(){
-
             }
         }
         else {
@@ -72,13 +85,33 @@ class PasswordItemActivity : AppCompatActivity() {
             bindingClass.buttonSave.setOnClickListener {
                 viewModel.addPassword(
                     passwordEntity = RecordEntity(
-                        service = bindingClass.editTextService.text.toString(),
+                        name = bindingClass.editTextService.text.toString(),
                         login = bindingClass.editTextLogin.text.toString(),
-                        password = bindingClass.editTextPassword.text.toString(),
-                        timestamp = System.currentTimeMillis()
+                        encrypted_password = bindingClass.editTextPassword.text.toString(),
+                        editedTime = System.currentTimeMillis().toString(),//todo
+                        id = UUID.randomUUID(),
+                        creationTime = "",
+                        nonce = "",
+                        userId = "",
+                        isfavorite = false
                     )
                 )
                 finish()
+            }
+        }
+
+        bindingClass.checkBoxShowPassword.setOnClickListener {
+            Log.d("MYLOG_test", "checkBoxShowPassword click " + bindingClass.editTextPassword.inputType)
+
+            if (bindingClass.checkBoxShowPassword.isChecked) {
+                bindingClass.editTextPassword.inputType = TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+
+                Log.d("MYLOG_test", "checkBoxShowPassword isActivated")
+            } else {
+
+                Log.d("MYLOG_test", "checkBoxShowPassword isNotActivated")
+                bindingClass.editTextPassword.inputType = 129//InputType.TYPE_TEXT_VARIATION_PASSWORD
+
             }
         }
 

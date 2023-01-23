@@ -26,18 +26,17 @@
             android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".presentation.mainscreen.MainListActivity"
-            android:exported="false"
-            android:label="Main Content List" />
+            android:exported="true"
+            android:label="Main Content List"/>
         <activity
             android:name=".presentation.registration.RegistrationActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

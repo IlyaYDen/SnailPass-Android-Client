@@ -1,6 +1,8 @@
 package com.example.snailpasswordmanager.presentation.passworditem
 
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.snailpasswordmanager.domain.model.RecordEntity
@@ -11,9 +13,10 @@ class PasswordViewModel constructor(
     private val passwordUseCases: PasswordUseCases
 ) : ViewModel() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun addPassword(passwordEntity: RecordEntity) {
+        Log.d("MYLOG_testAdd",passwordEntity.toString())
         viewModelScope.launch {
-            Log.d("addPassword","PasswordEntity: " + passwordEntity.toString())
             passwordUseCases.insertPassword(passwordEntity)
         }
     }

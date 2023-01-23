@@ -8,6 +8,28 @@ class DeletePassword @Inject constructor(
     private val passwordListRepository: RecordListRepository
      ) {
     suspend operator fun invoke(passwordEntity: RecordEntity){
-        passwordListRepository.deleteRecord(passwordEntity)
+        passwordListRepository.deleteRecord(passwordEntity) // todo переделать удаление
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

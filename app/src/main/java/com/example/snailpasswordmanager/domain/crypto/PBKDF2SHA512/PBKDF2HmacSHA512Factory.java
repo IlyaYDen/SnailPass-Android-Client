@@ -144,8 +144,8 @@ public final class PBKDF2HmacSHA512Factory extends SecretKeyFactorySpi {
                     return new PBKDF2KeyImpl(spec, "HmacSHA512");
                 } catch (InvalidKeySpecException re) {
                     InvalidKeyException ike = new InvalidKeyException
-                            ("Invalid key component(s)");
-                    ike.initCause(re);
+                            ("Invalid key component(s)", re);
+                    //ike.initCause(re);
                     throw ike;
                 }
             }

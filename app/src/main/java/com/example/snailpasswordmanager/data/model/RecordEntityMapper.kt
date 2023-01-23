@@ -1,24 +1,48 @@
 package com.example.snailpasswordmanager.data.model
 
+import android.util.Log
 import com.example.snailpasswordmanager.domain.model.RecordEntity
+import java.util.*
 
 class RecordEntityMapper {
-    fun mapEntityToDbModel(recordEntity: RecordEntity) = RecordEntityDbModel(
-        id = recordEntity.id,
-        password = recordEntity.password,
-        timestamp = recordEntity.timestamp,
-        login = recordEntity.login,
-        service = recordEntity.service
-    )
+    //fun mapEntityToDbModel(recordEntity: RecordEntity) = RecordEntityDbModel(
+    //    id = recordEntity.id,
+    //    password = recordEntity.encrypted_password,
+    //    timestamp = recordEntity.timestamp,
+    //    login = recordEntity.login,
+    //    service = recordEntity.name
+    //)
+    fun mapEntityToDbModel(recordEntity: RecordEntity): RecordEntityDbModel{
+        Log.d("MYLOG_testN","test1")
+        return RecordEntityDbModel(
+            id = recordEntity.id,
+            password = recordEntity.encrypted_password,
+            editedTime = recordEntity.editedTime,
+            login = recordEntity.login,
+            service = recordEntity.name,
+            nonce = recordEntity.nonce,
+            userId = recordEntity.userId,
+            isfavorite = recordEntity.isfavorite,
+            createdTime = recordEntity.creationTime
+        )
+    }
     fun mapDbModelToEntity(recordEntityDbModel: RecordEntityDbModel) = RecordEntity(
         id = recordEntityDbModel.id,
-        password = recordEntityDbModel.password,
-        timestamp = recordEntityDbModel.timestamp,
+        encrypted_password = recordEntityDbModel.password,
+        editedTime = recordEntityDbModel.editedTime,
         login = recordEntityDbModel.login,
-        service = recordEntityDbModel.service
+        name = recordEntityDbModel.service,
+        creationTime = recordEntityDbModel.createdTime,
+        nonce = recordEntityDbModel.nonce,
+
+        userId = recordEntityDbModel.userId,
+        isfavorite = recordEntityDbModel.isfavorite,
     )
 
     fun mapListDbModelToListEntity(list: List<RecordEntityDbModel>) = list.map {
+        Log.d("MYLOG_testN","test2 " + it.toString())
+
+
         mapDbModelToEntity(it)
     }
 
