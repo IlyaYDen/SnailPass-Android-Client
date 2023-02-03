@@ -7,6 +7,6 @@ class PasswordHashUseCase(
 ) {
 
     fun invoke(s:String) : String {
-        return s;
+        return s
     }
 }

@@ -30,14 +30,3 @@ class LoginViewModel @Inject constructor(
                 return password
         }
 }
-@Suppress("UNCHECKED_CAST")
-class LoginModelFactory @Inject constructor(
-        var logInUseCases: UserUseCases
-) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return LoginViewModel(
-                        logInUseCases
-                ) as T
-
-        }
-}

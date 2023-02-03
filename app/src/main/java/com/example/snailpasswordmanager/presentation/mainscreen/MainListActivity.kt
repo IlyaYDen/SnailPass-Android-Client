@@ -13,9 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.snailpasswordmanager.PasswordApp
-import com.example.snailpasswordmanager.databinding.ActivityMainListBinding
+import com.example.snailpasswordmanager.databinding.ActivityRecordListBinding
 import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
-import com.example.snailpasswordmanager.presentation.passworditem.PasswordItemActivity
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -25,7 +24,7 @@ import javax.inject.Inject
 class MainListActivity @Inject constructor(
         ) : AppCompatActivity() {
 
-    lateinit var bindingClass : ActivityMainListBinding
+    lateinit var bindingClass : ActivityRecordListBinding
     private var launcher: ActivityResultLauncher<Intent>? = null
     @Inject
     lateinit var vmFactory: MainListViewModelFactory
@@ -50,7 +49,7 @@ class MainListActivity @Inject constructor(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindingClass = ActivityMainListBinding.inflate(layoutInflater)
+        bindingClass = /*ActivityMainListBinding*/ActivityRecordListBinding.inflate(layoutInflater)
 
         (applicationContext as PasswordApp).appComponent.inject(this)
 
@@ -80,7 +79,7 @@ class MainListActivity @Inject constructor(
 
 
 
-            launcher?.launch(Intent(this,PasswordItemActivity::class.java))
+            //launcher?.launch(Intent(this,PasswordItemActivity::class.java))
             //val intent = Intent(this, PasswordItemActivity::class.java).apply {
             //    putExtra("NEW", true)
             //}
@@ -97,16 +96,4 @@ class MainListActivity @Inject constructor(
         }
     }
 
-}
-@Suppress("UNCHECKED_CAST")
-class  MainListViewModelFactory @Inject constructor(
-
-    var passwordUseCases: PasswordUseCases
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MainListViewModel(
-            passwordUseCases = passwordUseCases
-        ) as T
-
-    }
 }

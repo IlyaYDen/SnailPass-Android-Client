@@ -32,14 +32,3 @@ class RegistrationViewModel @Inject constructor(
         }
     }
 }
-@Suppress("UNCHECKED_CAST")
-class RegistrationModelFactory @Inject constructor(
-    var userUseCases: UserUseCases
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return RegistrationViewModel(
-            userUseCases
-        ) as T
-
-    }
-}

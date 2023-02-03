@@ -1,13 +1,16 @@
 package com.example.snailpasswordmanager.presentation.login
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import android.util.Pair
+import android.view.View
 import android.widget.Button
-import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -18,11 +21,15 @@ import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.presentation.mainscreen.MainListActivity
 import com.example.snailpasswordmanager.presentation.registration.RegistrationActivity
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.*
 import javax.inject.Inject
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,6 +37,13 @@ class LoginActivity : AppCompatActivity() {
 
     @Inject
     lateinit var vmFactory: LoginModelFactory
+
+    lateinit var imageView : ImageView
+    lateinit var loginText  : TextInputEditText
+    lateinit var passwordText : TextInputEditText
+    lateinit var loginButton : Button
+    lateinit var registrationButton : Button
+    lateinit var text : TextView
 
    // val Context.appStartupParamsDataStore: DataStore<Preferences> by dataStore(
    //     fileName = "app_startup_params.pb",
@@ -48,24 +62,28 @@ class LoginActivity : AppCompatActivity() {
 
 
 
+
        //vm = ViewModelProvider(this,vmFactory) [LoginViewModel::class.java]
        vm = ViewModelProvider(this,vmFactory) [LoginViewModel::class.java]
 
-        val buttonLogion: Button = findViewById(R.id.l_login_button)
-        val buttonRegistration: Button = findViewById(R.id.l_registration_button)
+        loginButton = findViewById(R.id.l_login_button)
+        registrationButton = findViewById(R.id.l_registration_button)
+        text = findViewById(R.id.welcomeText)
 
 
-        val loginText: EditText = findViewById(R.id.login_text)
-        val passwordText: EditText = findViewById(R.id.password_text)
+        loginText = findViewById(R.id.login_text)
+        passwordText = findViewById(R.id.password_text)
+        imageView = findViewById(R.id.imageView2)
+
 
         t = getSharedPreferences(PreferenceKeys.AUTH_SHARED_PREFERENCES,Context.MODE_PRIVATE)
 
-       buttonLogion.setOnClickListener {
+        loginButton.setOnClickListener {
             val hashpass = vm.passwordHash(passwordText.text.toString())
 
            if(
-               !loginText.text.isEmpty() && loginText.text.length>5 &&
-               !passwordText.text.isEmpty() && passwordText.text.length>8) {
+               loginText.text != null && loginText.text!!.length>5 &&
+               passwordText.text != null && passwordText.text!!.length>8) {
                userEntity = UserEntity(
                    email = loginText.text.toString(),
                    password = hashpass,
@@ -94,9 +112,25 @@ class LoginActivity : AppCompatActivity() {
             .launchIn(lifecycleScope)
 
 
-        buttonRegistration.setOnClickListener {
+        registrationButton.setOnClickListener {
             val intent = Intent(this, RegistrationActivity::class.java)
-            startActivity(intent)
+
+                val options = ActivityOptions.makeSceneTransitionAnimation(this,
+                            Pair(loginButton, "snail_Login_Button"),
+                            Pair(registrationButton, "snail_SignUp_Button"),
+                            Pair(loginText, "snail_Username"),
+                            Pair(passwordText, "snail_Password"),
+                            Pair(imageView, "snail_Logo"),
+                            Pair(text,"snail_text")
+                )
+                startActivity(intent, options.toBundle())
+
+
+
+
+
+
+
         }
 
 

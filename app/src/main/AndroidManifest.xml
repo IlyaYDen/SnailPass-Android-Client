@@ -6,8 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:usesCleartextTraffic="true"
-
         android:name=".PasswordApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,32 +15,34 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.SnailPasswordManager"
-
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.passworditem.PasswordItemActivity"
-            android:exported="false"
+            android:name=".presentation.accountInfo.AccountInfoActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true"
 
-            android:windowSoftInputMode="adjustResize"/>
+        >
+        </activity>
         <activity
             android:name=".presentation.mainscreen.MainListActivity"
             android:exported="true"
-            android:label="Main Content List"/>
+            android:label="Main Content List" />
         <activity
             android:name=".presentation.registration.RegistrationActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
-
-
 
 </manifest>

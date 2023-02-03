@@ -6,21 +6,100 @@
     android:layout_height="match_parent"
     android:background="@color/main_background"
     android:orientation="vertical"
-    tools:context=".presentation.registration.RegistrationActivity">
-
+    tools:context=".presentation.registration.RegistrationActivity"
+    android:padding="20dp">
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/imageView2"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="40dp"
         app:srcCompat="@drawable/logo"
-        android:layout_marginTop="90dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:contentDescription="@string/logo_description"
+        android:transitionName="snail_Logo" />
+    <TextView
+        android:id="@+id/welcomeText2"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="-16dp"
+        android:textColor="@color/light_gray_text"
+        android:text="@string/Sign_up_to_continue"
+        android:transitionName="snail_text"
         />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/light_gray_text"
+        android:hint="@string/username"
+        android:transitionName="snail_Username"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/light_gray_text"
+        android:hint="@string/password"
+        app:passwordToggleEnabled="true"
+        android:transitionName="snail_Password"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password_text"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/light_gray_text"
+        android:hint="@string/repeat_password"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/repeat_password_text"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/light_gray_text"
+        android:hint="@string/hint"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/hint_text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--EditText
 
         android:id="@+id/login_text"
         android:layout_width="match_parent"
@@ -29,7 +108,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="80dp"
         android:autofillHints=""
-        android:hint="@string/account_name"
+        android:hint="@string/username"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="@color/dark_gray_text"
@@ -80,23 +159,22 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="@color/dark_gray_text"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor" /-->
 
     <Button
         android:id="@+id/r_registration_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:text="@string/registration_button" />
+        android:transitionName="snail_Login_Button"
+
+        android:text="@string/registration_screen_button" />
 
     <Button
         android:id="@+id/r_login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:text="@string/login_button" />
+
+        android:transitionName="snail_SignUp_Button"
+
+        android:text="@string/have_account" />
 </LinearLayout>

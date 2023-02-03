@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/main_background"
     android:orientation="vertical"
-    tools:context=".presentation.login.LoginActivity">
+    tools:context=".presentation.login.LoginActivity"
+    android:padding="20dp">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -14,57 +15,77 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="46dp"
         android:layout_marginRight="40dp"
-        app:srcCompat="@drawable/logo" />
-
-    <EditText
-
-        android:id="@+id/login_text"
+        app:srcCompat="@drawable/logo"
+        android:transitionName="snail_Logo"
+        />
+    <TextView
+        android:id="@+id/welcomeText"
+        android:textColor="@color/light_gray_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="-16dp"
+        android:text="@string/Sign_in_to_continue"
+        android:transitionName="snail_text"
+        />
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:autofillHints=""
-        android:hint="@string/account_name"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:textColorHint="@color/dark_gray_text"
-        tools:ignore="LabelFor" />
+        android:textColorHint="@color/light_gray_text"
+        android:hint="@string/username"
+        android:transitionName="snail_Username"
 
-    <EditText
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
 
-        android:id="@+id/password_text"
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:autofillHints=""
+        android:textColorHint="@color/light_gray_text"
         android:hint="@string/password"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:textColorHint="@color/dark_gray_text"
-        tools:ignore="LabelFor" />
+        app:passwordToggleEnabled="true"
+        android:transitionName="snail_Password"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password_text"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/l_login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:onClick="loginButton"
-        android:text="@string/login_button" />
+        android:layout_marginTop="6dp"
+        android:background="@color/ActiveButtonColor"
+        android:text="@string/login_button"
+
+        android:transitionName="snail_Login_Button"
+
+        android:elevation="0dp"/>
+
     <Button
+        android:transitionName="snail_SignUp_Button"
+
         android:id="@+id/l_registration_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:onClick="registrationButton"
+        android:background="@color/light_gray_text"
+        android:layout_marginTop="6dp"
         android:text="@string/registration_button" />
-
 </LinearLayout>
