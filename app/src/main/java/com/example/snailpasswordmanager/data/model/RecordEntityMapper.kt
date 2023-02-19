@@ -13,34 +13,33 @@ class RecordEntityMapper {
     //    service = recordEntity.name
     //)
     fun mapEntityToDbModel(recordEntity: RecordEntity): RecordEntityDbModel{
-        Log.d("MYLOG_testN","test1")
+        //Log.d("MYLOG_testN","test1")
         return RecordEntityDbModel(
-            id = recordEntity.id,
+            id = recordEntity.id.toString(),
             password = recordEntity.encrypted_password,
             editedTime = recordEntity.editedTime,
             login = recordEntity.login,
             service = recordEntity.name,
-            nonce = recordEntity.nonce,
+            //nonce = recordEntity.nonce,
             userId = recordEntity.userId,
             isfavorite = recordEntity.isfavorite,
             createdTime = recordEntity.creationTime
         )
     }
     fun mapDbModelToEntity(recordEntityDbModel: RecordEntityDbModel) = RecordEntity(
-        id = recordEntityDbModel.id,
+        id = UUID.fromString(recordEntityDbModel.id),
         encrypted_password = recordEntityDbModel.password,
         editedTime = recordEntityDbModel.editedTime,
         login = recordEntityDbModel.login,
         name = recordEntityDbModel.service,
         creationTime = recordEntityDbModel.createdTime,
-        nonce = recordEntityDbModel.nonce,
+        //nonce = recordEntityDbModel.nonce,
 
         userId = recordEntityDbModel.userId,
         isfavorite = recordEntityDbModel.isfavorite,
     )
 
     fun mapListDbModelToListEntity(list: List<RecordEntityDbModel>) = list.map {
-        Log.d("MYLOG_testN","test2 " + it.toString())
 
 
         mapDbModelToEntity(it)

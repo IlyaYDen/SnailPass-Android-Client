@@ -8,6 +8,7 @@ import com.example.snailpasswordmanager.domain.usecase.user.UserRegisterUseCase
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
 import com.example.snailpasswordmanager.data.retrofit2.ServerApi
 import com.example.snailpasswordmanager.domain.model.UserEntity
+import com.example.snailpasswordmanager.domain.usecase.cryptography.Decode
 import dagger.Module
 import dagger.Provides
 import java.util.*
@@ -23,7 +24,7 @@ class DomainModule {
             getPasswordList = GetPasswordList(repository,userEntityAuth),
             deletePassword = DeletePassword(repository),
             insertPassword = InsertPassword(repository,userEntityAuth),
-            updatePasswords = UpdatePasswords(repository,serverApi)
+            editPassword = EditPassword(repository,userEntityAuth)
         )
     }
     @Provides
@@ -33,6 +34,11 @@ class DomainModule {
             userLoginUseCase = UserLoginUseCase(repository,userEntity),
             userRegisterUseCase = UserRegisterUseCase(repository)
         )
+    }
+    @Provides
+    //@Singleton
+    fun providerDecodeUseCase(userEntity: UserEntity) : Decode {
+        return Decode(userEntity)
     }
 
     @Provides

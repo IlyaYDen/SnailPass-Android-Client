@@ -1,43 +1,38 @@
 package com.example.snailpasswordmanager.data.repository
 
 import android.util.Log
-import androidx.lifecycle.viewModelScope
+import com.example.snailpasswordmanager.data.database.record.RecordAddFieldDao
 import com.example.snailpasswordmanager.data.database.record.RecordDao
+import com.example.snailpasswordmanager.data.model.RecordAddFieldEntityMapper
 import com.example.snailpasswordmanager.data.model.RecordEntityMapper
 import com.example.snailpasswordmanager.data.retrofit2.*
 import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.domain.repository.RecordListRepository
-import com.example.snailpasswordmanager.presentation.mainscreen.PasswordsEvent
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.util.*
 import javax.inject.Inject
 
 class RecordListRepositoryImpl @Inject constructor(
-    private val dao: RecordDao,
+    private val recordDao: RecordDao,
     var serverApi: ServerApi
     ) : RecordListRepository {
 
-    private val mapper = RecordEntityMapper()
+    private val recordEntityMapper = RecordEntityMapper()
 
     override suspend fun getRecordList(): Flow<List<RecordEntity>?> {
 
         try {
-            Log.d("MYLOG_testER"," serverApi.getRecords()")
             val records = serverApi.getRecords()//token.token
 
 
-            Log.d("MYLOG_testER","SUCCESS serverApi.getRecords()")
             if (records != null) {
                 records.map {
 
-                    Log.d("MYLOG_testN",it.toString())
 
 
-                    dao.insertRecord(
-                        mapper.mapEntityToDbModel(
+                    recordDao.insertRecord(
+                        recordEntityMapper.mapEntityToDbModel(
                             RecordEntity(
                                 id = UUID.fromString(it.id),
                                 name = it.name,
@@ -45,7 +40,7 @@ class RecordListRepositoryImpl @Inject constructor(
                                 encrypted_password = it.encrypted_password,
                                 editedTime = it.edited_time,
                                 creationTime = it.creation_time,
-                                nonce = it.nonce,
+                                //nonce = it.nonce,
                                 userId = it.user_id,
                                 isfavorite = it.is_favorite
                             )
@@ -62,16 +57,16 @@ class RecordListRepositoryImpl @Inject constructor(
                 Log.d("MYLOG_testER","FAIL serverApi.getRecords() Error")
                 Log.d("MYLOG_testER"," " + e)
 
-            return dao.getRecords().map {
+            return recordDao.getRecords().map {
                 Log.d("MYLOG_testER","FAIL getRecordList from local: " + it.size)
-                mapper.mapListDbModelToListEntity(it)
+                recordEntityMapper.mapListDbModelToListEntity(it)
             }
         }
 
 
-        return dao.getRecords().map {
+        return recordDao.getRecords().map {
             Log.d("MYLOG_test","noexeption: " + it.size)
-            mapper.mapListDbModelToListEntity(it)
+            recordEntityMapper.mapListDbModelToListEntity(it)
         }
         //return dao.getRecords().map {
         //    Log.d("MYLOG_test","getRecordList test: " + it.size)
@@ -80,12 +75,13 @@ class RecordListRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getRecordById(id: Int): RecordEntity? {
-        return dao.getRecordById(id)?.let { mapper.mapDbModelToEntity(it) }
+        return recordDao.getRecordById(id)?.let { recordEntityMapper.mapDbModelToEntity(it) }
     }
 
     override suspend fun insertRecord(passwordEntity: RecordEntity) {
 
         try {
+            Log.d("MYLOG_testE",passwordEntity.id.toString())
             serverApi.addRecord(
                 //token.token,
                 AddRecord(
@@ -93,27 +89,54 @@ class RecordListRepositoryImpl @Inject constructor(
                     passwordEntity.login,
                     passwordEntity.name,
                     passwordEntity.encrypted_password,
-                    passwordEntity.nonce
+                    //passwordEntity.nonce
                 )
             )
 
-            Log.d("MYLOG_test","id: " + passwordEntity.nonce)
-            dao.insertRecord(mapper.mapEntityToDbModel(passwordEntity))
+            //Log.d("MYLOG_test","id: " + passwordEntity.nonce)
+            recordDao.insertRecord(recordEntityMapper.mapEntityToDbModel(passwordEntity))
         } catch (_: Exception){
 
         }
 
     }
 
-    override suspend fun deleteRecord(passwordEntity: RecordEntity) {
+    override suspend fun editRecord(passwordEntity: RecordEntity) {
+
         try {
-            Log.d("MYLOG_test","id: " + passwordEntity.id)
+            Log.d("MYLOG_testE",passwordEntity.id.toString())
+            serverApi.editRecord(
+                //token.token,
+                Record(
+                    creation_time = "",
+                    edited_time= "",
+                    encrypted_password = passwordEntity.encrypted_password,
+                    id = passwordEntity.id.toString(),
+                    is_deleted = false,
+                    is_favorite = false,
+                    login = passwordEntity.login,
+                    name = passwordEntity.name,
+                    user_id = passwordEntity.userId
+                    //passwordEntity.nonce
+                )
+            )
+
+            //Log.d("MYLOG_test","id: " + passwordEntity.nonce)
+            recordDao.deleteRecord(passwordEntity.id)
+            recordDao.insertRecord(recordEntityMapper.mapEntityToDbModel(passwordEntity))
+        } catch (_: Exception){
+
+        }
+    }
+
+    override suspend fun deleteRecord(id: UUID) {
+        try {
             serverApi.deleteRecord(
                // token.token,
-                    passwordEntity.id.toString()
+                id.toString()//passwordEntity.id.toString()
 
             )
-            dao.deleteRecord(mapper.mapEntityToDbModel(passwordEntity))
+            recordDao.deleteRecord(id)//recordEntityMapper.mapEntityToDbModel(passwordEntity))
         } catch (_: Exception){
 
         }

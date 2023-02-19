@@ -6,7 +6,6 @@ data class RecordEntity(
     var id:UUID = UUID.fromString("1-1-1-1-1"),
     var name:String = "",
     var login: String = "",
-    var nonce: String = "",
     var userId: String = "",
     var isfavorite: Boolean,
     var encrypted_password: String = "",
@@ -14,7 +13,7 @@ data class RecordEntity(
     val creationTime: String = "",
 ){
     override fun toString(): String {
-        return "RecordEntity(id=$id, name='$name', login='$login', nonce='$nonce', userId='$userId', isfavorite=$isfavorite, encrypted_password='$encrypted_password', editedTime='$editedTime', creationTime='$creationTime')"
+        return "RecordEntity(id=$id, name='$name', login='$login', userId='$userId', isfavorite=$isfavorite, encrypted_password='$encrypted_password', editedTime='$editedTime', creationTime='$creationTime')"
     }
 }
 

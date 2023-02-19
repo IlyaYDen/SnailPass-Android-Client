@@ -87,11 +87,12 @@ class UserRepositoryImpl @Inject constructor(
             val credentials: String = Credentials.basic(user.email,encodedString)
             val request = serverApi.getLogin(credentials)
             token.token = request.token
+            Log.d("MYLOG_test","getloginAccess "+ encodedString)
 
             val request2 = serverApi.getUser()
 
 
-            Log.d("MYLOG_test","getloginAccess "+ encodedString + " - "+ request2.toString())
+            Log.d("MYLOG_test","getloginAccess "+ request2.toString())
             userEntityAuth.id = request2.id
             dao.addUser(
                 UserEntityMapper.mapEntityToDbModel(

@@ -1,5 +1,6 @@
 package com.example.snailpasswordmanager.presentation.mainscreen
 
+import android.accounts.Account
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.databinding.ActivityRecordListBinding
 import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
+import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoActivity
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -44,6 +46,7 @@ class MainListActivity @Inject constructor(
         //    }
         //}
         viewModel.getPasswords()
+        viewModel.getAddFields()
 
     }
 
@@ -64,7 +67,6 @@ class MainListActivity @Inject constructor(
         //    intent.getStringExtra("MASTER_HASH").toString() // TODO
 
         viewModel.passwordListEdited.onEach {
-            Log.d("MYLOG_test","test adapter " + viewModel.passwordListEdited.value.size)
             adapter.setPasswords(viewModel.passwordListEdited.value)
         }.launchIn(lifecycleScope)
 
@@ -78,13 +80,19 @@ class MainListActivity @Inject constructor(
         bindingClass.ButtonAdd.setOnClickListener {
 
 
+            //launcher?.launch(Intent(this,AccountInfoActivity::class.java))
+            val intent = Intent(this, AccountInfoActivity::class.java).apply {
+                putExtra("NEW", true)
+                putExtra("MODE", false)
 
-            //launcher?.launch(Intent(this,PasswordItemActivity::class.java))
-            //val intent = Intent(this, PasswordItemActivity::class.java).apply {
-            //    putExtra("NEW", true)
-            //}
-//
-            //startActivity(intent)
+            }
+            startActivity(intent)
+            /*
+            launcher?.launch(Intent(this,PasswordItemActivity::class.java))
+            val intent = Intent(this, PasswordItemActivity::class.java).apply {
+                putExtra("NEW", true)
+            }
+            startActivity(intent)*/
 
         }
     }

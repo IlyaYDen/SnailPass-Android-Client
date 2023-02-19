@@ -1,8 +1,11 @@
 package com.example.snailpasswordmanager.data.retrofit2
 
+import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
+import retrofit2.Call
 import retrofit2.http.*
 import java.util.*
 
@@ -24,13 +27,39 @@ interface ServerApi {
     suspend fun addRecord(@Body data: AddRecord)
 
     @Headers("Content-Type: application/json;charset=UTF-8")
+    @PATCH("/records")
+    suspend fun editRecord(@Body data: Record)
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
     @HTTP(method = "DELETE", path = "/records", hasBody = true)
     suspend fun deleteRecord(@Query("id") data: String)
 
     @Headers("Content-Type: application/json;charset=UTF-8")
     @GET("/records")
     suspend fun getRecords() : List<Record>?
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @GET("/additional_fields")
+    suspend fun getAdditionalFields(@Query("id") id : String) : List<RecordAddFieldEntity>?
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/additional_fields")
+    suspend fun postAdditionalFields(@Body field:RecordAddFieldEntity)// : Call<JsonObject>?
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @PATCH("/additional_fields")
+    suspend fun editAdditionalFields(@Body field:RecordAddFieldEntity)// : Call<JsonObject>?
+
 }
+
+//data class AdditionalField(
+//    val id : UUID,
+//    val field_name : String,
+//    val value:String,
+//    val nonce:String,
+//    val record_id:UUID
+//)
+
 //todo
 data class Registration(
     val id: UUID,
@@ -46,7 +75,7 @@ data class Record constructor(
     val creation_time: String,
     @SerializedName("update_time")
     val edited_time: String,
-    val nonce: String,
+    //val nonce: String,
     val encrypted_password: String,
     val id: String,
     val is_deleted: Boolean = false,
@@ -56,7 +85,7 @@ data class Record constructor(
     val user_id: String
 ){
     override fun toString(): String {
-        return "Record(creation_time='$creation_time', update_time='$edited_time', nonce='$nonce', encrypted_password='$encrypted_password', id='$id', is_deleted=$is_deleted, is_favorite=$is_favorite, login='$login', name='$name', user_id='$user_id')"
+        return "Record(creation_time='$creation_time', update_time='$edited_time', encrypted_password='$encrypted_password', id='$id', is_deleted=$is_deleted, is_favorite=$is_favorite, login='$login', name='$name', user_id='$user_id')"
     }
 }
 
@@ -65,5 +94,5 @@ data class AddRecord(
     val login: String,
     val name: String,
     val encrypted_password: String,
-    val nonce: String
+    //val nonce: String
 )

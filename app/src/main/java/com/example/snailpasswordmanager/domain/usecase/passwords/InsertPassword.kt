@@ -1,6 +1,7 @@
 package com.example.snailpasswordmanager.domain.usecase.passwords
 
 import android.os.Build
+import android.util.Base64
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
@@ -8,7 +9,7 @@ import com.example.snailpasswordmanager.domain.model.InvalidRecordException
 import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.RecordListRepository
-import java.util.*
+
 
 import javax.inject.Inject
 
@@ -26,30 +27,27 @@ class InsertPassword @Inject constructor(
         if(passwordEntity.encrypted_password.isBlank())
             throw InvalidRecordException("The password can't be empty.")
 
-        val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789+=-"
-        val t =
-            (0..15)
-                .map { charset.random() }
-                .joinToString("")
-        Log.d("MYLOG_nonce",t)
-        Log.d("MYLOG_auth",userEntityAuth.email)
-        Log.d("MYLOG_auth",userEntityAuth.password)
-
-        val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
 
 
-        val login = AESUtil.encrypt(passwordEntity.login.toByteArray(), masterpass, t.toByteArray()) // 32 length Key authInfo.hash2
-        val name = AESUtil.encrypt(passwordEntity.name.toByteArray(), masterpass, t.toByteArray()) // 32 length Key
-        val encrypted_password = AESUtil.encrypt(passwordEntity.encrypted_password.toByteArray(), masterpass, t.toByteArray()) // 32 length Key
+        val masterpass = Base64.decode(userEntityAuth.password.toByteArray(),0)
 
-        Log.d("MYLOG_testE",userEntityAuth.password + " - " + String(masterpass))
+        val loginNonce = nonceGen()
+        val login = AESUtil.encrypt(passwordEntity.login.toByteArray(), masterpass, loginNonce.toByteArray()) // 32 length Key authInfo.hash2
+
+        val nameNonce = nonceGen()
+        val name = AESUtil.encrypt(passwordEntity.name.toByteArray(), masterpass, nameNonce.toByteArray()) // 32 length Key
+
+        val encrypted_passwordNonce = nonceGen()
+        val encrypted_password = AESUtil.encrypt(passwordEntity.encrypted_password.toByteArray(), masterpass, encrypted_passwordNonce.toByteArray()) // 32 length Key
+
+        Log.d("MYLOG_testE",passwordEntity.id.toString())
 
         recordListRepository.insertRecord(RecordEntity(
             id = passwordEntity.id,
-            name = String(name).replace("\n",""),//todo
-            login = String(login).replace("\n",""),//todo
-            nonce = t,
-            encrypted_password = String(encrypted_password).replace("\n",""),//todo
+            name = String(name).replace("\n","")                                + ":" + nameNonce,//todo
+            login = String(login).replace("\n","")                              + ":" + loginNonce,//todo
+            //nonce = t,
+            encrypted_password = String(encrypted_password).replace("\n","")    + ":" + encrypted_passwordNonce,//todo
             editedTime = passwordEntity.editedTime,
             creationTime = passwordEntity.creationTime,
             userId = userEntityAuth.id.toString(),
@@ -57,4 +55,8 @@ class InsertPassword @Inject constructor(
         ))
 
     }
+    val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789+=-"
+    fun nonceGen() = (0..15)
+            .map { charset.random() }
+            .joinToString("")
 }

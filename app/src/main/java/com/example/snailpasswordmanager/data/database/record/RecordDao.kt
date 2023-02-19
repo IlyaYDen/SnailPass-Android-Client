@@ -3,6 +3,7 @@ package com.example.snailpasswordmanager.data.database.record
 import androidx.room.*
 import com.example.snailpasswordmanager.data.model.RecordEntityDbModel
 import kotlinx.coroutines.flow.Flow
+import java.util.*
 
 @Dao
 interface RecordDao{
@@ -15,7 +16,8 @@ interface RecordDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRecord(recordEntityDbModel: RecordEntityDbModel)
 
-    @Delete
-    suspend fun deleteRecord(recordEntityDbModel: RecordEntityDbModel)
+    //@Delete
+    @Query("DELETE FROM passwords WHERE id = :id")
+    suspend fun deleteRecord(id : UUID)//(recordEntityDbModel: RecordEntityDbModel)
 
 }

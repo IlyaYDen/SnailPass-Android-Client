@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.util.*
 import javax.inject.Inject
+import kotlin.math.log
 
 class GetPasswordList @Inject constructor(
     private val passwordListRepository: RecordListRepository,
@@ -30,25 +31,26 @@ class GetPasswordList @Inject constructor(
                 val list = emptyList<RecordEntity>().toMutableList()
 
                 for(r in it){
-                    Log.d("MYLOG_test" , r.userId)
-                    Log.d("MYLOG_test" , userEntityAuth.id.toString())
                     if(r.userId == userEntityAuth.id.toString()) {
 
 
                         val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
 
                         //val login = AESUtil.decrypt("ow8nOksC84lKh/ACg4CZdQ==".toByteArray(), authInfo.hash2, "tttttttttttttttt".toByteArray())
-                        val login = AESUtil.decrypt(r.login.toByteArray(), masterpass, r.nonce.toByteArray())
-                        Log.d("MYLOG_test2","GetPasswordList LOGiN")
-                        val name = AESUtil.decrypt(r.name.toByteArray(), masterpass, r.nonce.toByteArray())
-                        Log.d("MYLOG_test2","GetPasswordList")
-                        val encrypted_password = AESUtil.decrypt(r.encrypted_password.toByteArray(), masterpass, r.nonce.toByteArray())
+                        val logins = r.login.split(":")
+                        val login = AESUtil.decrypt(logins[0].toByteArray(), masterpass, logins[1].toByteArray())
+                        //Log.d("MYLOG_test2","GetPasswordList LOGiN")
+                        val names = r.name.split(":")
+                        val name = AESUtil.decrypt(names[0].toByteArray(), masterpass, names[1].toByteArray())
+                        //Log.d("MYLOG_test2","GetPasswordList")
+                        val encrypted_passwords = r.encrypted_password.split(":")
+                        val encrypted_password = AESUtil.decrypt(encrypted_passwords[0].toByteArray(), masterpass, encrypted_passwords[1].toByteArray())
 
                         list.add(RecordEntity(
                             id = r.id,
                             name = String(name),
                             login = String(login),
-                            nonce = r.nonce,
+                            //nonce = r.nonce,
                             encrypted_password = String(encrypted_password),
                             editedTime = r.editedTime,
                             creationTime = r.creationTime,

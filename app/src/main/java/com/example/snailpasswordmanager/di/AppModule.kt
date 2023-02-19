@@ -2,6 +2,7 @@ package com.example.snailpasswordmanager.di
 
 import android.app.Application
 import android.content.Context
+import com.example.snailpasswordmanager.domain.usecase.additionalFields.FieldUseCases
 import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
 import com.example.snailpasswordmanager.presentation.login.LoginViewModel
@@ -31,8 +32,8 @@ class AppModule(val context: Context) {
 
     @Provides
     @Singleton
-    fun provideMainListViewModel(passwordUseCases: PasswordUseCases): MainListViewModel {
-        return MainListViewModel(passwordUseCases)
+    fun provideMainListViewModel(passwordUseCases: PasswordUseCases, fieldUseCases: FieldUseCases): MainListViewModel {
+        return MainListViewModel(passwordUseCases,fieldUseCases)
     }
     @Provides
     @Singleton

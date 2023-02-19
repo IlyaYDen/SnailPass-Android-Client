@@ -1,5 +1,6 @@
 package com.example.snailpasswordmanager.di
 
+import com.example.snailpasswordmanager.Config
 import com.example.snailpasswordmanager.data.retrofit2.*
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import dagger.Module
@@ -25,7 +26,7 @@ class RetrofitModule {
             .build()
 
         return Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:5000")//todo
+            .baseUrl("http://"+Config.ADRESS + ":" + Config.PORT)//todo
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

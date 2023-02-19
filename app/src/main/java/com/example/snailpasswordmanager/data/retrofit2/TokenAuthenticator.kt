@@ -3,6 +3,7 @@ package com.example.snailpasswordmanager.data.retrofit2
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.Config
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.google.gson.Gson
 import okhttp3.*
@@ -18,7 +19,7 @@ class TokenAuthenticator constructor(
         Log.d("MYLOG_testT","TokenAuthenticator")
         val credentials: String = Credentials.basic(userEntityAuth.email,userEntityAuth.password)
         val request = Request.Builder()
-            .url("http://10.0.2.2:5000/login")
+            .url("http://"+ Config.ADRESS + ":" + Config.PORT + "/login")
             .get()
             .header("Authorization", credentials)
             .build()
