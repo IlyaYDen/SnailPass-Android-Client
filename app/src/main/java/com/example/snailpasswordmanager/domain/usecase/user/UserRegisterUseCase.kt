@@ -18,7 +18,7 @@ class UserRegisterUseCase (
         val password = userEntity.password
         val salt = userEntity.email
 
-        val iterations = 100_000
+        val iterations = 120_000
         val keyLength = 256
 
         val hashedBytes: ByteArray = Hash.hashPassword(password.toCharArray(), salt.toByteArray(), iterations, keyLength)

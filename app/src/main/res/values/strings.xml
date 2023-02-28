@@ -30,5 +30,8 @@
     <string name="add_button">Add Element</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
+    <string name="EmptyList">Store your passwords for any services</string>
+    <string name="key">key</string>
+    <string name="value">value</string>
 
 </resources>

@@ -51,7 +51,7 @@ class InsertPassword @Inject constructor(
             editedTime = passwordEntity.editedTime,
             creationTime = passwordEntity.creationTime,
             userId = userEntityAuth.id.toString(),
-            isfavorite = false
+            isfavorite = passwordEntity.isfavorite
         ))
 
     }

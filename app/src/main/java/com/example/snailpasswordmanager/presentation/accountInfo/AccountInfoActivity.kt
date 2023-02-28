@@ -1,27 +1,26 @@
 package com.example.snailpasswordmanager.presentation.accountInfo
 
-import android.content.Context
-import android.opengl.Visibility
+import android.R
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.databinding.ActivityAccountInfoListBinding
-import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
+import com.example.snailpasswordmanager.domain.model.RecordEntity
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
-import kotlin.math.log
+
 
 class AccountInfoActivity: AppCompatActivity() {
 
@@ -41,11 +40,15 @@ class AccountInfoActivity: AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_account_info_list)
+        //setContentView(R.layout.activity_account_info_list)x
 
         bindingClass = /*ActivityMainListBinding*/ActivityAccountInfoListBinding.inflate(layoutInflater)
 
         setContentView(bindingClass.root)
+        val toolbar: Toolbar = bindingClass.toolbar2
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setTitle("Account");
 
 
         bindingClass.apply {
@@ -101,6 +104,7 @@ class AccountInfoActivity: AppCompatActivity() {
                 )
             )
             vm.getAddFields(id) //id
+
             vm.fieldListEdited.onEach {
                 if(!it.isEmpty()) {
                     Log.d("test", it[0].value)
@@ -229,25 +233,32 @@ class AccountInfoActivity: AppCompatActivity() {
         Log.d("test----",list.size.toString())
         //list.addAll(adapter.list.subList(3, adapter.list.size))
         bindingClass.ButtonAddField.setOnClickListener {
-
-
-            //list.clear()
-            //list.addAll(adapter.list)
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
                     field_name = "",
                     value = "",
-                    //nonce = "",
                     record_id = id
                 )
             )
-            Log.d("test--",list.size.toString())
-            adapter.list = list
-            for(l in adapter.list) println("test log input " + l.field_name + " : " + l.value)
-            //adapter.addEmptyElement(id)
+            //adapter.list = list
+            adapter.addList(RecordAddFieldEntity(
+                id = UUID.randomUUID(),
+                field_name = "",
+                value = "",
+                record_id = id
+            ))
         }
 
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.getItemId()) {
+            R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

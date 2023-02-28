@@ -81,7 +81,6 @@
 
     <Button
         android:transitionName="snail_SignUp_Button"
-
         android:id="@+id/l_registration_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

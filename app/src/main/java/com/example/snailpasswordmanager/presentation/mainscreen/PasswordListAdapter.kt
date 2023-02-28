@@ -4,31 +4,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.content.Intent
+import android.util.Log
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.databinding.RecordListItemBinding
 import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoActivity
+import java.util.*
+import kotlin.collections.ArrayList
 
-class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItemViewHolder>() {
+class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItemViewHolder>(),
+    Filterable {
 
     var list = ArrayList<RecordEntity>()
-    set(value) {
-        field.clear()
-        field.addAll(value)
-        notifyDataSetChanged()
-    }
-
+    var listSearch = ArrayList<RecordEntity>()
     fun setPasswords(li: List<RecordEntity>) {
         list.clear()
         list.addAll(li)
+        listSearch.clear()
+        listSearch.addAll(li)
         notifyDataSetChanged()
     }
 
-    fun addPassword(passwordEntity : RecordEntity){
-        list.add(passwordEntity)
-        notifyDataSetChanged()
-    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordItemViewHolder {
         //TODO("Not yet implemented")
         val view = LayoutInflater.from(parent.context).inflate(
@@ -41,17 +40,17 @@ class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItem
 
     override fun onBindViewHolder(holder: PasswordItemViewHolder, position: Int) {
         //TODO("Not yet implemented")
-        holder.bind(list.get(position))
+        holder.bind(listSearch.get(position))
 
         holder.itemView.setOnClickListener {
 
 
             val intent = Intent(holder.itemView.context, AccountInfoActivity::class.java).apply {
                 putExtra("MODE", true)
-                putExtra("SERVICE", list.get(position).name)
-                putExtra("LOGIN", list.get(position).login)
-                putExtra("PASSWORD", list.get(position).encrypted_password)
-                putExtra("ID", list.get(position).id)
+                putExtra("SERVICE", listSearch.get(position).name)
+                putExtra("LOGIN", listSearch.get(position).login)
+                putExtra("PASSWORD", listSearch.get(position).encrypted_password)
+                putExtra("ID", listSearch.get(position).id)
             }
 
             holder.itemView.context.startActivity(intent)
@@ -74,7 +73,7 @@ class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItem
 
 
     override fun getItemCount(): Int {
-        return list.size
+        return listSearch.size
         //TODO("Not yet implemented")
     }
 
@@ -87,4 +86,33 @@ class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItem
             serviceName.text = passwordEntity.name
         }
     }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val query = constraint?.toString()?.toLowerCase(Locale.getDefault())
+
+
+                val filteredList = if (query.isNullOrEmpty()) {
+                    list
+                } else {
+                    Log.d("test",query)
+                    list.filter {
+                        it.name.toLowerCase(Locale.getDefault()).contains(query)
+                        //it.toLowerCase(Locale.getDefault()).contains(query)
+                    }
+                }
+
+                val results = FilterResults()
+                results.values = filteredList
+                return results
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                listSearch = results?.values as ArrayList<RecordEntity>
+                notifyDataSetChanged()
+            }
+        }
+    }
+
 }

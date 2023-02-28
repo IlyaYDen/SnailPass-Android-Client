@@ -1,21 +1,23 @@
 package com.example.snailpasswordmanager.presentation.mainscreen
 
-import android.accounts.Account
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.View
+import android.widget.SearchView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.PasswordApp
+import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.databinding.ActivityRecordListBinding
-import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
 import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoActivity
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -50,6 +52,29 @@ class MainListActivity @Inject constructor(
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main,menu)
+
+        val searchItem = menu?.findItem(R.id.app_bar_search)
+        val searchView = searchItem?.actionView as SearchView
+        searchView.queryHint = "Search"
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Perform search
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Do something when the search text changes
+                adapter.filter.filter(newText)
+                return true
+            }
+        })
+        searchView.setQuery("", false) // Set a default query
+
+        return true// super.onCreateOptionsMenu(menu)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingClass = /*ActivityMainListBinding*/ActivityRecordListBinding.inflate(layoutInflater)
@@ -71,6 +96,24 @@ class MainListActivity @Inject constructor(
         }.launchIn(lifecycleScope)
 
 
+        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                super.onChanged()
+
+                if(!adapter.list.isEmpty()){
+                    bindingClass.linearLayout.visibility = View.GONE
+                }
+                else {
+                    bindingClass.linearLayout.visibility = View.VISIBLE
+
+                }
+            }
+        })
+
+
+        val toolbar: Toolbar = bindingClass.toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Main List");
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 //result: ActivityResult ->

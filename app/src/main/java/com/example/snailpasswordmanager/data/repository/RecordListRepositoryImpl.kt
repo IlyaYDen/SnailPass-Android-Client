@@ -1,9 +1,7 @@
 package com.example.snailpasswordmanager.data.repository
 
 import android.util.Log
-import com.example.snailpasswordmanager.data.database.record.RecordAddFieldDao
 import com.example.snailpasswordmanager.data.database.record.RecordDao
-import com.example.snailpasswordmanager.data.model.RecordAddFieldEntityMapper
 import com.example.snailpasswordmanager.data.model.RecordEntityMapper
 import com.example.snailpasswordmanager.data.retrofit2.*
 import com.example.snailpasswordmanager.domain.model.RecordEntity
@@ -25,6 +23,7 @@ class RecordListRepositoryImpl @Inject constructor(
         try {
             val records = serverApi.getRecords()//token.token
 
+            recordDao.deleteRecords();
 
             if (records != null) {
                 records.map {
@@ -37,7 +36,7 @@ class RecordListRepositoryImpl @Inject constructor(
                                 id = UUID.fromString(it.id),
                                 name = it.name,
                                 login = it.login,
-                                encrypted_password = it.encrypted_password,
+                                encrypted_password = it.password,
                                 editedTime = it.edited_time,
                                 creationTime = it.creation_time,
                                 //nonce = it.nonce,
@@ -47,9 +46,14 @@ class RecordListRepositoryImpl @Inject constructor(
                         )
                     )
                 }
+
             }
         } catch (e : HttpException) {
             Log.d("MYLOG_testER","FAIL serverApi.getRecords()")
+            if(e.code() == 404){
+
+                recordDao.deleteRecords();
+            }
             return flow { null }
         }
             catch (e : Exception){
@@ -89,6 +93,7 @@ class RecordListRepositoryImpl @Inject constructor(
                     passwordEntity.login,
                     passwordEntity.name,
                     passwordEntity.encrypted_password,
+                    is_favorite = passwordEntity.isfavorite
                     //passwordEntity.nonce
                 )
             )
@@ -110,7 +115,7 @@ class RecordListRepositoryImpl @Inject constructor(
                 Record(
                     creation_time = "",
                     edited_time= "",
-                    encrypted_password = passwordEntity.encrypted_password,
+                    password = passwordEntity.encrypted_password,
                     id = passwordEntity.id.toString(),
                     is_deleted = false,
                     is_favorite = false,

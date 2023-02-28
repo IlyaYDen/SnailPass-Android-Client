@@ -29,12 +29,10 @@ class UserLoginUseCase(
         val keyLength = 256
 
         val hashedBytes: ByteArray = Hash.hashPassword(password.toCharArray(), salt.toByteArray(), iterations, keyLength)
-
         val encodedString: String = Base64.getEncoder().encodeToString(hashedBytes)
 
-        //Log.d("MYLOG_login", userEntity.email)
-        Log.d("MYLOG_login", encodedString)
-        //Log.d("MYLOG_login", String(hashedBytes))
+        val hashedBytes2: ByteArray = Hash.hashPassword(password.toCharArray(), salt.toByteArray(), 120_000, keyLength)
+        val encodedString2: String = Base64.getEncoder().encodeToString(hashedBytes2)
 
         userEntityAuth.id = userEntity.id
         userEntityAuth.email = userEntity.email
@@ -42,9 +40,8 @@ class UserLoginUseCase(
         userEntityAuth.hint = userEntity.hint
         userEntityAuth.isAdmin = userEntity.isAdmin
 
-        Log.d("MYLOG_authEntity", "UserLoginUseCase: " + userEntityAuth.toString())
         return userRepository.getloginAccess(
-            userEntity,encodedString
+            userEntity,encodedString2
         )
     }
 }

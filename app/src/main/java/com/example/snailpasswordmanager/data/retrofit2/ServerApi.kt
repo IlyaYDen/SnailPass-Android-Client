@@ -3,9 +3,7 @@ package com.example.snailpasswordmanager.data.retrofit2
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
-import retrofit2.Call
 import retrofit2.http.*
 import java.util.*
 
@@ -27,7 +25,7 @@ interface ServerApi {
     suspend fun addRecord(@Body data: AddRecord)
 
     @Headers("Content-Type: application/json;charset=UTF-8")
-    @PATCH("/records")
+    @PUT("/records")
     suspend fun editRecord(@Body data: Record)
 
     @Headers("Content-Type: application/json;charset=UTF-8")
@@ -47,20 +45,11 @@ interface ServerApi {
     suspend fun postAdditionalFields(@Body field:RecordAddFieldEntity)// : Call<JsonObject>?
 
     @Headers("Content-Type: application/json;charset=UTF-8")
-    @PATCH("/additional_fields")
+    @PUT("/additional_fields")
     suspend fun editAdditionalFields(@Body field:RecordAddFieldEntity)// : Call<JsonObject>?
 
 }
 
-//data class AdditionalField(
-//    val id : UUID,
-//    val field_name : String,
-//    val value:String,
-//    val nonce:String,
-//    val record_id:UUID
-//)
-
-//todo
 data class Registration(
     val id: UUID,
     val email: String,
@@ -76,7 +65,7 @@ data class Record constructor(
     @SerializedName("update_time")
     val edited_time: String,
     //val nonce: String,
-    val encrypted_password: String,
+    val password: String,
     val id: String,
     val is_deleted: Boolean = false,
     val is_favorite: Boolean = false,
@@ -85,7 +74,7 @@ data class Record constructor(
     val user_id: String
 ){
     override fun toString(): String {
-        return "Record(creation_time='$creation_time', update_time='$edited_time', encrypted_password='$encrypted_password', id='$id', is_deleted=$is_deleted, is_favorite=$is_favorite, login='$login', name='$name', user_id='$user_id')"
+        return "Record(creation_time='$creation_time', update_time='$edited_time', encrypted_password='$password', id='$id', is_deleted=$is_deleted, is_favorite=$is_favorite, login='$login', name='$name', user_id='$user_id')"
     }
 }
 
@@ -93,6 +82,8 @@ data class AddRecord(
     val id: String,
     val login: String,
     val name: String,
-    val encrypted_password: String,
+    val password: String,
+    val is_favorite: Boolean,
+    val is_deleted: Boolean = false,
     //val nonce: String
 )
