@@ -1,4 +1,4 @@
-package com.example.snailpasswordmanager.presentation.mainscreen
+package com.example.snailpasswordmanager.presentation.recordList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +15,7 @@ import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoActi
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItemViewHolder>(),
+class RecordListAdapter: RecyclerView.Adapter<RecordListAdapter.PasswordItemViewHolder>(),
     Filterable {
 
     var list = ArrayList<RecordEntity>()

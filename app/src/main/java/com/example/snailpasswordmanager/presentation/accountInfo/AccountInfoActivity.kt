@@ -11,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.databinding.ActivityAccountInfoListBinding
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
@@ -260,6 +262,7 @@ class AccountInfoActivity: AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 
 }
 

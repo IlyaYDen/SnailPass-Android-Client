@@ -18,16 +18,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.accountInfo.AccountInfoActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true"
+            android:name=".presentation.mainActivity.MainActivity"
+            android:exported="true">
 
-        >
         </activity>
         <activity
-            android:name=".presentation.mainscreen.MainListActivity"
+            android:name=".presentation.accountInfo.AccountInfoActivity"
             android:exported="true"
-            android:label="Main Content List" />
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
         <activity
             android:name=".presentation.registration.RegistrationActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -35,7 +35,6 @@
             android:name=".presentation.login.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
-
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

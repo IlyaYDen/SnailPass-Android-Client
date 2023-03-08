@@ -47,3 +47,10 @@ build/
 app/build/
 app/src/androidTest/
 app/src/test/
+
+
+/app/src/main/java/com/example/snailpasswordmanager/Config.kt
+/.idea/libraries/Gradle__androidx_navigation_navigation_fragment_2_5_3_aar.xml
+/.idea/libraries/Gradle__androidx_navigation_navigation_fragment_ktx_2_5_3_aar.xml
+/app/src/main/java/test.kt
+/app/src/main/res/values-v23/themes.xml

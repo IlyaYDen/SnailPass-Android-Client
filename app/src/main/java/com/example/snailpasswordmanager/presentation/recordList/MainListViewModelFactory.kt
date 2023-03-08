@@ -1,4 +1,4 @@
-package com.example.snailpasswordmanager.presentation.mainscreen
+package com.example.snailpasswordmanager.presentation.recordList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -38,5 +38,7 @@
     <string name="Accounts">Accounts</string>
     <string name="Notes">Notes</string>
     <string name="accounts">Accounts</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Will be added in the next update :)</string>
 
 </resources>

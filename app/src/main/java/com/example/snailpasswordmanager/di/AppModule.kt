@@ -6,7 +6,7 @@ import com.example.snailpasswordmanager.domain.usecase.additionalFields.FieldUse
 import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
 import com.example.snailpasswordmanager.presentation.login.LoginViewModel
-import com.example.snailpasswordmanager.presentation.mainscreen.MainListViewModel
+import com.example.snailpasswordmanager.presentation.recordList.MainListViewModel
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

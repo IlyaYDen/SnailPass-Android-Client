@@ -7,7 +7,6 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Pair
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,14 +18,12 @@ import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.PreferenceKeys
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.domain.model.UserEntity
-import com.example.snailpasswordmanager.presentation.mainscreen.MainListActivity
+import com.example.snailpasswordmanager.presentation.mainActivity.MainActivity
 import com.example.snailpasswordmanager.presentation.registration.RegistrationActivity
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.util.*
 import javax.inject.Inject
 
@@ -101,7 +98,7 @@ class LoginActivity : AppCompatActivity() {
             .onEach {
 
                 if(it){
-                    val intent = Intent(this, MainListActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     //t.edit().putString(PreferenceKeys.EMAIL,userEntity.email).apply()
                     //t.edit().putString(PreferenceKeys.HASH_MASTER_PASSWORD,it.first).apply()
                     //t.edit().putString(PreferenceKeys.TOKEN,it.second).apply()

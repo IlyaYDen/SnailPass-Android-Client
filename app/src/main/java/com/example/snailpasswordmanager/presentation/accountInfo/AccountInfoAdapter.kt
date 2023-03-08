@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
@@ -51,7 +52,6 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
         else
             LayoutInflater.from(parent.context).inflate(R.layout.record_info_list_item_password, parent, false)
 
-        Log.d("test",viewType.toString())
 
         return AccountItemViewHolder(view)
     }
@@ -91,4 +91,7 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
         val value = view.findViewById<TextView>(R.id.textView2)
         val valueView = view.findViewById<TextInputLayout>(R.id.username_text_input_layout)
     }
+
+
 }
+

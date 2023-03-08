@@ -20,9 +20,5 @@
         android:id="@+id/menuNotes"
         android:title="@string/Notes"
         />
-    <item
-        android:id="@+id/menuProfile"
-        android:title="@string/profile"
-        />
 
 </menu>
