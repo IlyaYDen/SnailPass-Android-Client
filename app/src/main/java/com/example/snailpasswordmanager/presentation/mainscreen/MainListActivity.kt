@@ -3,14 +3,18 @@ package com.example.snailpasswordmanager.presentation.mainscreen
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
-import android.widget.SearchView
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView.OnEditorActionListener
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,27 +57,36 @@ class MainListActivity @Inject constructor(
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main,menu)
 
-        val searchItem = menu?.findItem(R.id.app_bar_search)
-        val searchView = searchItem?.actionView as SearchView
+
+        //menuInflater.inflate(R.menu.menu_main, menu)
+
+        val searchView = bindingClass.searchView
         searchView.queryHint = "Search"
+        searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                // Do something when the search view gains focus
+                Log.d("test", "Search view gained focus")
+            }
+        }
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Perform search
+                Log.d("test","testttt")
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Do something when the search text changes
+                Log.d("test","testttt2")
                 adapter.filter.filter(newText)
                 return true
             }
+
         })
         searchView.setQuery("", false) // Set a default query
 
-        return true// super.onCreateOptionsMenu(menu)
+        return true
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,8 +101,12 @@ class MainListActivity @Inject constructor(
             .get(MainListViewModel::class.java)
 
         init()
-        //masterHash =
-        //    intent.getStringExtra("MASTER_HASH").toString() // TODO
+
+        val drawerLayout : DrawerLayout = bindingClass.drawerLayout
+        val menuImage = bindingClass.imageMenu
+        menuImage.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+            }
 
         viewModel.passwordListEdited.onEach {
             adapter.setPasswords(viewModel.passwordListEdited.value)
@@ -111,9 +128,9 @@ class MainListActivity @Inject constructor(
         })
 
 
-        val toolbar: Toolbar = bindingClass.toolbar
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = "Accounts"
+        //val toolbar: LinearLayout = bindingClass.toolbar
+        //setSupportActionBar(toolbar)
+        //supportActionBar?.title = "Accounts"
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 //result: ActivityResult ->
@@ -138,7 +155,36 @@ class MainListActivity @Inject constructor(
             startActivity(intent)*/
 
         }
+        searchFun()
     }
+
+    //dddd@ddd.ddd
+    private fun searchFun() {
+        val searchView = bindingClass.searchView
+        searchView.queryHint = "Search"
+        searchView.setOnCloseListener{
+            bindingClass.nameToolbar.visibility = View.VISIBLE
+            return@setOnCloseListener false
+        }
+
+        searchView.setOnSearchClickListener {
+            bindingClass.nameToolbar.visibility = View.GONE
+
+        }
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return true
+            }
+
+        })
+        searchView.setQuery("", false) // Set a default query
+    }
+
     private fun init() {
         bindingClass.apply {
             rcView.layoutManager = LinearLayoutManager(this@MainListActivity)

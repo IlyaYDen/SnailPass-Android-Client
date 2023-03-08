@@ -33,5 +33,10 @@
     <string name="EmptyList">Store your passwords for any services</string>
     <string name="key">key</string>
     <string name="value">value</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
+    <string name="Accounts">Accounts</string>
+    <string name="Notes">Notes</string>
+    <string name="accounts">Accounts</string>
 
 </resources>

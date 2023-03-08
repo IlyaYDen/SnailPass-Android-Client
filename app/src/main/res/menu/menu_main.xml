@@ -2,11 +2,27 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
+
+    <!--item
         android:id="@+id/app_bar_search"
         android:icon="@drawable/baseline_search_24"
-        android:title="Search"
+        android:title="@string/search"
         
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always"/>
+        app:showAsAction="always"/-->
+
+
+    <item
+        android:id="@+id/menuAccounts"
+        android:title="@string/Accounts"
+        />
+    <item
+        android:id="@+id/menuNotes"
+        android:title="@string/Notes"
+        />
+    <item
+        android:id="@+id/menuProfile"
+        android:title="@string/profile"
+        />
+
 </menu>
