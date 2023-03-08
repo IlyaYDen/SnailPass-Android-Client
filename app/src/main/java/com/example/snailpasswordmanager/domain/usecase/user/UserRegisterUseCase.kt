@@ -23,7 +23,9 @@ class UserRegisterUseCase (
 
         val hashedBytes: ByteArray = Hash.hashPassword(password.toCharArray(), salt.toByteArray(), iterations, keyLength)
 
-        val encodedString: String = Base64.getEncoder().encodeToString(hashedBytes)
+
+        val encodedString = Base64.getEncoder().encodeToString(hashedBytes)
+        //val encodedString: String = Base64.getEncoder().encodeToString(hashedBytes)
 
         //Log.d("MYLOG_test", encodedString)
         val reg = Registration(

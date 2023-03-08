@@ -44,7 +44,7 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
             if (fields != null) {
                 Log.d("test",fields.size.toString())
                 for (field in fields) {
-                    Log.d("test",field.field_name + " : " + field.value)
+                    Log.d("test",field.name + " : " + field.value)
                     fieldDao.addField(fieldEntityMapper.mapEntityToDbModel(field))
                 }
             }

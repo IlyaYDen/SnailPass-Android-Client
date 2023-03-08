@@ -10,7 +10,7 @@ class RecordAddFieldEntityMapper {
         Log.d("MYLOG_test","mapEntityToDbModel")
         return RecordAddFieldEntityDbModel(
             id = recordAddFieldEntity.id.toString(),
-            field_name = recordAddFieldEntity.field_name,
+            name = recordAddFieldEntity.name,
             value = recordAddFieldEntity.value,
             //nonce = recordAddFieldEntity.nonce,
             record_id = recordAddFieldEntity.record_id.toString()
@@ -19,7 +19,7 @@ class RecordAddFieldEntityMapper {
     fun mapDbModelToEntity(recordAddFieldEntity: RecordAddFieldEntityDbModel) : RecordAddFieldEntity{
         return RecordAddFieldEntity(
             id = UUID.fromString(recordAddFieldEntity.id),
-            field_name = recordAddFieldEntity.field_name,
+            name = recordAddFieldEntity.name,
             value = recordAddFieldEntity.value,
             //nonce = recordAddFieldEntity.nonce,
             record_id = UUID.fromString(recordAddFieldEntity.record_id)

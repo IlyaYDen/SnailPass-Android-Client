@@ -16,6 +16,6 @@ data class Encode(
 
         //val login = AESUtil.decrypt("ow8nOksC84lKh/ACg4CZdQ==".toByteArray(), authInfo.hash2, "tttttttttttttttt".toByteArray())
         val split = text.split(":")
-        return String(AESUtil.decrypt(split[0].toByteArray(), masterpass, split[1].toByteArray()))
+        return String(AESUtil.decrypt(Base64.getEncoder().encode(split[0].toByteArray()), masterpass, Base64.getEncoder().encode(split[1].toByteArray())))
     }
 }

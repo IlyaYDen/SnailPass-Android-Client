@@ -17,7 +17,7 @@ class EditField @Inject constructor(
 ) {
     @RequiresApi(Build.VERSION_CODES.O)
     suspend operator fun invoke(subList: MutableList<RecordAddFieldEntity>){
-        var a = 1;
+        var a = 1
         val list : MutableList<RecordAddFieldEntity> = mutableListOf()
         for(t in subList) {
 
@@ -28,7 +28,7 @@ class EditField @Inject constructor(
             list.add(
                 RecordAddFieldEntity(
                     id = t.id,
-                    field_name = t.field_name,
+                    name = t.name,
                     value = String(name)+":"+nonce,
                     record_id = t.record_id
             )
@@ -41,7 +41,7 @@ class EditField @Inject constructor(
     }
 
     val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789+=-"
-    fun nonceGen() = (0..15)
+    fun nonceGen() = (0..16)
         .map { charset.random() }
         .joinToString("")
 }

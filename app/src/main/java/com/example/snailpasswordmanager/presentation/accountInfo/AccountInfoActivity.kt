@@ -47,8 +47,8 @@ class AccountInfoActivity: AppCompatActivity() {
         setContentView(bindingClass.root)
         val toolbar: Toolbar = bindingClass.toolbar2
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
-        supportActionBar?.setTitle("Account");
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Account"
 
 
         bindingClass.apply {
@@ -79,7 +79,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    field_name = "service",
+                    name = "service",
                     value = service!!,
                     //nonce = "-",
                     record_id = id
@@ -88,7 +88,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    field_name = "login",
+                    name = "login",
                     value = login!!,
                     //nonce = "-",
                     record_id = id
@@ -97,7 +97,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    field_name = "password",
+                    name = "password",
                     value = password!!,
                     //nonce = "-",
                     record_id = id
@@ -108,7 +108,7 @@ class AccountInfoActivity: AppCompatActivity() {
             vm.fieldListEdited.onEach {
                 if(!it.isEmpty()) {
                     Log.d("test", it[0].value)
-                    Log.d("test", it[0].field_name)
+                    Log.d("test", it[0].name)
                     adapter.addList(it)
                     list.addAll(it)
                 } else
@@ -166,7 +166,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    field_name = "service",
+                    name = "service",
                     value = "",
                     //nonce = "-",
                     record_id = id
@@ -175,7 +175,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    field_name = "login",
+                    name = "login",
                     value = "",
                     //nonce = "-",
                     record_id = id
@@ -184,7 +184,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    field_name = "password",
+                    name = "password",
                     value = "",
                     //nonce = "-",
                     record_id = id
@@ -236,7 +236,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    field_name = "",
+                    name = "",
                     value = "",
                     record_id = id
                 )
@@ -244,7 +244,7 @@ class AccountInfoActivity: AppCompatActivity() {
             //adapter.list = list
             adapter.addList(RecordAddFieldEntity(
                 id = UUID.randomUUID(),
-                field_name = "",
+                name = "",
                 value = "",
                 record_id = id
             ))
@@ -252,7 +252,7 @@ class AccountInfoActivity: AppCompatActivity() {
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.getItemId()) {
+        return when (item.itemId) {
             R.id.home -> {
                 onBackPressed()
                 true

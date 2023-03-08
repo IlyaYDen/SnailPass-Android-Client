@@ -113,7 +113,7 @@ class MainListActivity @Inject constructor(
 
         val toolbar: Toolbar = bindingClass.toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setTitle("Main List");
+        supportActionBar?.title = "Accounts"
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 //result: ActivityResult ->

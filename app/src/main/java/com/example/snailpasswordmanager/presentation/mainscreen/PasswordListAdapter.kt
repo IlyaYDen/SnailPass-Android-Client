@@ -90,7 +90,7 @@ class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItem
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val query = constraint?.toString()?.toLowerCase(Locale.getDefault())
+                val query = constraint?.toString()?.lowercase(Locale.getDefault())
 
 
                 val filteredList = if (query.isNullOrEmpty()) {
@@ -98,7 +98,7 @@ class PasswordListAdapter: RecyclerView.Adapter<PasswordListAdapter.PasswordItem
                 } else {
                     Log.d("test",query)
                     list.filter {
-                        it.name.toLowerCase(Locale.getDefault()).contains(query)
+                        it.name.lowercase(Locale.getDefault()).contains(query)
                         //it.toLowerCase(Locale.getDefault()).contains(query)
                     }
                 }

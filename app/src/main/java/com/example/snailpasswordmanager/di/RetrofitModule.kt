@@ -1,7 +1,10 @@
 package com.example.snailpasswordmanager.di
 
 import com.example.snailpasswordmanager.Config
-import com.example.snailpasswordmanager.data.retrofit2.*
+import com.example.snailpasswordmanager.data.retrofit2.ServerApi
+import com.example.snailpasswordmanager.data.retrofit2.Token
+import com.example.snailpasswordmanager.data.retrofit2.TokenAuthenticator
+import com.example.snailpasswordmanager.data.retrofit2.TokenInterceptor
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import dagger.Module
 import dagger.Provides
@@ -13,7 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 class RetrofitModule {
-
     @Provides
     fun providerRetrofit(token: Token, userEntityAuth: UserEntity) : ServerApi {
 

@@ -3,8 +3,8 @@
     <style name="Theme.SnailPasswordManager" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!--.DarkActionBar" -->
         <!-- Primary brand color. -->
-
         <!-- Button color. -->
+        <item name="colorPrimaryDark">@color/other_background</item>
         <item name="colorPrimary">@color/ActiveButtonColor</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>

@@ -20,7 +20,7 @@ import kotlin.collections.ArrayList
 class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemViewHolder>() {
 
     //var list = listOf<RecordInfoEntity>()
-    var textboxEditable: Boolean = true;
+    var textboxEditable: Boolean = true
     var list = mutableListOf<RecordAddFieldEntity>()
         set(value) {
             textboxEditable = false
@@ -51,7 +51,7 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
         else
             LayoutInflater.from(parent.context).inflate(R.layout.record_info_list_item_password, parent, false)
 
-        Log.d("test",viewType.toString());
+        Log.d("test",viewType.toString())
 
         return AccountItemViewHolder(view)
     }
@@ -59,7 +59,7 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
     override fun onBindViewHolder(holder: AccountItemViewHolder, position: Int) {
 
         val accountItem = list[position]
-        holder.key.text = accountItem.field_name
+        holder.key.text = accountItem.name
         holder.value.text = accountItem.value
     }*/
 
@@ -67,8 +67,8 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
         val accountItem = list[position]
 
 
-        holder.key.text = accountItem.field_name
-        holder.value.setText(accountItem.value)
+        holder.key.text = accountItem.name
+        holder.value.text = accountItem.value
         holder.value.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}

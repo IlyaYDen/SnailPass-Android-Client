@@ -14,29 +14,50 @@ class TokenAuthenticator constructor(
     var token: Token,
     var userEntityAuth: UserEntity
     ) : Authenticator {
+
+
+    private var mNumTries = 0
+    private val MAX_NUM_TRIES = 3
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun authenticate(route: Route?, response: Response): Request {
-        Log.d("MYLOG_testT","TokenAuthenticator")
-        val credentials: String = Credentials.basic(userEntityAuth.email,userEntityAuth.password)
-        val request = Request.Builder()
-            .url("http://"+ Config.ADRESS + ":" + Config.PORT + "/login")
-            .get()
-            .header("Authorization", credentials)
-            .build()
+        if (mNumTries < MAX_NUM_TRIES) {
+            try {
+                Log.d("MYLOG_testT", "TokenAuthenticator")
+                mNumTries++
+                val credentials: String =
+                    Credentials.basic(userEntityAuth.email, userEntityAuth.password)
+                val request = Request.Builder()
+                    .url("http://" + Config.ADRESS + ":" + Config.PORT + "/login")
+                    .get()
+                    .header("Authorization", credentials)
+                    .build()
 
-        Log.d("MYLOG_testEEA","TokenInterceptor T " + token.token)
-        Log.d("MYLOG_testEEA","TokenInterceptor E " + userEntityAuth.email)
-        Log.d("MYLOG_testEEA","TokenInterceptor P " + userEntityAuth.password)
+                Log.d("MYLOG_testEEA", "TokenInterceptor T " + token.token)
+                Log.d("MYLOG_testEEA", "TokenInterceptor E " + userEntityAuth.email)
+                Log.d("MYLOG_testEEA", "TokenInterceptor P " + userEntityAuth.password)
+                Log.d("MYLOG_testEEA", "TokenInterceptor C " + credentials)
 
-        val loginResponse = OkHttpClient().newCall(request).execute()
-        val jsonBody = loginResponse.body?.string()
-        val tokenResponse = Gson().fromJson(jsonBody, Token::class.java)
-        token.token = tokenResponse.token
+                val loginResponse = OkHttpClient().newCall(request).execute()
+                val jsonBody = loginResponse.body?.string()
+                val tokenResponse = Gson().fromJson(jsonBody, Token::class.java)
+                token.token = tokenResponse.token
 
 
 
-        return response.request.newBuilder()
-            .header("x-access-token", token.token)
+                return response.request.newBuilder()
+                    .header("x-access-token", token.token)
+                    .build()
+            } catch (e: Exception) {
+
+                Log.d("log", "token error")
+                return response.request.newBuilder()
+                    .header("x-access-token", "")
+                    .build()
+            }
+        }
+        else return response.request.newBuilder()
+            .header("x-access-token", "")
             .build()
     }
 

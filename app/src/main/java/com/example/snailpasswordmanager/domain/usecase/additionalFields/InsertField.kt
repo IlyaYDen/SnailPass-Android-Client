@@ -21,22 +21,25 @@ class InsertField @Inject constructor(
 
             val masterpass = Base64.decode(userEntityAuth.password.toByteArray(),0)
             val nonce = nonceGen()
-            val name = AESUtil.encrypt(t.value.toByteArray(),masterpass, nonce.toByteArray())
+            val value = AESUtil.encrypt(t.value.toByteArray(),masterpass, nonce.toByteArray())
+
+            val nonce2 = nonceGen()
+            val name = AESUtil.encrypt(t.name.toByteArray(),masterpass, nonce2.toByteArray())
 
 
             additionalFieldsRepository.insertField(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    field_name = t.field_name,
-                    value = String(name).replace("\n","") + ":"+nonce,
+                    name = String(name).replace("\n","") + ":"+nonce,
+                    value = String(value).replace("\n","") + ":"+nonce,
                     record_id = t.record_id
                 )
             )
         }
-    }
+    }//mail@snail.corp snailsnailsnail
 
     val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789+=-"
-    fun nonceGen() = (0..15)
+    fun nonceGen() = (0..16)
         .map { charset.random() }
         .joinToString("")
 }

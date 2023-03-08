@@ -34,17 +34,25 @@ class GetPasswordList @Inject constructor(
                     if(r.userId == userEntityAuth.id.toString()) {
 
 
+                        //val masterpass = userEntityAuth.password.toByteArray()//Base64.getDecoder().decode(userEntityAuth.password)
                         val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
 
+                        Log.d("test_masterpass", userEntityAuth.password)
                         //val login = AESUtil.decrypt("ow8nOksC84lKh/ACg4CZdQ==".toByteArray(), authInfo.hash2, "tttttttttttttttt".toByteArray())
                         val logins = r.login.split(":")
-                        val login = AESUtil.decrypt(logins[0].toByteArray(), masterpass, logins[1].toByteArray())
+                        Log.d("test",logins[0] + " _ " + logins[1])
+                        //val login = AESUtil.decrypt(logins[0].toByteArray(), masterpass, logins[1].toByteArray())
+                        val login = AESUtil.decrypt(Base64.getDecoder().decode(logins[0].toByteArray()), masterpass, Base64.getDecoder().decode(logins[1].toByteArray()))
+
                         //Log.d("MYLOG_test2","GetPasswordList LOGiN")
                         val names = r.name.split(":")
-                        val name = AESUtil.decrypt(names[0].toByteArray(), masterpass, names[1].toByteArray())
+                        //val name = AESUtil.decrypt(names[0].toByteArray(), masterpass, names[1].toByteArray())
+                        val name = AESUtil.decrypt(Base64.getDecoder().decode(names[0].toByteArray()), masterpass, Base64.getDecoder().decode(names[1].toByteArray()))
                         //Log.d("MYLOG_test2","GetPasswordList")
+
                         val encrypted_passwords = r.encrypted_password.split(":")
-                        val encrypted_password = AESUtil.decrypt(encrypted_passwords[0].toByteArray(), masterpass, encrypted_passwords[1].toByteArray())
+                        //val encrypted_password = AESUtil.decrypt(encrypted_passwords[0].toByteArray(), masterpass, encrypted_passwords[1].toByteArray())
+                        val encrypted_password = AESUtil.decrypt(Base64.getDecoder().decode(encrypted_passwords[0].toByteArray()), masterpass, Base64.getDecoder().decode(encrypted_passwords[1].toByteArray()))
 
                         list.add(RecordEntity(
                             id = r.id,

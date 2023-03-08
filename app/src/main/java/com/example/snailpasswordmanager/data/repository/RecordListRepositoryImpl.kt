@@ -23,7 +23,7 @@ class RecordListRepositoryImpl @Inject constructor(
         try {
             val records = serverApi.getRecords()//token.token
 
-            recordDao.deleteRecords();
+            recordDao.deleteRecords()
 
             if (records != null) {
                 records.map {
@@ -52,7 +52,7 @@ class RecordListRepositoryImpl @Inject constructor(
             Log.d("MYLOG_testER","FAIL serverApi.getRecords()")
             if(e.code() == 404){
 
-                recordDao.deleteRecords();
+                recordDao.deleteRecords()
             }
             return flow { null }
         }

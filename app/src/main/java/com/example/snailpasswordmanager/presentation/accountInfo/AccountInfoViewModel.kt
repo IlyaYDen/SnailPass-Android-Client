@@ -59,13 +59,14 @@ class AccountInfoViewModel(
     fun getAddFields(id:UUID) {
         viewModelScope.launch {
             Log.d("test","test")
-            fieldUseCases.getField.invoke(id).collect() {
+            fieldUseCases.getField.invoke(id).collect {
                 Log.d("test","test2")
                 if(it!=null) {
 
                     val l :MutableList<RecordAddFieldEntity> = mutableListOf()
 
                     for (t in it) {
+                        t.name = decodeUseCase.invoke(t.name)
                         t.value = decodeUseCase.invoke(t.value)
                         l.add(t)
                     }
