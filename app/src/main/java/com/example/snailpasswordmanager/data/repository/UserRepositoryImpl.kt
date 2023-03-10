@@ -40,22 +40,22 @@ class UserRepositoryImpl @Inject constructor(
             val user = UserEntityMapper.mapEntityToDbModel(
                 user2
             ) // testtesttest
-            Log.d("MYLOG_testUUID",user2.id.toString())
-            Log.d("MYLOG_testUUID",user.id.toString())
+            //-Log.d("MYLOG_testUUID",user2.id.toString())
+            //-Log.d("MYLOG_testUUID",user.id.toString())
             userEntityAuth.id = UUID.fromString(user.id)
             dao.addUser(
                 user
             )
 
-            Log.d("MYLOG_test","test")
+            //-Log.d("MYLOG_test","test")
             return true
 
 
         } catch (e: HttpException) {
-            Log.d("MYLOG_test", "Server error")
+            //-Log.d("MYLOG_test", "Server error")
             return false
         } catch (e: IOException) {
-            Log.d("MYLOG_test", "internet error " )
+            //-Log.d("MYLOG_test", "internet error " )
             return false
         }
 
@@ -87,12 +87,12 @@ class UserRepositoryImpl @Inject constructor(
             val credentials: String = Credentials.basic(user.email,encodedString)
             val request = serverApi.getLogin(credentials)
             token.token = request.token
-            Log.d("MYLOG_test","getloginAccess "+ encodedString)
+            //-Log.d("MYLOG_test","getloginAccess "+ encodedString)
 
             val request2 = serverApi.getUser()
 
 
-            Log.d("MYLOG_test","getloginAccess "+ request2.toString())
+            //-Log.d("MYLOG_test","getloginAccess "+ request2.toString())
             userEntityAuth.id = request2.id
             dao.addUser(
                 UserEntityMapper.mapEntityToDbModel(
@@ -111,38 +111,38 @@ class UserRepositoryImpl @Inject constructor(
             return true
         }
         catch (e : HttpException){ //todo if it is server bug?
-            Log.d("MYLOG_test","test")
+            //-Log.d("MYLOG_test","test")
             return false
         }
         catch (e : Exception){
-            Log.d("MYLOG_test","t  "+e.message)
+            //-Log.d("MYLOG_test","t  "+e.message)
             var bu = false
             var bua = 1
 
 
             var t = dao.getUsers().first()
             t.map { b->
-                Log.d("MYLOG_test","Пользователь " + b.email + " : " + b.password)
+                //-Log.d("MYLOG_test","Пользователь " + b.email + " : " + b.password)
                 if(user.email.equals(b.email) && encodedString.equals(b.password)){
                     bu = true
                     userEntityAuth.id = UUID.fromString(b.id)
                     bua++
-                    Log.d("MYLOG_test","Ответ положительный  " + bu)
+                    //-Log.d("MYLOG_test","Ответ положительный  " + bu)
                 }
             }
            // dao.getUsers().collect { a ->
            //     val t = UserEntityMapper.mapListDbModelToListEntity(a)
-           //     Log.d("MYLOG_test","Я " + user.email + " : " + encodedString)
+           //     //-Log.d("MYLOG_test","Я " + user.email + " : " + encodedString)
            //
            // }
 
-            Log.d("MYLOG_test","ОТвет 1  " + bu)
-            Log.d("MYLOG_test","ОТвет 2  " + bua)
+            //-Log.d("MYLOG_test","ОТвет 1  " + bu)
+            //-Log.d("MYLOG_test","ОТвет 2  " + bua)
             return bu
         }
 
 
-        return false
+        //return false edited 09
         //TODO("Not yet implemented")
     }
     //override fun getUserByName(userId: Int): UserEntity? {

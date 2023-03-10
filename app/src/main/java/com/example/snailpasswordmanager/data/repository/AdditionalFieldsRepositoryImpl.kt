@@ -31,7 +31,7 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
     override suspend fun getField(id:UUID): Flow<List<RecordAddFieldEntity>?> {
         return fieldDao.getFieldsByRecord(id.toString()).map {
 
-            Log.d("test",it.size.toString() + " 3 -" + id + " " + id.toString())
+            //-Log.d("test",it.size.toString() + " 3 -" + id + " " + id.toString())
             fieldEntityMapper.mapListDbModelToListEntity(it)
         }
     }
@@ -41,16 +41,18 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
 
         try {
             val fields = serverApi.getAdditionalFields(id.toString())//token.token
+            fieldDao.deleteFields()
+
             if (fields != null) {
-                Log.d("test",fields.size.toString())
+                //-Log.d("test",fields.size.toString())
                 for (field in fields) {
-                    Log.d("test",field.name + " : " + field.value)
+                    //-Log.d("test",field.name + " : " + field.value)
                     fieldDao.addField(fieldEntityMapper.mapEntityToDbModel(field))
                 }
             }
         }
         catch (e : Exception){
-            Log.d("Http",e.toString())
+            //-Log.d("Http",e.toString())
         }
     }
 
@@ -58,10 +60,9 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
 
         try {
             serverApi.postAdditionalFields(addFieldEntity)
-            //TODO("Not yet implemented")
         }
         catch (e : Exception){
-            Log.d("Http",e.toString())
+            //-Log.d("Http",e.toString())
         }
     }
 
@@ -71,7 +72,7 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
             fieldDao.deleteFieldById(addFieldEntity.id.toString())
         }
         catch (e : Exception){
-            Log.d("Http",e.toString())
+            //-Log.d("Http",e.toString())
         }
 
     }

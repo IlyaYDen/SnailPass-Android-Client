@@ -62,7 +62,7 @@ class RegistrationActivity : AppCompatActivity() {
             .launchIn(lifecycleScope)
 
         buttonRegistration.setOnClickListener {
-            //val b = vm.registrationEvent(); TODO registration
+            //val b = vm.registrationEvent();
             if(
                 validateUsername() && validatePassword() && validateRepeatPassword()
             ) {
@@ -107,15 +107,15 @@ class RegistrationActivity : AppCompatActivity() {
         val value = tvPassword_text.text.toString()
 
         if(value.isEmpty()){
-            tvLogin.error = "Field cannot be empty"
+            tvPassword_text.error = "Field cannot be empty"
             return false
         }
         if(value.length < 5){
-            tvLogin.error = "Password too short"
+            tvPassword_text.error = "Password too short"
             return false
         }
         else{
-            tvLogin.error = null
+            tvPassword_text.error = null
             return true
         }
     }
@@ -124,15 +124,15 @@ class RegistrationActivity : AppCompatActivity() {
         val value = tvRepeat_password_text.text.toString()
 
         if(value.isEmpty()){
-            tvLogin.error = "Field cannot be empty"
+            tvRepeat_password_text.error = "Field cannot be empty"
             return false
         }
         else if(tvPassword_text.text.toString() != value){
-            tvLogin.error = "Password is not match"
+            tvRepeat_password_text.error = "Password is not match"
             return false
         }
         else{
-            tvLogin.error = null
+            tvRepeat_password_text.error = null
             return true
         }
     }

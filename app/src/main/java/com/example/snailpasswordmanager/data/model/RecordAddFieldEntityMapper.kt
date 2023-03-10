@@ -7,7 +7,7 @@ import java.util.*
 
 class RecordAddFieldEntityMapper {
     fun mapEntityToDbModel(recordAddFieldEntity: RecordAddFieldEntity) : RecordAddFieldEntityDbModel{
-        Log.d("MYLOG_test","mapEntityToDbModel")
+        //-Log.d("MYLOG_test","mapEntityToDbModel")
         return RecordAddFieldEntityDbModel(
             id = recordAddFieldEntity.id.toString(),
             name = recordAddFieldEntity.name,

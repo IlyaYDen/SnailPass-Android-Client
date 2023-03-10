@@ -27,7 +27,8 @@ import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
-
+//todo make validation show, when not enter in account
+//todo make loading screen
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var vm : LoginViewModel

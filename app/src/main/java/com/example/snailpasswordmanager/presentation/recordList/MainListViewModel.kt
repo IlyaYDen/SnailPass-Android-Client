@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 //@HiltViewModel
+//todo make work with server in step-by-step - one request full done only then send next one
 class MainListViewModel constructor(
     private val passwordUseCases: PasswordUseCases,
     private val fieldUseCases: FieldUseCases
@@ -26,16 +27,16 @@ class MainListViewModel constructor(
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getPasswords() {
-        Log.d("MYLOG_test","getpass1")
+        //-Log.d("MYLOG_test","getpass1")
 
         viewModelScope.launch(Dispatchers.IO) {
 
-            //Log.d("MYLOG_test","GetPasswordList launch")
+            ////-Log.d("MYLOG_test","GetPasswordList launch")
             passwordUseCases.getPasswordList().collect {
-                Log.d("MYLOG_test","getpass2 " + (it?.size))
+                //-Log.d("MYLOG_test","getpass2 " + (it?.size))
                 if (it != null) {
                     passwordListEdited.value = it
-                    //add field get todo
+                    //todo make password list load in the same time
 
                     for (t in it)
                         fieldUseCases.getField(t.id)
@@ -48,7 +49,7 @@ class MainListViewModel constructor(
     fun getAddFields() {
 
         viewModelScope.launch(Dispatchers.IO) {
-            Log.d("test___", passwordListEdited.value.size.toString())
+            //-Log.d("test___", passwordListEdited.value.size.toString())
             for (t in passwordListEdited.value)
                 fieldUseCases.cloneField(t.id)
         }

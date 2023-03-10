@@ -22,4 +22,7 @@ interface RecordAddFieldDao {
     @Query("DELETE FROM additional_fields WHERE record_id=:id")
     fun deleteFieldById(id: String)
 
+    @Query("DELETE FROM additional_fields")
+    suspend fun deleteFields()//(recordEntityDbModel: RecordEntityDbModel)
+
 }

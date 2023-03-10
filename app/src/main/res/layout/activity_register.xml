@@ -17,7 +17,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="40dp"
-        app:srcCompat="@drawable/logo"
+        app:srcCompat="@drawable/snailpassnewlogo"
         android:transitionName="snail_Logo" />
     <TextView
         android:id="@+id/welcomeText2"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textColorHint="@color/light_gray_text"
-        android:hint="@string/username"
+        android:hint="@string/email"
         android:transitionName="snail_Username"
 
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

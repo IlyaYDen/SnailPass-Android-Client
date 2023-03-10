@@ -27,7 +27,7 @@ class UserRegisterUseCase (
         val encodedString = Base64.getEncoder().encodeToString(hashedBytes)
         //val encodedString: String = Base64.getEncoder().encodeToString(hashedBytes)
 
-        //Log.d("MYLOG_test", encodedString)
+        ////-Log.d("MYLOG_test", encodedString)
         val reg = Registration(
                 id = userEntity.id,
                 email = userEntity.email,

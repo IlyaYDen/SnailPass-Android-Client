@@ -15,10 +15,13 @@
     <item
         android:id="@+id/menuAccounts"
         android:title="@string/Accounts"
+        android:icon="@drawable/file_key"
         />
     <item
         android:id="@+id/menuNotes"
         android:title="@string/Notes"
+        android:icon="@drawable/account_key"
+        app:showAsAction=""
         />
 
 </menu>

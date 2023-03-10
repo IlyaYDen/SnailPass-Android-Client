@@ -23,7 +23,7 @@ class TokenAuthenticator constructor(
     override fun authenticate(route: Route?, response: Response): Request {
         if (mNumTries < MAX_NUM_TRIES) {
             try {
-                Log.d("MYLOG_testT", "TokenAuthenticator")
+                //-Log.d("MYLOG_testT", "TokenAuthenticator")
                 mNumTries++
                 val credentials: String =
                     Credentials.basic(userEntityAuth.email, userEntityAuth.password)
@@ -33,10 +33,10 @@ class TokenAuthenticator constructor(
                     .header("Authorization", credentials)
                     .build()
 
-                Log.d("MYLOG_testEEA", "TokenInterceptor T " + token.token)
-                Log.d("MYLOG_testEEA", "TokenInterceptor E " + userEntityAuth.email)
-                Log.d("MYLOG_testEEA", "TokenInterceptor P " + userEntityAuth.password)
-                Log.d("MYLOG_testEEA", "TokenInterceptor C " + credentials)
+                //-Log.d("MYLOG_testEEA", "TokenInterceptor T " + token.token)
+                //-Log.d("MYLOG_testEEA", "TokenInterceptor E " + userEntityAuth.email)
+                //-Log.d("MYLOG_testEEA", "TokenInterceptor P " + userEntityAuth.password)
+                //-Log.d("MYLOG_testEEA", "TokenInterceptor C " + credentials)
 
                 val loginResponse = OkHttpClient().newCall(request).execute()
                 val jsonBody = loginResponse.body?.string()
@@ -50,7 +50,7 @@ class TokenAuthenticator constructor(
                     .build()
             } catch (e: Exception) {
 
-                Log.d("log", "token error")
+                //-Log.d("log", "token error")
                 return response.request.newBuilder()
                     .header("x-access-token", "")
                     .build()
@@ -66,8 +66,8 @@ class TokenInterceptor @Inject constructor(
     val token: Token
     )  : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        Log.d("MYLOG_testT","TokenInterceptor ")
-        Log.d("MYLOG_testEEI","TokenInterceptor " + token.token)
+        //-Log.d("MYLOG_testT","TokenInterceptor ")
+        //-Log.d("MYLOG_testEEI","TokenInterceptor " + token.token)
 
         val request = chain.request()
             .newBuilder()

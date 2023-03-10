@@ -60,6 +60,7 @@ class RecordListFragment : Fragment() {
         viewModel.getAddFields()
 
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
@@ -105,8 +106,12 @@ class RecordListFragment : Fragment() {
 
             }
             startActivity(intent)
-            Log.d("test","test")
+            //-Log.d("test","test")
 
+        }
+        bindingClass.ButtonRefresh.setOnClickListener {//todo make timer to disable refresh-spam
+
+            viewModel.getPasswords()
         }
         searchFun()
     }

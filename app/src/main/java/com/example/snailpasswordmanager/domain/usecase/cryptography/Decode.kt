@@ -11,7 +11,7 @@ data class Decode(
 ) {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    suspend operator fun invoke(text:String) : String {
+    operator fun invoke(text:String) : String {
         val masterpass = Base64.getDecoder().decode(userEntityAuth.password)//userEntityAuth.password.toByteArray()//
 
         //val login = AESUtil.decrypt("ow8nOksC84lKh/ACg4CZdQ==".toByteArray(), authInfo.hash2, "tttttttttttttttt".toByteArray())

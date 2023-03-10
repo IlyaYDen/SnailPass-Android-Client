@@ -8,7 +8,7 @@ import com.example.snailpasswordmanager.data.model.RecordEntityDbModel
 import com.example.snailpasswordmanager.data.model.UserEntityDbModel
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
 
-const val VERSION = 2
+const val VERSION = 3
 
 @Database (
     entities = [RecordEntityDbModel::class, UserEntityDbModel::class, RecordAddFieldEntityDbModel::class],

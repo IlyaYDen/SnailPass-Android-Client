@@ -49,31 +49,32 @@ class RecordListRepositoryImpl @Inject constructor(
 
             }
         } catch (e : HttpException) {
-            Log.d("MYLOG_testER","FAIL serverApi.getRecords()")
+            //-Log.d("MYLOG_testER","FAIL serverApi.getRecords()")
             if(e.code() == 404){
 
                 recordDao.deleteRecords()
             }
-            return flow { null }
+            return flow { //null edited 09
+            }
         }
             catch (e : Exception){
 
-                Log.d("MYLOG_testER","FAIL serverApi.getRecords() Error")
-                Log.d("MYLOG_testER"," " + e)
+                //-Log.d("MYLOG_testER","FAIL serverApi.getRecords() Error")
+                //-Log.d("MYLOG_testER"," " + e)
 
             return recordDao.getRecords().map {
-                Log.d("MYLOG_testER","FAIL getRecordList from local: " + it.size)
+                //-Log.d("MYLOG_testER","FAIL getRecordList from local: " + it.size)
                 recordEntityMapper.mapListDbModelToListEntity(it)
             }
         }
 
 
         return recordDao.getRecords().map {
-            Log.d("MYLOG_test","noexeption: " + it.size)
+            //-Log.d("MYLOG_test","noexeption: " + it.size)
             recordEntityMapper.mapListDbModelToListEntity(it)
         }
         //return dao.getRecords().map {
-        //    Log.d("MYLOG_test","getRecordList test: " + it.size)
+        //    //-Log.d("MYLOG_test","getRecordList test: " + it.size)
         //    mapper.mapListDbModelToListEntity(it)
         //}
     }
@@ -85,7 +86,7 @@ class RecordListRepositoryImpl @Inject constructor(
     override suspend fun insertRecord(passwordEntity: RecordEntity) {
 
         try {
-            Log.d("MYLOG_testE",passwordEntity.id.toString())
+            //-Log.d("MYLOG_testE",passwordEntity.id.toString())
             serverApi.addRecord(
                 //token.token,
                 AddRecord(
@@ -98,7 +99,7 @@ class RecordListRepositoryImpl @Inject constructor(
                 )
             )
 
-            //Log.d("MYLOG_test","id: " + passwordEntity.nonce)
+            ////-Log.d("MYLOG_test","id: " + passwordEntity.nonce)
             recordDao.insertRecord(recordEntityMapper.mapEntityToDbModel(passwordEntity))
         } catch (_: Exception){
 
@@ -109,7 +110,7 @@ class RecordListRepositoryImpl @Inject constructor(
     override suspend fun editRecord(passwordEntity: RecordEntity) {
 
         try {
-            Log.d("MYLOG_testE",passwordEntity.id.toString())
+            //-Log.d("MYLOG_testE",passwordEntity.id.toString())
             serverApi.editRecord(
                 //token.token,
                 Record(
@@ -126,7 +127,7 @@ class RecordListRepositoryImpl @Inject constructor(
                 )
             )
 
-            //Log.d("MYLOG_test","id: " + passwordEntity.nonce)
+            ////-Log.d("MYLOG_test","id: " + passwordEntity.nonce)
             recordDao.deleteRecord(passwordEntity.id)
             recordDao.insertRecord(recordEntityMapper.mapEntityToDbModel(passwordEntity))
         } catch (_: Exception){

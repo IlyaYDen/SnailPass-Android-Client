@@ -22,11 +22,7 @@ class MainActivity : AppCompatActivity(), AppComponentProvider {
 
     lateinit var bindingClass : ActivityMainBinding
 
-    //private lateinit var vm : AccountInfoViewModel
-
-    //@Inject
-    //lateinit var vmFactory: AccountInfoModelFactory
-
+    //todo disable accounts when search & repair search
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)

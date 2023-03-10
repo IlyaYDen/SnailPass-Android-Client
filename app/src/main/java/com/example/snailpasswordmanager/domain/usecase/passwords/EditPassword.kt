@@ -61,14 +61,14 @@ class EditPassword @Inject constructor(
         val encrypted_passwordNonce = nonceGen()
         val encrypted_password = AESUtil.encrypt(passwordEntity.encrypted_password.toByteArray(), masterpass, encrypted_passwordNonce.toByteArray()) // 32 length Key
 */
-        Log.d("MYLOG_testE",passwordEntity.id.toString())
+        //-Log.d("MYLOG_testE",passwordEntity.id.toString())
 
         recordListRepository.editRecord(RecordEntity(
             id = passwordEntity.id,
-            name = String(Base64.getEncoder().encode(name)).replace("\n","")                                + ":" + nameNonce,//todo
-            login = String(Base64.getEncoder().encode(login)).replace("\n","")                              + ":" + loginNonce,//todo
+            name = String(Base64.getEncoder().encode(name)).replace("\n","")                                + ":" + String(Base64.getEncoder().encode(nameNonce.toByteArray())),//todo
+            login = String(Base64.getEncoder().encode(login)).replace("\n","")                              + ":" + String(Base64.getEncoder().encode(loginNonce.toByteArray())),//todo
             //nonce = t,
-            encrypted_password = String(Base64.getEncoder().encode(encrypted_password)).replace("\n","")    + ":" + encrypted_passwordNonce,//todo
+            encrypted_password = String(Base64.getEncoder().encode(encrypted_password)).replace("\n","")    + ":" + String(Base64.getEncoder().encode(encrypted_passwordNonce.toByteArray())),//todo
             editedTime = passwordEntity.editedTime,
             creationTime = passwordEntity.creationTime,
             userId = userEntityAuth.id.toString(),
@@ -77,7 +77,7 @@ class EditPassword @Inject constructor(
 
     }
     val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789+=-"
-    fun nonceGen() = (0..16)
+    fun nonceGen() = (0..15)
             .map { charset.random() }
             .joinToString("")
 }

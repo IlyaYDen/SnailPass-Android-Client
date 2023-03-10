@@ -13,7 +13,7 @@ class RecordEntityMapper {
     //    service = recordEntity.name
     //)
     fun mapEntityToDbModel(recordEntity: RecordEntity): RecordEntityDbModel{
-        //Log.d("MYLOG_testN","test1")
+        ////-Log.d("MYLOG_testN","test1")
         return RecordEntityDbModel(
             id = recordEntity.id.toString(),
             password = recordEntity.encrypted_password,

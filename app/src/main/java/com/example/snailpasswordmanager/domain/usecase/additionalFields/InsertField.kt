@@ -1,7 +1,6 @@
 package com.example.snailpasswordmanager.domain.usecase.additionalFields
 
 import android.os.Build
-import android.util.Base64
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
@@ -19,27 +18,29 @@ class InsertField @Inject constructor(
     suspend operator fun invoke(subList: MutableList<RecordAddFieldEntity>){
         for(t in subList) {
 
-            val masterpass = Base64.decode(userEntityAuth.password.toByteArray(),0)
-            val nonce = nonceGen()
-            val value = AESUtil.encrypt(t.value.toByteArray(),masterpass, nonce.toByteArray())
 
-            val nonce2 = nonceGen()
-            val name = AESUtil.encrypt(t.name.toByteArray(),masterpass, nonce2.toByteArray())
+            val masterpass = Base64.getDecoder().decode(userEntityAuth.password.toByteArray())
 
+            val nonceName = nonceGen()
+            val name = AESUtil.encrypt(t.name.toByteArray(),masterpass, nonceName.toByteArray())
 
+            val nonceValue = nonceGen()
+            val value = AESUtil.encrypt(t.value.toByteArray(),masterpass, nonceValue.toByteArray())
+
+//String(Base64.getEncoder().encode(name)).replace("\n","") + ":" + String(Base64.getEncoder().encode(nameNonce.toByteArray())),
             additionalFieldsRepository.insertField(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = String(name).replace("\n","") + ":"+nonce,
-                    value = String(value).replace("\n","") + ":"+nonce,
+                    name = String(Base64.getEncoder().encode(name)) + ":"+String(Base64.getEncoder().encode(nonceName.toByteArray())),
+                    value = String(Base64.getEncoder().encode(value)) + ":"+String(Base64.getEncoder().encode(nonceValue.toByteArray())),
                     record_id = t.record_id
                 )
             )
-        }
+        }//saa@aaa.aaa
     }//mail@snail.corp snailsnailsnail
 
     val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789+=-"
-    fun nonceGen() = (0..16)
+    fun nonceGen() = (0..15)
         .map { charset.random() }
         .joinToString("")
 }

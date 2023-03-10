@@ -33,8 +33,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="baseline_menu_24" />
-                            <entry key="sourceFile" value="E:\programming\kotlin\SnailPass-Android-Client" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="account_key" />
+                            <entry key="sourceFile" value="C:\Users\ilya\Downloads\account-key.svg" />
                           </map>
                         </option>
                       </PersistentState>

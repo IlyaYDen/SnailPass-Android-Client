@@ -22,14 +22,22 @@ class EditField @Inject constructor(
         for(t in subList) {
 
             val masterpass = Base64.decode(userEntityAuth.password.toByteArray(),0)
-            val nonce = nonceGen()
-            val name = AESUtil.encrypt(t.value.toByteArray(),masterpass, nonce.toByteArray())
+
+            val nonceName = nonceGen()
+            val name = AESUtil.encrypt(t.name.toByteArray(),masterpass, nonceName.toByteArray())
+            val nonceValue = nonceGen()
+            val value = AESUtil.encrypt(t.value.toByteArray(),masterpass, nonceValue.toByteArray())
 
             list.add(
                 RecordAddFieldEntity(
                     id = t.id,
-                    name = t.name,
-                    value = String(name)+":"+nonce,
+                    name = String(
+                        java.util.Base64.getEncoder().encode(name)) + ":" +
+                            String(java.util.Base64.getEncoder().encode(nonceName.toByteArray()))
+                    ,
+                    value = String(
+                        java.util.Base64.getEncoder().encode(value)) +":"+
+                            String(java.util.Base64.getEncoder().encode(nonceValue.toByteArray())),
                     record_id = t.record_id
             )
             )
@@ -41,7 +49,7 @@ class EditField @Inject constructor(
     }
 
     val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789+=-"
-    fun nonceGen() = (0..16)
+    fun nonceGen() = (0..15)
         .map { charset.random() }
         .joinToString("")
 }

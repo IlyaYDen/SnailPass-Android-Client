@@ -6,7 +6,7 @@ import java.util.*
 
 object UserEntityMapper {
     fun mapEntityToDbModel(userEntity: UserEntity) : UserEntityDbModel{
-        Log.d("MYLOG_test","mapEntityToDbModel")
+        //-Log.d("MYLOG_test","mapEntityToDbModel")
         return UserEntityDbModel(
             email = userEntity.email,
             password = userEntity.password,

@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import okhttp3.Response
 import javax.inject.Inject
+//todo make validation if registration fails
 class RegistrationViewModel @Inject constructor(
     val userUseCases: UserUseCases
 ) : ViewModel() {
@@ -28,7 +29,7 @@ class RegistrationViewModel @Inject constructor(
             val a = userUseCases.userRegisterUseCase(userEntity)
             if(a)
                 boolean.value = userUseCases.userLoginUseCase(userEntity)
-            //else todo
+
         }
     }
 }

@@ -96,7 +96,7 @@ class RecordListAdapter: RecyclerView.Adapter<RecordListAdapter.PasswordItemView
                 val filteredList = if (query.isNullOrEmpty()) {
                     list
                 } else {
-                    Log.d("test",query)
+                    //-Log.d("test",query)
                     list.filter {
                         it.name.lowercase(Locale.getDefault()).contains(query)
                         //it.toLowerCase(Locale.getDefault()).contains(query)
@@ -109,7 +109,7 @@ class RecordListAdapter: RecyclerView.Adapter<RecordListAdapter.PasswordItemView
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                listSearch = results?.values as ArrayList<RecordEntity>
+                listSearch = results?.values as ArrayList<RecordEntity> //todo
                 notifyDataSetChanged()
             }
         }

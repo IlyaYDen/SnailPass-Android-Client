@@ -47,7 +47,7 @@ public class AESUtil {
         try {
 
             //byte[] encrypted = Base64.getDecoder().decode(cipherTextData);
-
+            //saa@aaa.aaa
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
             SecretKeySpec keyspec = new SecretKeySpec(secretKey, "AES");
             IvParameterSpec ivspec = new IvParameterSpec(iv2);

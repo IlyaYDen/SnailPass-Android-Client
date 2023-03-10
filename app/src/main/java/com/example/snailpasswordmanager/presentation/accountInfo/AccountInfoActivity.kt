@@ -109,12 +109,12 @@ class AccountInfoActivity: AppCompatActivity() {
 
             vm.fieldListEdited.onEach {
                 if(!it.isEmpty()) {
-                    Log.d("test", it[0].value)
-                    Log.d("test", it[0].name)
+                    //-Log.d("test", it[0].value)
+                    //-Log.d("test", it[0].name)
                     adapter.addList(it)
                     list.addAll(it)
-                } else
-                    Log.d("test", "emplty")
+                } //-else
+                    //-Log.d("test", "emplty")
             }.launchIn(lifecycleScope)
 
 
@@ -123,8 +123,8 @@ class AccountInfoActivity: AppCompatActivity() {
             bindingClass.buttonDelete.visibility = View.VISIBLE
 
 
-            bindingClass.buttonSave.setOnClickListener {
-                Log.d("teat","--------1------")
+            bindingClass.buttonSave.setOnClickListener { //todo if eny fields  is empty
+                //-Log.d("teat","--------1------")
                 if(adapter.list.size>2) {
                     vm.editPassword(
                         passwordEntity = RecordEntity(
@@ -196,7 +196,7 @@ class AccountInfoActivity: AppCompatActivity() {
 
             bindingClass.buttonSave.setOnClickListener {
 
-                Log.d("teat","--------2------")
+                //-Log.d("teat","--------2------")
                 if(adapter.list.size>2) {
                     vm.addPassword(
                         passwordEntity = RecordEntity(
@@ -232,7 +232,7 @@ class AccountInfoActivity: AppCompatActivity() {
                 finish()
             }
         }
-        Log.d("test----",list.size.toString())
+        //-Log.d("test----",list.size.toString())
         //list.addAll(adapter.list.subList(3, adapter.list.size))
         bindingClass.ButtonAddField.setOnClickListener {
             list.add(

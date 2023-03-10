@@ -5,9 +5,9 @@
     <string name="hint">Hint</string>
     <string name="todo">TODO</string>
     <!-- login -->
-    <string name="username">Username</string>
+    <string name="email">Email</string>
     <string name="Sign_in_to_continue">Sign in to continue</string>
-    <string name="Sign_up_to_continue">Sign Up to start using app</string>
+    <string name="Sign_up_to_continue">Sign Up to start using the app</string>
     <string name="password">Password</string>
     <string name="login_button">GO</string>
     <string name="registration_button">NEW USER? Sign Up</string>
@@ -38,7 +38,7 @@
     <string name="Accounts">Accounts</string>
     <string name="Notes">Notes</string>
     <string name="accounts">Accounts</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Will be added in the next update :)</string>
 
 </resources>
