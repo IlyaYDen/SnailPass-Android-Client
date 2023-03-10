@@ -27,12 +27,13 @@ Application written using Kotlin, Android API and MVVM and several external libr
 testtesttest
 Registration
 
-![image](https://user-images.githubusercontent.com/90569114/192387721-c53e50b8-1c83-43aa-a37e-35c331767812.png)
+![image](https://user-images.githubusercontent.com/90569114/224316684-76b6b002-8467-4057-a5ea-fcec1043f1d2.png)
 
 Sign in
 
-![image](https://user-images.githubusercontent.com/90569114/192387795-95bda620-a0fa-4bf7-93fd-e1093ccdac68.png)
+![image](https://user-images.githubusercontent.com/90569114/224316650-f1b8703b-ed90-49d5-9be7-3d43d8a69163.png)
 
 Accounts list
 
-![image](https://user-images.githubusercontent.com/90569114/192387867-bdea0a9c-5d48-454a-8a20-1cf4c65d4890.png)
+![image](https://user-images.githubusercontent.com/90569114/224316815-d26f35be-258b-4c0b-87bd-c26789fe0e64.png)
+
