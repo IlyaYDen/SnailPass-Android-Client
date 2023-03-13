@@ -22,9 +22,9 @@ class RetrofitModule {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         val client = OkHttpClient.Builder()
-            .authenticator(TokenAuthenticator(token,userEntityAuth))
-            .addInterceptor(TokenInterceptor(token))
             .addInterceptor(interceptor)
+            //.authenticator(TokenAuthenticator(token,userEntityAuth))
+            .addInterceptor(TokenInterceptor(token))
             .build()
 
         return Retrofit.Builder()
@@ -33,5 +33,5 @@ class RetrofitModule {
             .client(client)
             .build()
             .create(ServerApi::class.java)
-    }
+    }//saa@aaa.aaa
 }

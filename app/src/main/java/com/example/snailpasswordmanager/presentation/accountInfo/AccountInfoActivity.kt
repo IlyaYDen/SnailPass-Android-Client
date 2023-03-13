@@ -81,7 +81,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = "service",
+                    name = "Service",
                     value = service!!,
                     //nonce = "-",
                     record_id = id
@@ -90,7 +90,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = "login",
+                    name = "Login",
                     value = login!!,
                     //nonce = "-",
                     record_id = id
@@ -99,7 +99,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = "password",
+                    name = "Password",
                     value = password!!,
                     //nonce = "-",
                     record_id = id

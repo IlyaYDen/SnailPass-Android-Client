@@ -14,9 +14,10 @@ interface ServerApi {
     suspend fun getLogin(@Header("Authorization") s:String): Token
 
     @Headers("Content-Type: application/json;charset=UTF-8")
+    //"x-access-token: Bearer ааа.bbb.ccc")
     @GET("/users")
     suspend fun getUser(): UserEntity
-
+//saa@aaa.aaa
     @POST("/users")
     suspend fun registration(@Body body: Registration): Gson
 

@@ -59,6 +59,8 @@ class RecordListRepositoryImpl @Inject constructor(
         }
             catch (e : Exception){
 
+                //Сделать утилиту с состояниями
+
                 //-Log.d("MYLOG_testER","FAIL serverApi.getRecords() Error")
                 //-Log.d("MYLOG_testER"," " + e)
 

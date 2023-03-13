@@ -40,5 +40,13 @@
     <string name="accounts">Accounts</string>
 
     <string name="hello_blank_fragment">Will be added in the next update :)</string>
+    <string name="showpassword">showPassword</string>
+    <string name="generatoropen">generatorOpen</string>
+    <string name="passwordLength">password length</string>
+    <string name="a_z_small">a-z</string>
+    <string name="a_z_capital">A-Z</string>
+    <string name="numbers">0–9</string>
+    <string name="specificSymbols" >specific Symbols</string>
+    <string name="generatePassword">generate Password</string>
 
 </resources>

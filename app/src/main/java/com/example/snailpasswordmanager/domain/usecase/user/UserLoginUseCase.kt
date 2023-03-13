@@ -7,6 +7,7 @@ import com.example.snailpasswordmanager.domain.crypto.PBKDF2SHA512.Hash
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.UserRepository
 import com.example.snailpasswordmanager.data.retrofit2.ServerApi
+import com.example.snailpasswordmanager.data.retrofit2.TokenAuthenticator.Companion.hash
 import okhttp3.Credentials
 import retrofit2.HttpException
 import retrofit2.Retrofit
@@ -39,6 +40,8 @@ class UserLoginUseCase(
         userEntityAuth.password = encodedString
         userEntityAuth.hint = userEntity.hint
         userEntityAuth.isAdmin = userEntity.isAdmin
+
+        hash = encodedString2
 
         return userRepository.getloginAccess(
             userEntity,encodedString2

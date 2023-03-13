@@ -4,6 +4,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.snailpasswordmanager.Config
+import com.example.snailpasswordmanager.domain.crypto.PBKDF2SHA512.Hash
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.google.gson.Gson
 import okhttp3.*
@@ -15,9 +16,12 @@ class TokenAuthenticator constructor(
     var userEntityAuth: UserEntity
     ) : Authenticator {
 
+    companion object {
+        lateinit var hash:String
+    }
 
     private var mNumTries = 0
-    private val MAX_NUM_TRIES = 3
+    private val MAX_NUM_TRIES = 30
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun authenticate(route: Route?, response: Response): Request {
@@ -25,13 +29,17 @@ class TokenAuthenticator constructor(
             try {
                 //-Log.d("MYLOG_testT", "TokenAuthenticator")
                 mNumTries++
+
+//
                 val credentials: String =
-                    Credentials.basic(userEntityAuth.email, userEntityAuth.password)
+                    Credentials.basic(userEntityAuth.email, hash)
+                Log.d("OkHttpClient",userEntityAuth.email + " : " + hash)
                 val request = Request.Builder()
                     .url("http://" + Config.ADRESS + ":" + Config.PORT + "/login")
                     .get()
                     .header("Authorization", credentials)
                     .build()
+                Log.d("OkHttpClient", "authenticate " + token.token)
 
                 //-Log.d("MYLOG_testEEA", "TokenInterceptor T " + token.token)
                 //-Log.d("MYLOG_testEEA", "TokenInterceptor E " + userEntityAuth.email)
@@ -40,6 +48,8 @@ class TokenAuthenticator constructor(
 
                 val loginResponse = OkHttpClient().newCall(request).execute()
                 val jsonBody = loginResponse.body?.string()
+
+                Log.d("OkHttpClient", "authenticate " + jsonBody)
                 val tokenResponse = Gson().fromJson(jsonBody, Token::class.java)
                 token.token = tokenResponse.token
 
@@ -52,12 +62,12 @@ class TokenAuthenticator constructor(
 
                 //-Log.d("log", "token error")
                 return response.request.newBuilder()
-                    .header("x-access-token", "")
+                    .header("x-access-token", "-")
                     .build()
             }
         }
         else return response.request.newBuilder()
-            .header("x-access-token", "")
+            .header("x-access-token", "-")
             .build()
     }
 
@@ -73,6 +83,8 @@ class TokenInterceptor @Inject constructor(
             .newBuilder()
             .addHeader("x-access-token",token.token)
             .build()
+
+        Log.d("OkHttpClient",token.token)
         return chain.proceed(request)
     }
 
