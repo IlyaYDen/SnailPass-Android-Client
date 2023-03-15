@@ -12,52 +12,85 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
-import com.example.snailpasswordmanager.domain.model.RecordEntity
 import kotlin.random.Random
 
-class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemViewHolder>() {
+class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemViewHolder>()
+    //,Filterable
+{
 
+/*
+0 - no changes
+1 - added
+2 - deleted
+3 - edited
+ */
 
     //var list = listOf<RecordInfoEntity>()
     var textboxEditable: Boolean = true
-    var list = mutableListOf<RecordAddFieldEntity>()
+    var listFiltered = mutableListOf<Pair<RecordAddFieldEntity,Int>>()
+    var list = mutableListOf<Pair<RecordAddFieldEntity,Int>>()
+
+
         set(value) {
             textboxEditable = false
             field.clear()
             field.addAll(value)
-            notifyDataSetChanged()
             textboxEditable = true
+
         }
 
     fun addList(value: RecordAddFieldEntity){
         textboxEditable = false
-        list.add(value)
-        notifyDataSetChanged()
+        list.add(Pair(value,1))
+        canSave = false
         textboxEditable = true
+        notifyItemChanged(list.size - 1)
     }
     fun addListItemPos(position: Int, value: RecordAddFieldEntity){
         textboxEditable = false
-        list.add(position,value)
-        notifyDataSetChanged()
+        list.add(position, Pair(value,1))
+        notifyItemInserted(position)
         textboxEditable = true
     }
     fun addList(value: List<RecordAddFieldEntity>){
         textboxEditable = false
-        list.addAll(value)
-        notifyDataSetChanged()
+        for(i in value){
+            list.add(Pair(i,1))
+        }
         textboxEditable = true
+        notifyItemRangeInserted(list.size - value.size, value.size)
     }
 
-    private var lastDeletedItem: Pair<RecordAddFieldEntity, Int>? = null
+    fun addList(value: List<RecordAddFieldEntity>,num:Int){
+        textboxEditable = false
+        for(i in value){
+            list.add(Pair(i,num))
+        }
+        if(num == 1)
+            canSave = false
+        textboxEditable = true
+        notifyItemRangeInserted(list.size - value.size, value.size)
+    }
+
+    private var lastDeletedItem: Pair<Pair<RecordAddFieldEntity,Int>, Int>? = null
     fun deleteItem(position: Int) {
-        lastDeletedItem = Pair(list[position], position)
-        list.removeAt(position)
+        lastDeletedItem = Pair(Pair(list[position].first,list[position].second), position)
+        //list.removeAt(position)
+
+        if(list[position].second==1)
+            list.removeAt(position)
+        else
+            list.set(position,Pair(list[position].first,2))
         notifyItemRemoved(position)
     }
 
     fun undoDelete() {
         lastDeletedItem?.let {
-            list.add(it.second, it.first)
+            if(it.first.second==1)
+                list.add(it.second, it.first)
+            else
+                list.set(it.second, it.first)
+
             notifyItemInserted(it.second)
             lastDeletedItem = null
         }
@@ -88,9 +121,11 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
     private var showPasswordEnable : Boolean = false
     private var showGenerator : Boolean = false
 
+    var canSave : Boolean = true
 
     override fun onBindViewHolder(holder: AccountItemViewHolder, position: Int) {
-        val accountItem = list[position]
+        val accountItem =listFiltered[position]// list[position]
+        val num = position
 
         if(position==2) {
             val generatorOpen: ImageButton
@@ -157,20 +192,40 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
             }
         }
 
-        holder.key.text = accountItem.name
+        holder.key.text = accountItem.first.name
         holder.key.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                accountItem.name = s.toString()
+
+                if(s.toString().isEmpty()){
+
+                    holder.key.error = holder.itemView.context.getString(R.string.empty_error)
+                    canSave = false
+                    return
+                }
+                accountItem.first.name = s.toString()
+                if(list[num].second!=1)
+                    list[num] = Pair(accountItem.first, 3)
+                canSave = true
             }
         })
-        holder.value.text = accountItem.value
+        holder.value.text = accountItem.first.value
         holder.value.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                accountItem.value = s.toString()
+
+                if(s.toString().isEmpty()){
+
+                    holder.value.error = holder.itemView.context.getString(R.string.empty_error)
+                    canSave = false
+                    return
+                }
+                accountItem.first.value = s.toString()
+                if(list[num].second!=1)
+                    list[num] = Pair(accountItem.first, 3)
+                canSave = true
             }
         })
     }
@@ -235,9 +290,14 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
 
 
     override fun getItemCount(): Int {
-        return list.size
-    }
 
+        listFiltered = mutableListOf<Pair<RecordAddFieldEntity,Int>>()
+        for(t in list){
+            if(t.second != 2) listFiltered.add(t)
+        }
+        return listFiltered.size//list.size
+    }
+//ttt@ttt.ttt1
 
     override fun getItemViewType(position: Int): Int {
 
@@ -248,7 +308,6 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
         val value = view.findViewById<TextView>(R.id.textView2)
         //val valueView = view.findViewById<TextInputLayout>(R.id.username_text_input_layout)
     }
-
 
 
 }

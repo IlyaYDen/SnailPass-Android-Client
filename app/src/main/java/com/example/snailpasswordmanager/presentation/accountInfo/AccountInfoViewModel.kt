@@ -23,6 +23,12 @@ class AccountInfoViewModel(
     var fieldListEdited = MutableStateFlow<List<RecordAddFieldEntity>>(emptyList())
 
     @RequiresApi(Build.VERSION_CODES.O)
+    fun addFields(subList: MutableList<RecordAddFieldEntity>) {
+        viewModelScope.launch {
+            fieldUseCases.insertField(subList)
+        }
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
     fun addPassword(passwordEntity: RecordEntity, subList: MutableList<RecordAddFieldEntity>) {
         viewModelScope.launch {
             Log.d("addPassword", "start")
@@ -53,6 +59,12 @@ class AccountInfoViewModel(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun editFields(editedList: ArrayList<RecordAddFieldEntity>) {
+        viewModelScope.launch {
+            fieldUseCases.editField(editedList)
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun editPassword(passwordEntity: RecordEntity,subList: MutableList<RecordAddFieldEntity>) {
@@ -65,6 +77,13 @@ class AccountInfoViewModel(
     fun deletePassword(id: UUID) {
         viewModelScope.launch(Dispatchers.IO) {
             passwordUseCases.deletePassword(id)
+            responce.value = true
+        }
+    }
+
+    fun deleteFields(deletedList: ArrayList<UUID>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            fieldUseCases.deleteField(deletedList)
             responce.value = true
         }
     }
@@ -94,4 +113,6 @@ class AccountInfoViewModel(
 
         }
     }
+
+
 }

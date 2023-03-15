@@ -31,7 +31,6 @@ import javax.inject.Inject
 
 class AccountInfoActivity: AppCompatActivity() {
 
-
     val list = ArrayList<RecordAddFieldEntity>()
 
     lateinit var bindingClass : ActivityAccountInfoListBinding
@@ -55,7 +54,8 @@ class AccountInfoActivity: AppCompatActivity() {
         val toolbar: Toolbar = bindingClass.toolbar2
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Account " + intent.getSerializableExtra("ID")
+        supportActionBar?.title = "Account"// + intent.getSerializableExtra("ID")
+
 
 
         bindingClass.apply {
@@ -86,9 +86,9 @@ class AccountInfoActivity: AppCompatActivity() {
             bindingClass.buttonDelete.setOnClickListener {
 
                 vm.deletePassword(id)
-                finish()
+                //finish()
             }
-            //val list = ArrayList<RecordInfoEntity>()
+
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
@@ -122,55 +122,61 @@ class AccountInfoActivity: AppCompatActivity() {
                 if(!it.isEmpty()) {
                     //-Log.d("test", it[0].value)
                     //-Log.d("test", it[0].name)
-                    adapter.addList(it)
+                    adapter.addList(it,0)
                     list.addAll(it)
                 } //-else
                     //-Log.d("test", "emplty")
             }.launchIn(lifecycleScope)
 
-
-            adapter.list = list
+            val listE = ArrayList<Pair<RecordAddFieldEntity,Int>>()
+            for(i in list){
+                listE.add(Pair(i,0))
+            }
+            adapter.list = listE
 
             bindingClass.buttonDelete.visibility = View.VISIBLE
 
 
-            bindingClass.buttonSave.setOnClickListener { //todo if eny fields  is empty
-                //-Log.d("teat","--------1------")
-                if(adapter.list.size>2) {
-                    vm.editPassword(
-                        passwordEntity = RecordEntity(
-                            id = id,
-                            name = adapter.list.get(0).value,
-                            login = adapter.list.get(1).value,
-                            userId = id.toString(),
-                            isfavorite = false,
-                            encrypted_password = adapter.list.get(2).value,
-                            editedTime = "",
-                            creationTime = ""
-                            //name = bindingClass.editTextService.text.toString(),
-                        ),
-                        adapter.list.subList(3, adapter.list.size)
-                    )
-                }
-                else
 
-                    vm.editPassword(
-                        passwordEntity = RecordEntity(
-                            id = id,
-                            name = adapter.list.get(0).value,
-                            login = adapter.list.get(1).value,
-                            userId = id.toString(),
-                            isfavorite = false,
-                            encrypted_password = adapter.list.get(2).value,
-                            editedTime = "",
-                            creationTime = ""
-                            //name = bindingClass.editTextService.text.toString(),
-                        )
+
+            bindingClass.buttonSave.setOnClickListener {
+                //-Log.d("teat","--------1------")
+                if(!adapter.canSave) {return@setOnClickListener}
+                vm.editPassword(
+                    passwordEntity = RecordEntity(
+                        id = id,
+                        name = adapter.list.get(0).first.value,
+                        login = adapter.list.get(1).first.value,
+                        userId = id.toString(),
+                        isfavorite = false,
+                        encrypted_password = adapter.list.get(2).first.value,
+                        editedTime = "",
+                        creationTime = ""
+                        //name = bindingClass.editTextService.text.toString(),
                     )
-                //bindingClass.rv.
-                finish()
+                )
+
+
+                if(adapter.list.size>2) {
+                    val newList =adapter.list.subList(3,adapter.list.size)
+
+                    val addList = ArrayList<RecordAddFieldEntity>()
+                    val editedList =  ArrayList<RecordAddFieldEntity>()
+                    val deletedList = ArrayList<UUID>()
+
+                    newList.forEach {
+                        val n = it.second
+                        val item = it.first
+                        if(n==1) addList.add(item)
+                        if(n==2) deletedList.add(item.id)
+                        if(n==3) editedList.add(item)
+                    }
+                    if(addList.isNotEmpty()) vm.addFields(addList)
+                    if(editedList.isNotEmpty()) vm.editFields(editedList)
+                    if(deletedList.isNotEmpty()) vm.deleteFields(deletedList)
+                }
             }
-            //vm = ViewModelProvider(this,vmFactory) [LoginViewModel::class.java]
+
         }
         else {
             id = UUID.randomUUID()
@@ -203,50 +209,54 @@ class AccountInfoActivity: AppCompatActivity() {
                     record_id = id
                 )
             )
-            adapter.list = list
+
+            val listE = ArrayList<Pair<RecordAddFieldEntity,Int>>()
+            for(i in list){
+                listE.add(Pair(i,0))
+            }
+            adapter.list = listE
+        //adapter.list = list
+
 
             bindingClass.buttonSave.setOnClickListener {
+                //-Log.d("teat","--------1------")
 
-                //-Log.d("teat","--------2------")
+                //if(adapter.list.get(0).first.value.isEmpty())
+
+                if(!adapter.canSave) {return@setOnClickListener}
+
+
+                vm.addPassword(
+                    passwordEntity = RecordEntity(
+                        id = id,
+                        name = adapter.list.get(0).first.value,
+                        login = adapter.list.get(1).first.value,
+                        userId = id.toString(),
+                        isfavorite = false,
+                        encrypted_password = adapter.list.get(2).first.value,
+                        editedTime = "",
+                        creationTime = ""
+                        //name = bindingClass.editTextService.text.toString(),
+                    )
+                )
+
+
                 if(adapter.list.size>2) {
-                    vm.addPassword(
-                        passwordEntity = RecordEntity(
-                            id = id,
-                            name = adapter.list.get(0).value,
-                            login = adapter.list.get(1).value,
-                            userId = id.toString(),
-                            isfavorite = false,
-                            encrypted_password = adapter.list.get(2).value,
-                            editedTime = "",
-                            creationTime = ""
-                            //name = bindingClass.editTextService.text.toString(),
-                        ),
-                        adapter.list.subList(3, adapter.list.size)
-                    )
-                }
-                else
+                    val newList =adapter.list.subList(3,adapter.list.size)
 
-                    vm.addPassword(
-                        passwordEntity = RecordEntity(
-                            id = id,
-                            name = adapter.list.get(0).value,
-                            login = adapter.list.get(1).value,
-                            userId = id.toString(),
-                            isfavorite = false,
-                            encrypted_password = adapter.list.get(2).value,
-                            editedTime = "",
-                            creationTime = ""
-                            //name = bindingClass.editTextService.text.toString(),
-                        )
-                    )
-                //bindingClass.rv.
-                //finish()
+                    val addList = ArrayList<RecordAddFieldEntity>()
+
+                    newList.forEach {
+                        val item = it.first
+                        addList.add(item)
+                    }
+                    if(addList.isNotEmpty()) vm.addFields(addList)
+                }
             }
         }//ttt@ttt.ttt1
-        //-Log.d("test----",list.size.toString())
-        //list.addAll(adapter.list.subList(3, adapter.list.size))
+
         bindingClass.ButtonAddField.setOnClickListener {
-            currentFocus?.clearFocus()
+            //currentFocus?.clearFocus()
             val idt = UUID.randomUUID()
             list.add(
                 RecordAddFieldEntity(
@@ -265,6 +275,7 @@ class AccountInfoActivity: AppCompatActivity() {
             ))
 
         }
+
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             0,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
@@ -367,6 +378,7 @@ class AccountInfoActivity: AppCompatActivity() {
 
         itemTouchHelper.attachToRecyclerView(bindingClass.rv)
 
+        //adapter.filter.filter("")
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

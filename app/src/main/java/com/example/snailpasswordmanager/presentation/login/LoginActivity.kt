@@ -7,13 +7,16 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Pair
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.snailpasswordmanager.LoginMode
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.PreferenceKeys
 import com.example.snailpasswordmanager.R
@@ -27,8 +30,6 @@ import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
-//todo make validation show, when not enter in account
-//todo make loading screen
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var vm : LoginViewModel
@@ -42,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var loginButton : Button
     lateinit var registrationButton : Button
     lateinit var text : TextView
+    lateinit var pb : ProgressBar
 
    // val Context.appStartupParamsDataStore: DataStore<Preferences> by dataStore(
    //     fileName = "app_startup_params.pb",
@@ -55,7 +57,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         (applicationContext as PasswordApp).appComponent.inject(this)
 
 
@@ -65,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
        vm = ViewModelProvider(this,vmFactory) [LoginViewModel::class.java]
 
         loginButton = findViewById(R.id.l_login_button)
+        pb = findViewById(R.id.progressBarLogin)
         registrationButton = findViewById(R.id.l_registration_button)
         text = findViewById(R.id.welcomeText)
 
@@ -73,18 +75,18 @@ class LoginActivity : AppCompatActivity() {
         passwordText = findViewById(R.id.password_text)
         imageView = findViewById(R.id.imageView2)
 
+        pb.visibility = View.GONE
 
         t = getSharedPreferences(PreferenceKeys.AUTH_SHARED_PREFERENCES,Context.MODE_PRIVATE)
 
         loginButton.setOnClickListener {
-            val hashpass = vm.passwordHash(passwordText.text.toString())
-
-           if(
+            pb.visibility = View.VISIBLE
+           if(//todo validate
                loginText.text != null && loginText.text!!.length>5 &&
                passwordText.text != null && passwordText.text!!.length>8) {
                userEntity = UserEntity(
                    email = loginText.text.toString(),
-                   password = hashpass,
+                   password = passwordText.text.toString(),
                    hint = ""
                )
                lifecycleScope.launch {
@@ -98,14 +100,18 @@ class LoginActivity : AppCompatActivity() {
         vm.boolean
             .onEach {
 
-                if(it){
+                if(it.second == LoginMode.ONLINE || it.second == LoginMode.OFFLINE){
                     val intent = Intent(this, MainActivity::class.java)
-                    //t.edit().putString(PreferenceKeys.EMAIL,userEntity.email).apply()
-                    //t.edit().putString(PreferenceKeys.HASH_MASTER_PASSWORD,it.first).apply()
-                    //t.edit().putString(PreferenceKeys.TOKEN,it.second).apply()
+
                     finish()
                     startActivity(intent)
                 }
+                else if(it.second == LoginMode.ERROR) {
+                    if(it.first!="")
+                        loginText.error = getString(R.string.login_error)
+                }
+
+                pb.visibility = View.GONE
             }
             .launchIn(lifecycleScope)
 

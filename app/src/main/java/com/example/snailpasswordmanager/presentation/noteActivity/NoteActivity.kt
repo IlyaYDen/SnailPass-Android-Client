@@ -92,17 +92,27 @@ class NoteActivity : AppCompatActivity() {
         else{
 
             bindingClass.buttonNoteSave.setOnClickListener {
-                vm.insertNote(NoteEntity(
-                    name = bindingClass.noteName.text.toString(),
-                    content = bindingClass.noteContent.text.toString(),
-                    id = UUID.randomUUID().toString(),
-                    is_favorite = false,
-                    is_deleted = false,
-                    creation_time = "",
-                    update_time = "",
-                    user_id = ""
-                ))
-                finish()
+                if(bindingClass.noteName.text.toString().isNotEmpty() && bindingClass.noteContent.text.toString().isNotEmpty()) {
+                    vm.insertNote(
+                        NoteEntity(
+                            name = bindingClass.noteName.text.toString(),
+                            content = bindingClass.noteContent.text.toString(),
+                            id = UUID.randomUUID().toString(),
+                            is_favorite = false,
+                            is_deleted = false,
+                            creation_time = "",
+                            update_time = "",
+                            user_id = ""
+                        )
+                    )
+                    finish()
+                }
+                else {
+                    if(bindingClass.noteName.text.toString().isNotEmpty())
+                        bindingClass.noteName.error = getString(R.string.empty_error)
+                    if(bindingClass.noteContent.text.toString().isNotEmpty())
+                        bindingClass.noteContent.error = getString(R.string.empty_error)
+                }
             }
         }
 

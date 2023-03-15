@@ -57,7 +57,6 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.NoteItemViewHolder>
 
     override fun getItemCount(): Int {
         return listSearch.size
-        //TODO("Not yet implemented")
     }
 
 
@@ -92,7 +91,7 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.NoteItemViewHolder>
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                listSearch = results?.values as ArrayList<NoteEntity> //todo
+                listSearch = results?.values as ArrayList<NoteEntity>
                 notifyDataSetChanged()
             }
         }

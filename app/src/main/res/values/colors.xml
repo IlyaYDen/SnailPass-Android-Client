@@ -10,6 +10,10 @@
     <color name="white">#FFFFFFFF</color>
 
 
+    <color name="selected">#252525</color>
+    <color name="unSelected">#858585</color>
+
+
     <color name="light_gray">#FFa9a9a9</color>
     <color name="dark_gray_text">#FF454545</color>
     <color name="main_background">#FFf0f8ff</color>

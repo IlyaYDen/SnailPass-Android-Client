@@ -19,49 +19,42 @@ class GetPasswordList @Inject constructor(
     ) {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    suspend operator fun invoke (
-        //passwordOrder: PasswordOrder = PasswordOrder.Service(OrderType.Ascending)
-    ) : Flow<List<RecordEntity>?> {
-        //-Log.d("MYLOG_test", " invoke ")
-        return passwordListRepository.getRecordList().map {
-
-
-            if (it != null) {
-
-                val list = emptyList<RecordEntity>().toMutableList()
-
-                for(r in it){
-                    if(r.userId == userEntityAuth.id.toString()) {
-
-
-                        //val masterpass = userEntityAuth.password.toByteArray()//Base64.getDecoder().decode(userEntityAuth.password)
-                        val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
-
-                        val logins = r.login.split(":")
-                        val login = AESUtil.decrypt(Base64.getDecoder().decode(logins[0].toByteArray()), masterpass, Base64.getDecoder().decode(logins[1].toByteArray()))
-
-                        val names = r.name.split(":")
-                        val name = AESUtil.decrypt(Base64.getDecoder().decode(names[0].toByteArray()), masterpass, Base64.getDecoder().decode(names[1].toByteArray()))
-
-                        val encrypted_passwords = r.encrypted_password.split(":")
-                        val encrypted_password = AESUtil.decrypt(Base64.getDecoder().decode(encrypted_passwords[0].toByteArray()), masterpass, Base64.getDecoder().decode(encrypted_passwords[1].toByteArray()))
-
-                        list.add(RecordEntity(
-                            id = r.id,
-                            name = String(name),
-                            login = String(login),
-                            encrypted_password = String(encrypted_password),
-                            editedTime = r.editedTime,
-                            creationTime = r.creationTime,
-                            isfavorite = r.isfavorite,
-                            userId = r.userId
-                        ))
-
-                    }
-                }
-                return@map list
+    suspend operator fun invoke(): Flow<List<RecordEntity>> {
+        return passwordListRepository.getRecordList().map { records ->
+            if(records == null) {
+                return@map emptyList()
             }
-            else return@map null
+            records.filter { it.userId == userEntityAuth.id.toString() }
+                .map { record ->
+                    val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
+                    val login = AESUtil.decrypt(
+                        Base64.getDecoder().decode(record.login.split(":")[0].toByteArray()),
+                        masterpass,
+                        Base64.getDecoder().decode(record.login.split(":")[1].toByteArray())
+                    )
+                    val name = AESUtil.decrypt(
+                        Base64.getDecoder().decode(record.name.split(":")[0].toByteArray()),
+                        masterpass,
+                        Base64.getDecoder().decode(record.name.split(":")[1].toByteArray())
+                    )
+                    val encrypted_password = AESUtil.decrypt(
+                        Base64.getDecoder()
+                            .decode(record.encrypted_password.split(":")[0].toByteArray()),
+                        masterpass,
+                        Base64.getDecoder()
+                            .decode(record.encrypted_password.split(":")[1].toByteArray())
+                    )
+                    RecordEntity(
+                        id = record.id,
+                        name = String(name),
+                        login = String(login),
+                        encrypted_password = String(encrypted_password),
+                        editedTime = record.editedTime,
+                        creationTime = record.creationTime,
+                        isfavorite = record.isfavorite,
+                        userId = record.userId
+                    )
+                }
         }
     }
 }

@@ -46,20 +46,6 @@ class EditNote @Inject constructor(
             )
 
         )
-        /*
-
-        recordListRepository.editRecord(RecordEntity(
-            id = passwordEntity.id,
-            name = String(Base64.getEncoder().encode(name)).replace("\n","")                                + ":" + String(Base64.getEncoder().encode(nameNonce.toByteArray())),//todo
-            login = String(Base64.getEncoder().encode(login)).replace("\n","")                              + ":" + String(Base64.getEncoder().encode(loginNonce.toByteArray())),//todo
-            //nonce = t,
-            encrypted_password = String(Base64.getEncoder().encode(encrypted_password)).replace("\n","")    + ":" + String(Base64.getEncoder().encode(encrypted_passwordNonce.toByteArray())),//todo
-            editedTime = passwordEntity.editedTime,
-            creationTime = passwordEntity.creationTime,
-            userId = userEntityAuth.id.toString(),
-            isfavorite = false
-        ))
-         */
 
     }
     val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789+=-"

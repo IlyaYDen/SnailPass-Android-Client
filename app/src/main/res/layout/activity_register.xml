@@ -177,4 +177,12 @@
         android:transitionName="snail_SignUp_Button"
 
         android:text="@string/have_account" />
+
+
+    <ProgressBar
+        android:layout_margin="16dp"
+        android:id="@+id/progressBarRegister"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

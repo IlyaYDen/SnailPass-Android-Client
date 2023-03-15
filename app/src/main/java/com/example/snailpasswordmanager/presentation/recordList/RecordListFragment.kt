@@ -39,7 +39,6 @@ class RecordListFragment : Fragment() {
     @Inject
     lateinit var vmFactory: MainListViewModelFactory
 
-    lateinit var masterHash: String
 
 
     private lateinit var viewModel: MainListViewModel
@@ -68,6 +67,7 @@ class RecordListFragment : Fragment() {
 
         searchFun()
     }
+    private var lastRefreshTime: Long = 0
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,10 +81,18 @@ class RecordListFragment : Fragment() {
 //ttt@ttt.ttt1
 
         viewModel.passwordListEdited.onEach {
-            adapter.setPasswords(viewModel.passwordListEdited.value)
+            adapter.setPasswords(it)
+
+            if (!it.isEmpty()) {
+
+                bindingClass.linearLayout.visibility = View.GONE
+            } else {
+                bindingClass.linearLayout.visibility = View.VISIBLE
+
+            }
         }.launchIn(lifecycleScope)
 
-
+/*
         adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() {
                 super.onChanged()
@@ -96,7 +104,7 @@ class RecordListFragment : Fragment() {
 
                 }
             }
-        })
+        })*/
 
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -117,9 +125,15 @@ class RecordListFragment : Fragment() {
             //-Log.d("test","test")
 
         }
-        bindingClass.ButtonRefresh.setOnClickListener {//todo make timer to disable refresh-spam
+        bindingClass.ButtonRefresh.setOnClickListener {
 
-            viewModel.getPasswords()
+            val currentTime = System.currentTimeMillis()
+            val threshold = 5000 // 5 seconds
+            if (currentTime - lastRefreshTime > threshold) {
+
+                viewModel.getPasswords()
+                viewModel.getAddFields()
+            }
         }
     }
 

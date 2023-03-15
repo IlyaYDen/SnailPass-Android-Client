@@ -1,6 +1,6 @@
 package com.example.snailpasswordmanager.data.repository
 
-import android.util.Log
+import com.example.snailpasswordmanager.LoginMode
 import com.example.snailpasswordmanager.data.database.record.UserDao
 import com.example.snailpasswordmanager.data.model.UserEntityMapper
 import com.example.snailpasswordmanager.data.retrofit2.Registration
@@ -8,9 +8,12 @@ import com.example.snailpasswordmanager.data.retrofit2.ServerApi
 import com.example.snailpasswordmanager.data.retrofit2.Token
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.UserRepository
+import com.google.gson.Gson
+import com.google.gson.JsonObject
 import kotlinx.coroutines.flow.first
 import okhttp3.Credentials
 import retrofit2.HttpException
+import retrofit2.Response
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
@@ -21,15 +24,14 @@ class UserRepositoryImpl @Inject constructor(
     var userEntityAuth: UserEntity,
     var token: Token
 ) : UserRepository {
-    //todo - add level between usecases and repository
     private val UserList = mutableListOf<UserEntity>()
 
 
-    override suspend fun addUser(userEntity: Registration): Boolean {
+    override suspend fun addUser(userEntity: Registration): Response<Gson> {
         //if(userEntity.id == UserEntity.UNDEFINED_ID)
         //    userEntity.id = autoIncrementid++
-        try {
-            serverApi.registration(userEntity)
+        //try {
+            var resp = serverApi.registration(userEntity)
 
             val user2 = UserEntity(
                 id = UUID.randomUUID(),
@@ -48,36 +50,31 @@ class UserRepositoryImpl @Inject constructor(
             )
 
             //-Log.d("MYLOG_test","test")
-            return true
-
+            return resp
+/*
 
         } catch (e: HttpException) {
             //-Log.d("MYLOG_test", "Server error")
-            return false
         } catch (e: IOException) {
             //-Log.d("MYLOG_test", "internet error " )
-            return false
-        }
 
-        //TODO("Not yet implemented")
+        }*/
+
     }
 
     override fun removeUser(userEntity: UserEntity) {
         UserList.remove(userEntity)
-        //TODO("Not yet implemented")
     }
 
     override fun getUserList(): List<UserEntity> {
         return UserList.toList()
-        //TODO("Not yet implemented")
     }
 
     override fun getUser(userId: Int): UserEntity? {
         return UserList.get(userId)
-        //TODO("Not yet implemented")
     }
 
-    override suspend fun getloginAccess(user: UserEntity, encodedString : String): Boolean {
+    override suspend fun getLoginAccess(user: UserEntity, encodedString : String): Pair<String, LoginMode> {
 
         try{
 
@@ -86,33 +83,37 @@ class UserRepositoryImpl @Inject constructor(
 
             val credentials: String = Credentials.basic(user.email,encodedString)
             val request = serverApi.getLogin(credentials)
-            token.token = request.token
-            //-Log.d("MYLOG_test","getloginAccess "+ encodedString)
+            val body = request.body()
+            val t = request.errorBody()
 
-            val request2 = serverApi.getUser()
+            if(request.isSuccessful && body != null) {
 
+                token.token = body.token
 
-            //-Log.d("MYLOG_test","getloginAccess "+ request2.toString())
-            userEntityAuth.id = request2.id
-            dao.addUser(
-                UserEntityMapper.mapEntityToDbModel(
-                    UserEntity(
-                        id = request2.id,
-                        email = request2.email,
-                        password = encodedString,
-                        hint = request2.hint,
-                        isAdmin = request2.isAdmin
+                val request2 = serverApi.getUser()
+
+                userEntityAuth.id = request2.id
+                dao.addUser(
+                    UserEntityMapper.mapEntityToDbModel(
+                        UserEntity(
+                            id = request2.id,
+                            email = request2.email,
+                            password = encodedString,
+                            hint = request2.hint,
+                            isAdmin = request2.isAdmin
+                        )
                     )
                 )
-            )
 
 
 
-            return true
-        }
-        catch (e : HttpException){ //todo if it is server bug?
-            //-Log.d("MYLOG_test","test")
-            return false
+                return Pair("",LoginMode.ONLINE)
+            }
+            else if(t !=null) {
+
+                return Pair(Gson().fromJson(t.string(), JsonObject::class.java).get("message").asJsonObject.get("error").toString(),LoginMode.ERROR)
+            }
+            return Pair("Unexpected_error",LoginMode.ERROR)
         }
         catch (e : Exception){
             //-Log.d("MYLOG_test","t  "+e.message)
@@ -127,28 +128,13 @@ class UserRepositoryImpl @Inject constructor(
                     bu = true
                     userEntityAuth.id = UUID.fromString(b.id)
                     bua++
-                    //-Log.d("MYLOG_test","Ответ положительный  " + bu)
                 }
             }
-           // dao.getUsers().collect { a ->
-           //     val t = UserEntityMapper.mapListDbModelToListEntity(a)
-           //     //-Log.d("MYLOG_test","Я " + user.email + " : " + encodedString)
-           //
-           // }
 
-            //-Log.d("MYLOG_test","ОТвет 1  " + bu)
-            //-Log.d("MYLOG_test","ОТвет 2  " + bua)
-            return bu
+            return Pair("",LoginMode.OFFLINE)
         }
 
-
-        //return false edited 09
-        //TODO("Not yet implemented")
     }
-    //override fun getUserByName(userId: Int): UserEntity? {
-    //    return UserList.get(userId)
-    //    //TODO("Not yet implemented")
-    //}
 
 
 }

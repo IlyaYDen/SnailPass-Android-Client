@@ -7,14 +7,16 @@ import com.example.snailpasswordmanager.domain.crypto.PBKDF2SHA512.Hash
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.UserRepository
 import com.example.snailpasswordmanager.data.retrofit2.Registration
+import com.google.gson.Gson
+import com.google.gson.JsonObject
 import java.util.*
 
-
+//Gson().fromJson(t.errorBody().string(),JsonObject::class.java).get("message").asJsonObject.get("error").toString()
 class UserRegisterUseCase (
     private val userRepository: UserRepository
 ) {
     @RequiresApi(Build.VERSION_CODES.O)
-    suspend operator fun invoke(userEntity: UserEntity) : Boolean{
+    suspend operator fun invoke(userEntity: UserEntity) : Pair<String,Boolean> {
         val password = userEntity.password
         val salt = userEntity.email
 
@@ -35,7 +37,19 @@ class UserRegisterUseCase (
                 hint = userEntity.hint,
             )
 
-        return userRepository.addUser(reg)
+        var resp = userRepository.addUser(reg)
+        val t = resp.errorBody()
+
+        if(t !=null){
+            return Pair(Gson().fromJson(t.string(), JsonObject::class.java).get("message").asJsonObject.get("error").toString(),
+                false)
+
+        }
+        else{
+            return Pair("OK",true)
+        }
+
+
 
 
     }

@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.snailpasswordmanager.LoginMode
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
 import kotlinx.coroutines.Dispatchers
@@ -17,16 +18,13 @@ class LoginViewModel @Inject constructor(
         ) : ViewModel() {
 
 
-        //val auth = MutableStateFlow(Pair("-","-"))
-        var boolean = MutableStateFlow(false)
+        //var boolean = MutableStateFlow(false)
+        val boolean = MutableStateFlow(Pair("",LoginMode.ERROR))
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun logInEvent(entity: UserEntity) {
                         viewModelScope.launch(Dispatchers.IO) {
                                 boolean.value = logInUseCases.userLoginUseCase(entity)
                         }
-        }
-        fun passwordHash(password: String) : String {
-                return password
         }
 }

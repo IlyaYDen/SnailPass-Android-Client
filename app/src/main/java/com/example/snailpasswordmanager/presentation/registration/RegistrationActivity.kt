@@ -2,7 +2,9 @@ package com.example.snailpasswordmanager.presentation.registration
 
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +31,7 @@ class RegistrationActivity : AppCompatActivity() {
     lateinit var tvPassword_text: TextView
     lateinit var tvRepeat_password_text: TextView
     lateinit var tvHint_text: TextView
+    lateinit var pb: ProgressBar
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +46,9 @@ class RegistrationActivity : AppCompatActivity() {
         tvRepeat_password_text = findViewById(R.id.repeat_password_text)
         tvHint_text = findViewById(R.id.hint_text)
 
+        pb = findViewById(R.id.progressBarRegister)
+
+        pb.visibility = View.GONE
 
         (applicationContext as PasswordApp).appComponent.inject(this)
 
@@ -53,15 +59,19 @@ class RegistrationActivity : AppCompatActivity() {
         vm.boolean
             .onEach {
 
-                if(it){
-                    //val intent = Intent(this, MainListActivity::class.java)
+                if(it.first){
                     finish()
-                    //startActivity(intent)
                 }
+                else
+                    if(it.second!="")
+                        if(it.second == "\"Resource Already Exists. User with this email already exists\"")
+                            tvLogin.error = getString(R.string.user_already_exists)
+                pb.visibility = View.GONE
             }
             .launchIn(lifecycleScope)
 
         buttonRegistration.setOnClickListener {
+            pb.visibility = View.VISIBLE
             //val b = vm.registrationEvent();
             if(
                 validateUsername() && validatePassword() && validateRepeatPassword()

@@ -53,5 +53,8 @@
     <string name="EditNote">Edit note</string>
     <string name="NotesToolBarText">Notes</string>
     <string name="AccountsToolBarText">Accounts</string>
+    <string name="empty_error">the field can not be empty</string>
+    <string name="user_already_exists">user already exists!</string>
+    <string name="login_error">Authentication Error. Incorrect credentials</string>
 
 </resources>

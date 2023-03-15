@@ -20,6 +20,7 @@ class RecordListRepositoryImpl @Inject constructor(
 
     override suspend fun getRecordList(): Flow<List<RecordEntity>?> {
 
+
         try {
             val records = serverApi.getRecords()//token.token
 
@@ -59,7 +60,6 @@ class RecordListRepositoryImpl @Inject constructor(
         }
             catch (e : Exception){
 
-                //todo Сделать утилиту с состояниями
 
             return recordDao.getRecords().map {
                 //-Log.d("MYLOG_testER","FAIL getRecordList from local: " + it.size)
@@ -67,6 +67,7 @@ class RecordListRepositoryImpl @Inject constructor(
             }
         }
 
+        var t = 1
 
         return recordDao.getRecords().map {
             //-Log.d("MYLOG_test","noexeption: " + it.size)
@@ -97,9 +98,6 @@ class RecordListRepositoryImpl @Inject constructor(
                     //passwordEntity.nonce
                 )
             )
-
-            ////-Log.d("MYLOG_test","id: " + passwordEntity.nonce)
-            recordDao.insertRecord(recordEntityMapper.mapEntityToDbModel(passwordEntity)) //todo can be removed?
         } catch (_: Exception){
 
         }
@@ -125,10 +123,6 @@ class RecordListRepositoryImpl @Inject constructor(
                     //passwordEntity.nonce
                 )
             )
-
-            ////-Log.d("MYLOG_test","id: " + passwordEntity.nonce)
-            recordDao.deleteRecord(passwordEntity.id) //todo can be removed?
-            recordDao.insertRecord(recordEntityMapper.mapEntityToDbModel(passwordEntity))
         } catch (_: Exception){
 
         }

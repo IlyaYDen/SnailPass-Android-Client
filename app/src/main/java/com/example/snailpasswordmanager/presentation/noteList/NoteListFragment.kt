@@ -65,7 +65,7 @@ class NoteListFragment(
         }
         searchFun()
     }
-
+    private var lastRefreshTime: Long = 0
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,8 +75,12 @@ class NoteListFragment(
 
 
 
-        bindingClass.ButtonRefreshNotes.setOnClickListener {//todo make timer to disable refresh-spam
-            viewModel.getNotes()
+        bindingClass.ButtonRefreshNotes.setOnClickListener {
+            val currentTime = System.currentTimeMillis()
+            val threshold = 5000 // 5 seconds
+            if (currentTime - lastRefreshTime > threshold) {
+                viewModel.getNotes()
+            }
         }
         init()
 

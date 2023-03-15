@@ -8,7 +8,7 @@ import com.example.snailpasswordmanager.di.DaggerAppComponent
 
 //@HiltAndroidApp
 class PasswordApp : Application() {
-//todo make selection other color (how it is very grey)
+//todo make selection other color (now it is very grey)
     lateinit var appComponent: AppComponent
 
     override fun onCreate() {

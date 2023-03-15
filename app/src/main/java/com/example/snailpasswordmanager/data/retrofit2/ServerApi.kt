@@ -5,6 +5,7 @@ import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import retrofit2.Response
 import retrofit2.http.*
 import java.util.*
 
@@ -12,7 +13,7 @@ interface ServerApi {
 
     @Headers("Content-Type: application/json;charset=UTF-8")
     @GET("/login")
-    suspend fun getLogin(@Header("Authorization") s:String): Token
+    suspend fun getLogin(@Header("Authorization") s:String): Response<Token>
 
     @Headers("Content-Type: application/json;charset=UTF-8")
     //"x-access-token: Bearer ааа.bbb.ccc")
@@ -20,7 +21,7 @@ interface ServerApi {
     suspend fun getUser(): UserEntity
 //saa@aaa.aaa
     @POST("/users")
-    suspend fun registration(@Body body: Registration): Gson
+    suspend fun registration(@Body body: Registration): Response<Gson>
 
     @Headers("Content-Type: application/json;charset=UTF-8")
     @POST("/records")
@@ -49,6 +50,10 @@ interface ServerApi {
     @Headers("Content-Type: application/json;charset=UTF-8")
     @PUT("/additional_fields")
     suspend fun editAdditionalFields(@Body field:RecordAddFieldEntity)// : Call<JsonObject>?
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @DELETE("/additional_fields")
+    suspend fun deleteAdditionalField(@Query("id") data: String)// : Call<JsonObject>?
 
 
 

@@ -1,18 +1,12 @@
 package com.example.snailpasswordmanager.domain.usecase.user
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.LoginMode
 import com.example.snailpasswordmanager.domain.crypto.PBKDF2SHA512.Hash
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.UserRepository
-import com.example.snailpasswordmanager.data.retrofit2.ServerApi
 import com.example.snailpasswordmanager.data.retrofit2.TokenAuthenticator.Companion.hash
-import okhttp3.Credentials
-import retrofit2.HttpException
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 import java.util.*
 
 class UserLoginUseCase(
@@ -21,8 +15,8 @@ class UserLoginUseCase(
 ) {
 
 
-    @RequiresApi(Build.VERSION_CODES.O)//todo base64 android
-    suspend operator fun invoke(userEntity: UserEntity): Boolean {
+    @RequiresApi(Build.VERSION_CODES.O)
+    suspend operator fun invoke(userEntity: UserEntity): Pair<String, LoginMode> {
         val password = userEntity.password
         val salt = userEntity.email
 
@@ -43,7 +37,7 @@ class UserLoginUseCase(
 
         hash = encodedString2
 
-        return userRepository.getloginAccess(
+        return userRepository.getLoginAccess(
             userEntity,encodedString2
         )
     }

@@ -6,5 +6,6 @@ data class FieldUseCases @Inject constructor(
     val insertField: InsertField,
     val editField: EditField,
     val getField: GetField,
-    val cloneField: CloneField
+    val cloneField: CloneField,
+    val deleteField: DeleteField
 )

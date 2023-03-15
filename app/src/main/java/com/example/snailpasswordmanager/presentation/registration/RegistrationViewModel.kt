@@ -15,20 +15,23 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import okhttp3.Response
 import javax.inject.Inject
-//todo make validation if registration fails
+
 class RegistrationViewModel @Inject constructor(
     val userUseCases: UserUseCases
 ) : ViewModel() {
 
-    val boolean = MutableStateFlow(false)
+    val boolean = MutableStateFlow(Pair(false,""))
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun registrationEvent(userEntity: UserEntity) {
         viewModelScope.launch(Dispatchers.IO) {
 
             val a = userUseCases.userRegisterUseCase(userEntity)
-            if(a)
-                boolean.value = userUseCases.userLoginUseCase(userEntity)
+            if(a.second)
+                boolean.value = Pair(true,"")
+            else
+                boolean.value = Pair(false,a.first)
+
 
         }
     }

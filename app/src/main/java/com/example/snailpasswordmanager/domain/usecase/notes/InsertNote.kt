@@ -20,8 +20,8 @@ class InsertNote @Inject constructor(
     @RequiresApi(Build.VERSION_CODES.O)
     suspend operator fun invoke(noteEntity: NoteEntity){
 
-        if (noteEntity.name.isBlank()) throw InvalidRecordException("The service can't be empty.") //todo make validation for it
-        if (noteEntity.content.isBlank()) throw InvalidRecordException("The service can't be empty.") //todo make validation for it
+        if (noteEntity.name.isBlank()) throw InvalidRecordException("The service can't be empty.")
+        if (noteEntity.content.isBlank()) throw InvalidRecordException("The service can't be empty.")
 
         val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
 

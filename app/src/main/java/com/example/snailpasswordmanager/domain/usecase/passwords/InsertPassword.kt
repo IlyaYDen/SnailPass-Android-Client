@@ -20,9 +20,9 @@ class InsertPassword @Inject constructor(
 ) {
     @RequiresApi(Build.VERSION_CODES.O)
     suspend operator fun invoke(passwordEntity: RecordEntity) {
-        if (passwordEntity.name.isBlank()) throw InvalidRecordException("The service can't be empty.") //todo make validation for it
-        if (passwordEntity.login.isBlank()) throw InvalidRecordException("The login can't be empty.") //todo make validation for it
-        if (passwordEntity.encrypted_password.isBlank()) throw InvalidRecordException("The password can't be empty.") //todo make validation for it
+        if (passwordEntity.name.isBlank()) throw InvalidRecordException("The service can't be empty.")
+        if (passwordEntity.login.isBlank()) throw InvalidRecordException("The login can't be empty.")
+        if (passwordEntity.encrypted_password.isBlank()) throw InvalidRecordException("The password can't be empty.")
 
         val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
 

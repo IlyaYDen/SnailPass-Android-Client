@@ -1,24 +1,12 @@
 package com.example.snailpasswordmanager.data.repository
 
-import android.util.Log
 import com.example.snailpasswordmanager.data.database.record.RecordAddFieldDao
-import com.example.snailpasswordmanager.data.database.record.UserDao
 import com.example.snailpasswordmanager.data.model.RecordAddFieldEntityMapper
-import com.example.snailpasswordmanager.data.model.UserEntityMapper
-import com.example.snailpasswordmanager.data.retrofit2.Registration
 import com.example.snailpasswordmanager.data.retrofit2.ServerApi
-import com.example.snailpasswordmanager.data.retrofit2.Token
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
-import com.example.snailpasswordmanager.domain.model.RecordEntity
-import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.AdditionalFieldsRepository
-import com.example.snailpasswordmanager.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import okhttp3.Credentials
-import retrofit2.HttpException
-import java.io.IOException
 import java.util.*
 import javax.inject.Inject
 
@@ -82,6 +70,18 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
             for(t in addFieldEntityList){
                 serverApi.editAdditionalFields(t)
                 fieldDao.deleteFieldById(t.id.toString())
+
+            }
+        }
+        catch (_:Exception){}
+    }
+
+    override suspend fun deleteFieldList(deleteFieldUUIDList: List<UUID>) {
+
+        try{
+            for(t in deleteFieldUUIDList){
+                serverApi.deleteAdditionalField(t.toString())
+                fieldDao.deleteFieldById(t.toString())
 
             }
         }
