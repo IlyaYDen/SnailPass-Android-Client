@@ -10,6 +10,7 @@ import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.domain.usecase.cryptography.Decode
 import com.example.snailpasswordmanager.domain.usecase.additionalFields.FieldUseCases
 import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import java.util.UUID
@@ -24,34 +25,47 @@ class AccountInfoViewModel(
     @RequiresApi(Build.VERSION_CODES.O)
     fun addPassword(passwordEntity: RecordEntity, subList: MutableList<RecordAddFieldEntity>) {
         viewModelScope.launch {
+            Log.d("addPassword", "start")
             passwordUseCases.insertPassword(passwordEntity)
             fieldUseCases.insertField(subList)
+            Log.d("addPassword", "start2")
+            responce.value = true
+            Log.d("addPassword", "start3")
         }
     }
     @RequiresApi(Build.VERSION_CODES.O)
     fun addPassword(passwordEntity: RecordEntity) {
         viewModelScope.launch {
+            Log.d("addPassword", "start")
             passwordUseCases.insertPassword(passwordEntity)
+            Log.d("addPassword", "start2")
+            responce.value = true
+            Log.d("addPassword", "start3")
         }
     }
 
+    var responce = MutableStateFlow(false)
     @RequiresApi(Build.VERSION_CODES.O)
     fun editPassword(passwordEntity: RecordEntity) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             passwordUseCases.editPassword(passwordEntity)
+            responce.value = true
         }
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun editPassword(passwordEntity: RecordEntity,subList: MutableList<RecordAddFieldEntity>) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             passwordUseCases.editPassword(passwordEntity)
             fieldUseCases.editField(subList)
+            responce.value = true
         }
     }
     fun deletePassword(id: UUID) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             passwordUseCases.deletePassword(id)
+            responce.value = true
         }
     }
 

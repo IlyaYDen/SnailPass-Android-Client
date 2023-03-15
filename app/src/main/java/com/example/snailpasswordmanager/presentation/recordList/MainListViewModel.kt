@@ -29,13 +29,20 @@ class MainListViewModel constructor(
     fun getPasswords() {
         //-Log.d("MYLOG_test","getpass1")
 
+        Log.d("MYLOG_testgetpass1","start")
         viewModelScope.launch(Dispatchers.IO) {
 
+            Log.d("MYLOG_testgetpass1","start2")
             ////-Log.d("MYLOG_test","GetPasswordList launch")
             passwordUseCases.getPasswordList().collect {
+
+                Log.d("MYLOG_testgetpass1","collect")
                 //-Log.d("MYLOG_test","getpass2 " + (it?.size))
                 if (it != null) {
+                    Log.d("MYLOG_testgetpass1","getpass1")
                     passwordListEdited.value = it
+
+                    Log.d("MYLOG_testgetpass1","getpass2")
                     //todo make password list load in the same time
 
                     for (t in it)

@@ -12,6 +12,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -59,6 +61,12 @@ class RecordListFragment : Fragment() {
         viewModel.getPasswords()
         viewModel.getAddFields()
 
+        val toolbar : TextView? = activity?.findViewById(R.id.nameToolbar)
+        if(toolbar!= null) {
+            toolbar.text = getString(R.string.AccountsToolBarText)
+        }
+
+        searchFun()
     }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,11 +74,11 @@ class RecordListFragment : Fragment() {
         appComponent.inject(this)
         bindingClass = FragmentRecordListBinding.inflate(layoutInflater)
 
-        viewModel = ViewModelProvider(this, vmFactory)
-            .get(MainListViewModel::class.java)
+        viewModel = ViewModelProvider(this, vmFactory)[MainListViewModel::class.java]
+
 
         init()
-
+//ttt@ttt.ttt1
 
         viewModel.passwordListEdited.onEach {
             adapter.setPasswords(viewModel.passwordListEdited.value)
@@ -113,35 +121,37 @@ class RecordListFragment : Fragment() {
 
             viewModel.getPasswords()
         }
-        searchFun()
     }
 
     private fun searchFun() {
-        val searchView = activity?.findViewById<SearchView>(R.id.searchView) // bindingClass.searchView
-        val nameToolbar = activity?.findViewById<TextView>(R.id.nameToolbar) // bindingClass.searchView
+        val searchView : SearchView? = activity?.findViewById(R.id.searchView) // bindingClass.searchView
+        val nameToolbar : TextView? = activity?.findViewById(R.id.nameToolbar) // bindingClass.searchView
 
-        searchView?.queryHint = "Search"
-        searchView?.setOnCloseListener{
-            nameToolbar?.visibility = View.VISIBLE
-            return@setOnCloseListener false
-        }
-
-        searchView?.setOnSearchClickListener {
-            nameToolbar?.visibility = View.GONE
-
-        }
-        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return true
+        if(searchView!=null && nameToolbar!=null) {
+            searchView.queryHint = "Search"
+            searchView.setOnCloseListener {
+                Log.d("testsdfvdsf", "testfrefewr")//ttt@ttt.ttt1
+                nameToolbar.visibility = View.VISIBLE
+                return@setOnCloseListener false
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                adapter.filter.filter(newText)
-                return true
-            }
+            searchView.setOnSearchClickListener {
+                nameToolbar.visibility = View.GONE
 
-        })
-        searchView?.setQuery("", false) // Set a default query
+            }
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    adapter.filter.filter(newText)
+                    return true
+                }
+
+            })
+            searchView.setQuery("", false) // Set a default query
+        }
     }
     private fun init() {
         bindingClass.apply {

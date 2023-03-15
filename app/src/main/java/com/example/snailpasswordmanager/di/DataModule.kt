@@ -5,17 +5,16 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.snailpasswordmanager.data.database.record.RecordAddFieldDao
-import com.example.snailpasswordmanager.data.database.record.RecordDao
-import com.example.snailpasswordmanager.data.database.record.RecordDb
-import com.example.snailpasswordmanager.data.database.record.UserDao
+import com.example.snailpasswordmanager.data.database.record.*
 import com.example.snailpasswordmanager.data.repository.AdditionalFieldsRepositoryImpl
+import com.example.snailpasswordmanager.data.repository.NoteListRepositoryImpl
 import com.example.snailpasswordmanager.data.repository.RecordListRepositoryImpl
 import com.example.snailpasswordmanager.data.repository.UserRepositoryImpl
 import com.example.snailpasswordmanager.data.retrofit2.ServerApi
 import com.example.snailpasswordmanager.data.retrofit2.Token
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.AdditionalFieldsRepository
+import com.example.snailpasswordmanager.domain.repository.NoteListRepository
 import com.example.snailpasswordmanager.domain.repository.RecordListRepository
 import com.example.snailpasswordmanager.domain.repository.UserRepository
 import dagger.Module
@@ -69,6 +68,11 @@ class DataModule {
 
     @Provides
     //@Singleton
+    fun provideNoteListRepository(db: RecordDb,serverApi: ServerApi): NoteListRepository {
+        return NoteListRepositoryImpl(serverApi,db.noteDao)
+    }
+    @Provides
+    //@Singleton
     fun provideAdditionalFieldsRepository(serverApi: ServerApi,recordAddFieldDao: RecordAddFieldDao): AdditionalFieldsRepository {
         return AdditionalFieldsRepositoryImpl(serverApi,recordAddFieldDao)
     }
@@ -79,6 +83,13 @@ class DataModule {
         return UserRepositoryImpl(db.userDao, serverApi, userEntityAuth,token)
     }
 
+
+
+    @Provides
+    @Singleton
+    fun provideNoteDao(db: RecordDb): NoteDao {
+        return db.noteDao
+    }
 
     @Provides
     @Singleton

@@ -11,7 +11,7 @@ data class UserEntity(
     @SerializedName("master_password_hash")
     var password: String,
     @SerializedName("hint")
-    var hint : String,
+    var hint : String, //todo send null if empty
     @SerializedName("is_admin")
     var isAdmin : Boolean = false
 

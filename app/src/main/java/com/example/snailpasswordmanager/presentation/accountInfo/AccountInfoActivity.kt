@@ -1,9 +1,12 @@
 package com.example.snailpasswordmanager.presentation.accountInfo
 
 import android.R
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
+import android.graphics.Canvas
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -18,8 +21,10 @@ import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.databinding.ActivityAccountInfoListBinding
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
 import com.example.snailpasswordmanager.domain.model.RecordEntity
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import java.lang.StrictMath.abs
 import java.util.*
 import javax.inject.Inject
 
@@ -50,7 +55,7 @@ class AccountInfoActivity: AppCompatActivity() {
         val toolbar: Toolbar = bindingClass.toolbar2
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Account"
+        supportActionBar?.title = "Account " + intent.getSerializableExtra("ID")
 
 
         bindingClass.apply {
@@ -63,6 +68,12 @@ class AccountInfoActivity: AppCompatActivity() {
 
         vm = ViewModelProvider(this,vmFactory)[AccountInfoViewModel::class.java]
 
+
+        vm.responce.onEach {
+            if(it) {
+                finish()
+            }
+        }.launchIn(lifecycleScope)
 
         if(intent.getBooleanExtra("MODE",false)) {
 
@@ -229,15 +240,17 @@ class AccountInfoActivity: AppCompatActivity() {
                         )
                     )
                 //bindingClass.rv.
-                finish()
+                //finish()
             }
-        }
+        }//ttt@ttt.ttt1
         //-Log.d("test----",list.size.toString())
         //list.addAll(adapter.list.subList(3, adapter.list.size))
         bindingClass.ButtonAddField.setOnClickListener {
+            currentFocus?.clearFocus()
+            val idt = UUID.randomUUID()
             list.add(
                 RecordAddFieldEntity(
-                    id = UUID.randomUUID(),
+                    id = idt,
                     name = "",
                     value = "",
                     record_id = id
@@ -245,12 +258,115 @@ class AccountInfoActivity: AppCompatActivity() {
             )
             //adapter.list = list
             adapter.addList(RecordAddFieldEntity(
-                id = UUID.randomUUID(),
+                id = idt,
                 name = "",
                 value = "",
                 record_id = id
             ))
+
         }
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                // Not used in this example
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+
+                if (shouldAllowDeletion(position)) {
+                    val deletedItem = list[position]
+                    //adapter.list.removeAt(position)
+                    adapter.deleteItem(position)
+                    //list.remove(deletedItem)
+
+                    //adapter.notifyItemRemoved(position)
+
+                    val snackbar = Snackbar.make(
+                        bindingClass.rv,
+                        "Item deleted",
+                        Snackbar.LENGTH_LONG
+                    )
+                    snackbar.setAction("Undo") {
+                        //adapter.list.add(position, deletedItem)
+                        adapter.undoDelete()
+                        //list.add(position,deletedItem)
+                        //adapter.notifyItemInserted(position)
+
+                        // Animate the view to its original position
+                        val itemView = viewHolder.itemView
+                        ObjectAnimator.ofFloat(itemView, "translationX", 0f)
+                            .apply {
+                                addListener(object : AnimatorListenerAdapter() {
+                                    override fun onAnimationEnd(animation: Animator) {
+                                        super.onAnimationEnd(animation)
+                                        // Notify the adapter of the swipe cancellation
+                                        adapter.notifyItemChanged(position)
+                                    }
+                                })
+                                start()
+                            }
+                    }
+                    snackbar.show()
+                } else {
+                    // Animate the view to return back to its original position
+                    val itemView = viewHolder.itemView
+                    ObjectAnimator.ofFloat(itemView, "translationX", 0f)
+                        .apply {
+                            addListener(object : AnimatorListenerAdapter() {
+                                override fun onAnimationEnd(animation: Animator) {
+                                    super.onAnimationEnd(animation)
+                                    // Notify the adapter of the swipe cancellation
+                                    adapter.notifyItemChanged(position)
+                                }
+                            })
+                            start()
+                        }
+                }
+            }
+
+            private fun shouldAllowDeletion(position: Int): Boolean = position > 2
+
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                    // Calculate the new position of the view
+                    val itemView = viewHolder.itemView
+                    val originalTranslationX = itemView.translationX
+                    val newTranslationX = dX.coerceIn(-itemView.width.toFloat(), 0f)
+                    itemView.translationX = newTranslationX
+
+                    // Calculate the alpha of the view based on its position
+                    val alpha = 1f - abs(newTranslationX) / itemView.width
+                    itemView.alpha = alpha
+
+                    // Draw the view at the new position
+                    c.translate(originalTranslationX, 0f)
+                    viewHolder.itemView.draw(c)
+                    c.translate(-originalTranslationX, 0f)
+                } else {
+                    super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                }
+            }
+        })
+
+
+        itemTouchHelper.attachToRecyclerView(bindingClass.rv)
+
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

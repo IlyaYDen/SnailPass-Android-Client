@@ -29,7 +29,6 @@ class RecordListAdapter: RecyclerView.Adapter<RecordListAdapter.PasswordItemView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordItemViewHolder {
-        //TODO("Not yet implemented")
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.record_list_item,
             parent,
@@ -39,7 +38,6 @@ class RecordListAdapter: RecyclerView.Adapter<RecordListAdapter.PasswordItemView
     }
 
     override fun onBindViewHolder(holder: PasswordItemViewHolder, position: Int) {
-        //TODO("Not yet implemented")
         holder.bind(listSearch.get(position))
 
         holder.itemView.setOnClickListener {
@@ -54,18 +52,6 @@ class RecordListAdapter: RecyclerView.Adapter<RecordListAdapter.PasswordItemView
             }
 
             holder.itemView.context.startActivity(intent)
-
-/*
-            val intent = Intent(holder.itemView.context, PasswordItemActivity::class.java).apply {
-                putExtra("MODE", true)
-                putExtra("SERVICE", list.get(position).name)
-                putExtra("LOGIN", list.get(position).login)
-                putExtra("PASSWORD", list.get(position).encrypted_password)
-                putExtra("ID", list.get(position).id)
-            }
-
-            holder.itemView.context.startActivity(intent)*/
-            //val intent = Intent(this, RegistrationActivity::class.java).apply {
 
             }
 

@@ -2,6 +2,9 @@ package com.example.snailpasswordmanager.presentation.mainActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.ImageView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -20,31 +23,23 @@ class MainActivity : AppCompatActivity(), AppComponentProvider {
         (applicationContext as PasswordApp).appComponent
     }
 
-    lateinit var bindingClass : ActivityMainBinding
 
     //todo disable accounts when search & repair search
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
-        bindingClass = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(bindingClass.root)
 
         val navigationView : NavigationView = findViewById(R.id.navigationView)
         navigationView.itemIconTintList = null
         val navController = Navigation.findNavController(this,R.id.frameLayout)
         NavigationUI.setupWithNavController(navigationView,navController)
 
-//
-        //val fragmentTransition = supportFragmentManager.beginTransaction()
-//
-//
-        //fragmentTransition.replace(R.id.frameLayout, RecordListFragment())
-        //fragmentTransition.commit()
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
 
 
-        val drawerLayout : DrawerLayout = bindingClass.drawerLayout
-        val menuImage = bindingClass.imageMenu
+        val menuImage : ImageView = findViewById(R.id.imageMenu)
+
         menuImage.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }

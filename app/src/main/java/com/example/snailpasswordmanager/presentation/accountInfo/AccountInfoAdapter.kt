@@ -12,9 +12,11 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
+import com.example.snailpasswordmanager.domain.model.RecordEntity
 import kotlin.random.Random
 
 class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemViewHolder>() {
+
 
     //var list = listOf<RecordInfoEntity>()
     var textboxEditable: Boolean = true
@@ -33,6 +35,12 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
         notifyDataSetChanged()
         textboxEditable = true
     }
+    fun addListItemPos(position: Int, value: RecordAddFieldEntity){
+        textboxEditable = false
+        list.add(position,value)
+        notifyDataSetChanged()
+        textboxEditable = true
+    }
     fun addList(value: List<RecordAddFieldEntity>){
         textboxEditable = false
         list.addAll(value)
@@ -40,6 +48,20 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
         textboxEditable = true
     }
 
+    private var lastDeletedItem: Pair<RecordAddFieldEntity, Int>? = null
+    fun deleteItem(position: Int) {
+        lastDeletedItem = Pair(list[position], position)
+        list.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    fun undoDelete() {
+        lastDeletedItem?.let {
+            list.add(it.second, it.first)
+            notifyItemInserted(it.second)
+            lastDeletedItem = null
+        }
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountItemViewHolder {
         val view =
         if(viewType==0)
@@ -65,6 +87,8 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
 
     private var showPasswordEnable : Boolean = false
     private var showGenerator : Boolean = false
+
+
     override fun onBindViewHolder(holder: AccountItemViewHolder, position: Int) {
         val accountItem = list[position]
 
@@ -91,7 +115,10 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
             generateButton.setOnClickListener {
                 //val s = generatePassword(passwordLength,checkBoxLettersSmall,checkBoxLettersCap,
                 //    checkBoxNumbers,checkBoxSpec)
-                if (passwordLength.text.toString() != "") {
+                if (passwordLength.text.toString() != "" && passwordLength.text.toString().toInt()>4) {
+                    passwordLength.setText(
+                        if(passwordLength.text.toString().toInt() > 4) passwordLength.text.toString()
+                        else "4")
                     val s = generate(passwordLength.text.toString().toInt(),
                         checkBoxLettersSmall.isChecked,
                         checkBoxLettersCap.isChecked,
@@ -129,7 +156,6 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
 
             }
         }
-
 
         holder.key.text = accountItem.name
         holder.key.addTextChangedListener(object : TextWatcher {
@@ -206,93 +232,6 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
             password[position] = symbol
         }
 
-    private fun generatePassword(
-        passwordLength: EditText,
-        checkBoxLettersSmall: CheckBox,
-        checkBoxLettersCap: CheckBox,
-        checkBoxNumbers: CheckBox,
-        checkBoxSpec: CheckBox
-    ): String {
-        if(passwordLength.text.isEmpty()) return ""
-        val passwordLength1 = passwordLength.text.toString().toInt()
-        val checkBoxLettersSmall1 = checkBoxLettersSmall.isChecked
-        val checkBoxLettersCap1 = checkBoxLettersCap.isChecked
-        val checkBoxNumbers1 = checkBoxNumbers.isChecked
-        val checkBoxSpec1 = checkBoxSpec.isChecked
-
-        val lettersSmall = "abcdefghijklmnopqrstuvwxyz"
-        val lettersCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        val numbers = "0123456789"
-        val symbols = "!@#$%^&*()_-+={}[]\\|:;\"'<>,.?/~"
-
-        var charPool = ""
-        var password = ""
-
-        // Add character types to the pool based on user selection
-        if (checkBoxLettersSmall1) {
-            charPool += lettersSmall
-        }
-        if (checkBoxLettersCap1) {
-            charPool += lettersCap
-        }
-        if (checkBoxNumbers1) {
-            charPool += numbers
-        }
-        if (checkBoxSpec1) {
-            charPool += symbols
-        }
-        if(charPool.isEmpty()) return ""
-        if(passwordLength1<1) return ""
-
-        var hasAlphabetChar = false
-        var i = 1
-        while (!hasAlphabetChar && i <= passwordLength1) {
-            val randomIndex = (0 until charPool.length).random()
-            val randomChar = charPool[randomIndex]
-            if (checkBoxLettersSmall1 && lettersSmall.contains(randomChar)) {
-                hasAlphabetChar = true
-            }
-            if (checkBoxLettersCap1 && lettersCap.contains(randomChar)) {
-                hasAlphabetChar = true
-            }
-            i++
-            password += randomChar
-        }
-        // Generate password by randomly selecting characters from the pool
-        for (i in 1..passwordLength1) {
-            val randomIndex = (0 until charPool.length).random()
-            password += charPool[randomIndex]
-        }
-
-        return password
-    }
-
-/*
-    private val showPassword: ImageButton
-    private var showPasswordEnable : Boolean = false
-
-    private val passwordText: EditText
-    init {
-        View.inflate(context, R.layout.password_with_generation_input_layout, this)
-
-        showPassword = findViewById(R.id.showPassword)
-        passwordText = findViewById(R.id.password_text_with_generation)
-        passwordText.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
-
-        showPassword.setOnClickListener {
-            if(!showPasswordEnable) {
-                showPassword.setImageResource(R.drawable.baseline_visibility_off_24)
-                passwordText.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
-            }
-            else{
-                showPassword.setImageResource(R.drawable.baseline_remove_red_eye_24)
-                passwordText.inputType = InputType.TYPE_CLASS_TEXT
-            }
-            showPasswordEnable = !showPasswordEnable
-
-        }
-
-    }*/
 
 
     override fun getItemCount(): Int {
@@ -311,5 +250,8 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
     }
 
 
+
 }
+
+
 

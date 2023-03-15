@@ -9,7 +9,7 @@ class DeletePassword @Inject constructor(
     private val passwordListRepository: RecordListRepository
      ) {
     suspend operator fun invoke(id: UUID){
-        passwordListRepository.deleteRecord(id) // todo переделать удаление
+        passwordListRepository.deleteRecord(id) //todo переделать удаление
     }
 }
 

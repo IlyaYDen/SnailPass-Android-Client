@@ -49,20 +49,6 @@ class EditPassword @Inject constructor(
         //val encrypted_password = AESUtil.encrypt(passwordEntity.encrypted_password.toByteArray(), masterpass, encrypted_passwordNonce.toByteArray()) // 32 length Key
         val encrypted_password = AESUtil.encrypt(passwordEntity.encrypted_password.toByteArray(), masterpass, encrypted_passwordNonce.toByteArray()) // 32 length Key
 
-/*
-        val masterpass = Base64.decode(userEntityAuth.password.toByteArray(),0)
-
-        val loginNonce = nonceGen()
-        val login = AESUtil.encrypt(passwordEntity.login.toByteArray(), masterpass, loginNonce.toByteArray()) // 32 length Key authInfo.hash2
-
-        val nameNonce = nonceGen()
-        val name = AESUtil.encrypt(passwordEntity.name.toByteArray(), masterpass, nameNonce.toByteArray()) // 32 length Key
-
-        val encrypted_passwordNonce = nonceGen()
-        val encrypted_password = AESUtil.encrypt(passwordEntity.encrypted_password.toByteArray(), masterpass, encrypted_passwordNonce.toByteArray()) // 32 length Key
-*/
-        //-Log.d("MYLOG_testE",passwordEntity.id.toString())
-
         recordListRepository.editRecord(RecordEntity(
             id = passwordEntity.id,
             name = String(Base64.getEncoder().encode(name)).replace("\n","")                                + ":" + String(Base64.getEncoder().encode(nameNonce.toByteArray())),//todo

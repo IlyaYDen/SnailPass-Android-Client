@@ -6,39 +6,30 @@
     android:layout_height="wrap_content"
     android:background="@color/main_background">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginStart="-5dp"
+        android:layout_marginEnd="-5dp"
+        android:background="@drawable/border"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:layout_margin="3dp"
-            android:orientation="vertical">
+        <TextView
 
-            <TextView
-                android:id="@+id/serviceName"
-                android:layout_width="355dp"
-                android:layout_height="match_parent"
-                android:gravity="fill_vertical"
+            android:id="@+id/serviceName"
+            android:layout_width="355dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="18dp"
 
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="test" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="fill_vertical"
+            android:text="test"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

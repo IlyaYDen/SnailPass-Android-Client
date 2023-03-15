@@ -59,10 +59,7 @@ class RecordListRepositoryImpl @Inject constructor(
         }
             catch (e : Exception){
 
-                //Сделать утилиту с состояниями
-
-                //-Log.d("MYLOG_testER","FAIL serverApi.getRecords() Error")
-                //-Log.d("MYLOG_testER"," " + e)
+                //todo Сделать утилиту с состояниями
 
             return recordDao.getRecords().map {
                 //-Log.d("MYLOG_testER","FAIL getRecordList from local: " + it.size)
@@ -102,7 +99,7 @@ class RecordListRepositoryImpl @Inject constructor(
             )
 
             ////-Log.d("MYLOG_test","id: " + passwordEntity.nonce)
-            recordDao.insertRecord(recordEntityMapper.mapEntityToDbModel(passwordEntity))
+            recordDao.insertRecord(recordEntityMapper.mapEntityToDbModel(passwordEntity)) //todo can be removed?
         } catch (_: Exception){
 
         }
@@ -130,7 +127,7 @@ class RecordListRepositoryImpl @Inject constructor(
             )
 
             ////-Log.d("MYLOG_test","id: " + passwordEntity.nonce)
-            recordDao.deleteRecord(passwordEntity.id)
+            recordDao.deleteRecord(passwordEntity.id) //todo can be removed?
             recordDao.insertRecord(recordEntityMapper.mapEntityToDbModel(passwordEntity))
         } catch (_: Exception){
 
@@ -139,14 +136,9 @@ class RecordListRepositoryImpl @Inject constructor(
 
     override suspend fun deleteRecord(id: UUID) {
         try {
-            serverApi.deleteRecord(
-               // token.token,
-                id.toString()//passwordEntity.id.toString()
-
-            )
-            recordDao.deleteRecord(id)//recordEntityMapper.mapEntityToDbModel(passwordEntity))
+            serverApi.deleteRecord(id.toString())
+            recordDao.deleteRecord(id)
         } catch (_: Exception){
-
         }
     }
 

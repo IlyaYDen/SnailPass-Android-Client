@@ -1,5 +1,6 @@
 package com.example.snailpasswordmanager.data.retrofit2
 
+import com.example.snailpasswordmanager.domain.model.NoteEntity
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.google.gson.Gson
@@ -48,6 +49,25 @@ interface ServerApi {
     @Headers("Content-Type: application/json;charset=UTF-8")
     @PUT("/additional_fields")
     suspend fun editAdditionalFields(@Body field:RecordAddFieldEntity)// : Call<JsonObject>?
+
+
+
+//notes
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @POST("/notes")
+    suspend fun createNote(@Body noteEntity: NoteEntity)// : Call<JsonObject>?
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @PUT ("/notes")
+    suspend fun editNote(@Body noteEntity: NoteEntity)// : Call<JsonObject>?
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @DELETE("/notes")
+    suspend fun deleteNote(@Query("id") id : String)// : Call<JsonObject>?
+
+    @Headers("Content-Type: application/json;charset=UTF-8")
+    @GET("/notes")
+    suspend fun getNotes() : List<NoteEntity>?
 
 }
 
