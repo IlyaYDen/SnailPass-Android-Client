@@ -37,3 +37,14 @@ Accounts list
 
 ![image](https://user-images.githubusercontent.com/90569114/224316815-d26f35be-258b-4c0b-87bd-c26789fe0e64.png)
 
+Account info
+`![image](https://user-images.githubusercontent.com/90569114/225443828-f7f5c914-e05e-4869-9acc-73f9212aab42.png)
+
+Notes list
+
+![image](https://user-images.githubusercontent.com/90569114/225444440-7489fb29-a183-4d4b-b824-53b3c68a80ff.png)
+
+Note info
+
+![image](https://user-images.githubusercontent.com/90569114/225444646-e2a728f8-faa8-46e9-9ccc-647b6d8e7410.png)
+
