@@ -69,7 +69,7 @@ class NoteActivity : AppCompatActivity() {
             bindingClass.buttonNoteDelete.visibility = View.VISIBLE
             bindingClass.buttonNoteDelete.setOnClickListener {
                 vm.deleteNote(id)
-                finish()
+                //finish()
             }
 
             bindingClass.buttonNoteSave.text = getString(R.string.EditNote)
@@ -86,7 +86,7 @@ class NoteActivity : AppCompatActivity() {
                     user_id = ""
                 ))
 
-                finish()
+                //finish()
             }
         }
         else{
@@ -105,7 +105,7 @@ class NoteActivity : AppCompatActivity() {
                             user_id = ""
                         )
                     )
-                    finish()
+                    //finish()
                 }
                 else {
                     if(bindingClass.noteName.text.toString().isNotEmpty())
@@ -114,7 +114,14 @@ class NoteActivity : AppCompatActivity() {
                         bindingClass.noteContent.error = getString(R.string.empty_error)
                 }
             }
+
+
         }
+
+        vm.boolean.onEach {
+            if(it)
+                finish()
+        }.launchIn(lifecycleScope)
 
     }
 

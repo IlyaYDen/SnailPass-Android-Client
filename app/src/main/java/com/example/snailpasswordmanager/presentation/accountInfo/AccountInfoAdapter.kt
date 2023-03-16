@@ -297,7 +297,6 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
         }
         return listFiltered.size//list.size
     }
-//ttt@ttt.ttt1
 
     override fun getItemViewType(position: Int): Int {
 

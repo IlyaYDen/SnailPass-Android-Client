@@ -132,7 +132,8 @@ class AccountInfoActivity: AppCompatActivity() {
             for(i in list){
                 listE.add(Pair(i,0))
             }
-            adapter.list = listE
+            adapter.list = listE    //c387b555-a5ff-4c93-a21e-7c7fc8049d78
+                                    //dtE4xDnkrveKzCXJShVhMA==:endCVDRJZERxT0FpcDBaRg
 
             bindingClass.buttonDelete.visibility = View.VISIBLE
 

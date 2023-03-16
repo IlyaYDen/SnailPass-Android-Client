@@ -27,14 +27,15 @@ class DomainModule {
             editPassword = EditPassword(repository,userEntityAuth)
         )
     }
-    @Provides
-    //@Singleton
+    /*@Provides
+    @Singleton
     fun providerUserUseCases(repository: UserRepository, userEntity: UserEntity) : UserUseCases {
         return UserUseCases(
             userLoginUseCase = UserLoginUseCase(repository,userEntity),
             userRegisterUseCase = UserRegisterUseCase(repository)
         )
-    }
+    }*/
+
     @Provides
     //@Singleton
     fun providerDecodeUseCase(userEntity: UserEntity) : Decode {

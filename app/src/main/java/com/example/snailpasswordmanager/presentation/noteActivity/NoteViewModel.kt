@@ -16,6 +16,7 @@ class NoteViewModel(
     private val noteUseCases: NoteUseCases
 ) : ViewModel() {
     var note = MutableStateFlow<NoteEntity?>(null)
+    var boolean = MutableStateFlow<Boolean>(false)
     @RequiresApi(Build.VERSION_CODES.O)
     fun getNoteById(id: UUID) {
 
@@ -30,6 +31,7 @@ class NoteViewModel(
 
         viewModelScope.launch(Dispatchers.IO) {
             noteUseCases.deleteNote(UUID.fromString(id))
+            boolean.value = true
         }
     }
 
@@ -38,6 +40,8 @@ class NoteViewModel(
 
         viewModelScope.launch(Dispatchers.IO) {
             noteUseCases.insertNote(noteEntity)
+
+            boolean.value = true
         }
     }
 
@@ -46,6 +50,7 @@ class NoteViewModel(
 
         viewModelScope.launch(Dispatchers.IO) {
             noteUseCases.editNote(noteEntity)
+            boolean.value = true
         }
     }
 }

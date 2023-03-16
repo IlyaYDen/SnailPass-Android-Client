@@ -80,10 +80,12 @@ class LoginActivity : AppCompatActivity() {
         t = getSharedPreferences(PreferenceKeys.AUTH_SHARED_PREFERENCES,Context.MODE_PRIVATE)
 
         loginButton.setOnClickListener {
-            pb.visibility = View.VISIBLE
-           if(//todo validate
+            currentFocus?.clearFocus()
+            if(//todo validate
                loginText.text != null && loginText.text!!.length>5 &&
-               passwordText.text != null && passwordText.text!!.length>8) {
+               passwordText.text != null && passwordText.text!!.length>10) {
+
+               pb.visibility = View.VISIBLE
                userEntity = UserEntity(
                    email = loginText.text.toString(),
                    password = passwordText.text.toString(),
@@ -93,11 +95,15 @@ class LoginActivity : AppCompatActivity() {
                    vm.logInEvent(userEntity)
                }
            }
+            else{
+                loginText.error = getString(R.string.login_error)//"Please enter a valid email and password."
+                //loginText.requestFocus()
+            }
 
 
 
         }
-        vm.boolean
+        vm.sharedViewEffects
             .onEach {
 
                 if(it.second == LoginMode.ONLINE || it.second == LoginMode.OFFLINE){
@@ -107,6 +113,7 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 else if(it.second == LoginMode.ERROR) {
+                    var t = 3
                     if(it.first!="")
                         loginText.error = getString(R.string.login_error)
                 }
@@ -117,6 +124,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         registrationButton.setOnClickListener {
+            currentFocus?.clearFocus()
             val intent = Intent(this, RegistrationActivity::class.java)
 
                 val options = ActivityOptions.makeSceneTransitionAnimation(this,

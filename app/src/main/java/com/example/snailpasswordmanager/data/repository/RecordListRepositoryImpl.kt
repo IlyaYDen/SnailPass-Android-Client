@@ -5,6 +5,7 @@ import com.example.snailpasswordmanager.data.database.record.RecordDao
 import com.example.snailpasswordmanager.data.model.RecordEntityMapper
 import com.example.snailpasswordmanager.data.retrofit2.*
 import com.example.snailpasswordmanager.domain.model.RecordEntity
+import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.RecordListRepository
 import kotlinx.coroutines.flow.*
 import retrofit2.HttpException
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 class RecordListRepositoryImpl @Inject constructor(
     private val recordDao: RecordDao,
-    var serverApi: ServerApi
+    var serverApi: ServerApi,
+    var userEntityAuth: UserEntity,
     ) : RecordListRepository {
 
     private val recordEntityMapper = RecordEntityMapper()
@@ -24,7 +26,7 @@ class RecordListRepositoryImpl @Inject constructor(
         try {
             val records = serverApi.getRecords()//token.token
 
-            recordDao.deleteRecords()
+            recordDao.deleteUserRecords(userEntityAuth.id)
 
             if (records != null) {
                 records.map {

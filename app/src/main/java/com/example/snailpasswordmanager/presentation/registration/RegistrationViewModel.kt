@@ -11,6 +11,7 @@ import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
 import com.example.snailpasswordmanager.presentation.login.LoginViewModel
 import com.example.snailpasswordmanager.data.retrofit2.Token
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import okhttp3.Response
@@ -20,7 +21,7 @@ class RegistrationViewModel @Inject constructor(
     val userUseCases: UserUseCases
 ) : ViewModel() {
 
-    val boolean = MutableStateFlow(Pair(false,""))
+    val boolean = MutableSharedFlow<Pair<Boolean,String>>()//(Pair(false,""))
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun registrationEvent(userEntity: UserEntity) {
@@ -28,9 +29,11 @@ class RegistrationViewModel @Inject constructor(
 
             val a = userUseCases.userRegisterUseCase(userEntity)
             if(a.second)
-                boolean.value = Pair(true,"")
+                boolean.emit(Pair(true,""))
+                //boolean.value = Pair(true,"")
             else
-                boolean.value = Pair(false,a.first)
+                boolean.emit(Pair(false,a.first))
+                //boolean.value = Pair(false,a.first)
 
 
         }

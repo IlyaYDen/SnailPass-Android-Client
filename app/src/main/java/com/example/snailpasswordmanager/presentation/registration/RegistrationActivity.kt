@@ -71,11 +71,11 @@ class RegistrationActivity : AppCompatActivity() {
             .launchIn(lifecycleScope)
 
         buttonRegistration.setOnClickListener {
-            pb.visibility = View.VISIBLE
             //val b = vm.registrationEvent();
             if(
                 validateUsername() && validatePassword() && validateRepeatPassword()
             ) {
+                pb.visibility = View.VISIBLE
                 vm.registrationEvent(
                     UserEntity(
                         id = UUID.randomUUID(),
@@ -84,6 +84,13 @@ class RegistrationActivity : AppCompatActivity() {
                         password = tvPassword_text.text.toString()
                     )
                 )
+            } else {
+                if(validateUsername())
+                    tvLogin.error = getString(R.string.invalid_username)
+                if(validatePassword())
+                    tvPassword_text.error = getString(R.string.invalid_username)
+                if(validateRepeatPassword())
+                    tvRepeat_password_text.error = getString(R.string.invalid_username)
             }
         }
         buttonLogin.setOnClickListener { this.onBackPressed(); }

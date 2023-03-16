@@ -10,20 +10,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.databinding.FragmentNotesBinding
-import com.example.snailpasswordmanager.databinding.FragmentRecordListBinding
-import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoActivity
 import com.example.snailpasswordmanager.presentation.mainActivity.AppComponentProvider
 import com.example.snailpasswordmanager.presentation.noteActivity.NoteActivity
-import com.example.snailpasswordmanager.presentation.noteActivity.NoteViewModelFactory
-import com.example.snailpasswordmanager.presentation.recordList.MainListViewModelFactory
 import com.example.snailpasswordmanager.presentation.recordList.RecordListAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -80,6 +74,7 @@ class NoteListFragment(
             val threshold = 5000 // 5 seconds
             if (currentTime - lastRefreshTime > threshold) {
                 viewModel.getNotes()
+                lastRefreshTime = System.currentTimeMillis()
             }
         }
         init()

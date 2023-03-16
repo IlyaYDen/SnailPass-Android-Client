@@ -10,9 +10,10 @@ import com.example.snailpasswordmanager.data.retrofit2.Registration
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import java.util.*
+import javax.inject.Inject
 
 //Gson().fromJson(t.errorBody().string(),JsonObject::class.java).get("message").asJsonObject.get("error").toString()
-class UserRegisterUseCase (
+class UserRegisterUseCase @Inject constructor(
     private val userRepository: UserRepository
 ) {
     @RequiresApi(Build.VERSION_CODES.O)

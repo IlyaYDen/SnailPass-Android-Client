@@ -8,8 +8,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.snailpasswordmanager.LoginMode
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
+import com.example.snailpasswordmanager.services.ConnectionCheck
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,13 +23,24 @@ class LoginViewModel @Inject constructor(
         ) : ViewModel() {
 
 
-        //var boolean = MutableStateFlow(false)
         val boolean = MutableStateFlow(Pair("",LoginMode.ERROR))
-
+        val sharedViewEffects = MutableSharedFlow<Pair<String,LoginMode>>() // 1
         @RequiresApi(Build.VERSION_CODES.O)
         fun logInEvent(entity: UserEntity) {
-                        viewModelScope.launch(Dispatchers.IO) {
-                                boolean.value = logInUseCases.userLoginUseCase(entity)
-                        }
+
+            viewModelScope.launch(Dispatchers.IO) {
+                val connection = ConnectionCheck().invoke()
+               if (connection) {
+                 val res = logInUseCases.userLoginUseCase(entity)
+                 //boolean.emit(res)
+                 sharedViewEffects.emit(res)
+               }
+               else{
+
+                   val res = logInUseCases.userLoginOfflineUseCase(entity)
+                   sharedViewEffects.emit(Pair("", LoginMode.OFFLINE))
+               }
+            }
         }
+
 }

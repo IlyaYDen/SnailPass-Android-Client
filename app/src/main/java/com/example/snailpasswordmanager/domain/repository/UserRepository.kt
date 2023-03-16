@@ -13,4 +13,5 @@ interface UserRepository {
     fun getUserList():List<UserEntity>
     fun getUser(userId: Int):UserEntity?
     suspend fun getLoginAccess(user: UserEntity, encodedString : String):Pair<String, LoginMode>
+    suspend fun getLoginOfflineAccess(user: UserEntity, encodedString : String):Pair<String, LoginMode>
 }

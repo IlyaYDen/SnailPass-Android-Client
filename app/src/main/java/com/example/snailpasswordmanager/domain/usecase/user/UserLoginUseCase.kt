@@ -8,8 +8,9 @@ import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.UserRepository
 import com.example.snailpasswordmanager.data.retrofit2.TokenAuthenticator.Companion.hash
 import java.util.*
+import javax.inject.Inject
 
-class UserLoginUseCase(
+class UserLoginUseCase @Inject constructor(
     private val userRepository: UserRepository,
     private var userEntityAuth: UserEntity
 ) {

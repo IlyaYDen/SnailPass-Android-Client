@@ -6,7 +6,7 @@ import com.example.snailpasswordmanager.domain.usecase.additionalFields.FieldUse
 import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
 import com.example.snailpasswordmanager.presentation.login.LoginViewModel
-import com.example.snailpasswordmanager.presentation.recordList.MainListViewModel
+import com.example.snailpasswordmanager.presentation.recordList.RecordListViewModel
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -32,8 +32,8 @@ class AppModule(val context: Context) {
 
     @Provides
     @Singleton
-    fun provideMainListViewModel(passwordUseCases: PasswordUseCases, fieldUseCases: FieldUseCases): MainListViewModel {
-        return MainListViewModel(passwordUseCases,fieldUseCases)
+    fun provideMainListViewModel(passwordUseCases: PasswordUseCases, fieldUseCases: FieldUseCases): RecordListViewModel {
+        return RecordListViewModel(passwordUseCases,fieldUseCases)
     }
     @Provides
     @Singleton

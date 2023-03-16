@@ -23,5 +23,7 @@ interface RecordDao{
     //@Delete records
     @Query("DELETE FROM passwords")
     suspend fun deleteRecords()//(recordEntityDbModel: RecordEntityDbModel)
+    @Query("DELETE FROM passwords WHERE user_id = :id")
+    suspend fun deleteUserRecords(id : UUID)//(recordEntityDbModel: RecordEntityDbModel)
 
 }

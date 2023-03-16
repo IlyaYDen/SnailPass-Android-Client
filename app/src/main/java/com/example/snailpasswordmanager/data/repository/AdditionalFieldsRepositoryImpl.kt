@@ -29,12 +29,13 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
 
         try {
             val fields = serverApi.getAdditionalFields(id.toString())//token.token
-            fieldDao.deleteFields()
+            //
 
             if (fields != null) {
                 //-Log.d("test",fields.size.toString())
                 for (field in fields) {
                     //-Log.d("test",field.name + " : " + field.value)
+                    fieldDao.deleteFieldById(field.id.toString())
                     fieldDao.addField(fieldEntityMapper.mapEntityToDbModel(field))
                 }
             }
@@ -42,6 +43,10 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
         catch (e : Exception){
             //-Log.d("Http",e.toString())
         }
+    }
+
+    override suspend fun clearFieldTable() {
+        fieldDao.deleteFields()
     }
 
     override suspend fun insertField(addFieldEntity: RecordAddFieldEntity) {
@@ -86,5 +91,11 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
             }
         }
         catch (_:Exception){}
+    }
+
+    override suspend fun deleteLocalFieldByRecordId(id: UUID) {
+
+        fieldDao.deleteFieldById(id.toString())
+
     }
 }

@@ -12,13 +12,10 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
-import androidx.appcompat.widget.Toolbar
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.databinding.FragmentRecordListBinding
 import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoActivity
@@ -37,11 +34,11 @@ class RecordListFragment : Fragment() {
     private var launcher: ActivityResultLauncher<Intent>? = null
 
     @Inject
-    lateinit var vmFactory: MainListViewModelFactory
+    lateinit var vmFactory: RecordListViewModelFactory
 
 
 
-    private lateinit var viewModel: MainListViewModel
+    private lateinit var viewModel: RecordListViewModel
     private val adapter: RecordListAdapter = RecordListAdapter()
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -58,7 +55,7 @@ class RecordListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.getPasswords()
-        viewModel.getAddFields()
+        //viewModel.getAddFields()
 
         val toolbar : TextView? = activity?.findViewById(R.id.nameToolbar)
         if(toolbar!= null) {
@@ -74,7 +71,7 @@ class RecordListFragment : Fragment() {
         appComponent.inject(this)
         bindingClass = FragmentRecordListBinding.inflate(layoutInflater)
 
-        viewModel = ViewModelProvider(this, vmFactory)[MainListViewModel::class.java]
+        viewModel = ViewModelProvider(this, vmFactory)[RecordListViewModel::class.java]
 
 
         init()
@@ -91,20 +88,6 @@ class RecordListFragment : Fragment() {
 
             }
         }.launchIn(lifecycleScope)
-
-/*
-        adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
-            override fun onChanged() {
-                super.onChanged()
-                if (!adapter.list.isEmpty()) {
-
-                    bindingClass.linearLayout.visibility = View.GONE
-                } else {
-                    bindingClass.linearLayout.visibility = View.VISIBLE
-
-                }
-            }
-        })*/
 
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -132,7 +115,9 @@ class RecordListFragment : Fragment() {
             if (currentTime - lastRefreshTime > threshold) {
 
                 viewModel.getPasswords()
-                viewModel.getAddFields()
+                //viewModel.getAddFields()
+
+                lastRefreshTime = System.currentTimeMillis()
             }
         }
     }

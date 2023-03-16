@@ -11,6 +11,7 @@ import com.example.snailpasswordmanager.domain.repository.UserRepository
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import okhttp3.Credentials
 import retrofit2.HttpException
 import retrofit2.Response
@@ -115,7 +116,7 @@ class UserRepositoryImpl @Inject constructor(
             }
             return Pair("Unexpected_error",LoginMode.ERROR)
         }
-        catch (e : Exception){
+        catch (e : Exception){ //todo remove
             //-Log.d("MYLOG_test","t  "+e.message)
             var bu = false
             var bua = 1
@@ -134,6 +135,22 @@ class UserRepositoryImpl @Inject constructor(
             return Pair("",LoginMode.OFFLINE)
         }
 
+    }
+
+    override suspend fun getLoginOfflineAccess(
+        user: UserEntity,
+        encodedString: String
+    ): Pair<String, LoginMode> {
+        var t = dao.getUsers()
+        t.map { b->
+            for(i in b){
+                if (user.email.equals(i.email) && encodedString.equals(i.password)){
+                    userEntityAuth.id = UUID.fromString(i.id)
+                }
+        }
+        }
+
+        return Pair("",LoginMode.OFFLINE)
     }
 
 
