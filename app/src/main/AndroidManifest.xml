@@ -22,11 +22,11 @@
             android:exported="false" />
         <activity
             android:name=".presentation.mainActivity.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".presentation.accountInfo.AccountInfoActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.registration.RegistrationActivity"
             android:windowSoftInputMode="adjustResize" />

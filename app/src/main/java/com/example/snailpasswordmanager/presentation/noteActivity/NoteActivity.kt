@@ -1,8 +1,11 @@
 package com.example.snailpasswordmanager.presentation.noteActivity
 
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
@@ -38,6 +41,12 @@ class NoteActivity : AppCompatActivity() {
     @Inject
     lateinit var vmFactory: NoteViewModelFactory
 
+
+    @Inject
+    lateinit var connectivityManager: ConnectivityManager
+    var networkConnection = false
+
+
     lateinit var nameN: String
     lateinit var contentN: String
 
@@ -56,6 +65,50 @@ class NoteActivity : AppCompatActivity() {
         supportActionBar?.title = "Note"
 
         vm = ViewModelProvider(this, vmFactory)[NoteViewModel::class.java]
+
+
+        connectivityManager.registerDefaultNetworkCallback(object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+                networkConnection = true
+
+                runOnUiThread {
+                    bindingClass.buttonNoteDelete.isEnabled = true // or false
+                    bindingClass.buttonNoteSave.isEnabled = true // or false
+                    bindingClass.noteName.isFocusable = true
+                    bindingClass.noteName.isLongClickable = true
+
+                    bindingClass.noteContent.isFocusable = true
+                    bindingClass.noteContent.isLongClickable = true
+                }
+                Log.d("internet", "onAvailable: $network")
+            }
+            override fun onLost(network: Network) {
+                super.onLost(network)
+                networkConnection = false
+                runOnUiThread {
+                    bindingClass.buttonNoteDelete.isEnabled = false // or false
+                    bindingClass.buttonNoteSave.isEnabled = false // or false
+                    bindingClass.noteName.isFocusable = false
+                    bindingClass.noteName.isLongClickable = false
+
+                    bindingClass.noteContent.isFocusable = false
+                    bindingClass.noteContent.isLongClickable = false
+                }
+                Log.d("internet", "onLost: $network")
+                //viewModel.getAddFields()
+            }
+        })
+        if(!networkConnection){
+            bindingClass.buttonNoteDelete.isEnabled = false // or false
+            bindingClass.buttonNoteSave.isEnabled = false // or false
+            bindingClass.noteName.isFocusable = false
+            bindingClass.noteName.isLongClickable = false
+
+            bindingClass.noteContent.isFocusable = false
+            bindingClass.noteContent.isLongClickable = false
+        }
+
 
         if(intent.getBooleanExtra("MODE",false)) {
             nameN = intent.getStringExtra("NAME").toString()

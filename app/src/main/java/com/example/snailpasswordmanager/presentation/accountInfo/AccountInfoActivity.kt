@@ -5,6 +5,8 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.graphics.Canvas
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
@@ -41,6 +43,9 @@ class AccountInfoActivity: AppCompatActivity() {
 
     @Inject
     lateinit var vmFactory: AccountInfoModelFactory
+
+    @Inject
+    lateinit var connectivityManager: ConnectivityManager
 
     lateinit var id: UUID
     @RequiresApi(Build.VERSION_CODES.O)
@@ -379,9 +384,37 @@ class AccountInfoActivity: AppCompatActivity() {
 
         itemTouchHelper.attachToRecyclerView(bindingClass.rv)
 
-        //adapter.filter.filter("")
+        connectivityManager.registerDefaultNetworkCallback(object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+                networkConnection = true
+                runOnUiThread {
+                    bindingClass.buttonDelete.visibility = View.VISIBLE
+                    bindingClass.buttonSave.visibility = View.VISIBLE
+                    bindingClass.ButtonAddField.visibility = View.VISIBLE
+                }
+            }
 
-    }
+            override fun onLost(network: Network) {
+                super.onLost(network)
+                networkConnection = false
+                runOnUiThread {
+                    bindingClass.buttonDelete.visibility = View.GONE
+                    bindingClass.buttonSave.visibility = View.GONE
+                    bindingClass.ButtonAddField.visibility = View.GONE
+                }
+            }
+        })
+        if(!networkConnection){
+            bindingClass.buttonDelete.visibility = View.GONE
+            bindingClass.buttonSave.visibility = View.GONE
+            bindingClass.ButtonAddField.visibility = View.GONE
+        }
+
+
+        }
+
+    var networkConnection: Boolean = false
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.home -> {

@@ -1,6 +1,7 @@
 package com.example.snailpasswordmanager.presentation.recordList
 
 import android.content.Intent
+import android.net.*
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -37,6 +38,15 @@ class RecordListFragment : Fragment() {
     lateinit var vmFactory: RecordListViewModelFactory
 
 
+    var active = true
+    @Inject
+    lateinit var connectivityManager: ConnectivityManager
+    var networkConnection: Boolean = false
+    // =
+        //context?.getSystemService(
+        //AppCompatActivity.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+
 
     private lateinit var viewModel: RecordListViewModel
     private val adapter: RecordListAdapter = RecordListAdapter()
@@ -51,11 +61,16 @@ class RecordListFragment : Fragment() {
         return bindingClass.root
     }
 
+    override fun onPause() {
+        super.onPause()
+        active = false
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
         viewModel.getPasswords()
         //viewModel.getAddFields()
+        active = true
 
         val toolbar : TextView? = activity?.findViewById(R.id.nameToolbar)
         if(toolbar!= null) {
@@ -75,7 +90,36 @@ class RecordListFragment : Fragment() {
 
 
         init()
-//ttt@ttt.ttt1
+        connectivityManager.registerDefaultNetworkCallback(object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+                networkConnection = true
+
+                activity?.runOnUiThread {
+                    bindingClass.ButtonAdd.isEnabled = true // or false
+                    bindingClass.ButtonRefresh.isEnabled = true // or false
+                }
+                Log.d("internet", "onAvailable: $network")
+                //if(active)
+                viewModel.getPasswords()
+            }
+            override fun onLost(network: Network) {
+                super.onLost(network)
+                networkConnection = false
+                activity?.runOnUiThread {
+                    bindingClass.ButtonAdd.isEnabled = false
+                    bindingClass.ButtonRefresh.isEnabled = false
+                }
+                Log.d("internet", "onLost: $network")
+                //viewModel.getAddFields()
+            }
+        })
+        if(!networkConnection){
+            bindingClass.ButtonAdd.isEnabled = false
+            bindingClass.ButtonRefresh.isEnabled = false
+        }
+
+        //if(loginMode == LoginMode.OFFLINE) bindingClass.ButtonAdd.isEnabled = false
 
         viewModel.passwordListEdited.onEach {
             adapter.setPasswords(it)

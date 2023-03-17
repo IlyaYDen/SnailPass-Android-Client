@@ -3,6 +3,7 @@ package com.example.snailpasswordmanager.domain.usecase.user
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.snailpasswordmanager.LoginMode
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.PBKDF2SHA512.Hash
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.domain.repository.UserRepository
@@ -12,7 +13,7 @@ import javax.inject.Inject
 
 class UserLoginUseCase @Inject constructor(
     private val userRepository: UserRepository,
-    private var userEntityAuth: UserEntity
+    private var userEntityAuth: AuthorizationData
 ) {
 
 
@@ -30,11 +31,11 @@ class UserLoginUseCase @Inject constructor(
         val hashedBytes2: ByteArray = Hash.hashPassword(password.toCharArray(), salt.toByteArray(), 120_000, keyLength)
         val encodedString2: String = Base64.getEncoder().encodeToString(hashedBytes2)
 
-        userEntityAuth.id = userEntity.id
-        userEntityAuth.email = userEntity.email
-        userEntityAuth.password = encodedString
-        userEntityAuth.hint = userEntity.hint
-        userEntityAuth.isAdmin = userEntity.isAdmin
+        userEntityAuth.user.id = userEntity.id
+        userEntityAuth.user.email = userEntity.email
+        userEntityAuth.user.password = encodedString
+        userEntityAuth.user.hint = userEntity.hint
+        userEntityAuth.user.isAdmin = userEntity.isAdmin
 
         hash = encodedString2
 

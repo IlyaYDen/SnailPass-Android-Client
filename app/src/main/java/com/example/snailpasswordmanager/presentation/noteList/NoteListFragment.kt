@@ -1,6 +1,8 @@
 package com.example.snailpasswordmanager.presentation.noteList
 
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -23,9 +25,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-class NoteListFragment(
-
-) : Fragment() {
+class NoteListFragment : Fragment() {
 
 
     private val appComponent by lazy {
@@ -37,6 +37,10 @@ class NoteListFragment(
     @Inject
     lateinit var vmFactory: NoteListViewModelFactory
 
+
+    @Inject
+    lateinit var connectivityManager: ConnectivityManager
+    var networkConnection = false
 
     private val adapter: NoteListAdapter = NoteListAdapter()
     override fun onCreateView(
@@ -68,6 +72,34 @@ class NoteListFragment(
         viewModel = ViewModelProvider(this, vmFactory)[NoteListViewModel::class.java]
 
 
+
+        connectivityManager.registerDefaultNetworkCallback(object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+                networkConnection = true
+
+                activity?.runOnUiThread {
+                    bindingClass.ButtonRefreshNotes.isEnabled = true // or false
+                    bindingClass.ButtonAddNotes.isEnabled = true // or false
+                }
+                Log.d("internet", "onAvailable: $network")
+                viewModel.getNotes()
+            }
+            override fun onLost(network: Network) {
+                super.onLost(network)
+                networkConnection = false
+                activity?.runOnUiThread {
+                    bindingClass.ButtonRefreshNotes.isEnabled = false // or false
+                    bindingClass.ButtonAddNotes.isEnabled = false // or false
+                }
+                Log.d("internet", "onLost: $network")
+                //viewModel.getAddFields()
+            }
+        })
+        if(!networkConnection){
+            bindingClass.ButtonRefreshNotes.isEnabled = false // or false
+            bindingClass.ButtonAddNotes.isEnabled = false // or false
+        }
 
         bindingClass.ButtonRefreshNotes.setOnClickListener {
             val currentTime = System.currentTimeMillis()

@@ -2,6 +2,7 @@ package com.example.snailpasswordmanager.domain.usecase.notes
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
 import com.example.snailpasswordmanager.domain.model.InvalidRecordException
 import com.example.snailpasswordmanager.domain.model.NoteEntity
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 class EditNote @Inject constructor(
     private val noteListRepository: NoteListRepository,
-    private var userEntityAuth: UserEntity
+    private var userEntityAuth: AuthorizationData
 ) {
     @RequiresApi(Build.VERSION_CODES.O)
     suspend operator fun invoke(noteEntity: NoteEntity) {
@@ -24,7 +25,7 @@ class EditNote @Inject constructor(
             throw InvalidRecordException("The login can't be empty.")
 
 
-        val masterpass = Base64.getDecoder().decode(userEntityAuth.password.toByteArray())
+        val masterpass = Base64.getDecoder().decode(userEntityAuth.user.password.toByteArray())
         //val masterpass = userEntityAuth.password.toByteArray()// Base64.decode(userEntityAuth.password.toByteArray(),0)
 
         val nameNonce = nonceGen()

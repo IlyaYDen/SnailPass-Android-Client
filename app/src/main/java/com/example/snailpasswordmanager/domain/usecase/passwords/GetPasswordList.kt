@@ -3,6 +3,7 @@ package com.example.snailpasswordmanager.domain.usecase.passwords
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
 import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.domain.model.UserEntity
@@ -15,7 +16,7 @@ import kotlin.math.log
 
 class GetPasswordList @Inject constructor(
     private val passwordListRepository: RecordListRepository,
-    private var userEntityAuth: UserEntity
+    private var userEntityAuth: AuthorizationData
     ) {
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -24,9 +25,9 @@ class GetPasswordList @Inject constructor(
             if(records == null) {
                 return@map emptyList()
             }
-            records.filter { it.userId == userEntityAuth.id.toString() }
+            records.filter { it.userId == userEntityAuth.user.id.toString() }
                 .map { record ->
-                    val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
+                    val masterpass = Base64.getDecoder().decode(userEntityAuth.user.password)
                     val login = AESUtil.decrypt(
                         Base64.getDecoder().decode(record.login.split(":")[0].toByteArray()),
                         masterpass,

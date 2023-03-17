@@ -1,11 +1,16 @@
 package com.example.snailpasswordmanager.presentation.login
 
+import android.annotation.SuppressLint
 import android.app.ActivityOptions
+import android.app.usage.NetworkStatsManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.util.Pair
 import android.view.View
 import android.widget.Button
@@ -23,6 +28,7 @@ import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.presentation.mainActivity.MainActivity
 import com.example.snailpasswordmanager.presentation.registration.RegistrationActivity
+import com.example.snailpasswordmanager.utils.NetworkUtils
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -36,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
     @Inject
     lateinit var vmFactory: LoginModelFactory
+
 
     lateinit var imageView : ImageView
     lateinit var loginText  : TextInputEditText
@@ -54,12 +61,11 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var userEntity: UserEntity
 
     @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         (applicationContext as PasswordApp).appComponent.inject(this)
-
-
 
 
        //vm = ViewModelProvider(this,vmFactory) [LoginViewModel::class.java]
@@ -78,6 +84,9 @@ class LoginActivity : AppCompatActivity() {
         pb.visibility = View.GONE
 
         t = getSharedPreferences(PreferenceKeys.AUTH_SHARED_PREFERENCES,Context.MODE_PRIVATE)
+
+
+
 
         loginButton.setOnClickListener {
             currentFocus?.clearFocus()
@@ -107,7 +116,10 @@ class LoginActivity : AppCompatActivity() {
             .onEach {
 
                 if(it.second == LoginMode.ONLINE || it.second == LoginMode.OFFLINE){
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java).apply {
+
+                        putExtra("MODE", it.second)
+                    }
 
                     finish()
                     startActivity(intent)

@@ -2,6 +2,7 @@ package com.example.snailpasswordmanager.domain.usecase.notes
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
 import com.example.snailpasswordmanager.domain.model.NoteEntity
 import com.example.snailpasswordmanager.domain.model.RecordEntity
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 class GetNoteList @Inject constructor(
     private val noteListRepository: NoteListRepository,
-    private var userEntityAuth: UserEntity
+    private var userEntityAuth: AuthorizationData
 ) {
     @RequiresApi(Build.VERSION_CODES.O)
     suspend operator fun invoke() : Flow<List<NoteEntity>?> {
@@ -27,11 +28,11 @@ class GetNoteList @Inject constructor(
                 val list = emptyList<NoteEntity>().toMutableList()
 
                 for(r in it){
-                    if(r.user_id == userEntityAuth.id.toString()) {
+                    if(r.user_id == userEntityAuth.user.id.toString()) {
 
 
                         //val masterpass = userEntityAuth.password.toByteArray()//Base64.getDecoder().decode(userEntityAuth.password)
-                        val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
+                        val masterpass = Base64.getDecoder().decode(userEntityAuth.user.password)
 
                         val name = r.name.split(":")
                         val nameD = AESUtil.decrypt(Base64.getDecoder().decode(name[0].toByteArray()), masterpass, Base64.getDecoder().decode(name[1].toByteArray()))

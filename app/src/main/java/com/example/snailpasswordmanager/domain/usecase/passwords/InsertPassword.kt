@@ -5,6 +5,7 @@ package com.example.snailpasswordmanager.domain.usecase.passwords
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
 import com.example.snailpasswordmanager.domain.model.InvalidRecordException
 import com.example.snailpasswordmanager.domain.model.RecordEntity
@@ -16,7 +17,7 @@ import javax.inject.Inject
 
 class InsertPassword @Inject constructor(
     private val recordListRepository: RecordListRepository,
-    private val userEntityAuth: UserEntity
+    private val userEntityAuth: AuthorizationData
 ) {
     @RequiresApi(Build.VERSION_CODES.O)
     suspend operator fun invoke(passwordEntity: RecordEntity) {
@@ -24,7 +25,7 @@ class InsertPassword @Inject constructor(
         if (passwordEntity.login.isBlank()) throw InvalidRecordException("The login can't be empty.")
         if (passwordEntity.encrypted_password.isBlank()) throw InvalidRecordException("The password can't be empty.")
 
-        val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
+        val masterpass = Base64.getDecoder().decode(userEntityAuth.user.password)
 
         val (name, nameNonce) = encryptData(passwordEntity.name.toByteArray(), masterpass)
         val (login, loginNonce) = encryptData(passwordEntity.login.toByteArray(), masterpass)
@@ -37,7 +38,7 @@ class InsertPassword @Inject constructor(
             encrypted_password = encodeData(encryptedPassword, encryptedPasswordNonce),
             editedTime = passwordEntity.editedTime,
             creationTime = passwordEntity.creationTime,
-            userId = userEntityAuth.id.toString(),
+            userId = userEntityAuth.user.id.toString(),
             isfavorite = passwordEntity.isfavorite
         ))
     }

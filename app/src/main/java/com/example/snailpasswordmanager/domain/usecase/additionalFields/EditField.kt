@@ -4,6 +4,7 @@ import android.os.Build
 import android.util.Base64
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
 import com.example.snailpasswordmanager.domain.model.UserEntity
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 class EditField @Inject constructor(
     private val additionalFieldsRepository: AdditionalFieldsRepository,
-    private val userEntityAuth: UserEntity
+    private val userEntityAuth: AuthorizationData
 ) {
     @RequiresApi(Build.VERSION_CODES.O)
     suspend operator fun invoke(subList: MutableList<RecordAddFieldEntity>){
@@ -21,7 +22,7 @@ class EditField @Inject constructor(
         val list : MutableList<RecordAddFieldEntity> = mutableListOf()
         for(t in subList) {
 
-            val masterpass = Base64.decode(userEntityAuth.password.toByteArray(),0)
+            val masterpass = Base64.decode(userEntityAuth.user.password.toByteArray(),0)
 
             val nonceName = nonceGen()
             val name = AESUtil.encrypt(t.name.toByteArray(),masterpass, nonceName.toByteArray())

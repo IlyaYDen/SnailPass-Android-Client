@@ -22,7 +22,7 @@ import javax.inject.Inject
 class UserRepositoryImpl @Inject constructor(
     private val dao: UserDao,
     var serverApi: ServerApi,
-    var userEntityAuth: UserEntity,
+    var userEntityAuth: AuthorizationData,
     var token: Token
 ) : UserRepository {
     private val UserList = mutableListOf<UserEntity>()
@@ -45,7 +45,7 @@ class UserRepositoryImpl @Inject constructor(
             ) // testtesttest
             //-Log.d("MYLOG_testUUID",user2.id.toString())
             //-Log.d("MYLOG_testUUID",user.id.toString())
-            userEntityAuth.id = UUID.fromString(user.id)
+            userEntityAuth.user.id = UUID.fromString(user.id)
             dao.addUser(
                 user
             )
@@ -93,7 +93,7 @@ class UserRepositoryImpl @Inject constructor(
 
                 val request2 = serverApi.getUser()
 
-                userEntityAuth.id = request2.id
+                userEntityAuth.user.id = request2.id
                 dao.addUser(
                     UserEntityMapper.mapEntityToDbModel(
                         UserEntity(
@@ -108,6 +108,7 @@ class UserRepositoryImpl @Inject constructor(
 
 
 
+                userEntityAuth.loginMode = LoginMode.ONLINE
                 return Pair("",LoginMode.ONLINE)
             }
             else if(t !=null) {
@@ -116,7 +117,7 @@ class UserRepositoryImpl @Inject constructor(
             }
             return Pair("Unexpected_error",LoginMode.ERROR)
         }
-        catch (e : Exception){ //todo remove
+        catch (e : Exception){
             //-Log.d("MYLOG_test","t  "+e.message)
             var bu = false
             var bua = 1
@@ -127,11 +128,12 @@ class UserRepositoryImpl @Inject constructor(
                 //-Log.d("MYLOG_test","Пользователь " + b.email + " : " + b.password)
                 if(user.email.equals(b.email) && encodedString.equals(b.password)){
                     bu = true
-                    userEntityAuth.id = UUID.fromString(b.id)
+                    userEntityAuth.user.id = UUID.fromString(b.id)
                     bua++
                 }
             }
 
+            userEntityAuth.loginMode = LoginMode.OFFLINE
             return Pair("",LoginMode.OFFLINE)
         }
 
@@ -145,13 +147,18 @@ class UserRepositoryImpl @Inject constructor(
         t.map { b->
             for(i in b){
                 if (user.email.equals(i.email) && encodedString.equals(i.password)){
-                    userEntityAuth.id = UUID.fromString(i.id)
+                    userEntityAuth.user.id = UUID.fromString(i.id)
                 }
         }
         }
 
+        userEntityAuth.loginMode = LoginMode.OFFLINE
         return Pair("",LoginMode.OFFLINE)
     }
 
 
 }
+data class AuthorizationData(
+    var user: UserEntity,
+    var loginMode: LoginMode
+)

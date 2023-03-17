@@ -2,17 +2,18 @@ package com.example.snailpasswordmanager.domain.usecase.cryptography
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import java.util.*
 
 data class Encode(
-    private var userEntityAuth: UserEntity
+    private var userEntityAuth: AuthorizationData
 ) {
 
     @RequiresApi(Build.VERSION_CODES.O)
     suspend operator fun invoke(text:String) : String {
-        val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
+        val masterpass = Base64.getDecoder().decode(userEntityAuth.user.password)
 
         //val login = AESUtil.decrypt("ow8nOksC84lKh/ACg4CZdQ==".toByteArray(), authInfo.hash2, "tttttttttttttttt".toByteArray())
         val split = text.split(":")

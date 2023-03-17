@@ -2,6 +2,8 @@ package com.example.snailpasswordmanager.di
 
 import android.app.Application
 import android.content.Context
+import android.net.ConnectivityManager
+import androidx.appcompat.app.AppCompatActivity
 import com.example.snailpasswordmanager.domain.usecase.additionalFields.FieldUseCases
 import com.example.snailpasswordmanager.domain.usecase.passwords.PasswordUseCases
 import com.example.snailpasswordmanager.domain.usecase.user.UserUseCases
@@ -24,6 +26,13 @@ class AppModule(val context: Context) {
     }
 
 
+    @Singleton
+    @Provides
+    fun provideApplication(context : Context): ConnectivityManager {
+        val connectivityManager = context.getSystemService(AppCompatActivity.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        return connectivityManager
+    }
     //@Provides
     //@Singleton
     //fun providesApplication(): Application {

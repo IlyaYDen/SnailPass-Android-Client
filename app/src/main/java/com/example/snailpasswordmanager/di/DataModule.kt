@@ -5,11 +5,9 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.snailpasswordmanager.LoginMode
 import com.example.snailpasswordmanager.data.database.record.*
-import com.example.snailpasswordmanager.data.repository.AdditionalFieldsRepositoryImpl
-import com.example.snailpasswordmanager.data.repository.NoteListRepositoryImpl
-import com.example.snailpasswordmanager.data.repository.RecordListRepositoryImpl
-import com.example.snailpasswordmanager.data.repository.UserRepositoryImpl
+import com.example.snailpasswordmanager.data.repository.*
 import com.example.snailpasswordmanager.data.retrofit2.ServerApi
 import com.example.snailpasswordmanager.data.retrofit2.Token
 import com.example.snailpasswordmanager.domain.model.UserEntity
@@ -19,6 +17,7 @@ import com.example.snailpasswordmanager.domain.repository.RecordListRepository
 import com.example.snailpasswordmanager.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
+import java.util.*
 import javax.inject.Singleton
 
 @Module
@@ -62,24 +61,24 @@ class DataModule {
 
     @Provides
     //@Singleton
-    fun providePasswordListRepository(db: RecordDb,serverApi: ServerApi, userEntityAuth: UserEntity): RecordListRepository {
+    fun providePasswordListRepository(db: RecordDb,serverApi: ServerApi, userEntityAuth: AuthorizationData): RecordListRepository {
         return RecordListRepositoryImpl(db.recordDao,serverApi, userEntityAuth)
     }
 
     @Provides
     //@Singleton
-    fun provideNoteListRepository(db: RecordDb,serverApi: ServerApi): NoteListRepository {
-        return NoteListRepositoryImpl(serverApi,db.noteDao)
+    fun provideNoteListRepository(db: RecordDb,serverApi: ServerApi,userEntityAuth: AuthorizationData): NoteListRepository {
+        return NoteListRepositoryImpl(serverApi,db.noteDao,userEntityAuth)
     }
     @Provides
     //@Singleton
-    fun provideAdditionalFieldsRepository(serverApi: ServerApi,recordAddFieldDao: RecordAddFieldDao): AdditionalFieldsRepository {
-        return AdditionalFieldsRepositoryImpl(serverApi,recordAddFieldDao)
+    fun provideAdditionalFieldsRepository(serverApi: ServerApi,recordAddFieldDao: RecordAddFieldDao,userEntityAuth: AuthorizationData): AdditionalFieldsRepository {
+        return AdditionalFieldsRepositoryImpl(serverApi,recordAddFieldDao,userEntityAuth)
     }
 
     @Provides
     //@Singleton
-    fun provideUserRepository(db: RecordDb, serverApi: ServerApi, token: Token, userEntityAuth: UserEntity): UserRepository {
+    fun provideUserRepository(db: RecordDb, serverApi: ServerApi, token: Token, userEntityAuth: AuthorizationData): UserRepository {
         return UserRepositoryImpl(db.userDao, serverApi, userEntityAuth,token)
     }
 
@@ -107,6 +106,14 @@ class DataModule {
     @Singleton
     fun provideFieldDao(db: RecordDb): RecordAddFieldDao {
         return db.recordAddFieldDao
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideAuthorizationData(): AuthorizationData {
+        return AuthorizationData(
+            UserEntity(UUID.randomUUID(),"","","",false),LoginMode.ERROR)
     }
 
 }

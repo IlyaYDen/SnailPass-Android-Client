@@ -2,6 +2,7 @@ package com.example.snailpasswordmanager.domain.usecase.notes
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
 import com.example.snailpasswordmanager.domain.model.InvalidRecordException
 import com.example.snailpasswordmanager.domain.model.NoteEntity
@@ -15,7 +16,7 @@ import kotlin.math.log
 
 class InsertNote @Inject constructor(
     private val noteListRepository: NoteListRepository,
-    private val userEntityAuth: UserEntity
+    private val userEntityAuth: AuthorizationData
 ) {
     @RequiresApi(Build.VERSION_CODES.O)
     suspend operator fun invoke(noteEntity: NoteEntity){
@@ -23,7 +24,7 @@ class InsertNote @Inject constructor(
         if (noteEntity.name.isBlank()) throw InvalidRecordException("The service can't be empty.")
         if (noteEntity.content.isBlank()) throw InvalidRecordException("The service can't be empty.")
 
-        val masterpass = Base64.getDecoder().decode(userEntityAuth.password)
+        val masterpass = Base64.getDecoder().decode(userEntityAuth.user.password)
 
         val (name, nameNonce) = encryptData(noteEntity.name.toByteArray(), masterpass)
         val (content, contentNonce) = encryptData(noteEntity.content.toByteArray(), masterpass)

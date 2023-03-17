@@ -1,5 +1,6 @@
 package com.example.snailpasswordmanager.data.repository
 
+import com.example.snailpasswordmanager.LoginMode
 import com.example.snailpasswordmanager.data.database.record.RecordAddFieldDao
 import com.example.snailpasswordmanager.data.model.RecordAddFieldEntityMapper
 import com.example.snailpasswordmanager.data.retrofit2.ServerApi
@@ -13,6 +14,7 @@ import javax.inject.Inject
 class AdditionalFieldsRepositoryImpl @Inject constructor(
     var serverApi: ServerApi,
     private val fieldDao: RecordAddFieldDao,
+    private var userEntityAuth: AuthorizationData
 ) : AdditionalFieldsRepository {
 
     private val fieldEntityMapper = RecordAddFieldEntityMapper()
@@ -26,7 +28,7 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
 
     override suspend fun cloneFieldById(id: UUID) {
 
-
+        //if(userEntityAuth.loginMode == LoginMode.ONLINE)
         try {
             val fields = serverApi.getAdditionalFields(id.toString())//token.token
             //
@@ -35,7 +37,7 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
                 //-Log.d("test",fields.size.toString())
                 for (field in fields) {
                     //-Log.d("test",field.name + " : " + field.value)
-                    fieldDao.deleteFieldById(field.id.toString())
+                    //fieldDao.deleteFieldById(field.id.toString())
                     fieldDao.addField(fieldEntityMapper.mapEntityToDbModel(field))
                 }
             }

@@ -3,6 +3,7 @@ package com.example.snailpasswordmanager.domain.usecase.passwords
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.AES.AESUtil
 import com.example.snailpasswordmanager.domain.model.InvalidRecordException
 import com.example.snailpasswordmanager.domain.model.RecordEntity
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 class EditPassword @Inject constructor(
     private val recordListRepository: RecordListRepository,
-    private val userEntityAuth: UserEntity
+    private val userEntityAuth: AuthorizationData
 ) {
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -33,7 +34,7 @@ class EditPassword @Inject constructor(
 
 
 
-        val masterpass = Base64.getDecoder().decode(userEntityAuth.password.toByteArray())
+        val masterpass = Base64.getDecoder().decode(userEntityAuth.user.password.toByteArray())
         //val masterpass = userEntityAuth.password.toByteArray()// Base64.decode(userEntityAuth.password.toByteArray(),0)
 
         val loginNonce = nonceGen()
@@ -57,7 +58,7 @@ class EditPassword @Inject constructor(
             encrypted_password = String(Base64.getEncoder().encode(encrypted_password)).replace("\n","")    + ":" + String(Base64.getEncoder().encode(encrypted_passwordNonce.toByteArray())),//todo
             editedTime = passwordEntity.editedTime,
             creationTime = passwordEntity.creationTime,
-            userId = userEntityAuth.id.toString(),
+            userId = userEntityAuth.user.id.toString(),
             isfavorite = false
         ))
 

@@ -14,6 +14,7 @@ class PasswordApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
+
         appComponent = DaggerAppComponent
             .builder()
             .appModule(AppModule(context = this))

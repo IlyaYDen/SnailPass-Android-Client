@@ -1,6 +1,7 @@
 package com.example.snailpasswordmanager.di
 
 import com.example.snailpasswordmanager.Config
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.data.retrofit2.ServerApi
 import com.example.snailpasswordmanager.data.retrofit2.Token
 import com.example.snailpasswordmanager.data.retrofit2.TokenAuthenticator
@@ -17,13 +18,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class RetrofitModule {
     @Provides
-    fun providerRetrofit(token: Token, userEntityAuth: UserEntity) : ServerApi {
+    fun providerRetrofit(token: Token, userEntityAuth: AuthorizationData) : ServerApi {
 
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         val client = OkHttpClient.Builder()
             .addInterceptor(interceptor)
-            //.authenticator(TokenAuthenticator(token,userEntityAuth))
+            .authenticator(TokenAuthenticator(token,userEntityAuth))
             .addInterceptor(TokenInterceptor(token))
             .build()
 

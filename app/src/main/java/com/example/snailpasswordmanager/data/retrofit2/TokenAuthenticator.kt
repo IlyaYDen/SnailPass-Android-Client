@@ -4,6 +4,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.snailpasswordmanager.Config
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.crypto.PBKDF2SHA512.Hash
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.google.gson.Gson
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 class TokenAuthenticator constructor(
     var token: Token,
-    var userEntityAuth: UserEntity
+    var userEntityAuth: AuthorizationData
     ) : Authenticator {
 
     companion object {
@@ -25,6 +26,9 @@ class TokenAuthenticator constructor(
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun authenticate(route: Route?, response: Response): Request {
+
+        Log.d("TokenAuthenticator", "TokenAuthenticator.authenticate")
+
         if (mNumTries < MAX_NUM_TRIES) {
             try {
                 //-Log.d("MYLOG_testT", "TokenAuthenticator")
@@ -32,8 +36,8 @@ class TokenAuthenticator constructor(
 
 //
                 val credentials: String =
-                    Credentials.basic(userEntityAuth.email, hash)
-                Log.d("OkHttpClient",userEntityAuth.email + " : " + hash)
+                    Credentials.basic(userEntityAuth.user.email, hash)
+                Log.d("OkHttpClient",userEntityAuth.user.email + " : " + hash)
                 val request = Request.Builder()
                     .url("http://" + Config.ADRESS + ":" + Config.PORT + "/login")
                     .get()

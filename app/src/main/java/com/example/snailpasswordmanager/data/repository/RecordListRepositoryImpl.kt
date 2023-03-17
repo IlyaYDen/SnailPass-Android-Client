@@ -1,6 +1,7 @@
 package com.example.snailpasswordmanager.data.repository
 
 import android.util.Log
+import com.example.snailpasswordmanager.LoginMode
 import com.example.snailpasswordmanager.data.database.record.RecordDao
 import com.example.snailpasswordmanager.data.model.RecordEntityMapper
 import com.example.snailpasswordmanager.data.retrofit2.*
@@ -15,70 +16,61 @@ import javax.inject.Inject
 class RecordListRepositoryImpl @Inject constructor(
     private val recordDao: RecordDao,
     var serverApi: ServerApi,
-    var userEntityAuth: UserEntity,
+    var userEntityAuth: AuthorizationData,
     ) : RecordListRepository {
 
     private val recordEntityMapper = RecordEntityMapper()
 
     override suspend fun getRecordList(): Flow<List<RecordEntity>?> {
 
+        if(userEntityAuth.loginMode == LoginMode.ONLINE) {
+            try {
+                val records = serverApi.getRecords()//token.token
 
-        try {
-            val records = serverApi.getRecords()//token.token
+                recordDao.deleteUserRecords(userEntityAuth.user.id)
 
-            recordDao.deleteUserRecords(userEntityAuth.id)
-
-            if (records != null) {
-                records.map {
+                if (records != null) {
+                    records.map {
 
 
-
-                    recordDao.insertRecord(
-                        recordEntityMapper.mapEntityToDbModel(
-                            RecordEntity(
-                                id = UUID.fromString(it.id),
-                                name = it.name,
-                                login = it.login,
-                                encrypted_password = it.password,
-                                editedTime = it.edited_time,
-                                creationTime = it.creation_time,
-                                //nonce = it.nonce,
-                                userId = it.user_id,
-                                isfavorite = it.is_favorite
+                        recordDao.insertRecord(
+                            recordEntityMapper.mapEntityToDbModel(
+                                RecordEntity(
+                                    id = UUID.fromString(it.id),
+                                    name = it.name,
+                                    login = it.login,
+                                    encrypted_password = it.password,
+                                    editedTime = it.edited_time,
+                                    creationTime = it.creation_time,
+                                    //nonce = it.nonce,
+                                    userId = it.user_id,
+                                    isfavorite = it.is_favorite
+                                )
                             )
                         )
-                    )
+                    }
+
                 }
+            } catch (e: HttpException) {
+                //-Log.d("MYLOG_testER","FAIL serverApi.getRecords()")
+                if (e.code() == 404) {
 
-            }
-        } catch (e : HttpException) {
-            //-Log.d("MYLOG_testER","FAIL serverApi.getRecords()")
-            if(e.code() == 404){
-
-                recordDao.deleteRecords()
-            }
-            return flow { //null edited 09
-            }
-        }
-            catch (e : Exception){
+                    recordDao.deleteRecords()
+                }
+                return flow { //null edited 09
+                }
+            } catch (e: Exception) {
 
 
-            return recordDao.getRecords().map {
-                //-Log.d("MYLOG_testER","FAIL getRecordList from local: " + it.size)
-                recordEntityMapper.mapListDbModelToListEntity(it)
+                return recordDao.getRecords().map {
+                    recordEntityMapper.mapListDbModelToListEntity(it)
+                }
             }
         }
-
-        var t = 1
 
         return recordDao.getRecords().map {
-            //-Log.d("MYLOG_test","noexeption: " + it.size)
             recordEntityMapper.mapListDbModelToListEntity(it)
         }
-        //return dao.getRecords().map {
-        //    //-Log.d("MYLOG_test","getRecordList test: " + it.size)
-        //    mapper.mapListDbModelToListEntity(it)
-        //}
     }
 
     override suspend fun getRecordById(id: Int): RecordEntity? {

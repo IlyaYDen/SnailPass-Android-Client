@@ -1,5 +1,6 @@
 package com.example.snailpasswordmanager.di
 
+import com.example.snailpasswordmanager.data.repository.AuthorizationData
 import com.example.snailpasswordmanager.domain.repository.RecordListRepository
 import com.example.snailpasswordmanager.domain.repository.UserRepository
 import com.example.snailpasswordmanager.domain.usecase.passwords.*
@@ -19,7 +20,7 @@ class DomainModule {
 
     @Provides
     //@Singleton
-    fun providerPasswordUseCases(repository: RecordListRepository, serverApi: ServerApi, userEntityAuth: UserEntity) : PasswordUseCases {
+    fun providerPasswordUseCases(repository: RecordListRepository, serverApi: ServerApi, userEntityAuth: AuthorizationData) : PasswordUseCases {
         return PasswordUseCases(
             getPasswordList = GetPasswordList(repository,userEntityAuth),
             deletePassword = DeletePassword(repository),
@@ -38,7 +39,7 @@ class DomainModule {
 
     @Provides
     //@Singleton
-    fun providerDecodeUseCase(userEntity: UserEntity) : Decode {
+    fun providerDecodeUseCase(userEntity: AuthorizationData) : Decode {
         return Decode(userEntity)
     }
 
