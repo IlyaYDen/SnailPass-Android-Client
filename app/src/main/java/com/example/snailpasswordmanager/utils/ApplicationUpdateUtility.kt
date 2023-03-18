@@ -89,6 +89,7 @@ object ApplicationUpdateUtility {
                             .setNegativeButton(R.string.cancel) { dialog, id ->
 
 
+
                                 if (File(
                                         loginActivity.getExternalFilesDir(null),
                                         "app-release.apk"
