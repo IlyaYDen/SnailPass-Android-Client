@@ -93,24 +93,6 @@ object ApplicationUpdateUtility {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 if (File(
                                         loginActivity.getExternalFilesDir(null),
                                         "app-release.apk"
