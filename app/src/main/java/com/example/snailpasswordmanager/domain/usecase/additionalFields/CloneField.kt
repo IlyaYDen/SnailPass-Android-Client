@@ -8,6 +8,6 @@ class CloneField @Inject constructor(
     private val additionalFieldsRepository: AdditionalFieldsRepository
 ) {
     suspend operator fun invoke(id: UUID){
-        additionalFieldsRepository.cloneFieldById(id)
+        //additionalFieldsRepository.cloneFieldById(id)
     }
 }

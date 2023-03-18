@@ -1,6 +1,5 @@
 package com.example.snailpasswordmanager.presentation.accountInfo
 
-import android.R
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
@@ -20,6 +19,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.snailpasswordmanager.PasswordApp
+import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.databinding.ActivityAccountInfoListBinding
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
 import com.example.snailpasswordmanager.domain.model.RecordEntity
@@ -97,7 +97,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = "Service",
+                    name = getString(R.string.service_name),
                     value = service!!,
                     //nonce = "-",
                     record_id = id
@@ -106,7 +106,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = "Login",
+                    name = getString(R.string.login_name),
                     value = login!!,
                     //nonce = "-",
                     record_id = id
@@ -115,7 +115,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = "Password",
+                    name = getString(R.string.password_name),
                     value = password!!,
                     //nonce = "-",
                     record_id = id
@@ -191,7 +191,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = "service",
+                    name = getString(R.string.service_name),
                     value = "",
                     //nonce = "-",
                     record_id = id
@@ -200,7 +200,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = "login",
+                    name = getString(R.string.login_name),
                     value = "",
                     //nonce = "-",
                     record_id = id
@@ -209,7 +209,7 @@ class AccountInfoActivity: AppCompatActivity() {
             list.add(
                 RecordAddFieldEntity(
                     id = UUID.randomUUID(),
-                    name = "password",
+                    name = getString(R.string.password_name),
                     value = "",
                     //nonce = "-",
                     record_id = id
@@ -417,7 +417,7 @@ class AccountInfoActivity: AppCompatActivity() {
     var networkConnection: Boolean = false
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.home -> {
+            android.R.id.home -> {
                 onBackPressed()
                 true
             }

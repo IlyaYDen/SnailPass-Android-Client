@@ -201,9 +201,11 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
                 if(s.toString().isEmpty()){
 
                     holder.key.error = holder.itemView.context.getString(R.string.empty_error)
+                    holder.key.hint = holder.itemView.context.getString(R.string.key)
                     canSave = false
                     return
-                }
+                } else
+                    holder.key.hint = ""
                 accountItem.first.name = s.toString()
                 if(list[num].second!=1)
                     list[num] = Pair(accountItem.first, 3)
@@ -219,9 +221,11 @@ class AccountInfoAdapter : RecyclerView.Adapter<AccountInfoAdapter.AccountItemVi
                 if(s.toString().isEmpty()){
 
                     holder.value.error = holder.itemView.context.getString(R.string.empty_error)
+                    holder.value.hint = holder.itemView.context.getString(R.string.value)
                     canSave = false
                     return
-                }
+                } else
+                    holder.value.hint = ""
                 accountItem.first.value = s.toString()
                 if(list[num].second!=1)
                     list[num] = Pair(accountItem.first, 3)

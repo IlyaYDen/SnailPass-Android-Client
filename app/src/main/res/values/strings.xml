@@ -65,5 +65,14 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="service_name">Service</string>
+    <string name="login_name">Login</string>
+    <string name="password_name">Password</string>
+    <string name="Logout">Logout</string>
+
+    <string name="update_title">new update is come!</string>
+    <string name="update_message">You want to download it?</string>
+    <string name="download">Download</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

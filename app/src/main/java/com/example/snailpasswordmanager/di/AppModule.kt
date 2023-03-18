@@ -30,7 +30,6 @@ class AppModule(val context: Context) {
     @Provides
     fun provideApplication(context : Context): ConnectivityManager {
         val connectivityManager = context.getSystemService(AppCompatActivity.CONNECTIVITY_SERVICE) as ConnectivityManager
-
         return connectivityManager
     }
     //@Provides

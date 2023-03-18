@@ -1,0 +1,14 @@
+name: DeployAndroidApp
+on: pull_request
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Get repository code
+      uses: actions/checkout@v3
+    - name: SetUp JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+
+    - name: build Project
+      run: ./gradlew assemble

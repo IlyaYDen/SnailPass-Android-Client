@@ -15,4 +15,9 @@
         android:name="com.example.snailpasswordmanager.presentation.noteList.NoteListFragment"
         android:label="NoteList"
         tools:layout="@layout/fragment_notes" />
+    <activity
+        android:id="@+id/menuLogout"
+        android:name="com.example.snailpasswordmanager.presentation.login.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

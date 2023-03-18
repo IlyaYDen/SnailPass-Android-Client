@@ -75,11 +75,6 @@ class NoteActivity : AppCompatActivity() {
                 runOnUiThread {
                     bindingClass.buttonNoteDelete.isEnabled = true // or false
                     bindingClass.buttonNoteSave.isEnabled = true // or false
-                    bindingClass.noteName.isFocusable = true
-                    bindingClass.noteName.isLongClickable = true
-
-                    bindingClass.noteContent.isFocusable = true
-                    bindingClass.noteContent.isLongClickable = true
                 }
                 Log.d("internet", "onAvailable: $network")
             }
@@ -89,11 +84,6 @@ class NoteActivity : AppCompatActivity() {
                 runOnUiThread {
                     bindingClass.buttonNoteDelete.isEnabled = false // or false
                     bindingClass.buttonNoteSave.isEnabled = false // or false
-                    bindingClass.noteName.isFocusable = false
-                    bindingClass.noteName.isLongClickable = false
-
-                    bindingClass.noteContent.isFocusable = false
-                    bindingClass.noteContent.isLongClickable = false
                 }
                 Log.d("internet", "onLost: $network")
                 //viewModel.getAddFields()
@@ -102,11 +92,6 @@ class NoteActivity : AppCompatActivity() {
         if(!networkConnection){
             bindingClass.buttonNoteDelete.isEnabled = false // or false
             bindingClass.buttonNoteSave.isEnabled = false // or false
-            bindingClass.noteName.isFocusable = false
-            bindingClass.noteName.isLongClickable = false
-
-            bindingClass.noteContent.isFocusable = false
-            bindingClass.noteContent.isLongClickable = false
         }
 
 

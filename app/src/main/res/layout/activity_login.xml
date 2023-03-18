@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/login_text"
-            android:text="ttt@ttt.ttt1"
+            android:text=""
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/password_text"
             android:inputType="textPassword"
-            android:text="ttt@ttt.ttt1"
+            android:text=""
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,6 +91,7 @@
         android:background="@color/light_gray_text"
         android:layout_marginTop="6dp"
         android:text="@string/registration_button" />
+
 
     <ProgressBar
         android:layout_margin="16dp"

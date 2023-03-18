@@ -93,7 +93,6 @@ class AccountInfoViewModel(
         viewModelScope.launch {
             //-Log.d("test","test")
             fieldUseCases.getField.invoke(id).collect {
-                //-Log.d("test","test2")
                 if(it!=null) {
 
                     val l :MutableList<RecordAddFieldEntity> = mutableListOf()

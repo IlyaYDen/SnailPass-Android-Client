@@ -2,14 +2,15 @@ package com.example.snailpasswordmanager.presentation.login
 
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
+import android.app.DownloadManager
 import android.app.usage.NetworkStatsManager
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
+import android.content.*
 import android.net.ConnectivityManager
 import android.net.Network
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.util.Pair
 import android.view.View
@@ -19,20 +20,20 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.snailpasswordmanager.LoginMode
-import com.example.snailpasswordmanager.PasswordApp
-import com.example.snailpasswordmanager.PreferenceKeys
-import com.example.snailpasswordmanager.R
+import com.example.snailpasswordmanager.*
 import com.example.snailpasswordmanager.domain.model.UserEntity
 import com.example.snailpasswordmanager.presentation.mainActivity.MainActivity
 import com.example.snailpasswordmanager.presentation.registration.RegistrationActivity
+import com.example.snailpasswordmanager.utils.ApplicationUpdateUtility
 import com.example.snailpasswordmanager.utils.NetworkUtils
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.io.File
 import java.util.*
 import javax.inject.Inject
 
@@ -112,6 +113,24 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
+
+        ApplicationUpdateUtility.checkForUpdate(this)
+
+            //context.getExternalFilesDir(null), name
+
+        if (File(
+                getExternalFilesDir(null),
+                "app-release.apk"
+            ).exists()
+        ) {
+            File(
+                getExternalFilesDir(null),
+                "app-release.apk"
+            ).delete()
+        }
+        //
+
+
         vm.sharedViewEffects
             .onEach {
 

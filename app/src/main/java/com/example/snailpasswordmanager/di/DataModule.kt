@@ -62,7 +62,7 @@ class DataModule {
     @Provides
     //@Singleton
     fun providePasswordListRepository(db: RecordDb,serverApi: ServerApi, userEntityAuth: AuthorizationData): RecordListRepository {
-        return RecordListRepositoryImpl(db.recordDao,serverApi, userEntityAuth)
+        return RecordListRepositoryImpl(db.recordDao,db.recordAddFieldDao,serverApi, userEntityAuth)
     }
 
     @Provides

@@ -23,5 +23,12 @@
         android:icon="@drawable/account_key"
         app:showAsAction=""
         />
+    <item
+        android:id="@+id/menuLogout"
+        android:title="@string/Logout"
+        android:icon="@drawable/baseline_logout_24"
+        app:showAsAction=""
+
+        />
 
 </menu>

@@ -37,7 +37,7 @@ interface ServerApi {
 
     @Headers("Content-Type: application/json;charset=UTF-8")
     @GET("/records")
-    suspend fun getRecords() : List<Record>?
+    suspend fun getRecords() : List<RecordGet>?
 
     @Headers("Content-Type: application/json;charset=UTF-8")
     @GET("/additional_fields")
@@ -103,6 +103,20 @@ data class Record constructor(
         return "Record(creation_time='$creation_time', update_time='$edited_time', encrypted_password='$password', id='$id', is_deleted=$is_deleted, is_favorite=$is_favorite, login='$login', name='$name', user_id='$user_id')"
     }
 }
+data class RecordGet constructor(
+    val creation_time: String,
+    @SerializedName("update_time")
+    val edited_time: String,
+    //val nonce: String,
+    val password: String,
+    val id: String,
+    val is_deleted: Boolean = false,
+    val is_favorite: Boolean = false,
+    val login: String,
+    val name: String,
+    val user_id: String,
+    val additional_fields: List<RecordAddFieldEntity>
+)
 
 data class AddRecord(
     val id: String,

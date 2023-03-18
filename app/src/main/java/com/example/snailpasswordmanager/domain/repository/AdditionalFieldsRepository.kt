@@ -6,9 +6,9 @@ import java.util.UUID
 
 interface AdditionalFieldsRepository {
 
-    suspend fun getField(id: UUID): Flow<List<RecordAddFieldEntity>?>
+    suspend fun getFieldByRecord(id: UUID): Flow<List<RecordAddFieldEntity>?>
 //todo i need two ones?
-    suspend fun cloneFieldById(id: UUID)
+    //suspend fun cloneFieldById(id: UUID)
     suspend fun clearFieldTable()
 
     suspend fun insertField(addFieldEntity: RecordAddFieldEntity)

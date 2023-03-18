@@ -2,7 +2,9 @@ package com.example.snailpasswordmanager.data.repository
 
 import android.util.Log
 import com.example.snailpasswordmanager.LoginMode
+import com.example.snailpasswordmanager.data.database.record.RecordAddFieldDao
 import com.example.snailpasswordmanager.data.database.record.RecordDao
+import com.example.snailpasswordmanager.data.model.RecordAddFieldEntityMapper
 import com.example.snailpasswordmanager.data.model.RecordEntityMapper
 import com.example.snailpasswordmanager.data.retrofit2.*
 import com.example.snailpasswordmanager.domain.model.RecordEntity
@@ -15,11 +17,13 @@ import javax.inject.Inject
 
 class RecordListRepositoryImpl @Inject constructor(
     private val recordDao: RecordDao,
+    private val recordAddFieldDao: RecordAddFieldDao,
     var serverApi: ServerApi,
     var userEntityAuth: AuthorizationData,
     ) : RecordListRepository {
 
     private val recordEntityMapper = RecordEntityMapper()
+    private val recordAddFieldEntityMapper = RecordAddFieldEntityMapper()
 
     override suspend fun getRecordList(): Flow<List<RecordEntity>?> {
 
@@ -48,6 +52,10 @@ class RecordListRepositoryImpl @Inject constructor(
                                 )
                             )
                         )
+                        recordAddFieldDao.deleteFieldById(it.id)
+                        it.additional_fields.map { t ->
+                            recordAddFieldDao.addField(recordAddFieldEntityMapper.mapEntityToDbModel(t))
+                        }
                     }
 
                 }

@@ -115,7 +115,7 @@ class UserRepositoryImpl @Inject constructor(
 
                 return Pair(Gson().fromJson(t.string(), JsonObject::class.java).get("message").asJsonObject.get("error").toString(),LoginMode.ERROR)
             }
-            return Pair("Unexpected_error",LoginMode.ERROR)
+            return Pair("Unexpected_error",LoginMode.ERROR)//todo refactor
         }
         catch (e : Exception){
             //-Log.d("MYLOG_test","t  "+e.message)
@@ -133,8 +133,12 @@ class UserRepositoryImpl @Inject constructor(
                 }
             }
 
-            userEntityAuth.loginMode = LoginMode.OFFLINE
-            return Pair("",LoginMode.OFFLINE)
+            if(bu) {
+                userEntityAuth.loginMode = LoginMode.OFFLINE
+                return Pair("", LoginMode.OFFLINE)
+            }
+            else
+                return Pair("Unexpected_error",LoginMode.ERROR)//todo refactor
         }
 
     }

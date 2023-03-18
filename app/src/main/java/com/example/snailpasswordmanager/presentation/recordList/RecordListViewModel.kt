@@ -39,25 +39,13 @@ class RecordListViewModel constructor(
                 passwordListEdited.value = it
                 //todo make list load in the same time
 
-                for (t in it) {
-                    fieldUseCases.deleteLocalFieldById(t.id)
-                    fieldUseCases.cloneField(t.id)
-                }
+                //for (t in it) {
+                //    fieldUseCases.deleteLocalFieldById(t.id)
+                //    fieldUseCases.cloneField(t.id)
+                //}
             }
         }
 
-    }
-
-    fun getAddFields() {
-
-        viewModelScope.launch(Dispatchers.IO) {
-            //-Log.d("test___", passwordListEdited.value.size.toString())
-            //fieldUseCases.deleteFieldsTable()
-            for (t in passwordListEdited.value) {
-                fieldUseCases.deleteLocalFieldById(t.id)
-                fieldUseCases.cloneField(t.id)
-            }
-        }
     }
 
 }
