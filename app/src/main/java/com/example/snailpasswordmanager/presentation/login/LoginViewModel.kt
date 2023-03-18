@@ -24,6 +24,7 @@ class LoginViewModel @Inject constructor(
         @RequiresApi(Build.VERSION_CODES.O)
         fun logInEvent(entity: UserEntity) {
 
+
             viewModelScope.launch(Dispatchers.IO) {
 
                  val res = logInUseCases.userLoginUseCase(entity)
