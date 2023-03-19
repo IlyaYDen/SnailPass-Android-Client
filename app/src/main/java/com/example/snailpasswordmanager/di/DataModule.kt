@@ -42,17 +42,28 @@ class DataModule {
     fun providePasswordDb(context: Context): RecordDb {
         return synchronized(this) {
 
-           // val MIGRATION_1_2 = object : Migration(1, 2) {
-           //     override fun migrate(database: SupportSQLiteDatabase) {
-           //         database.execSQL("ALTER TABLE RecordEntityDbModel DROP COLUMN nonce")
-           //     }
-           // }
+            val MIGRATION_4_5 = object : Migration(4, 5) {
+                override fun migrate(database: SupportSQLiteDatabase) {
+
+                    //database.execSQL("ALTER TABLE users RENAME TO temp_users")
+                    // Create the new table with the updated schema
+                    database.execSQL("CREATE TABLE users_ (id TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, hint TEXT, is_admin INTEGER NOT NULL, PRIMARY KEY(id), UNIQUE(email))")
+
+                    database.execSQL("CREATE UNIQUE INDEX index_users ON users_(email)")
+                    // Copy the data from the old table to the new table
+                    database.execSQL("INSERT INTO users_ (id, email, password, hint, is_admin) SELECT id, email, password, hint, is_admin FROM users")
+                    // Drop the old table
+                    database.execSQL("ALTER TABLE users RENAME TO temp_users")
+                    database.execSQL("ALTER TABLE users_ RENAME TO users")
+                    database.execSQL("DROP TABLE temp_users")
+                }
+            }
             val dbBuilder = Room.databaseBuilder(
-                context,
+                context,//	yury.v.denisov@gmail.com
                 RecordDb::class.java,
                 RecordDb.DATABASE_NAME
             )
-                //.addMigrations(MIGRATION_1_2)
+                .addMigrations(MIGRATION_4_5)
                 .build()
             dbBuilder
         }

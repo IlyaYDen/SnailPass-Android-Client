@@ -68,12 +68,12 @@
         <activity
             android:name=".presentation.registration.RegistrationActivity"
             android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

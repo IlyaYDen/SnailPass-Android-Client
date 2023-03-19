@@ -5,22 +5,20 @@ import androidx.room.Database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.snailpasswordmanager.data.model.NoteEntityDbModel
 import com.example.snailpasswordmanager.data.model.RecordAddFieldEntityDbModel
 import com.example.snailpasswordmanager.data.model.RecordEntityDbModel
 import com.example.snailpasswordmanager.data.model.UserEntityDbModel
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
-
-const val VERSION = 4
+const val VERSION = 5
 
 @Database (
     entities = [RecordEntityDbModel::class, UserEntityDbModel::class, RecordAddFieldEntityDbModel::class, NoteEntityDbModel::class,
         test::class],
     version = VERSION,
-    exportSchema = true,
-    autoMigrations = [
-        AutoMigration(from = 3, to = 4)
-    ]
+    exportSchema = true
 )
 abstract class RecordDb : RoomDatabase() {
     abstract val recordDao : RecordDao

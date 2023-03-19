@@ -93,7 +93,7 @@ class LoginActivity : AppCompatActivity() {
             currentFocus?.clearFocus()
             if(//todo validate
                loginText.text != null && loginText.text!!.length>5 &&
-               passwordText.text != null && passwordText.text!!.length>10) {
+               passwordText.text != null && passwordText.text!!.length>9) {
 
                pb.visibility = View.VISIBLE
                userEntity = UserEntity(

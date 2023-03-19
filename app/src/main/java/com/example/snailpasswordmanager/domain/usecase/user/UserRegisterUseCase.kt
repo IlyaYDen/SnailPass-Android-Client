@@ -35,7 +35,7 @@ class UserRegisterUseCase @Inject constructor(
                 id = userEntity.id,
                 email = userEntity.email,
                 master_password_hash = encodedString,
-                hint = userEntity.hint,
+                hint = userEntity.hint?: "",
             )
 
         var resp = userRepository.addUser(reg)
