@@ -47,4 +47,3 @@ Notes list
 Note info
 
 ![image](https://user-images.githubusercontent.com/90569114/225444646-e2a728f8-faa8-46e9-9ccc-647b6d8e7410.png)
-
