@@ -80,7 +80,7 @@ class RegistrationActivity : AppCompatActivity() {
                     UserEntity(
                         id = UUID.randomUUID(),
                         hint = tvHint_text.text.toString(),
-                        email = tvLogin.text.toString(),
+                        email = tvLogin.text.toString().lowercase(),
                         password = tvPassword_text.text.toString()
                     )
                 )

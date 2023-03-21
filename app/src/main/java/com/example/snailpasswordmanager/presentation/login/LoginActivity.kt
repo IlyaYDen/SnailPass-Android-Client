@@ -97,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
 
                pb.visibility = View.VISIBLE
                userEntity = UserEntity(
-                   email = loginText.text.toString(),
+                   email = loginText.text.toString().lowercase(),
                    password = passwordText.text.toString(),
                    hint = ""
                )

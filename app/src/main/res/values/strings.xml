@@ -1,20 +1,20 @@
 <resources>
-    <string name="app_name">Snail Password Manager</string>
+    <string name="app_name">SnailPass</string>
 
     <string name="repeat_password">Repeat Password</string>
     <string name="hint">Hint</string>
     <string name="todo">TODO</string>
     <!-- login -->
     <string name="email">Email</string>
-    <string name="Sign_in_to_continue">Sign in to continue</string>
-    <string name="Sign_up_to_continue">Sign Up to start using the app</string>
+    <string name="Sign_in_to_continue">Sign in to SnailPass</string>
     <string name="password">Password</string>
-    <string name="login_button">GO</string>
+    <string name="login_button">Sign in to continue</string>
     <string name="registration_button">NEW USER? Sign Up</string>
 
     <!-- Registration -->
+    <string name="Sign_up_to_continue">Sign Up to continue</string>
     <string name="registration_screen_button">Sign Up</string>
-    <string name="have_account">Have account? Sign In!</string>
+    <string name="have_account">Already have an account? Sign In!</string>
 
 
     <string name="logo_description">Logo</string>

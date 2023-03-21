@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/main_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".presentation.registration.RegistrationActivity"
     android:padding="20dp">
@@ -12,177 +23,124 @@
     <ImageView
         android:id="@+id/imageView2"
 
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="40dp"
         app:srcCompat="@drawable/snailpassnewlogo"
         android:transitionName="snail_Logo" />
-    <TextView
-        android:id="@+id/welcomeText2"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="-16dp"
-        android:textColor="@color/light_gray_text"
-        android:text="@string/Sign_up_to_continue"
-        android:transitionName="snail_text"
-        />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColorHint="@color/light_gray_text"
-        android:hint="@string/email"
-        android:transitionName="snail_Username"
+        android:layout_height="1dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
 
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
+        <TextView
+            android:id="@+id/welcomeText2"
 
-        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="-16dp"
+            android:text="@string/Sign_up_to_continue"
+            android:textColor="@color/light_gray_text"
+            android:transitionName="snail_text" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/login_text"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="16dp"
+            android:hint="@string/email"
+            android:textColorHint="@color/light_gray_text"
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="@color/light_gray_text"
-        android:hint="@string/password"
-        app:passwordToggleEnabled="true"
-        android:transitionName="snail_Password"
+            android:transitionName="snail_Username">
 
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password_text"
-            android:inputType="textPassword"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:hint="@string/password"
+            android:textColorHint="@color/light_gray_text"
+            android:transitionName="snail_Password"
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="@color/light_gray_text"
-        android:hint="@string/repeat_password"
-        app:passwordToggleEnabled="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
+            app:passwordToggleEnabled="true">
 
-        <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/repeat_password_text"
-            android:inputType="textPassword"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:hint="@string/repeat_password"
+            android:textColorHint="@color/light_gray_text"
+            app:passwordToggleEnabled="true">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="@color/light_gray_text"
-        android:hint="@string/hint"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/repeat_password_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/hint_text"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-    <!--EditText
+            android:hint="@string/hint"
+            android:textColorHint="@color/light_gray_text">
 
-        android:id="@+id/login_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:autofillHints=""
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="@color/dark_gray_text"
-        tools:ignore="LabelFor" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hint_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textShortMessage" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+        <Button
+            android:id="@+id/r_registration_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registration_screen_button"
 
-        android:id="@+id/password_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:autofillHints=""
-        android:hint="@string/password"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:password="true"
-        android:textColorHint="@color/dark_gray_text"
-        tools:ignore="LabelFor" />
+            android:transitionName="snail_Login_Button" />
 
-    <EditText
+        <Button
+            android:id="@+id/r_login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-        android:id="@+id/repeat_password_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:autofillHints=""
-        android:hint="@string/repeat_password"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:password="true"
-        android:textColorHint="@color/dark_gray_text"
-        tools:ignore="LabelFor" />
+            android:text="@string/have_account"
+
+            android:transitionName="snail_SignUp_Button" />
 
 
-    <EditText
-        android:id="@+id/hint_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="80dp"
-        android:autofillHints=""
-        android:hint="@string/hint"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="@color/dark_gray_text"
-        tools:ignore="LabelFor" /-->
-
-    <Button
-        android:id="@+id/r_registration_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:transitionName="snail_Login_Button"
-
-        android:text="@string/registration_screen_button" />
-
-    <Button
-        android:id="@+id/r_login_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:transitionName="snail_SignUp_Button"
-
-        android:text="@string/have_account" />
+        <ProgressBar
+            android:id="@+id/progressBarRegister"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp" />
+    </LinearLayout>
 
 
-    <ProgressBar
-        android:layout_margin="16dp"
-        android:id="@+id/progressBarRegister"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 </LinearLayout>
+
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
