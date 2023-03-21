@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!--item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/baseline_search_24"
+        android:title="@string/search"
+        
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always"/-->
+
+
+    <item
+        android:id="@+id/menuAccounts"
+        android:title="@string/Accounts"
+        android:icon="@drawable/file_key"
+        />
+    <item
+        android:id="@+id/menuNotes"
+        android:title="@string/Notes"
+        android:icon="@drawable/account_key"
+        app:showAsAction=""
+        />
+    <item
+        android:id="@+id/menuLogout"
+        android:title="@string/Logout"
+        android:icon="@drawable/baseline_logout_24"
+        app:showAsAction=""
+
+        />
+
+</menu>

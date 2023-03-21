@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/main_background"
+    android:padding="3dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!--EditText
+
+                android:id="@+id/textView1"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:layout_margin="2dp"
+                android:text="TextView" /-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:id="@+id/username_text_input_layout"
+                app:boxBackgroundColor="@color/white"
+
+                app:passwordToggleEnabled="false">
+
+                <EditText
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:ems="10"
+
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--EditText
+                android:id="@+id/textView2"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+
+                android:layout_weight="2"
+                android:minHeight="48dp"
+                android:text="TextView" /-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:id="@+id/username_text_input_layout2"
+                app:boxBackgroundColor="@color/white"
+                app:passwordToggleEnabled="false">
+
+                <EditText
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:ems="10"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

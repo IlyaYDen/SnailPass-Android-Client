@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    tools:context=".presentation.noteActivity.NoteActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:background="@color/other_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/noteName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarNote" />
+
+    <!--EditText
+        android:id="@+id/noteContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNoteDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteName"
+        app:layout_constraintVertical_bias="0.0" /-->
+
+    <Button
+        android:id="@+id/buttonNoteDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_note"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNoteSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/noteContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNoteDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteName" />
+
+    <Button
+        android:id="@+id/buttonNoteSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_note"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
