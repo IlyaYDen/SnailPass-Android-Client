@@ -1,5 +1,6 @@
 package com.example.snailpasswordmanager.presentation.registration
 
+import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -13,8 +14,10 @@ import androidx.lifecycle.lifecycleScope
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.domain.model.UserEntity
+import com.example.snailpasswordmanager.utils.ApplicationUpdateUtility
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import java.io.File
 import java.util.*
 import javax.inject.Inject
 
@@ -61,6 +64,17 @@ class RegistrationActivity : AppCompatActivity() {
 
                 if(it.first){
                     finish()
+                    val builder = AlertDialog.Builder(this)
+                    builder
+                        .setTitle(R.string.check_email_title)
+                        .setMessage(R.string.check_email_message)
+
+                        .setIcon(R.drawable.account_icon)
+                        .setPositiveButton(R.string.ok) { dialog, id ->
+                            dialog.cancel()
+                        }
+                    builder.create()
+                        .show()
                 }
                 else
                     if(it.second!="")

@@ -2,6 +2,7 @@ package com.example.snailpasswordmanager.presentation.login
 
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
+import android.app.AlertDialog
 import android.app.DownloadManager
 import android.app.usage.NetworkStatsManager
 import android.content.*
@@ -147,6 +148,19 @@ class LoginActivity : AppCompatActivity() {
                     var t = 3
                     if(it.first!="")
                         loginText.error = getString(R.string.login_error)
+                    if(it.first.contains("Access Denied. Email isn't confirmed. Resending email confirmation letter")) {
+                        val builder = AlertDialog.Builder(this)
+                        builder
+                            .setTitle(R.string.check_email_title)
+                            .setMessage(R.string.check_email_message)
+
+                            .setIcon(R.drawable.account_icon)
+                            .setPositiveButton(R.string.ok) { dialog, id ->
+                                dialog.cancel()
+                            }
+                        builder.create()
+                            .show()
+                    }
                 }
 
                 pb.visibility = View.GONE
