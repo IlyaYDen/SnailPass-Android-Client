@@ -53,10 +53,10 @@ class LoginActivity : AppCompatActivity() {
     lateinit var text : TextView
     lateinit var pb : ProgressBar
 
-   // val Context.appStartupParamsDataStore: DataStore<Preferences> by dataStore(
-   //     fileName = "app_startup_params.pb",
-   //     serializer = AppStartupParamsSerializer
-   // )
+    // val Context.appStartupParamsDataStore: DataStore<Preferences> by dataStore(
+    //     fileName = "app_startup_params.pb",
+    //     serializer = AppStartupParamsSerializer
+    // )
     private lateinit var t : SharedPreferences
 
     private lateinit var userEntity: UserEntity
@@ -69,8 +69,8 @@ class LoginActivity : AppCompatActivity() {
         (applicationContext as PasswordApp).appComponent.inject(this)
 
 
-       //vm = ViewModelProvider(this,vmFactory) [LoginViewModel::class.java]
-       vm = ViewModelProvider(this,vmFactory) [LoginViewModel::class.java]
+        //vm = ViewModelProvider(this,vmFactory) [LoginViewModel::class.java]
+        vm = ViewModelProvider(this,vmFactory) [LoginViewModel::class.java]
 
         loginButton = findViewById(R.id.l_login_button)
         pb = findViewById(R.id.progressBarLogin)
@@ -92,19 +92,19 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             currentFocus?.clearFocus()
             if(//todo validate
-               loginText.text != null && loginText.text!!.length>5 &&
-               passwordText.text != null && passwordText.text!!.length>9) {
+                loginText.text != null && loginText.text!!.length>5 &&
+                passwordText.text != null && passwordText.text!!.length>9) {
 
-               pb.visibility = View.VISIBLE
-               userEntity = UserEntity(
-                   email = loginText.text.toString().lowercase(),
-                   password = passwordText.text.toString(),
-                   hint = ""
-               )
-               lifecycleScope.launch {
-                   vm.logInEvent(userEntity)
-               }
-           }
+                pb.visibility = View.VISIBLE
+                userEntity = UserEntity(
+                    email = loginText.text.toString().lowercase(),
+                    password = passwordText.text.toString(),
+                    hint = ""
+                )
+                lifecycleScope.launch {
+                    vm.logInEvent(userEntity)
+                }
+            }
             else{
                 loginText.error = getString(R.string.login_error)//"Please enter a valid email and password."
                 //loginText.requestFocus()
@@ -116,7 +116,7 @@ class LoginActivity : AppCompatActivity() {
 
         ApplicationUpdateUtility.checkForUpdate(this)
 
-            //context.getExternalFilesDir(null), name
+        //context.getExternalFilesDir(null), name
 
         if (File(
                 getExternalFilesDir(null),
@@ -158,15 +158,15 @@ class LoginActivity : AppCompatActivity() {
             currentFocus?.clearFocus()
             val intent = Intent(this, RegistrationActivity::class.java)
 
-                val options = ActivityOptions.makeSceneTransitionAnimation(this,
-                            Pair(loginButton, "snail_Login_Button"),
-                            Pair(registrationButton, "snail_SignUp_Button"),
-                            Pair(loginText, "snail_Username"),
-                            Pair(passwordText, "snail_Password"),
-                            Pair(imageView, "snail_Logo"),
-                            Pair(text,"snail_text")
-                )
-                startActivity(intent, options.toBundle())
+            val options = ActivityOptions.makeSceneTransitionAnimation(this,
+                Pair(loginButton, "snail_Login_Button"),
+                Pair(registrationButton, "snail_SignUp_Button"),
+                Pair(loginText, "snail_Username"),
+                Pair(passwordText, "snail_Password"),
+                Pair(imageView, "snail_Logo"),
+                Pair(text,"snail_text")
+            )
+            startActivity(intent, options.toBundle())
 
 
 
