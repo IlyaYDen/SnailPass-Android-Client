@@ -5,14 +5,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INSTALL_PACKAGES"
+    <uses-permission
+        android:name="android.permission.INSTALL_PACKAGES"
         tools:ignore="ProtectedPermissions" />
-
     <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
     <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
     <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
@@ -30,18 +29,22 @@
         android:theme="@style/Theme.SnailPasswordManager"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.SnailPasswordManager" />
+
         <provider
-            android:name="InstallReceiver"
+            android:name=".InstallReceiver"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_CHANGED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
                 <action android:name="android.intent.action.PACKAGE_INSTALL" />
-
 
                 <data android:scheme="package" />
             </intent-filter>
@@ -51,24 +54,23 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-
         <activity
             android:name=".presentation.noteActivity.NoteActivity"
-            android:screenOrientation="sensorPortrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".presentation.mainActivity.MainActivity"
-            android:screenOrientation="sensorPortrait"
-            android:exported="true" />
+            android:name=".presentation.mainActivity.MainActivity2"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".presentation.accountInfo.AccountInfoActivity"
-            android:screenOrientation="sensorPortrait"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.registration.RegistrationActivity"
             android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="true"

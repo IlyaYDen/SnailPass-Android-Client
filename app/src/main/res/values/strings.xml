@@ -74,5 +74,6 @@
     <string name="update_message">You want to download it?</string>
     <string name="download">Download</string>
     <string name="cancel">Cancel</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

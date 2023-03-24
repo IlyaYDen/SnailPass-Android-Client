@@ -20,7 +20,7 @@ import com.google.android.material.navigation.NavigationView
 import javax.inject.Inject
 
 
-class MainActivity : AppCompatActivity(), AppComponentProvider {
+class MainActivity2 : AppCompatActivity(), AppComponentProvider {
 
     override val appComponent: AppComponent by lazy {
         (applicationContext as PasswordApp).appComponent
