@@ -53,7 +53,8 @@ class GetPasswordList @Inject constructor(
                         editedTime = record.editedTime,
                         creationTime = record.creationTime,
                         isfavorite = record.isfavorite,
-                        userId = record.userId
+                        userId = record.userId,
+                        isdeleted = record.isdeleted
                     )
                 }
         }

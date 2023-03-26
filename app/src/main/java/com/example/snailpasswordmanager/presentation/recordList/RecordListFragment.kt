@@ -121,17 +121,17 @@ class RecordListFragment : Fragment() {
 
         //if(loginMode == LoginMode.OFFLINE) bindingClass.ButtonAdd.isEnabled = false
 
-        viewModel.passwordListEdited.onEach {
-            adapter.setPasswords(it)
-
-            if (!it.isEmpty()) {
-
-                bindingClass.linearLayout.visibility = View.GONE
-            } else {
-                bindingClass.linearLayout.visibility = View.VISIBLE
-
-            }
-        }.launchIn(lifecycleScope)
+        //viewModel.passwordListEdited.onEach {
+        //    adapter.setPasswords(it)
+//
+        //    if (!it.isEmpty()) {
+//
+        //        bindingClass.linearLayout.visibility = View.GONE
+        //    } else {
+        //        bindingClass.linearLayout.visibility = View.VISIBLE
+//
+        //    }
+        //}.launchIn(lifecycleScope)
 
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {

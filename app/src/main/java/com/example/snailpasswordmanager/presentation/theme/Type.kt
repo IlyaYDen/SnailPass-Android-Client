@@ -1,4 +1,4 @@
-package com.example.snailpasswordmanager.presentation.ui.theme
+package com.example.snailpasswordmanager.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

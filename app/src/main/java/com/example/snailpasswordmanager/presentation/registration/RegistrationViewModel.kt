@@ -2,6 +2,7 @@ package com.example.snailpasswordmanager.presentation.registration
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -21,7 +22,7 @@ class RegistrationViewModel @Inject constructor(
     val userUseCases: UserUseCases
 ) : ViewModel() {
 
-    val boolean = MutableSharedFlow<Pair<Boolean,String>>()//(Pair(false,""))
+    val boolean = MutableStateFlow<Pair<Boolean,String>>(Pair(false,""))
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun registrationEvent(userEntity: UserEntity) {

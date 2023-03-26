@@ -74,11 +74,11 @@ class AccountInfoActivity: AppCompatActivity() {
         vm = ViewModelProvider(this,vmFactory)[AccountInfoViewModel::class.java]
 
 
-        vm.responce.onEach {
-            if(it) {
-                finish()
-            }
-        }.launchIn(lifecycleScope)
+        //vm.responce.onEach {
+        //    if(it) {
+        //        finish()
+        //    }
+        //}.launchIn(lifecycleScope)
 
         if(intent.getBooleanExtra("MODE",false)) {
 
@@ -90,7 +90,21 @@ class AccountInfoActivity: AppCompatActivity() {
 
             bindingClass.buttonDelete.setOnClickListener {
 
-                vm.deletePassword(id)
+                vm.markAsDeletePassword(
+                    RecordEntity(
+                        id = id,
+                        name = adapter.list.get(0).first.value,
+                        login = adapter.list.get(1).first.value,
+                        userId = id.toString(),
+                        isfavorite = false,
+                        encrypted_password = adapter.list.get(2).first.value,
+                        editedTime = "",
+                        creationTime = "",
+                        isdeleted = true
+                        //name = bindingClass.editTextService.text.toString(),
+
+                    )
+                )
                 //finish()
             }
 
@@ -123,15 +137,15 @@ class AccountInfoActivity: AppCompatActivity() {
             )
             vm.getAddFields(id) //id
 
-            vm.fieldListEdited.onEach {
-                if(!it.isEmpty()) {
-                    //-Log.d("test", it[0].value)
-                    //-Log.d("test", it[0].name)
-                    adapter.addList(it,0)
-                    list.addAll(it)
-                } //-else
-                    //-Log.d("test", "emplty")
-            }.launchIn(lifecycleScope)
+           // vm.fieldListEdited.onEach {
+           //     if(!it.isEmpty()) {
+           //         //-Log.d("test", it[0].value)
+           //         //-Log.d("test", it[0].name)
+           //         adapter.addList(it,0)
+           //         list.addAll(it)
+           //     } //-else
+           //         //-Log.d("test", "emplty")
+           // }.launchIn(lifecycleScope)
 
             val listE = ArrayList<Pair<RecordAddFieldEntity,Int>>()
             for(i in list){
@@ -157,8 +171,10 @@ class AccountInfoActivity: AppCompatActivity() {
                         isfavorite = false,
                         encrypted_password = adapter.list.get(2).first.value,
                         editedTime = "",
-                        creationTime = ""
+                        creationTime = "",
+                        isdeleted = false
                         //name = bindingClass.editTextService.text.toString(),
+
                     )
                 )
 
@@ -177,9 +193,9 @@ class AccountInfoActivity: AppCompatActivity() {
                         if(n==2) deletedList.add(item.id)
                         if(n==3) editedList.add(item)
                     }
-                    if(addList.isNotEmpty()) vm.addFields(addList)
-                    if(editedList.isNotEmpty()) vm.editFields(editedList)
-                    if(deletedList.isNotEmpty()) vm.deleteFields(deletedList)
+                    //if(addList.isNotEmpty()) vm.addFields(addList)
+                    //if(editedList.isNotEmpty()) vm.editFields(editedList)
+                    //if(deletedList.isNotEmpty()) vm.deleteFields(deletedList)
                 }
             }
 
@@ -241,7 +257,8 @@ class AccountInfoActivity: AppCompatActivity() {
                         isfavorite = false,
                         encrypted_password = adapter.list.get(2).first.value,
                         editedTime = "",
-                        creationTime = ""
+                        creationTime = "",
+                        isdeleted = false
                         //name = bindingClass.editTextService.text.toString(),
                     )
                 )
@@ -256,7 +273,7 @@ class AccountInfoActivity: AppCompatActivity() {
                         val item = it.first
                         addList.add(item)
                     }
-                    if(addList.isNotEmpty()) vm.addFields(addList)
+                    //if(addList.isNotEmpty()) vm.addFields(addList)
                 }
             }
         }//ttt@ttt.ttt1

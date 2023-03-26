@@ -46,7 +46,7 @@
     <string name="a_z_small">a-z</string>
     <string name="a_z_capital">A-Z</string>
     <string name="numbers">0–9</string>
-    <string name="specificSymbols">specific Symbols</string>
+    <string name="Symbols">Symbols</string>
     <string name="generatePassword">generate Password</string>
     <string name="add_note">Add Note</string>
     <string name="delete_note">Delete Note</string>

@@ -15,7 +15,6 @@ import androidx.navigation.ui.NavigationUI
 import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.R
 import com.example.snailpasswordmanager.di.AppComponent
-import com.example.snailpasswordmanager.presentation.login.LoginActivity
 import com.google.android.material.navigation.NavigationView
 import javax.inject.Inject
 
@@ -51,7 +50,7 @@ class MainActivity2 : AppCompatActivity(), AppComponentProvider {
 
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         navigationView.menu.findItem(R.id.menuLogout).setOnMenuItemClickListener {
-            val intent = Intent(this, LoginActivity::class.java).apply {
+            val intent = Intent(this, MainActivity2::class.java).apply {//LoginActivity
 
             }//todo remove cash
             finish()

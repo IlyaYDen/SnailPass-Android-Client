@@ -46,7 +46,7 @@ class RecordListRepositoryImpl @Inject constructor(
                                     encrypted_password = it.password,
                                     editedTime = it.edited_time,
                                     creationTime = it.creation_time,
-                                    //nonce = it.nonce,
+                                    isdeleted = it.is_deleted,
                                     userId = it.user_id,
                                     isfavorite = it.is_favorite
                                 )
@@ -117,8 +117,8 @@ class RecordListRepositoryImpl @Inject constructor(
                     edited_time= "",
                     password = passwordEntity.encrypted_password,
                     id = passwordEntity.id.toString(),
-                    is_deleted = false,
-                    is_favorite = false,
+                    is_deleted = passwordEntity.isdeleted,
+                    is_favorite = passwordEntity.isfavorite,
                     login = passwordEntity.login,
                     name = passwordEntity.name,
                     user_id = passwordEntity.userId

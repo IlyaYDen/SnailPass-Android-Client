@@ -21,6 +21,8 @@ class RecordEntityMapper {
             login = recordEntity.login,
             service = recordEntity.name,
             //nonce = recordEntity.nonce,
+            isdeleted = recordEntity.isdeleted,
+
             userId = recordEntity.userId,
             isfavorite = recordEntity.isfavorite,
             createdTime = recordEntity.creationTime
@@ -33,8 +35,7 @@ class RecordEntityMapper {
         login = recordEntityDbModel.login,
         name = recordEntityDbModel.service,
         creationTime = recordEntityDbModel.createdTime,
-        //nonce = recordEntityDbModel.nonce,
-
+        isdeleted = recordEntityDbModel.isdeleted,
         userId = recordEntityDbModel.userId,
         isfavorite = recordEntityDbModel.isfavorite,
     )

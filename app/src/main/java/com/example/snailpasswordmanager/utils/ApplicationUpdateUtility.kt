@@ -2,17 +2,14 @@ package com.example.snailpasswordmanager.utils
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.app.Dialog
 import android.app.DownloadManager
 import android.content.*
 import android.net.Uri
-import android.os.Environment
 import android.util.Log
-import android.view.Window
 import androidx.core.content.FileProvider
 import com.example.snailpasswordmanager.BuildConfig
 import com.example.snailpasswordmanager.R
-import com.example.snailpasswordmanager.presentation.login.LoginActivity
+import com.example.snailpasswordmanager.presentation.MainActivity
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import okhttp3.*
@@ -25,7 +22,7 @@ object ApplicationUpdateUtility {
 
     private val TAG = "release"
 
-    fun checkForUpdate(loginActivity: LoginActivity) {
+    fun checkForUpdate(mainActivity: MainActivity) {
         val latestReleaseUrl =
             "https://api.github.com/repos/IlyaYDen/SnailPass-Android-Client/releases/latest"
 
@@ -72,9 +69,9 @@ object ApplicationUpdateUtility {
                             .setMessage("Покормите кота!")
                             .setIcon(R.drawable.account_icon)
                      */
-                    loginActivity.runOnUiThread {
+                    mainActivity.runOnUiThread {
 
-                        val builder = AlertDialog.Builder(loginActivity)
+                        val builder = AlertDialog.Builder(mainActivity)
                         builder
                             .setTitle(R.string.update_title)
                             .setMessage(R.string.update_message)
@@ -82,7 +79,7 @@ object ApplicationUpdateUtility {
                             .setIcon(R.drawable.account_icon)
                             .setPositiveButton(R.string.download) { dialog, id ->
                                 downloadUpdate(
-                                    loginActivity,
+                                    mainActivity,
                                     latestRelease
                                 )
                             }
@@ -90,12 +87,12 @@ object ApplicationUpdateUtility {
 
 
                                 if (File(
-                                        loginActivity.getExternalFilesDir(null),
+                                        mainActivity.getExternalFilesDir(null),
                                         "app-release.apk"
                                     ).exists()
                                 ) {
                                     File(
-                                        loginActivity.getExternalFilesDir(null),
+                                        mainActivity.getExternalFilesDir(null),
                                         "app-release.apk"
                                     ).delete()
                                 }

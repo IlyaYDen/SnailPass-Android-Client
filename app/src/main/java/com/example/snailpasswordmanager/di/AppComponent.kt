@@ -1,7 +1,7 @@
 package com.example.snailpasswordmanager.di
 
+import com.example.snailpasswordmanager.presentation.MainActivity
 import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoActivity
-import com.example.snailpasswordmanager.presentation.login.LoginActivity
 import com.example.snailpasswordmanager.presentation.mainActivity.MainActivity2
 import com.example.snailpasswordmanager.presentation.noteActivity.NoteActivity
 import com.example.snailpasswordmanager.presentation.noteList.NoteListFragment
@@ -16,8 +16,8 @@ interface AppComponent {
     fun inject(mainListActivity: RecordListFragment)
     fun inject(mainActivity2: MainActivity2)
     fun inject(registrationActivity: RegistrationActivity)
-    fun inject(loginActivity: LoginActivity)
     fun inject(accountInfoActivity: AccountInfoActivity)
     fun inject(noteListFragment: NoteListFragment)
     fun inject(noteActivity: NoteActivity)
+    fun inject(mainActivity: MainActivity)
 }

@@ -1,22 +1,20 @@
 package com.example.snailpasswordmanager.presentation.core.components
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
@@ -25,7 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.snailpasswordmanager.presentation.core.Fonts
+import com.example.snailpasswordmanager.presentation.theme.appFontJetBrains
 
 
 @Preview
@@ -106,7 +104,7 @@ fun CustomButton(
                     text = value,
                     color = Color.White.copy(alpha = 1f),
                     textAlign = TextAlign.Center,
-                    fontFamily = Fonts.appFontJetBrains,
+                    fontFamily = appFontJetBrains,
                     style = TextStyle(
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Light
@@ -115,5 +113,42 @@ fun CustomButton(
                 )
 
         }
+    }
+}
+
+@Composable
+fun CustomImageButton(
+    modifier: Modifier? = null,
+    modifierBox: Modifier = Modifier,
+    image: ImageVector,
+    indication: Indication? =null,
+    onClick : () -> Unit,
+    trigger : State<Boolean> = remember { mutableStateOf(false) }
+) {
+
+    Box(
+        modifier = modifierBox
+            .background(
+                color = if(trigger.value) Color.White.copy(0.3f) else Color.White.copy(0.07f),
+                shape = RoundedCornerShape(4.dp))
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = indication,
+                enabled = true,
+                role = Role.Button,
+                onClick = onClick
+            ) ,
+        contentAlignment = Alignment.Center,
+        propagateMinConstraints = true
+    ){
+        Image(
+            imageVector = image,
+            contentDescription = "Frame 22",
+            colorFilter = ColorFilter.tint(Color.White.copy(alpha = 0.3f)),
+            modifier = modifier?:Modifier.padding(
+                vertical = 4.dp,
+                horizontal = 8.dp
+            )
+        )
     }
 }

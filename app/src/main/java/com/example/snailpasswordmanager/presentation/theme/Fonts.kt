@@ -1,4 +1,4 @@
-package com.example.snailpasswordmanager.presentation.core
+package com.example.snailpasswordmanager.presentation.theme
 
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -6,7 +6,6 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import com.example.snailpasswordmanager.R
 
-object Fonts {
 
     val appFontJetBrains = FontFamily(
         fonts = listOf(
@@ -22,4 +21,3 @@ object Fonts {
             )
         )
     )
-}

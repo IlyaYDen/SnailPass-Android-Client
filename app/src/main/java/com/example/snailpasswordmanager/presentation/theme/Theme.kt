@@ -1,4 +1,4 @@
-package com.example.snailpasswordmanager.ui.theme
+package com.example.snailpasswordmanager.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -32,12 +32,12 @@ fun SnailPasswordManagerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
-    }
-
+    //val colors = if (darkTheme) {
+    //    DarkColorPalette
+    //} else {
+    //    LightColorPalette
+    //}
+    val colors = DarkColorPalette
     MaterialTheme(
         colors = colors,
         typography = Typography,

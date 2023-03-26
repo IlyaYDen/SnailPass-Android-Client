@@ -59,7 +59,8 @@ class EditPassword @Inject constructor(
             editedTime = passwordEntity.editedTime,
             creationTime = passwordEntity.creationTime,
             userId = userEntityAuth.user.id.toString(),
-            isfavorite = false
+            isfavorite = passwordEntity.isfavorite,
+            isdeleted = passwordEntity.isdeleted
         ))
 
     }

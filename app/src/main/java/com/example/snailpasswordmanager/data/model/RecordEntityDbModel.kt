@@ -13,6 +13,7 @@ data class RecordEntityDbModel(
    // @ColumnInfo(name = "nonce")         var nonce: String,
     @ColumnInfo(name = "user_id")     var userId: String,
     @ColumnInfo(name = "isfavorite")     var isfavorite: Boolean,
+    @ColumnInfo(name = "isdeleted")     var isdeleted: Boolean,
     @ColumnInfo(name = "password")      var password: String,
     @ColumnInfo(name = "edited_time")     var editedTime: String,
     @ColumnInfo(name = "creation_time")     var createdTime: String,

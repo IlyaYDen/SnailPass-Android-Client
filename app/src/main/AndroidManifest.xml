@@ -29,11 +29,6 @@
         android:theme="@style/Theme.SnailPasswordManager"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.SnailPasswordManager" />
 
         <provider
             android:name=".InstallReceiver"
@@ -59,6 +54,20 @@
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
+            android:name=".presentation.MainActivity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustResize"
+            android:label="@string/title_activity_main"
+            >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".presentation.mainActivity.MainActivity2"
             android:exported="true"
             android:screenOrientation="sensorPortrait" />
@@ -71,17 +80,6 @@
             android:name=".presentation.registration.RegistrationActivity"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".presentation.login.LoginActivity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

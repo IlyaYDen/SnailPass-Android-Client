@@ -8,6 +8,7 @@ data class RecordEntity(
     var login: String = "",
     var userId: String = "",
     var isfavorite: Boolean,
+    var isdeleted: Boolean,
     var encrypted_password: String = "",
     var editedTime: String = "",
     val creationTime: String = "",

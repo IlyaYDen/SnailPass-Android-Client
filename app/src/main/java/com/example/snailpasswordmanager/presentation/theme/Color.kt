@@ -1,4 +1,4 @@
-package com.example.snailpasswordmanager.ui.theme
+package com.example.snailpasswordmanager.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

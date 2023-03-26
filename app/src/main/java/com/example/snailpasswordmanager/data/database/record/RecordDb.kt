@@ -12,11 +12,10 @@ import com.example.snailpasswordmanager.data.model.RecordAddFieldEntityDbModel
 import com.example.snailpasswordmanager.data.model.RecordEntityDbModel
 import com.example.snailpasswordmanager.data.model.UserEntityDbModel
 import com.example.snailpasswordmanager.domain.model.RecordAddFieldEntity
-const val VERSION = 5
+const val VERSION = 6
 
 @Database (
-    entities = [RecordEntityDbModel::class, UserEntityDbModel::class, RecordAddFieldEntityDbModel::class, NoteEntityDbModel::class,
-        test::class],
+    entities = [RecordEntityDbModel::class, UserEntityDbModel::class, RecordAddFieldEntityDbModel::class, NoteEntityDbModel::class],
     version = VERSION,
     exportSchema = true
 )
@@ -30,8 +29,8 @@ abstract class RecordDb : RoomDatabase() {
         const val DATABASE_NAME = "records_db"
     }
 }
-@Entity
-data class test(
-    @PrimaryKey(autoGenerate = true) val t : Int,
-    val t2 : Int
-)
+//@Entity
+//data class test(
+//    @PrimaryKey(autoGenerate = true) val t : Int,
+//    val t2 : Int
+//)
