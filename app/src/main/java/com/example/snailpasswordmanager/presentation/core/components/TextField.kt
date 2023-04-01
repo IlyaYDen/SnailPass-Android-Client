@@ -37,7 +37,7 @@ import com.example.snailpasswordmanager.presentation.theme.appFontJetBrains
 @Preview
 @Composable
 fun CustomTextFieldPreview(){
-    val text = remember() { mutableStateOf<String>("") }
+    val text = remember { mutableStateOf<String>("") }
     val warning = "test"
     Box(modifier = Modifier
         .fillMaxWidth()
@@ -83,7 +83,7 @@ fun CustomTextField(
         color = Color.White,
         fontStyle = FontStyle.Italic,
         textAlign = TextAlign.Left,
-    ),
+    )
 ) {
     val isFocusedState = remember { mutableStateOf(false) }
     val isWarningClicked = remember { mutableStateOf(false) }
@@ -236,6 +236,198 @@ fun CustomTextField(
     }
 }
 
+//000000
+@Composable
+fun CustomTextFieldFullHeight(
+    modifier: Modifier = Modifier,
+    //BasicTexModifier : Modifier = Modifier,
+    value: State<String>,
+    hint: String = "",
+    onValueChange: (String) -> Unit,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    //interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    enabled: Boolean = true,
+    imageResource: ImageVector? = null,
+    warning: State<String> = remember { mutableStateOf("") },
+    visualTransformation : VisualTransformation = VisualTransformation.None,
+
+    enteredTextStyle: TextStyle = TextStyle(
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Light,
+        fontFamily = appFontJetBrains,
+        color = Color.White,
+        fontStyle = FontStyle.Normal,
+        textAlign = TextAlign.Left,
+    ),
+    hintTextStyle: TextStyle = TextStyle(
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Light,
+        fontFamily = appFontJetBrains,
+        color = Color.White,
+        fontStyle = FontStyle.Italic,
+        textAlign = TextAlign.Left,
+    ),
+    singleLine:Boolean = true
+) {
+    val isFocusedState = remember { mutableStateOf(false) }
+    val isWarningClicked = remember { mutableStateOf(false) }
+
+    val warningBorder by animateFloatAsState(
+        if(warning.value=="") 0f else 0.6f
+    )
+    val selectedBorder by animateFloatAsState(
+        if(!isFocusedState.value) 0f else 0.6f
+    )
+    onValueChange.also {
+        isWarningClicked.value = false
+    }
+    var t = TextStyle(
+        fontSize = enteredTextStyle.fontSize,
+        fontWeight = enteredTextStyle.fontWeight,
+        fontFamily = appFontJetBrains,
+        color = enteredTextStyle.color.copy(alpha = 0.7f),
+        fontStyle = FontStyle.Italic,
+        textAlign = enteredTextStyle.textAlign
+    )
+    Box(modifier = modifier
+        .fillMaxWidth()
+
+    ) {
+        BasicTextField(
+            textStyle = if(visualTransformation == PasswordVisualTransformation()) t else enteredTextStyle,
+            visualTransformation = visualTransformation,
+            value = value.value,
+            onValueChange = onValueChange,
+            keyboardOptions = keyboardOptions,
+            singleLine = singleLine,
+            enabled = enabled,
+            cursorBrush = Brush.verticalGradient(colors = listOf(Color(0xFFDDDDDD).copy(alpha = 0.4f), Color(0xFFCCCCCC).copy(alpha = 0.3f))),
+            //cursorBrush = SolidColor(colors.cursorColor(isError).value),
+
+
+            modifier = modifier
+                .fillMaxWidth()
+                .onFocusChanged {
+                    isFocusedState.value = it.isFocused
+                    if (it.isFocused) {
+                        isWarningClicked.value = false
+                    }
+                },
+
+            decorationBox = { innerTextField ->
+                Row(
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = Color(0x00D9D9D9).copy(alpha = 0.03f),
+                            shape = RoundedCornerShape(4.dp)
+                        )
+                        .border(
+                            //if(warning.value.isEmpty())
+                            BorderStroke(
+                                2.dp,
+                                Brush.linearGradient(
+                                    colors = listOf(
+                                        Color.Red.copy(alpha = warningBorder),
+                                        Color(0xFFCCCCCC).copy(alpha = 0f)
+                                    )
+                                )
+                            ),
+                            RoundedCornerShape(4.dp)
+                        )
+                        .border(
+                            if (isFocusedState.value) BorderStroke(
+                                2.dp,
+                                Brush.linearGradient(
+                                    colors = listOf(
+                                        Color(0xFFCCCCCC).copy(alpha = selectedBorder),
+                                        Color(0xFFCCCCCC).copy(alpha = 0f)
+                                    )
+                                )
+                            )
+                            else
+                                BorderStroke(
+                                    0.dp,
+                                    color = Color.Transparent
+                                ),
+                            RoundedCornerShape(4.dp)
+                        )//*/
+
+                        .padding(all = 8.dp), // inner padding
+                    verticalAlignment = Alignment.CenterVertically,
+
+                    ) {
+                    if(imageResource!=null)
+                        Icon(
+                            imageVector = imageResource,
+                            contentDescription = "Favorite icon",
+                            tint = Color.DarkGray
+                        )
+                    Spacer(modifier = Modifier.width(width = 8.dp))
+                    Box(
+                        modifier = modifier.fillMaxWidth()
+                    ) {
+                        if (value.value.isEmpty()) {
+                            Text(
+                                text = hint,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Normal,
+                                fontFamily = appFontJetBrains,
+                                fontStyle = FontStyle.Italic,
+                                color = Color.White.copy(alpha = 0.3f),
+                                //textAlign = textAlign,
+                                style = hintTextStyle,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                        val align = enteredTextStyle.textAlign
+
+                        var t : Arrangement.Horizontal = Arrangement.Start
+                        if(align!=null) {
+                            if (align.equals(TextAlign.Center)) {
+                                t = Arrangement.Center
+                            } else if (align.equals(TextAlign.Right)) {
+                                t = Arrangement.End
+                            }else if (align.equals(TextAlign.Left)) {
+                                t = Arrangement.Start
+                            }
+                        }
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = t,
+                            verticalAlignment = Alignment.Top
+                        ) {
+                            innerTextField()
+                        }
+                    }
+                }
+            }
+        )
+
+        if(warningBorder!=0f) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(all = 2.dp)
+                ,
+                horizontalArrangement = Arrangement.End
+            ) {
+                CustomWarningField(
+                    166*warningBorder,
+                    warningText = warning.value,
+                    isWarningClicked = isWarningClicked
+                )
+            }
+        }
+    }
+}
+
+
+
+
+
+
 
 @Preview
 @Composable
@@ -366,7 +558,7 @@ fun CustomTextFieldWidth(
         isWarningClicked.value = false
     }
 
-    Box() {
+    Box {
         BasicTextField(
             textStyle = enteredTextStyle,
 

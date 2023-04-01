@@ -1,5 +1,7 @@
 package com.example.snailpasswordmanager.presentation.accountInfo
 
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -67,16 +69,36 @@ fun AccountInfoScreen(
     email: String? = null,
     password: String? = null,
     favorite: Boolean = false,
-    new: Boolean = true
+    new: Boolean = true,
+    connectivityManager: ConnectivityManager
 ) {
 
     val items = vm.fieldListEdited
 
-    val serviceValue = remember() { mutableStateOf(name?:"") }
-    val loginValue = remember() { mutableStateOf(email?:"") }
-    val passwordValue = remember() { mutableStateOf(password?:"") }
+    val serviceValue = remember { mutableStateOf(name?:"") }
+    val loginValue = remember { mutableStateOf(email?:"") }
+    val passwordValue = remember { mutableStateOf(password?:"") }
     val isFavorite = remember(id) { mutableStateOf(favorite) }
-    //val addSize = remember() { mutableStateOf(additional.size) }
+
+    val connection = remember { mutableStateOf(false) }
+
+    DisposableEffect(key1 = connectivityManager) {
+        val networkCallback = object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                connection.value = true
+            }
+
+            override fun onLost(network: Network) {
+                connection.value = false
+            }
+        }
+
+        connectivityManager.registerDefaultNetworkCallback(networkCallback)
+
+        onDispose {
+            connectivityManager.unregisterNetworkCallback(networkCallback)
+        }
+    }
 
 
     val viewEffects = remember { vm.responce }
@@ -85,18 +107,20 @@ fun AccountInfoScreen(
         viewEffects.collect { bool ->
             Log.d("TEG", "Effect: $bool")
             if(bool){
-                navController.navigate(Screen.RecordList.route)
+                //navController.navigate(Screen.RecordList.route) todo
+
+                navController.popBackStack()
                 vm.responce.value = false
             }
         }
     }
 
 
-    Box() {
-        Column(
-        ) {
+    Box {
+        Column {
             Panel(serviceValue, {
-                navController.navigate(Screen.RecordList.route)
+                navController.popBackStack()
+                //navController.navigate(Screen.RecordList.route)
             }, {
                 isFavorite.value = !isFavorite.value
             },isFavorite.value
@@ -109,16 +133,16 @@ fun AccountInfoScreen(
                 LazyColumn(
                     modifier = Modifier.padding(bottom = (if(!new) 95 else 47).dp)
                 ) {
-                    item() {
+                    item {
                         AccountInfoItem(
-                            com.example.snailpasswordmanager.R.string.login_name,
-                            com.example.snailpasswordmanager.R.string.login_name,
+                            R.string.login_name,
+                            R.string.login_name,
                             loginValue
                         )
                         Spacer(modifier = Modifier.height(25.dp))
                         AccountInfoItem(
-                            com.example.snailpasswordmanager.R.string.password,
-                            com.example.snailpasswordmanager.R.string.password,
+                            R.string.password,
+                            R.string.password,
                             passwordValue,true
                         )
                     }
@@ -136,16 +160,17 @@ fun AccountInfoScreen(
                             )
                         }
                     }
-                    item(){
-
-                        Spacer(modifier = Modifier.height(12.dp))
-                        CustomImageButton(
-                            image = Icons.Filled.Add,
-                            onClick = {
-                                vm.addField(UUID.fromString(id))
-                            },
-                            modifierBox = Modifier.fillMaxWidth()
-                        )
+                    item {
+                        if(connection.value) {
+                            Spacer(modifier = Modifier.height(12.dp))
+                            CustomImageButton(
+                                image = Icons.Filled.Add,
+                                onClick = {
+                                    vm.addField(UUID.fromString(id))
+                                },
+                                modifierBox = Modifier.fillMaxWidth()
+                            )
+                        }
                     }
                 }
 
@@ -163,81 +188,84 @@ fun AccountInfoScreen(
         ){
             Column()
             {
-                if (!new) {
+
+                if(connection.value) {
+                    if (!new) {
+                        CustomButton(
+                            image = Icons.Filled.Delete,
+                            onClick = {
+
+                            },
+                            value = "Delete"
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                    }
                     CustomButton(
-                        image = Icons.Filled.Delete,
+                        image = Icons.Filled.Save,
                         onClick = {
+                            if (
+                                serviceValue.value.isEmpty() ||
+                                passwordValue.value.isEmpty() ||
+                                loginValue.value.isEmpty()
+                            ) return@CustomButton
+                            items.forEach {
+                                if (it.first.value.isEmpty() || it.first.name.isEmpty()) return@CustomButton
+                            }
+                            if (new) {
+                                vm.addPassword(
+                                    RecordEntity(
+                                        id = UUID.fromString(id),
+                                        name = serviceValue.value,
+                                        login = loginValue.value,
+                                        encrypted_password = passwordValue.value,
+                                        userId = UUID.randomUUID().toString(),
+                                        isfavorite = isFavorite.value,
+                                        isdeleted = false,
+                                        editedTime = "",
+                                        creationTime = ""
+                                    )
+                                )
+                                val list = mutableListOf<RecordAddFieldEntity>()
+                                items.forEach {
+                                    list.add(it.first)
+                                }
+                                vm.addFieldsToServer(
+                                    list
+                                )
+                            } else {
+                                vm.editPassword(
+                                    RecordEntity(
+                                        id = UUID.fromString(id),
+                                        name = serviceValue.value,
+                                        login = loginValue.value,
+                                        encrypted_password = passwordValue.value,
+                                        userId = "",
+                                        isfavorite = isFavorite.value,
+                                        isdeleted = false,
+                                        editedTime = "",
+                                        creationTime = ""
+                                    )
+                                )
+                                val addList = ArrayList<RecordAddFieldEntity>()
+                                val editedList = ArrayList<RecordAddFieldEntity>()
+                                val deletedList = ArrayList<UUID>()
 
+                                items.forEach {
+                                    val n = it.second
+                                    val item = it.first
+                                    if (n == 1) addList.add(item)
+                                    if (n == 2) deletedList.add(item.id)
+                                    if (n == 3) editedList.add(item)
+                                }
+                                if (addList.isNotEmpty()) vm.addFieldsToServer(addList)
+                                if (editedList.isNotEmpty()) vm.editFieldsToServer(editedList)
+                                if (deletedList.isNotEmpty()) vm.deleteFieldsFromServer(deletedList)
+
+                            }
                         },
-                        value = "Delete"
+                        value = stringResource(id = R.string.save)
                     )
-                    Spacer(modifier = Modifier.height(12.dp))
                 }
-                CustomButton(
-                    image = Icons.Filled.Save,
-                    onClick = {
-                        if(
-                            serviceValue.value.isEmpty() ||
-                            passwordValue.value.isEmpty() ||
-                            loginValue.value.isEmpty()
-                        ) return@CustomButton;
-                        items.forEach {
-                            if(it.first.value.isEmpty() || it.first.name.isEmpty()) return@CustomButton;
-                        }
-                        if (new) {
-                            vm.addPassword(
-                                RecordEntity(
-                                    id = UUID.fromString(id),
-                                    name = serviceValue.value,
-                                    login = loginValue.value,
-                                    encrypted_password = passwordValue.value,
-                                    userId = UUID.randomUUID().toString(),
-                                    isfavorite = isFavorite.value,
-                                    isdeleted = false,
-                                    editedTime = "",
-                                    creationTime = ""
-                                )
-                            )
-                            val list = mutableListOf<RecordAddFieldEntity>()
-                            items.forEach {
-                                list.add(it.first)
-                            }
-                            vm.addFieldsToServer(
-                                list
-                            )
-                        } else {
-                            vm.editPassword(
-                                RecordEntity(
-                                    id = UUID.fromString(id),
-                                    name = serviceValue.value,
-                                    login = loginValue.value,
-                                    encrypted_password = passwordValue.value,
-                                    userId = "",
-                                    isfavorite = isFavorite.value,
-                                    isdeleted = false,
-                                    editedTime = "",
-                                    creationTime = ""
-                                )
-                            )
-                            val addList = ArrayList<RecordAddFieldEntity>()
-                            val editedList = ArrayList<RecordAddFieldEntity>()
-                            val deletedList = ArrayList<UUID>()
-
-                            items.forEach {
-                                val n = it.second
-                                val item = it.first
-                                if (n == 1) addList.add(item)
-                                if (n == 2) deletedList.add(item.id)
-                                if (n == 3) editedList.add(item)
-                            }
-                            if (addList.isNotEmpty()) vm.addFieldsToServer(addList)
-                            if (editedList.isNotEmpty()) vm.editFieldsToServer(editedList)
-                            if (deletedList.isNotEmpty()) vm.deleteFieldsFromServer(deletedList)
-
-                        }
-                    },
-                    value = stringResource(id = R.string.save)
-                )
             }
         }
     }
@@ -252,7 +280,7 @@ fun AccountInfoItem(
     password: Boolean = false,
 ) {
 
-    val warning = remember() { mutableStateOf("") }
+    val warning = remember { mutableStateOf("") }
     val empty_error = stringResource(id = R.string.empty_error)
 
     Text(
@@ -334,18 +362,16 @@ fun AccountInfoAdditionalItem(
     vm: AccountInfoViewModel
 ) {
     val empty_error = stringResource(id = R.string.empty_error)
-    val warning_name = remember() { mutableStateOf("") }
-    val warning_value = remember() { mutableStateOf("") }
+    val warning_name = remember { mutableStateOf("") }
+    val warning_value = remember { mutableStateOf("") }
 
     val name = remember(vm.fieldListEdited[i].first.id) { mutableStateOf(nameString) }
     val value = remember(vm.fieldListEdited[i].first.id) { mutableStateOf(valueString) }
-    Column() {
+    Column {
         Row(horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.Bottom,
             modifier = Modifier.padding(all=4.dp)) {
-            Row(
-
-            ) {
+            Row {
                 CustomTextFieldWidth(
                     modifier = Modifier
                         .weight(2f),

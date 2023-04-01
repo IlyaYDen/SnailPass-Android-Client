@@ -6,6 +6,9 @@ sealed class Screen(val route: String) {
     object RecordList : Screen(route = "record_list")
     object RecordInfo : Screen(route = "record_info")
 
+    object NoteList : Screen(route = "note_list")
+    object NoteInfo : Screen(route = "note_info")
+
     fun withArgs(vararg args: Pair<String,String>) =
         buildString {
             append(route)

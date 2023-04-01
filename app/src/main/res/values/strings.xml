@@ -74,6 +74,12 @@
     <string name="update_message">You want to download it?</string>
     <string name="download">Download</string>
     <string name="cancel">Cancel</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">SnailPass</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_acounts">Accounts</string>
+    <string name="menu_notes">Notes</string>
+    <string name="menu_logout">Logout</string>
+    <string name="email_too_short">too short</string>
+    <string name="password_too_short">too short</string>
 
 </resources>

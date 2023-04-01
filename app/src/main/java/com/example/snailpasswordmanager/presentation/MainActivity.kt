@@ -2,27 +2,32 @@ package com.example.snailpasswordmanager.presentation
 
 
 import android.content.Context
-import android.opengl.GLSurfaceView
+import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import androidx.core.content.PackageManagerCompat.LOG_TAG
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
@@ -36,9 +41,15 @@ import com.example.snailpasswordmanager.PasswordApp
 import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoModelFactory
 import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoScreen
 import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoViewModel
+import com.example.snailpasswordmanager.presentation.core.components.NavigationMenu
+import com.example.snailpasswordmanager.presentation.core.components.NavigationSelected
 import com.example.snailpasswordmanager.presentation.login.LoginModelFactory
 import com.example.snailpasswordmanager.presentation.login.LoginViewModel
 import com.example.snailpasswordmanager.presentation.login.components.LoginScreen
+import com.example.snailpasswordmanager.presentation.noteActivity.NoteListScreen
+import com.example.snailpasswordmanager.presentation.noteActivity.NoteScreen
+import com.example.snailpasswordmanager.presentation.noteList.NoteListViewModel
+import com.example.snailpasswordmanager.presentation.noteList.NoteListViewModelFactory
 import com.example.snailpasswordmanager.presentation.recordList.RecordListScreen
 import com.example.snailpasswordmanager.presentation.recordList.RecordListViewModel
 import com.example.snailpasswordmanager.presentation.recordList.RecordListViewModelFactory
@@ -64,12 +75,12 @@ class MainActivity : ComponentActivity() {
 
         if (File(
                 getExternalFilesDir(null),
-                "app-release.apk"
+                "SnailPass.apk"
             ).exists()
         ) {
             File(
                 getExternalFilesDir(null),
-                "app-release.apk"
+                "SnailPass.apk"
             ).delete()
         }
 
@@ -84,6 +95,8 @@ class MainActivity : ComponentActivity() {
 
 
     @Inject
+    lateinit var connectivityManager: ConnectivityManager
+    @Inject
     lateinit var loginVmFactory: LoginModelFactory
     @Inject
     lateinit var registrationVmFactory: RegistrationModelFactory
@@ -91,16 +104,26 @@ class MainActivity : ComponentActivity() {
     lateinit var recordListVmFactory: RecordListViewModelFactory
     @Inject
     lateinit var recordInfoVmFactory: AccountInfoModelFactory
+    @Inject
+    lateinit var NoteListVmFactory: NoteListViewModelFactory
     @RequiresApi(Build.VERSION_CODES.O)
     @Composable
-    fun Navigation(context: Context) {
+    fun  Navigation(context: Context) {
         (applicationContext as PasswordApp).appComponent.inject(this)
 
         val loginViewModel = ViewModelProvider(this, loginVmFactory)[LoginViewModel::class.java]
         val registrationViewModel = ViewModelProvider(this, registrationVmFactory)[RegistrationViewModel::class.java]
         val recordListViewModel = ViewModelProvider(this, recordListVmFactory)[RecordListViewModel::class.java]
         val recordInfoViewModel = ViewModelProvider(this, recordInfoVmFactory)[AccountInfoViewModel::class.java]
+        val noteListViewModel = ViewModelProvider(this, NoteListVmFactory)[NoteListViewModel::class.java]
 
+        val navMenu = remember {mutableStateOf(false)}
+        val navigationSelected = remember {mutableStateOf(NavigationSelected.Accounts)}
+
+
+        val animation by animateFloatAsState(
+            if(navMenu.value) 0.8f else 0f
+        )
 
         val brush = Brush.horizontalGradient(listOf(Color.Red, Color.Blue))
         Canvas(
@@ -110,6 +133,8 @@ class MainActivity : ComponentActivity() {
             }
         )
 
+
+        val interactionSource1 = remember { MutableInteractionSource() }
 
         val navController = rememberNavController()
         Box(
@@ -136,6 +161,9 @@ class MainActivity : ComponentActivity() {
                 route = Screen.Login.route
             ) {
 
+                BackHandler(true) {
+                    // Or do nothing
+                }
                 LoginScreen(
                     navController,
                     loginViewModel,
@@ -156,6 +184,7 @@ class MainActivity : ComponentActivity() {
                 )
             ) {
                 //LoginScreen(navController)
+                registrationViewModel.reset()
                 RegistrationScreen(
                     navController = navController,
                     vm = registrationViewModel,
@@ -188,6 +217,7 @@ class MainActivity : ComponentActivity() {
                 val id = it.arguments?.getString("id")
                 if(id!=null) {
                     LaunchedEffect(navController.currentBackStackEntry) {
+                        Log.d("test", "test times")
                         recordInfoViewModel.getAddFields(
                             UUID.fromString(
                                 id
@@ -197,6 +227,7 @@ class MainActivity : ComponentActivity() {
                     AccountInfoScreen(
                         navController = navController,
                         vm = recordInfoViewModel,
+                        connectivityManager = connectivityManager,
                         id = id,
                         name = it.arguments?.getString("service"),
                         email = it.arguments?.getString("email"),
@@ -213,7 +244,8 @@ class MainActivity : ComponentActivity() {
                     AccountInfoScreen(
                         navController = navController,
                         vm = recordInfoViewModel,
-                        new = true
+                        new = true,
+                        connectivityManager = connectivityManager
                     )
             }
 
@@ -227,15 +259,141 @@ class MainActivity : ComponentActivity() {
                     recordListViewModel.getPasswords()
                 }
                 //recordListViewModel.getPasswords()
+
+                BackHandler(true) {
+                    navigationSelected.value = NavigationSelected.Note
+                    navController.navigate(Screen.NoteList.route)
+                }
                 RecordListScreen(
                     navController,
                     recordListViewModel,
-                    context
+                    context,
+                    connectivityManager,
+                    open = navMenu
+                )
+
+            }
+
+            composable(
+                route = Screen.NoteList.route,
+
+                ){
+                LaunchedEffect(navController.currentBackStackEntry) {
+                    noteListViewModel.getNotes()
+                }
+                BackHandler(true) {
+                    navigationSelected.value = NavigationSelected.Accounts
+                    navController.navigate(Screen.RecordList .route)
+                }
+                NoteListScreen(
+                    navController,
+                    noteListViewModel,
+                    context,
+                    connectivityManager,
+                    open = navMenu
                 )
             }
+            composable(
+                route = Screen.NoteInfo.route + "?id={id}",
+                arguments = listOf(
+
+                    navArgument("id") {
+                        type = NavType.StringType
+                    },
+                    //navArgument("name") {
+                    //    type = NavType.StringType
+                    //},
+                    //navArgument("content") {
+                    //    type = NavType.StringType
+                    //},
+                    //navArgument("favorite") {
+                    //    type = NavType.StringType
+                    //}
+                )
+            ){
+                LaunchedEffect(navController.currentBackStackEntry) {
+                }
+                NoteScreen(
+                    //nameString = it.arguments?.getString("name")?:"",
+                    //valueString = it.arguments?.getString("content")?:"",
+                    id = it.arguments?.getString("id"),
+                    //favorite = it.arguments?.getString("favorite").toBoolean(),
+                    vm = noteListViewModel,
+                    nav = navController,
+                    connectivityManager = connectivityManager,
+                    new = false
+                )
+                //NoteListScreen(
+                //    navController,
+                //    noteListViewModel,
+                //    context,
+                //    connectivityManager
+                //)
+            }
+            composable(
+                route = Screen.NoteInfo.route
+            ){
+                NoteScreen(
+                    new = true,
+                    nav = navController,
+                    vm = noteListViewModel,
+                    connectivityManager = connectivityManager
+                )
+                //NoteListScreen(
+                //    navController,
+                //    noteListViewModel,
+                //    context,
+                //    connectivityManager
+                //)
+            }
+
         }
+
+        if(animation!=0f)
+            Box(
+                modifier = Modifier.clickable(
+                    interactionSource = interactionSource1,
+                    indication = null,
+                    enabled = true,
+                    role = Role.Button
+                )
+                {
+                    navMenu.value = false
+                }
+                    .fillMaxSize()
+                    .background(
+                        color = Color.Black.copy(alpha = animation*0.8f),
+                    )
+            )
+
+        NavigationMenu(
+            openSize = animation,
+            navigationSelected = navigationSelected.value,
+            notesButton = {
+                navController.navigate(Screen.NoteList.route)
+                navigationSelected.value = NavigationSelected.Note
+                navMenu.value = false
+            },
+            homeButton = {
+                //navController.navigate(Screen.Home.route) todo
+                //navigationSelected.value = NavigationSelected.Home
+                navMenu.value = false
+            },
+            accountsButton = {
+
+                navController.navigate(Screen.RecordList.route)
+                navigationSelected.value = NavigationSelected.Accounts
+                navMenu.value = false
+            },
+            logoutButton = {
+                navController.navigate(Screen.Login.route)
+                navigationSelected.value = NavigationSelected.Accounts
+                navMenu.value = false
+            }
+        )
     }
 }
+
 
 @Composable
 fun OnLifecycleEvent(onEvent: (owner: LifecycleOwner, event: Lifecycle.Event) -> Unit) {

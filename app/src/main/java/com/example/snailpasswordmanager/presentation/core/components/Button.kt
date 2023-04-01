@@ -44,7 +44,7 @@ fun CustomButtonPreview() {
     ) {
 
 
-        val textPassword = remember() { mutableStateOf<String>("test") }
+        val textPassword = remember { mutableStateOf<String>("test") }
         CustomButton(
             value = "test",
             onClick = {}
@@ -107,7 +107,8 @@ fun CustomButton(
                     fontFamily = appFontJetBrains,
                     style = TextStyle(
                         fontSize = 18.sp,
-                        fontWeight = FontWeight.Light
+                        fontWeight = FontWeight.Light,
+                        fontFamily = appFontJetBrains
                     ),
                     modifier = modifier.fillMaxWidth()
                 )

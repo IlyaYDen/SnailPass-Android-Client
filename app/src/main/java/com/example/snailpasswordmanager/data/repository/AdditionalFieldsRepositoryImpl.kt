@@ -1,5 +1,6 @@
 package com.example.snailpasswordmanager.data.repository
 
+import android.util.Log
 import com.example.snailpasswordmanager.data.database.record.RecordAddFieldDao
 import com.example.snailpasswordmanager.data.model.RecordAddFieldEntityMapper
 import com.example.snailpasswordmanager.data.retrofit2.ServerApi
@@ -20,7 +21,8 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
     override suspend fun getFieldByRecord(id:UUID): Flow<List<RecordAddFieldEntity>?> {
         return fieldDao.getFieldsByRecord(id.toString()).map {
 
-            //-Log.d("test",it.size.toString() + " 3 -" + id + " " + id.toString())
+            //-
+            Log.d("test",it.size.toString() + " 3 -" + id + " " + id.toString())
             fieldEntityMapper.mapListDbModelToListEntity(it)
         }
     }

@@ -62,7 +62,7 @@ fun TextFieldWithGenerator(
         if(visible.value) 0 else 30
     )
 
-    Column() {
+    Column {
         Box(
             contentAlignment = Alignment.CenterEnd,
             modifier = Modifier.fillMaxWidth()
@@ -80,7 +80,7 @@ fun TextFieldWithGenerator(
             )
             var interactionSource1 = remember { MutableInteractionSource() }
 
-            Row() {
+            Row {
                 Spacer(modifier = Modifier.width(8.dp)) // Adjust as needed
                 Box(contentAlignment = Alignment.Center) {
                     Image(
@@ -268,7 +268,7 @@ fun CustomCheckBox(
 ){
     //val checked = remember { mutableStateOf(false) }
 
-    Row() {
+    Row {
         Box(
             contentAlignment = Alignment.Center
         ) {
@@ -303,7 +303,8 @@ fun CustomCheckBox(
             //.size(38.0.dp, 21.0.dp),
             style = LocalTextStyle.current.copy(
                 color = Color(1.0f, 1.0f, 1.0f, 1.0f),
-                textAlign = TextAlign.Left, fontSize = 14.sp
+                textAlign = TextAlign.Left, fontSize = 14.sp,
+                fontFamily = appFontJetBrains
             )
         )
     }

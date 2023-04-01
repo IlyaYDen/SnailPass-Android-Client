@@ -22,7 +22,8 @@ class NoteViewModel(
 
         viewModelScope.launch(Dispatchers.IO) {
             return@launch noteUseCases.getNoteById(id).collect {
-                note.value = it
+                //note.value = it
+                note.emit(it)
             }
         }
     }

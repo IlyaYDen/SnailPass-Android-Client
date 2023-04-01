@@ -1,28 +1,35 @@
 package com.example.snailpasswordmanager.presentation.recordList
 
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Refresh
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.NavController
 import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.presentation.Screen
 import com.example.snailpasswordmanager.presentation.core.components.CustomImageButton
+import com.example.snailpasswordmanager.presentation.core.components.NavigationMenu
+import com.example.snailpasswordmanager.presentation.core.components.NavigationSelected
 import com.example.snailpasswordmanager.presentation.recordList.components.SearchPanel
 import com.example.snailpasswordmanager.presentation.recordList.components.ServiceListItem
 
@@ -31,16 +38,42 @@ import com.example.snailpasswordmanager.presentation.recordList.components.Servi
 fun RecordListScreen(
     navController: NavController,
     vm: RecordListViewModel,
-    context: Context
+    context: Context,
+    connectivityManager: ConnectivityManager,
+    open: MutableState<Boolean> = remember {mutableStateOf(false)}
 ) {
 
 
     val t = remember { vm.passwordListEdited }
 
-    var filter = remember { mutableStateOf(ListFilter.ALL) }
+    val filter = remember { mutableStateOf(ListFilter.ALL) }
 
     val map = mutableMapOf<String, MutableList<RecordEntity>>()
     val search = remember {mutableStateOf("")}
+
+
+
+    val connection = remember { mutableStateOf(false) }
+
+
+    DisposableEffect(key1 = connectivityManager) {
+        val networkCallback = object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                connection.value = true
+            }
+
+            override fun onLost(network: Network) {
+                connection.value = false
+            }
+        }
+
+        connectivityManager.registerDefaultNetworkCallback(networkCallback)
+
+        onDispose {
+            connectivityManager.unregisterNetworkCallback(networkCallback)
+        }
+    }
+
 
     t.value.forEach {
         //todo smart search
@@ -78,9 +111,11 @@ fun RecordListScreen(
         }
     }
 
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
+
         Column(
             modifier = Modifier
                 .background(
@@ -94,7 +129,9 @@ fun RecordListScreen(
         ) {
 
             SearchPanel(
-                onMenuClick = {},
+                onMenuClick = {
+                    open.value =!open.value
+                },
                 onDeletedClick = {
                     if (filter.value != ListFilter.ARCHIVE)
                         filter.value = ListFilter.ARCHIVE
@@ -106,10 +143,10 @@ fun RecordListScreen(
                     else filter.value = ListFilter.ALL
                 },
                 onSearchClick = {},
-                searchValue = search
+                searchValue = search,
+                name = "Accounts"
             )
-            LazyColumn(
-            ) {
+            LazyColumn {
                 items(map.keys.size) {
                     map[map.keys.elementAt(it)]?.let { recordList ->
                         ServiceListItem(
@@ -123,36 +160,37 @@ fun RecordListScreen(
             }
         }
 
-
-        Row(
-            verticalAlignment = Alignment.Bottom,
-            horizontalArrangement = Arrangement.End,
-            modifier = Modifier
-                .padding(all = 16.dp)
-                .align(Alignment.BottomEnd) // Add this line
-        ) {
-            CustomImageButton(
-                image = Icons.Outlined.Add,
-                onClick = {
-                    navController.navigate(Screen.RecordInfo.route)
-
-
-                },
-                indication = LocalIndication.current
-            )
-
-
-            Spacer(
+        if(connection.value) {
+            Row(
+                verticalAlignment = Alignment.Bottom,
+                horizontalArrangement = Arrangement.End,
                 modifier = Modifier
-                    .width(width = 8.dp)
-            )
-            CustomImageButton(
-                image = Icons.Outlined.Refresh,
-                onClick = {
-                    vm.getPasswords()
-                },
-                indication = LocalIndication.current
-            )
+                    .padding(all = 16.dp)
+                    .align(Alignment.BottomEnd) // Add this line
+            ) {
+                CustomImageButton(
+                    image = Icons.Outlined.Add,
+                    onClick = {
+                        navController.navigate(Screen.RecordInfo.route)
+
+
+                    },
+                    indication = LocalIndication.current
+                )
+
+
+                Spacer(
+                    modifier = Modifier
+                        .width(width = 8.dp)
+                )
+                CustomImageButton(
+                    image = Icons.Outlined.Refresh,
+                    onClick = {
+                        vm.getPasswords()
+                    },
+                    indication = LocalIndication.current
+                )
+            }
         }
     }
 }

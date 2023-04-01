@@ -31,6 +31,7 @@ import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.presentation.Screen
 import com.example.snailpasswordmanager.presentation.core.components.CustomImageButton
 import com.example.snailpasswordmanager.presentation.recordList.RecordListViewModel
+import com.example.snailpasswordmanager.presentation.theme.appFontJetBrains
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview(showSystemUi = true)
@@ -72,9 +73,8 @@ fun RecordListItemPreview(){
                     )
                 )
         ) {
-            SearchPanel({}, {}, {}, {}, remember { mutableStateOf("") })
-            LazyColumn(
-            ) {
+            SearchPanel({}, {}, {}, {}, remember { mutableStateOf("") },"")
+            LazyColumn {
                 items(map.keys.size) {
                     map[map.keys.elementAt(it)]?.let { recordList ->
                         //ServiceListItem(
@@ -145,12 +145,13 @@ fun ServiceListItem(
     ) {
 
 
-        Column() {
+        Column {
             Text(
                 text = name,
                 color = Color(0xffff92c0),
                 style = TextStyle(
-                    fontSize = 23.sp
+                    fontSize = 23.sp,
+                    fontFamily = appFontJetBrains
                 ),
                 modifier = Modifier
                     .wrapContentHeight()
@@ -160,7 +161,7 @@ fun ServiceListItem(
                 //.height(height = 37.dp)
             )
             if (recordEntity.size == 1) {
-                Box() {
+                Box {
                     val verticalPadding = 50
                     Box(
                         modifier = Modifier
@@ -187,10 +188,13 @@ fun ServiceListItem(
                                 navController
                             )
                         }
+                        item {
+                            Box(modifier = Modifier.height(40.dp))
+                        }
                     }
                 }
             } else {
-                Box() {
+                Box {
                     val verticalPadding = 30
                     Box(
                         modifier = Modifier
@@ -261,7 +265,10 @@ fun RecordListItem(
             color = Color.White,
             style = TextStyle(
                 fontSize = 16.sp,
-                fontWeight = FontWeight.Light))
+                fontWeight = FontWeight.Light,
+                fontFamily = appFontJetBrains
+            )
+        )
 
         Row(
             horizontalArrangement = Arrangement.End,

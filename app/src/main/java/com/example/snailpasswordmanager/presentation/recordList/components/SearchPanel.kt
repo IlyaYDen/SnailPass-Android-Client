@@ -30,6 +30,8 @@ import androidx.compose.ui.unit.sp
 import com.example.snailpasswordmanager.presentation.core.components.CustomImageButton
 import com.example.snailpasswordmanager.presentation.core.components.CustomTextField
 import com.example.snailpasswordmanager.presentation.core.components.CustomTextFieldWidth
+import com.example.snailpasswordmanager.presentation.theme.appFontJetBrains
+
 ///todo internet, registration, notes
 @Preview
 @Composable
@@ -47,7 +49,7 @@ fun SearchPanelPreview(){
             )
     ) {
 
-        SearchPanel({}, {}, {}, {}, remember {mutableStateOf("")})
+        SearchPanel({}, {}, {}, {}, remember {mutableStateOf("")},"test")
     }
 }
 
@@ -58,7 +60,8 @@ fun SearchPanel(
     onFavoriteClick : () -> Unit,
     onDeletedClick : () -> Unit,
     onSearchClick : () -> Unit,
-    searchValue : MutableState<String>
+    searchValue : MutableState<String>,
+    name: String
 ) {
 
     val favorite = remember { mutableStateOf(false) }
@@ -109,12 +112,13 @@ fun SearchPanel(
                             .width(width = 12.dp)
                     )
                     Text(
-                        text = "Accounts",
+                        text = name,
                         color = if(!search.value) Color.White
                                 else Color.White.copy(alpha = 0.0f)
                         ,
                         style = TextStyle(
-                            fontSize = 25.sp
+                            fontSize = 25.sp,
+                            fontFamily = appFontJetBrains
                         )
                     )
                 //}

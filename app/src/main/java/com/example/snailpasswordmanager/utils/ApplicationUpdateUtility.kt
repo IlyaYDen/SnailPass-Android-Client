@@ -88,12 +88,12 @@ object ApplicationUpdateUtility {
 
                                 if (File(
                                         mainActivity.getExternalFilesDir(null),
-                                        "app-release.apk"
+                                        "SnailPass.apk"
                                     ).exists()
                                 ) {
                                     File(
                                         mainActivity.getExternalFilesDir(null),
-                                        "app-release.apk"
+                                        "SnailPass.apk"
                                     ).delete()
                                 }
 

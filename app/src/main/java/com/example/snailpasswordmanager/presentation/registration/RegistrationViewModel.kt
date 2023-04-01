@@ -39,4 +39,8 @@ class RegistrationViewModel @Inject constructor(
 
         }
     }
+
+    fun reset() {
+        boolean.value = Pair(false,"")
+    }
 }

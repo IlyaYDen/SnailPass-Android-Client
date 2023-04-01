@@ -1,7 +1,6 @@
 package com.example.snailpasswordmanager.domain.model
 
 import androidx.room.ColumnInfo
-
 data class NoteEntity(
     var id: String,
     var name: String,

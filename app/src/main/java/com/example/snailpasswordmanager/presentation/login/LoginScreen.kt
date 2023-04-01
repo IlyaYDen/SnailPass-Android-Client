@@ -1,9 +1,8 @@
 package com.example.snailpasswordmanager.presentation.login.components
 
 import android.content.Context
-import android.graphics.RuntimeShader
+import android.net.ConnectivityManager
 import android.os.Build
-import android.service.quicksettings.Tile
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -11,9 +10,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithCache
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -35,7 +31,6 @@ import com.example.snailpasswordmanager.presentation.core.components.CustomButto
 import com.example.snailpasswordmanager.presentation.core.components.CustomTextField
 import com.example.snailpasswordmanager.presentation.login.LoginViewModel
 import com.example.snailpasswordmanager.presentation.theme.appFontJetBrains
-import org.intellij.lang.annotations.Language
 
 
 private lateinit var vm : LoginViewModel
@@ -49,8 +44,8 @@ fun LoginScreen(
     context: Context
 ) {
 
-    val warningEmail = remember() { mutableStateOf("") }
-    val warningPassword = remember() { mutableStateOf("") }
+    val warningEmail = remember { mutableStateOf("") }
+    val warningPassword = remember { mutableStateOf("") }
     val loading = remember { mutableStateOf(false) }
 
     val viewEffects = remember { vm.sharedViewEffects }
@@ -124,11 +119,12 @@ fun LoginScreen(
                 color = Color.White,
                 style = TextStyle(
                     fontSize = 16.sp,
+                    fontFamily = appFontJetBrains,
                     fontStyle = FontStyle.Normal,
                     fontWeight = FontWeight.Light))
 
 
-            val textEmail = remember() { mutableStateOf("") }
+            val textEmail = remember { mutableStateOf("") }
             CustomTextField(
                 value = textEmail, hint = "E-mail",
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -157,7 +153,7 @@ fun LoginScreen(
                 )
             )
             Spacer(modifier = Modifier.height(height = 7.dp))
-            val textPassword = remember() { mutableStateOf<String>("") }
+            val textPassword = remember { mutableStateOf<String>("") }
             CustomTextField(
                 visualTransformation = PasswordVisualTransformation(),
                 value = textPassword, hint = "Password",
@@ -198,7 +194,7 @@ fun LoginScreen(
 
 
                         loading.value = true
-                        
+
                         val userEntity = UserEntity(
                             email = textEmail.value.lowercase(),
                             password = textPassword.value,

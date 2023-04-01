@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -46,8 +47,8 @@ fun RegistrationScreen(
 
     val viewEffects = remember { vm.boolean }
 
-    val warningEmail = remember() { mutableStateOf("") }
-    val loading = remember() { mutableStateOf(false) }
+    val warningEmail = remember { mutableStateOf("") }
+    val loading = remember { mutableStateOf(false) }
     val user_already_exists = stringResource(R.string.user_already_exists)
     LaunchedEffect(viewEffects) {
         viewEffects.collect {it ->
@@ -98,17 +99,19 @@ fun RegistrationScreen(
             Spacer(modifier = Modifier.height(7.dp))
 
             Text(
-                text = stringResource(id = R.string.Sign_in_to_continue),
+                text = stringResource(id = R.string.Sign_up_to_continue),
                 fontFamily = appFontJetBrains,
                 color = Color.White,
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontStyle = FontStyle.Normal,
-                    fontWeight = FontWeight.Light)
+                    fontWeight = FontWeight.Light,
+                    fontFamily = appFontJetBrains
+                )
             )
 
 
-            val textEmail = remember() { mutableStateOf<String>(email ?: "") }
+            val textEmail = remember { mutableStateOf<String>(email ?: "") }
             CustomTextField(
                 value = textEmail, hint = "E-mail",
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -120,8 +123,8 @@ fun RegistrationScreen(
                 //isWarning = warningEmail
             )
             Spacer(modifier = Modifier.height(height = 7.dp))
-            val textPassword = remember() { mutableStateOf<String>(password ?: "") }
-            val warningPassword = remember() { mutableStateOf("") }
+            val textPassword = remember { mutableStateOf<String>(password ?: "") }
+            val warningPassword = remember { mutableStateOf("") }
             CustomTextField(
                 visualTransformation = PasswordVisualTransformation(),
                 value = textPassword, hint = "Password",
@@ -134,8 +137,8 @@ fun RegistrationScreen(
             )
             Spacer(modifier = Modifier.height(height = 7.dp))
 
-            val textPasswordRepeat = remember() { mutableStateOf<String>("") }
-            val warningPasswordRepeat = remember() { mutableStateOf("") }
+            val textPasswordRepeat = remember { mutableStateOf<String>("") }
+            val warningPasswordRepeat = remember { mutableStateOf("") }
             CustomTextField(
                 visualTransformation = PasswordVisualTransformation(),
                 value = textPasswordRepeat, hint = "Password",
@@ -148,7 +151,7 @@ fun RegistrationScreen(
             )
             Spacer(modifier = Modifier.height(height = 7.dp))
 
-            val textHint = remember() { mutableStateOf<String>("") }
+            val textHint = remember { mutableStateOf<String>("") }
             //val warningHint = remember() { mutableStateOf(false) }
             CustomTextField(
                 value = textHint, hint = "Hint",
@@ -159,7 +162,8 @@ fun RegistrationScreen(
             )
             Spacer(modifier = Modifier.height(height = 7.dp))
 
-
+            val email_too_short = stringResource(id = R.string.email_too_short)
+            val password_too_short = stringResource(id = R.string.password_too_short)
             CustomButton(
                 value ="Sing up",
                 onClick = {
@@ -169,6 +173,16 @@ fun RegistrationScreen(
                         warningPasswordRepeat.value = "passwords_dont_match"
                         return@CustomButton
                     }
+                    if(textPassword.value.length < 11){
+                        warningPassword.value = password_too_short
+                        warningPasswordRepeat.value = password_too_short
+                        return@CustomButton
+                    }
+                    if(textEmail.value.length < 6){
+                        warningEmail.value =email_too_short
+                        return@CustomButton
+                    }
+                    loading.value = true
                     vm.registrationEvent(
                         UserEntity(
                             id = UUID.randomUUID(),
@@ -188,6 +202,16 @@ fun RegistrationScreen(
                     navController.popBackStack()
                 }
             )
+            if(loading.value) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    CircularProgressIndicator(
+                        color = Color.White
+                    )
+                }
+            }
         }
     }
 }

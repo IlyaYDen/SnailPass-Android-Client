@@ -21,9 +21,6 @@ class AccountInfoViewModel(
     private val fieldUseCases: FieldUseCases,
     private val decodeUseCase: Decode
 ): ViewModel() {
-    //var fieldListEdited = mutableStateOf<List<RecordAddFieldEntity>>(mutableListOf())
-    //var fieldListEdited = mutableStateListOf<RecordAddFieldEntity>()
-    //var fieldListEdited = mutableStateListOf<Pair<RecordAddFieldEntity,Int>>()
 
     val responce = MutableStateFlow(false)
     private val _fieldListEdited = mutableStateListOf<Pair<RecordAddFieldEntity,Int>>()
@@ -120,6 +117,8 @@ class AccountInfoViewModel(
     fun getAddFields(id:UUID) {
         viewModelScope.launch {
             //-Log.d("test","test")
+
+            _fieldListEdited.clear()
             fieldUseCases.getField.invoke(id).collect {
                 if(it!=null) {
 
