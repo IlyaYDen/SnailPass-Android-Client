@@ -9,6 +9,7 @@ import com.example.snailpasswordmanager.domain.model.NoteEntity
 import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.domain.usecase.notes.NoteUseCases
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import java.util.*
@@ -17,6 +18,7 @@ class NoteListViewModel(
     private val noteUseCases: NoteUseCases
 ) : ViewModel()  {
 
+    val response = MutableStateFlow(false)
 
     //private val _state = mutableListOf<PasswordsState>(PasswordsState())
     //val state: State<PasswordsState> = _state
@@ -43,11 +45,15 @@ class NoteListViewModel(
     var note = MutableStateFlow(NoteEntity(
         "","","",false,false,"","",""
     ))
-    var boolean = MutableStateFlow<Boolean>(false)
+
+
+
+    private var addFieldsJob: Job? = null
     @RequiresApi(Build.VERSION_CODES.O)
     fun getNoteById(id: UUID) {
 
-        viewModelScope.launch(Dispatchers.IO) {
+        addFieldsJob?.cancel() // прерывание предыдущей корутины
+        addFieldsJob = viewModelScope.launch(Dispatchers.IO) {
             noteUseCases.getNoteById(id).collect {
                 note.value = it
             }
@@ -58,7 +64,7 @@ class NoteListViewModel(
 
         viewModelScope.launch(Dispatchers.IO) {
             noteUseCases.deleteNote(UUID.fromString(id))
-            boolean.value = true
+            response.value = true
         }
     }
 
@@ -68,7 +74,7 @@ class NoteListViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             noteUseCases.insertNote(noteEntity)
 
-            boolean.value = true
+            response.value = true
         }
     }
 
@@ -77,8 +83,14 @@ class NoteListViewModel(
 
         viewModelScope.launch(Dispatchers.IO) {
             noteUseCases.editNote(noteEntity)
-            boolean.value = true
+            response.value = true
         }
+    }
+
+    fun clearNotes() {
+        note.value = NoteEntity(
+            "","","",false,false,"","",""
+        )
     }
 
 }

@@ -1,6 +1,8 @@
 package com.example.snailpasswordmanager.presentation.recordList.components
 
+import android.graphics.ColorSpace
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,6 +22,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -29,9 +32,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.presentation.Screen
+import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoViewModel
 import com.example.snailpasswordmanager.presentation.core.components.CustomImageButton
 import com.example.snailpasswordmanager.presentation.recordList.RecordListViewModel
 import com.example.snailpasswordmanager.presentation.theme.appFontJetBrains
+import com.example.snailpasswordmanager.utils.ColorPicker
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview(showSystemUi = true)
@@ -127,28 +132,35 @@ fun ServiceListItem(
     name: String,
     recordEntity: List<RecordEntity>,
     vm: RecordListViewModel?,
+    recordInfoViewModel: AccountInfoViewModel,
     navController: NavController
 ) {
     if (vm != null) {
         viewModel = vm
     }
+    var color = ColorPicker.rotate(45,45, name.hashCode(),50);
+    var radbg = 122;
+    var colorbg = ColorPicker.rotate(45,45, -name.hashCode(),radbg);
     Box(
         modifier = Modifier
             .padding(
                 horizontal = 9.dp,
                 vertical = 4.dp
             )
-            .background(
-                color = Color(0xffd9d9d9).copy(alpha = 0.03f),
+            .background(brush = Brush.horizontalGradient(
+                    0f to Color(0xffd9d9d9).copy(0.03f),
+                    1f to Color((colorbg[0].toInt()+radbg),(colorbg[1].toInt()+radbg),(colorbg[2].toInt()+radbg),255).copy(0.03f),
+                    startX = 0f,
+                    tileMode = TileMode.Clamp
+                ),
                 shape = RoundedCornerShape(5.dp)
             )
-    ) {
-
+    ) {//(colorbg[0].toInt()+radbg),(colorbg[1].toInt()+radbg),(colorbg[2].toInt()+radbg),255
 
         Column {
             Text(
                 text = name,
-                color = Color(0xffff92c0),
+                color = Color(255-(color[0].toInt()+125),255-(color[1].toInt()+125),255-(color[2].toInt()+125),255),
                 style = TextStyle(
                     fontSize = 23.sp,
                     fontFamily = appFontJetBrains
@@ -185,7 +197,8 @@ fun ServiceListItem(
 
                             RecordListItem(
                                 t,
-                                navController
+                                navController,
+                                recordInfoViewModel
                             )
                         }
                         item {
@@ -216,7 +229,8 @@ fun ServiceListItem(
 
                             RecordListItem(
                                 it,
-                                navController
+                                navController,
+                                recordInfoViewModel
                             )
                         }
                     }
@@ -231,6 +245,7 @@ fun ServiceListItem(
 fun RecordListItem(
     recordEntity: RecordEntity,
     navController: NavController,
+    recordInfoViewModel: AccountInfoViewModel,
     //favorite: State<Boolean>,
     //deleted: State<Boolean>
 
@@ -247,6 +262,10 @@ fun RecordListItem(
             .padding(all = 4.dp)
             .fillMaxWidth()
             .clickable {
+                Log.d("test","test1")
+                recordInfoViewModel.getAddFields(recordEntity.id)
+
+                Log.d("test","test2")
                 navController.navigate(
                     Screen.RecordInfo.withArgs(
                         Pair("id",recordEntity.id.toString()),

@@ -3,6 +3,7 @@ package com.example.snailpasswordmanager.presentation.noteActivity
 import android.net.ConnectivityManager
 import android.net.Network
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,9 +56,9 @@ fun NoteScreenPreview(){
     }
 }
 
-var NOTE_ENTITY = mutableStateOf(NoteEntity(
-    "","","",false,false,"","",""
-))
+//var NOTE_ENTITY = mutableStateOf(NoteEntity(
+//    "","","",false,false,"","",""
+    //))
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -73,20 +74,33 @@ fun NoteScreen(
     ){
 
 
-    //val note = vm.note
+    val note = vm.note
 
     val warning = remember { mutableStateOf("") }
     val warningNote = remember { mutableStateOf("") }
     val empty_error = stringResource(id = R.string.empty_error)
 
 
-    val fav = remember { mutableStateOf(NOTE_ENTITY.value.is_favorite) }
+    val fav = remember { mutableStateOf(note.value.is_favorite) }
     val name = remember {
-        mutableStateOf(NOTE_ENTITY.value.name)
+        mutableStateOf(note.value.name)
     }
-    val content = remember { mutableStateOf(NOTE_ENTITY.value.content) }
+    val content = remember { mutableStateOf(note.value.content) }
 
 
+    val viewEffects = remember { vm.response }
+
+    LaunchedEffect(viewEffects) {
+        viewEffects.collect { bool ->
+            Log.d("TEG", "Effect: $bool")
+            if(bool){
+                //navController.navigate(Screen.RecordList.route) todo 1
+
+                nav.popBackStack()
+                vm.response.value = false
+            }
+        }
+    }
 
     val connection = remember { mutableStateOf(false) }
 

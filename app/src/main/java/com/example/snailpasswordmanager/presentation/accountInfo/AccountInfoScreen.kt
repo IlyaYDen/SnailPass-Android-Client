@@ -101,7 +101,7 @@ fun AccountInfoScreen(
     }
 
 
-    val viewEffects = remember { vm.responce }
+    val viewEffects = remember { vm.response }
 
     LaunchedEffect(viewEffects) {
         viewEffects.collect { bool ->
@@ -110,7 +110,7 @@ fun AccountInfoScreen(
                 //navController.navigate(Screen.RecordList.route) todo
 
                 navController.popBackStack()
-                vm.responce.value = false
+                vm.response.value = false
             }
         }
     }

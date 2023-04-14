@@ -35,17 +35,12 @@ import com.example.snailpasswordmanager.presentation.core.components.CustomImage
 import com.example.snailpasswordmanager.presentation.noteList.NoteListViewModel
 import com.example.snailpasswordmanager.presentation.recordList.ListFilter
 import com.example.snailpasswordmanager.presentation.recordList.components.SearchPanel
+import com.example.snailpasswordmanager.presentation.recordList.components.viewModel
 import com.example.snailpasswordmanager.presentation.theme.appFontJetBrains
+import com.example.snailpasswordmanager.utils.ColorPicker
 import java.util.*
 
-@Preview
-@Composable
-fun NoteListScreenPreview() {
-    Box(modifier = Modifier.fillMaxSize().background(color = Color.Blue))
-    {
-        //NoteListScreen(navController, moteViewModel, context, connectivityManager)
-    }
-}
+
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -60,6 +55,7 @@ fun NoteListScreen(
 
     val notes = remember { noteListViewModel.noteListEdited }
     val connection = remember { mutableStateOf(false) }
+
 
 
     val map = mutableMapOf<String, MutableList<NoteEntity>>()
@@ -170,9 +166,10 @@ fun NoteListScreen(
                     image = Icons.Outlined.Add,
                     onClick = {
                         //navController.navigate(Screen.RecordInfo.route)
-                        NOTE_ENTITY = mutableStateOf(NoteEntity(
-                            "","","",false,false,"","",""
-                        ))
+                        //NOTE_ENTITY = mutableStateOf(NoteEntity(
+                        //    "","","",false,false,"","",""
+                        //))
+                        noteListViewModel.clearNotes()
 
                         navController.navigate(Screen.NoteInfo.route)
 
@@ -221,9 +218,10 @@ fun NoteComponent(
             )
             .fillMaxWidth()
             .clickable {
-                Log.d("test",noteEntity.id)
 
-                NOTE_ENTITY.value = noteEntity
+                //NOTE_ENTITY.value = noteEntity
+
+                vm.getNoteById(UUID.fromString(noteEntity.id))
 
                 navController.navigate(
                     Screen.NoteInfo.withArgs(
@@ -240,11 +238,13 @@ fun NoteComponent(
         contentAlignment = Alignment.CenterStart
     ) {
 
+        var color = ColorPicker.rotate(45,45, noteEntity.name.hashCode(),50);
 
         Row {
                 Text(
                     text = noteEntity.name,
-                    color = Color(0xffff92c0),
+                    color = Color(255-(color[0].toInt()+125),255-(color[1].toInt()+125),255-(color[2].toInt()+125),255),
+                    //color = Color(0xffff92c0),
                     style = TextStyle(
                         fontSize = 23.sp,
                         fontFamily = appFontJetBrains

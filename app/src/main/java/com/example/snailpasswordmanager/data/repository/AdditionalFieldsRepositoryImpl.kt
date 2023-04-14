@@ -22,7 +22,6 @@ class AdditionalFieldsRepositoryImpl @Inject constructor(
         return fieldDao.getFieldsByRecord(id.toString()).map {
 
             //-
-            Log.d("test",it.size.toString() + " 3 -" + id + " " + id.toString())
             fieldEntityMapper.mapListDbModelToListEntity(it)
         }
     }

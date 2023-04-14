@@ -5,11 +5,8 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -21,15 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.NavController
 import com.example.snailpasswordmanager.domain.model.RecordEntity
 import com.example.snailpasswordmanager.presentation.Screen
+import com.example.snailpasswordmanager.presentation.accountInfo.AccountInfoViewModel
 import com.example.snailpasswordmanager.presentation.core.components.CustomImageButton
-import com.example.snailpasswordmanager.presentation.core.components.NavigationMenu
-import com.example.snailpasswordmanager.presentation.core.components.NavigationSelected
 import com.example.snailpasswordmanager.presentation.recordList.components.SearchPanel
 import com.example.snailpasswordmanager.presentation.recordList.components.ServiceListItem
 
@@ -38,9 +32,10 @@ import com.example.snailpasswordmanager.presentation.recordList.components.Servi
 fun RecordListScreen(
     navController: NavController,
     vm: RecordListViewModel,
+    recordInfoViewModel: AccountInfoViewModel,
     context: Context,
     connectivityManager: ConnectivityManager,
-    open: MutableState<Boolean> = remember {mutableStateOf(false)}
+    open: MutableState<Boolean> = remember { mutableStateOf(false) }
 ) {
 
 
@@ -153,6 +148,7 @@ fun RecordListScreen(
                             name = map.keys.elementAt(it),
                             recordEntity = recordList,
                             vm,
+                            recordInfoViewModel,
                             navController
                         )
                     }

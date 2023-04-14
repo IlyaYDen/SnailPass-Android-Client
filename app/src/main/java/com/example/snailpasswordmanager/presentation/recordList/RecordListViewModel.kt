@@ -32,6 +32,7 @@ class RecordListViewModel constructor(
         }
     }
 
+
     @RequiresApi(Build.VERSION_CODES.O)//todo send only favorite or deleted
     fun editPassword(recordEntity: RecordEntity) {
         viewModelScope.launch(Dispatchers.IO) {

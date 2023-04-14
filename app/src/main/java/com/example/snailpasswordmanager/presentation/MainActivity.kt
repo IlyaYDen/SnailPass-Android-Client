@@ -5,7 +5,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
@@ -27,7 +26,6 @@ import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import androidx.core.content.PackageManagerCompat.LOG_TAG
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
@@ -195,34 +193,26 @@ class MainActivity : ComponentActivity() {
             composable(
                 route = Screen.RecordInfo.route + "?id={id}?service={service}?email={email}?password={password}?favorite={favorite}",
                 arguments = listOf(
-
-                    navArgument("id") {
-                        type = NavType.StringType
-                    },
-                    navArgument("service") {
-                        type = NavType.StringType
-                    },
-                    navArgument("email") {
-                        type = NavType.StringType
-                    },
-                    navArgument("password") {
-                        type = NavType.StringType
-                    },
-                    navArgument("favorite") {
-                        type = NavType.StringType
-                    }
+                    navArgument("id") { type = NavType.StringType },
+                    navArgument("service") { type = NavType.StringType },
+                    navArgument("email") { type = NavType.StringType },
+                    navArgument("password") { type = NavType.StringType },
+                    navArgument("favorite") { type = NavType.StringType }
                 )
             ) {
 
                 val id = it.arguments?.getString("id")
                 if(id!=null) {
-                    LaunchedEffect(navController.currentBackStackEntry) {
-                        Log.d("test", "test times")
-                        recordInfoViewModel.getAddFields(
-                            UUID.fromString(
-                                id
-                            )
-                        )
+
+                        //Log.d("RecordInfo.route",id )
+                        //recordInfoViewModel.getAddFields(
+                        //    UUID.fromString(
+                        //        id
+                        //    )
+                        //)
+                    BackHandler(false) {
+                        //navigationSelected.value = NavigationSelected.Accounts
+                        navController.navigate(Screen.RecordList.route)
                     }
                     AccountInfoScreen(
                         navController = navController,
@@ -267,6 +257,7 @@ class MainActivity : ComponentActivity() {
                 RecordListScreen(
                     navController,
                     recordListViewModel,
+                    recordInfoViewModel,
                     context,
                     connectivityManager,
                     open = navMenu
@@ -365,6 +356,14 @@ class MainActivity : ComponentActivity() {
                         color = Color.Black.copy(alpha = animation*0.8f),
                     )
             )
+
+
+
+
+        //navController.addOnDestinationChangedListener { _, destination, _ ->
+        //    Log.d("testRoute",destination.route + " -");
+        //}
+
 
         NavigationMenu(
             openSize = animation,
