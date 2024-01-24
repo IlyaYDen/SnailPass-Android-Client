@@ -40,7 +40,7 @@ build/
 .idea/uiDesigner.xml
 
 # Mongo Explorer plugin:
-.idea/mongoSettings.xml
+.idea/*
 
 app/build/
 app/src/androidTest/
